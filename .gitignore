@@ -16,3 +16,6 @@ conf/setup.php.areaserver
 conf/setup.php.produzione
 conf/setup.php.ricvm6
 uploads/thumb/*.jpg
+immagini/persone/*.jpg
+immagini/persone/*.gif
+immagini-backup-NONCANCELLARMI/
