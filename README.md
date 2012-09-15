@@ -11,16 +11,22 @@ More to follow... See http://www.goliardia.it/ for the production instance.
 INSTALL
 -------
 
-Get the PHP pages into a LAMP stack. 
-Create a MySQL database.
+Install requirements: 
+- an IQ over 95 (see `PEBKAC`).
+- knowledge of Italian language and English alike.
+- knowing how to assemble a LAMP stack with more than just apt-get install
+- Compliment Riccardo <riccardo.carlesso@gmail.com>
 
+Get the PHP pages into a LAMP stack. 
+Create a MySQL database. Populate with my neat sample DB.
+
+  $ mysql yourdb your user yourpass < db/opengoliardia_sample.sql
 	$ cp conf/setup.php.dist conf/setup.php
 
 Change stuff in `conf/setup.php`
 You're grand.
 If you don't know what I'm talking about then it might be a PEBKAC. Google this.
-
-PS Without a test database you won't get far. I have it somewhere, just I have to find it. Apologies for the inconvenience.
+If you are smart and still have issues I might have done something wrong. In that case, please tell me!
 
 Bugs
 ----
