@@ -22,11 +22,14 @@ Create a MySQL database. Populate with my neat sample DB.
 
 	$ mysql your_user yourpass your_db < db/opengoliardia_sample.sql
 	$ cp conf/setup.php.dist conf/setup.php
+  $ execute bin/init.rb # still buggy
+  $ login as `prova` // `prova`
 
 Change stuff in `conf/setup.php`
 You're grand.
 If you don't know what I'm talking about then it might be a PEBKAC. Google this.
 If you are smart and still have issues I might have done something wrong. In that case, please tell me!
+
 
 Bugs
 ----
