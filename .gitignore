@@ -11,3 +11,7 @@ var/log/log_bugz.php var/log/log_ingressi.php var/log/pannello.log.php var/log/q
 var/log/*.php
 var/log/.uploadfoto.log
 .vecchiume/
+conf/setup.php
+conf/setup.php.areaserver
+conf/setup.php.produzione
+conf/setup.php.ricvm6
