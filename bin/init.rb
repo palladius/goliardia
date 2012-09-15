@@ -12,13 +12,12 @@ def init_goliardia(dir)
 			puts '... e il suo contenuto (muto):'
 			`chown www-data.www-data ./immagini/#{d}/* 2>/dev/null`
 			`chmod 664 ./immagini/#{d}/* 2>/dev/null `
-			
-			puts "Var scrivibili da apache (per darla via devi essere ROOT, mica come le donne):"
-			%w[ var/log var/state var/prova uploads/thumb ].each{ |dtutti|
-				`mkdir -p #{dtutti}`
-				`chown www-data.www-data #{dtutti}`  # devi essere root
-				`chmod 775 #{dtutti}`
-			}
+	}
+	puts "Var scrivibili da apache (per darla via devi essere ROOT, mica come le donne):"
+	%w[ var/log var/state var/prova uploads/thumb ].each{ |dtutti|
+		`mkdir -p #{dtutti}` # create if doesnt exist
+		`chown www-data.www-data #{dtutti}`  # devi essere root
+		`chmod 775 #{dtutti}`
 	}
 
 end
