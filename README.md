@@ -18,7 +18,7 @@ Create a MySQL database.
 
 	$ cp conf/setup.php.dist conf/setup.php
 
-Change stuff in conf/setup.php
+Change stuff in `conf/setup.php`
 You're grand.
 If you don't know what I'm talking about then it might be a PEBKAC. Google this.
 
