@@ -9,9 +9,9 @@ $CONFVER = "7.2"; # 20120915 after github :)
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 
 	# INFO DB
 $dbhost     = "localhost";
-$dbuser     = "MyUS3r";        # user del database
-$dbpassword = "MyPassw0rd";    		  # password del database
-$dbdatabase = "goliardia_prod";		# nome del database
+$dbuser     = "{{db_user}}";    # user del database
+$dbpassword = "{{db_pass}}";    # password del database
+$dbdatabase = "{{db_name}}";		# nome del database
 $DOVE_SONO  = "SomewhereInGithub";			# dove è il server, a scopi mnemonici 
 $FUSOORARIO = 16; 				# 6 non va provo 16Mi sembra inutile TODO toglimi
 $DEBUG_ON   = FALSE;			# abilita un sacco di verboso debug
