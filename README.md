@@ -22,8 +22,8 @@ Create a MySQL database. Populate with my neat sample DB.
 
 	$ mysql your_user yourpass your_db < db/opengoliardia_sample.sql
 	$ cp conf/setup.php.dist conf/setup.php
-  $ execute bin/init.rb # still buggy
-  $ login as `prova` // `prova`
+	$ execute bin/init.rb # still buggy
+	$ login as `prova` // `prova`
 
 Change stuff in `conf/setup.php`
 You're grand.
