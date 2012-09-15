@@ -16,7 +16,7 @@ INSTALL
 Get the PHP pages into a LAMP stack. 
 Create a MySQL database.
 
-   $ cp conf/setup.php.dist conf/setup.php
+	$ cp conf/setup.php.dist conf/setup.php
 
 Change stuff in conf/setup.php
 You're grand.
