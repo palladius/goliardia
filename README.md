@@ -13,26 +13,40 @@ See http://www.goliardia.it/
 INSTALL
 -------
 
-Get the PHP pages. Create a MySQL database.
-Change stuff in conf/
+Get the PHP pages into a LAMP stack. 
+Create a MySQL database.
+
+   $ cp conf/setup.php.dist conf/setup.php
+
+Change stuff in conf/setup.php
 You're grand.
+If you don't know what I'm talking about then it might be a PEBKAC. Google this.
+
+Bugs
+----
+
+This website is just *purfect*, also from a typo point of view. :)
+
+Notes
+-----
+
+This website is currently in Italian, except for this README which is totally in Oirish English.
 
 License
 -------
 
 License is GPL v3. See `LICENSE` file
 
-Author
+Thanks
 ------
 
 This website was developed entirely by Riccardo Carlesso <riccardo.carlesso@gmail.com>.
 
-I would like to thank a few people who helped me through it:
+I would like to thank a few people who helped me through it. A few people proved invaluable 
+in helping me maintaining the real website. Among them:
 
-- Fabio "Venerdi'" Mattei
-- Davide 'Karaoke' Fiorello
-
-A few people proved invaluable in helping me maintaining the real website. Among them:
-
-- Manuel 'Palo' Bernardini
-- Paola 'Vipera' Vallini
+- Fabio 'Venerdi' Mattei (Development)
+- Davide 'Karaoke' Fiorello (Development)
+- Manuel 'Palo' Bernardini (Administration)
+- Paola 'Vipera' Vallini (Administration)
+- Elisa 'Farina' Ciccarelli (Administration)
