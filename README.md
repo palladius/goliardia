@@ -20,6 +20,8 @@ Change stuff in `conf/setup.php`
 You're grand.
 If you don't know what I'm talking about then it might be a PEBKAC. Google this.
 
+PS Without a test database you won't get far. I have it somewhere, just I have to find it. Apologies for the inconvenience.
+
 Bugs
 ----
 
