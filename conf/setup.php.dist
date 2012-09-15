@@ -3,13 +3,8 @@
 	##########################################################
 	# $Id: setup.php,v 1.7 2007/03/10 20:37:07 rcarlesso Exp $
 	##########################################################
-	# $Log: setup.php,v $
-	# Revision 1.7  2007/03/10 20:37:07  rcarlesso
-	# non saprei...
-	#
-	##########################################################
 
-$CONFVER = "7.1a";
+$CONFVER = "7.2"; # 20120915 after github :)
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 
 	# INFO DB
@@ -17,7 +12,7 @@ $dbhost     = "localhost";
 $dbuser     = "MyUS3r";        # user del database
 $dbpassword = "MyPassw0rd";    		  # password del database
 $dbdatabase = "goliardia_prod";		# nome del database
-$DOVE_SONO  = "VM8/wunderbar";			# dove è il server, a scopi mnemonici 
+$DOVE_SONO  = "SomewhereInGithub";			# dove è il server, a scopi mnemonici 
 $FUSOORARIO = 16; 				# 6 non va provo 16Mi sembra inutile TODO toglimi
 $DEBUG_ON   = FALSE;			# abilita un sacco di verboso debug
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- personalizzazioni
@@ -76,10 +71,10 @@ $queryPacco=mysql_query("show tables;")
 
 
 	// percorsi
-$paz_foto_persone = "immagini/persone/";
+$paz_foto_persone   = "immagini/persone/";
 $paz_foto_ordini_tn = "immagini/ordini/";
-$paz_foto_ordini = "immagini/ordini/";
-$paz_foto = "immagini/";
+$paz_foto_ordini    = "immagini/ordini/";
+$paz_foto           = "immagini/";
 
 	//	PROPRIETA DEL SERVER
 $MAILNONVA = FALSE; // finchè è vero che le mail non partono, scrivo cose x gli utenti.
@@ -87,12 +82,12 @@ $UPLOADVA = FALSE;
 # metti qualcosa sugli apostrofi (magic quote)
 $indexAndAnonomo=1; 	// se TRUE , tutti possano vedere tutto senza login.
 $VISUALIZZA_MSG_OCCASIONALE_NELLHEADER = FALSE;
-$QGFDP="Palladius el Maricon";
-$CONFSITO="sito06";
+$QGFDP = "Palladius the GDubliner";
+$CONFSITO = "sito06";
 $ABILITAJS = 0;  // in tal caso, disabilito il menu VECCHIO e metto il nuovo SOTTO a flash!!!
-$ANONIMO = "anonimo";
-$IMMAGINI="immagini"; // che POI va tabbato...
-$MAX_GMS_AMMISSIBILI = 8;
-$ISANONIMO = true;
+$ANONIMO  = "anonimo";
+$IMMAGINI  = "immagini"; // che POI va tabbato...
+$MAX_GMS_AMMISSIBILI = 10;
+$ISANONIMO = true;  // please explain this
 
 ?>
