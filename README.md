@@ -6,9 +6,7 @@ There is a forum, a chat and all the community stuff that was popular before Fac
 There's also a very interesting hierarchical management systems for Goliardi belonging
 to some Noble Order: Orders/Offices/Roles.
 
-More to follow...  
-
-See http://www.goliardia.it/
+More to follow... See http://www.goliardia.it/ for the production instance.
 
 INSTALL
 -------
@@ -30,7 +28,7 @@ This website is just *purfect*, also from a typo point of view. :)
 Notes
 -----
 
-This website is currently in Italian, except for this README which is totally in Oirish English.
+This website is currently in *Italian*, except for this README which is totally in Oirish English.
 
 License
 -------
@@ -45,8 +43,12 @@ This website was developed entirely by Riccardo Carlesso <riccardo.carlesso@gmai
 I would like to thank a few people who helped me through it. A few people proved invaluable 
 in helping me maintaining the real website. Among them:
 
+- Umberto Volpini (Orders images gathering)
 - Fabio 'Venerdi' Mattei (Development)
 - Davide 'Karaoke' Fiorello (Development)
 - Manuel 'Palo' Bernardini (Administration)
 - Paola 'Vipera' Vallini (Administration)
 - Elisa 'Farina' Ciccarelli (Administration)
+- Luca 'Npp' Sambucci (DNS redirect)
+- Buddha, Kash, ... for past hosting helps
+- My mum Lucilla for making me the totally awesome man I actually am :)
