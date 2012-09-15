@@ -1,0 +1,98 @@
+<?
+
+	##########################################################
+	# $Id: setup.php,v 1.7 2007/03/10 20:37:07 rcarlesso Exp $
+	##########################################################
+	# $Log: setup.php,v $
+	# Revision 1.7  2007/03/10 20:37:07  rcarlesso
+	# non saprei...
+	#
+	##########################################################
+
+$CONFVER = "7.1a";
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 
+	# INFO DB
+$dbhost     = "localhost";
+$dbuser     = "MyUS3r";        # user del database
+$dbpassword = "MyPassw0rd";    		  # password del database
+$dbdatabase = "goliardia_prod";		# nome del database
+$DOVE_SONO  = "VM8/wunderbar";			# dove è il server, a scopi mnemonici 
+$FUSOORARIO = 16; 				# 6 non va provo 16Mi sembra inutile TODO toglimi
+$DEBUG_ON   = FALSE;			# abilita un sacco di verboso debug
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- personalizzazioni
+
+
+	# INFO SITO MIO
+$GODNAME = "prova"; // se cambi questo nome, viene un atro superuser...
+$SITENAME = "Il sito della goliardia itaGliana sul HETZNER";
+$SITEPAZ  = "http://riccardocarlesso.goliardia.it/"; 
+	# ROBA GRAFICA
+$imglogo="inutilenonusato.jpg";	# logo del sito 
+#$color1="#000000"; 		# per lo sfondo dietro alla celle (centro pagina) tables
+#$color2="#C0D1DA"; 		# per lo sfondo della cella titolo
+#$color3="#EDEFF8"; 		# per lo sfondo della celle comuni
+$pretab="goliardia";               # da cambiare per ogni sito
+$skinPreferita="default"; 
+	# ALTRO
+$APERTOATUTTI = 1;
+$indexAndAnonomo = 1; 		// vale true se vogliamo rispettare Titanicus e 
+				// far sì' che tutti possano vedere tutto senza login.
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-	NON MODIFICARE !!!!
+	# CODICE NON DI CONFIGURAZIONE (chiedo scusa per la sporchezza della cosa)
+
+
+
+
+
+
+if (! extension_loaded('mysql')) {
+	echo "<h1 class='erore'>Fatal Error: Librerie mysql non caricate, non posso far nulla!\n</h1>"; 
+}
+
+function eroreConnessioneDB($spiegazione="no spieg") {
+   die(
+	"<html><head><title>$SITEPAZ: problemi</title>\n"
+	. "</head><body><table><tr><td><img src='immagini/persone/palladius.jpg'></td>"
+	. "<td><h1>Errore di connessione al DB</h1>" 
+	. " Il DB esiste ma non riesco a connettermici. Lascio stare (motivo: <i class=debug>$spiegazione</i>). "
+	. "Provate ad andare su un sito piu' serio o a studiare (o mandate una mail di sbotro a <b>carlesso</b>) ;)<br>"
+	. " <i>Se proprio non trovate nulla di serio e/o costruttivo da fare, guardatevi il mio sito: "
+	. "<a href='http://www.palladius.it/carlesso/'>www.palladius.it</a> (andate sotto java e poi sotto Gioco "
+	. "del 15, l'ho fatto io! In alternativa c'e' un gioco a sfondo goliardico)</td></tr></table>\n"
+	);
+}
+
+$connessione = mysql_connect($dbhost, $dbuser, $dbpassword) 
+	or eroreConnessioneDB("connessione DB: $dbuser//*****@$dbhost");
+
+mysql_select_db($dbdatabase, $connessione );
+
+$queryPacco=mysql_query("show tables;") 
+	or eroreConnessioneDB("no DB selected");	
+	# funziona solo se UTENTE/PWD/DB sono corretti... 
+	# mi e' capitato che DB fosse scorretto e non dava 
+	# l'errore che mi piace tanto
+
+
+	// percorsi
+$paz_foto_persone = "immagini/persone/";
+$paz_foto_ordini_tn = "immagini/ordini/";
+$paz_foto_ordini = "immagini/ordini/";
+$paz_foto = "immagini/";
+
+	//	PROPRIETA DEL SERVER
+$MAILNONVA = FALSE; // finchè è vero che le mail non partono, scrivo cose x gli utenti.
+$UPLOADVA = FALSE; 
+# metti qualcosa sugli apostrofi (magic quote)
+$indexAndAnonomo=1; 	// se TRUE , tutti possano vedere tutto senza login.
+$VISUALIZZA_MSG_OCCASIONALE_NELLHEADER = FALSE;
+$QGFDP="Palladius el Maricon";
+$CONFSITO="sito06";
+$ABILITAJS = 0;  // in tal caso, disabilito il menu VECCHIO e metto il nuovo SOTTO a flash!!!
+$ANONIMO = "anonimo";
+$IMMAGINI="immagini"; // che POI va tabbato...
+$MAX_GMS_AMMISSIBILI = 8;
+$ISANONIMO = true;
+
+?>

@@ -1,0 +1,136 @@
+FONT		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px}
+
+TD		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px}
+
+BODY		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px}
+
+P		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px}
+
+DIV		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px}
+
+INPUT		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px}
+
+TEXTAREA	{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px}
+
+FORM 		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px}
+
+A:link          {BACKGROUND: none; COLOR: #000000; FONT-SIZE: 11px; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: underline}
+
+A:active        {BACKGROUND: none; COLOR: #000000; FONT-SIZE: 11px; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: underline}
+
+A:visited       {BACKGROUND: none; COLOR: #000000; FONT-SIZE: 11px; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: underline}
+
+A:hover         {BACKGROUND: none; COLOR: #000000; FONT-SIZE: 11px; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: underline}
+
+.title 		{BACKGROUND: none; COLOR: #000000; FONT-SIZE: 13px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+
+.content 	{BACKGROUND: none; COLOR: #000000; FONT-SIZE: 11px; FONT-FAMILY: Verdana, Helvetica}
+
+.storytitle 	{BACKGROUND: none; COLOR: #363636; FONT-SIZE: 14px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+
+.storycat	{BACKGROUND: none; COLOR: #000000; FONT-SIZE: 13px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: underline}
+
+.boxtitle 	{BACKGROUND: none; COLOR: #363636; FONT-SIZE: 11px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+
+.boxcontent 	{BACKGROUND: none; COLOR: #000000; FONT-SIZE: 12px; FONT-FAMILY: Verdana, Helvetica}
+
+.option 	{BACKGROUND: none; COLOR: #000000; FONT-SIZE: 13px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+
+.tiny		{BACKGROUND: none; COLOR: #000000; FONT-SIZE: 10px; FONT-WEIGHT: normal; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+
+.footmsg        {BACKGROUND: none; COLOR: #CCCCCC; FONT-SIZE: 8px; FONT-WEIGHT: normal; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+
+.footmsg_l	{BACKGROUND: none; COLOR: #CCCCCC; FONT-SIZE: 8px; FONT-WEIGHT: normal; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: underline}
+
+.box		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px; border: 1px solid #000000; background-color: #FFFFFF}
+
+.rosso {
+	color: #C71585;
+}
+
+
+/* sostituisce l'array trabella colori blu:
+
+tabcolblu[i] = array ("EEEEFF","CCCCFF","FFCCCC")
+ */
+ 
+ 
+.tabellacoloriblu0 {
+	background-color: #AFEEEE;
+}
+
+.tabellacoloriblu1 {
+	background-color: #98FB98;
+}
+
+.tabellacoloriblu2 {
+	background-color: #CCCCFF;
+}
+
+.tabellacoloribluErore{
+	background-color: Olive;
+}
+
+.rossone {
+	background-color: #ffffff;
+	font-size: larger;
+	color: #B22222;
+	font-weight: bolder;
+}
+
+/*
+
+questoi invece vengono dal scrivirecordsetcontimeout:
+il titolo è one shot, e le righe si alternano
+tra colore1 e colore2
+
+$COLORETITOLO  = "#CCFFCC";
+$COLORERECORD1 = "#FFCCFF" ;
+$COLORERECORD2 = "#CCCCFF" ;
+*/
+
+.recordsetTitolo {
+	background-color: #FEFF6E;
+}
+
+
+.recordsetRiga0 {
+	background-color: #88F2FF;
+}
+.recordsetRiga1 {
+	background-color: #98FB98;
+}
+
+.inizialemaiuscola {
+	
+	play-during: repeat;
+	speak: spell-out;
+	text-transform: capitalize;
+}
+
+.emote {
+	font: oblique;
+	text-shadow: Aqua;
+	color: AppWorkspace;
+}
+
+.colonninadisinistra {
+	background-color: #CFAEEE;
+}
+
+.colonnonadidestra {
+	background-color: #AEEEAF;
+}
+
+.utente {
+	color: Maroon;
+}
+
+.goliarda {
+	color: Teal;
+	/*mettici l'iniziale maiuscola...*/
+}
+
+.messaggiodelgiorno {
+	color: darkred;
+	background-color: #fdd;

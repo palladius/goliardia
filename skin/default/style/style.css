@@ -1,0 +1,253 @@
+FONT		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px}
+TD		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px}
+BODY		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px}
+P		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px}
+DIV		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px}
+INPUT		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px}
+TEXTAREA	{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px}
+H1 		{FONT-FAMILY: Verdana,Helvetica; color: Green}
+FORM 		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px}
+A:link          {BACKGROUND: none; COLOR: #161; FONT-SIZE: 11px; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+A:active        {BACKGROUND: none; COLOR: #000000; FONT-SIZE: 11px; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: underline}
+A:visited       {BACKGROUND: none; COLOR: #077; FONT-SIZE: 11px; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none;}
+A:hover         {BACKGROUND: none; COLOR: #000000; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: underline}
+.title 		{BACKGROUND: none; COLOR: #000000; FONT-SIZE: 13px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.content 	{BACKGROUND: none; COLOR: #000000; FONT-SIZE: 11px; FONT-FAMILY: Verdana, Helvetica}
+.storytitle 	{BACKGROUND: none; COLOR: #363636; FONT-SIZE: 14px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.storycat	{BACKGROUND: none; COLOR: #000000; FONT-SIZE: 13px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: underline}
+.boxtitle 	{BACKGROUND: none; COLOR: #363636; FONT-SIZE: 11px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.boxcontent 	{BACKGROUND: none; COLOR: #000000; FONT-SIZE: 12px; FONT-FAMILY: Verdana, Helvetica}
+
+.option 	{BACKGROUND: none; COLOR: #000000; FONT-SIZE: 13px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+
+.tiny		{BACKGROUND: none; COLOR: #000000; FONT-SIZE: 10px; FONT-WEIGHT: normal; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+
+.footmsg        {BACKGROUND: none; COLOR: #CCCCCC; FONT-SIZE: 8px; FONT-WEIGHT: normal; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+
+.footmsg_l	{BACKGROUND: none; COLOR: #CCCCCC; FONT-SIZE: 8px; FONT-WEIGHT: normal; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: underline}
+
+.box		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 11px; border: 1px solid #000000; background-color: #FFFFFF}
+
+AAAA.rosso { color: #C71585; }
+
+
+/* sostituisce l'array tabella colori blu:
+
+tabcolblu[i] = array ("EEEEFF","CCCCFF","FFCCCC")
+ */
+ 
+
+.fullmsg_body {
+	font-size: 10px;
+	width: 80%;
+}
+ 
+.reportmsg_body {
+	font-size: 9px;
+}
+ 
+	/* 0 = intestazione */
+.tabhome0 { background-color: #fff; }
+.tabhome1 { background-color: #cfc; font-size: 6px;}
+.tabhome2 { background-color: #afa; }
+.tabellacoloribluErore{ background-color: Olive; color: red; }
+
+.debugSchifo {
+        background-color: #afa;
+        font-size: larger;
+        color: #B22222;
+        font-weight: bolder;
+}
+.debug {
+	border: 1px red dashed;
+	background-color: #fcc;
+}
+
+
+.errorone {
+	background-color: #afa;
+	font-size: larger;
+	color: #B22222;
+	font-weight: bolder;
+}
+
+	/* tABELLE di statistiche eccetera... bello verdone 170-221-170*/
+.recordset { border: 10px red; padding: 0; }
+.descrizione {font-color: red ; font-size: x-small;}
+.recordset th { background: #9d9 ; }
+.recordset .intestazione { background: rgb(170, 221, 170);}
+.rigapari  { background: rgb(227, 255, 227)  }
+.rigadispari  { background: rgb(207, 227, 207)  }
+.notefinetabella {  
+	background: rgb(170, 221,  170); 
+	font-style: italic; 
+}
+
+.nuovogoliarda  { border: 1px red dashed; background: #fcc; padding: 10px;  font-style: italic; margin: 5; }
+.develop  { border: 1px red dashed; background: #fcc; padding: 10px;  font-style: italic; margin: 5; }
+.rosso { font-style: italic;  color: #a00; }
+.null { color: blue; font-style: italic; }
+
+	/* obsoleto, mettilo direttamente in UTENTE e goliarda!!! */
+.inizialemaiuscolaOBSOLETO {
+	play-during: repeat;
+	speak: spell-out;
+	text-transform: capitalize;
+}
+
+.emote {
+	font: oblique;
+	text-shadow: Aqua;
+	color: AppWorkspace;
+}
+
+.colonninadisinistra {
+	background-color: #cfc;
+}
+
+.colonnonadidestra {
+	background-color: #AEEEAF;
+}
+
+.citta {
+	text-transform: capitalize ;
+}
+.utente , A.utente, i.utente {
+	color: Maroon  ;
+/*	text-transform: capitalize ! important; */
+	text-transform: capitalize;
+
+}
+
+.irlanda {
+	border: 3px #0f0 dashed;
+	background-color: #cfc;
+}
+
+
+.goliarda {
+	color: Teal;
+	text-transform: capitalize;
+}
+
+
+		/* adesso la parte di pseudo dhtml (SITO1)*/
+	/*
+ul#nav, #nav ul{ margin: 0; padding: 0; cursor: default; list-style-type: none; display: inline; } 
+ul#nav li>ul{ display: none; position: absolute; max-width: 40ex; margin-left: -6px; margin-top: 2px; } 
+ul#nav li:hover>ul, li.over ul{ display : block; } 
+#nav ul li a{ display: block; padding: 2px 10px; } 
+#nav a{ text-decoration: none; } 
+ul#nav li:hover>ul , li.over ul { display : block; } 
+	*/		
+			/* dal sito dei pesci (SITO2) */
+ul { padding: 0; margin: 0; list-style: none; } 
+li { float: left; position: relative; width: 10em; } 
+li ul { display: none; position: absolute; top: 1em; left: 0; } 
+li > ul { top: auto; left: auto; } 
+li:hover ul, li.over ul{ display: block; ;}
+
+
+.titoloaltostretto {  
+	border: 1px solid #369;   
+	background-color: #fff; 
+	width: 730px; 
+}
+
+ul#nav{ display: table; }
+ul#nav>li{ display: table-cell; position: relative; padding: 2px 6px; }
+IIIIIul#nav, #nav ul{ border: 1px solid #369; } 
+ul#nav, #nav ul, #nav ul li a{ background-color: #fff; color: #369; } 
+ul#nav, #nav ul, #nav ul li a { background-color: #fff; color: #369; }
+ul#nav li:hover, #nav ul li a:hover  { background-color: #369; color: #fff; } 
+ul#nav li:active, #nav ul li a:active{ background-color: #036; color: #fff; } 
+#nav ul li a{ display: block; padding: 2px 10px; }
+
+/* custom per le due TD dei menu.... */
+
+ul li table tr {
+	width: 700px ! important;
+}
+AAAul li table tr td.sx { width: 20%; height: 30px; background-color: #ccc; }
+AAAul li table tr td.dx { width: 70%; background-color: #ccc; }
+
+
+
+
+/*  aggiunti 2006 strutturali: */
+
+.scatolabella {
+	border: 3px blue;
+	width: 100%;
+	font-style: italic;
+	font-color: blue;
+}
+
+.SCHIFOtabella1ext { /* devo ricalcare l'OpenTable del deepblueric */
+	border: 0px ;
+	width: 100%;
+	border: 1; 
+	#padding: 8; 
+	background-color: #9cbee6;
+	margin: 1;
+	filter:alpha(opacity=70);
+    	opacity: 0.7;
+    	-moz-opacity:0.7;
+}
+
+.tabella1ext { /* devo ricalcare l'OpenTable del deepblueric */
+	border: 0px ;
+	width: 100%;
+	border: 1; 
+	#padding: 8; 
+	background-color: #9cbee6;
+	margin: 1;
+	AAAfilter:alpha(opacity=80);
+    	AAAopacity: 0.7;
+    	-moz-opacity:0.7;
+}
+
+.tabella1int {
+	width: 100%;
+	border: 1; 
+	padding: 8; 
+	background-color: #fff;
+}
+
+.tabella2ext { border: 3px red; width: 100% cellspacing: 1; cellpadding: 8; bgcolor: #9cbee6; }
+.tabella2int { border: 2px blue; width: 100% cellspacing: 1; cellpadding: 8; bgcolor: #9cbee6; }
+
+
+.reportmessaggio { }
+
+.titolothread {
+	background-color: #cfc; 
+	font: bolder larger small-caps; 
+	border-bottom: 1px blue; 
+	text-transform: capitalize;
+}
+
+AAA.fancy { border-color: #fcf; border-width: 2px; background-color: white;  } 
+
+
+fancy { width: 100%; }
+
+
+.iniziothread { border-bottom: black 1px dotted; }
+.iniziothread1 { border-bottom: green 1px dashed;  width:100%; }
+	
+.titoloecorpo {  
+	AAborder-color: #ffc; 
+	AAborder-width: 2px; 
+	AAbackground-color: #cff; 
+	width: 100%;  
+	AAborder-bottom: black 1px dotted; 
+	AAborder-left: green 1px solid; 
+	AAborder-bottom: green 1px dashed;
+}
+AAA.titolo { background-color: #fcc; width: 100%; }
+
+.maschio {  background-color: #ccf; }
+.femmina {  background-color: #fcc;  filter: alpha(opacity=50); }
+
+.scatolabella { filter: alpha(opacity=80); }

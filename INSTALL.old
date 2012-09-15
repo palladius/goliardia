@@ -1,0 +1,15 @@
+
+Script di installazione devi accertarti che:
+Per aiutanti tipo palo:
+	Nella cartella immagini:
+	 chown riccardo.aiutanti persone/ ordini/
+	chmod 775 persone/ ordini/
+
+
+	nella cartella uploads:
+	uploads/thumb/ è in 777
+	var/log e var/state devono appartenere a www-data:
+	
+	drwxr-xr-x  4 www-data www-data 4096 2009-09-27 09:49 log
+	drwxr-xr-x  4 www-data www-data 4096 2009-09-27 09:48 state
+
