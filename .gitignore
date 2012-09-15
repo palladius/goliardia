@@ -15,3 +15,4 @@ conf/setup.php
 conf/setup.php.areaserver
 conf/setup.php.produzione
 conf/setup.php.ricvm6
+uploads/thumb/*.jpg
