@@ -62,4 +62,5 @@ in helping me maintaining the real website. Among them:
 - `Buddha`, `Kash`,... for past hosting helps
 - `Kilhadurolavince`, `Manolus`, `Gimmigod` to alert me when website was down and lots of other stuff :)
 - My mum Lucilla for making me the totally awesome man I actually am :)
+- Rudi Bertaccini for itching (or slagging?) my ego: http://www.vgnetwork.it/images/anime/slow-clap.gif
 
