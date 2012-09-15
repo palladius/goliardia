@@ -20,7 +20,7 @@ Install requirements:
 Get the PHP pages into a LAMP stack. 
 Create a MySQL database. Populate with my neat sample DB.
 
-	$ mysql yourdb your user yourpass < db/opengoliardia_sample.sql
+	$ mysql your_user yourpass your_db < db/opengoliardia_sample.sql
 	$ cp conf/setup.php.dist conf/setup.php
 
 Change stuff in `conf/setup.php`
