@@ -1,1 +1,0 @@
-14:25@Foo Message@@<font color='#008800'>Good morning everybody</font>$19:12@Bar@@<font color='#FF1493'>Please participate to this intriguing chat</font>$
