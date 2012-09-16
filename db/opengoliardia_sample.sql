@@ -463,7 +463,7 @@ CREATE TABLE `goliardi` (
 -- Dump dei dati per la tabella `goliardi`
 -- 
 
-INSERT INTO `goliardi` VALUES (1, 'Riccardo', '-', '1998-12-31 00:00:00', 'via Pinco Pallo 41', '347-xxxxxxx', 'Palladius', 'BonTon', NULL, 1, NULL, NULL, 'email@email', NULL, 1, 1, 1, 'prova.jpg', 12, NULL, 0, '');
+INSERT INTO `goliardi` VALUES (1, 'Riccardo', 'C.', '1998-12-31 00:00:00', 'via Pinco Pallo 41', '347-xxxxxxx', 'Palladius', 'BonTon', NULL, 1, NULL, NULL, 'email@email', NULL, 1, 1, 1, 'prova.jpg', 12, NULL, 0, '');
 INSERT INTO `goliardi` VALUES (2, 'Mario', 'Rossi', '2003-12-31 00:00:00', 'null', 'null', 'Pincus', 'Pallus', 1, 1, '2006-08-25 18:35:46', NULL, 'null', NULL, 0, 0, 0, 'prova.jpg', 10, NULL, 0, 'null');
 
 -- --------------------------------------------------------
@@ -618,12 +618,12 @@ CREATE TABLE `messaggi` (
 -- Dump dei dati per la tabella `messaggi`
 -- 
 
-INSERT INTO `messaggi` VALUES (3, 'qwefqw', 1, 'rqewe', '2006-08-25 17:41:09', 0, 0, 0);
+INSERT INTO `messaggi` VALUES (3, 'Altro messaggio', 1, 'sobeneme', '2006-08-25 17:41:09', 0, 0, 0);
 INSERT INTO `messaggi` VALUES (2, 'Benvenuti su questo nuovo sito!', 1, 'Benvenuti sul sito!\r\nSono Palladius e questo sito non è altro che il codice nuovo e fiammante del sito che trovate in www.goliardia.it unito a un DB preparato ad hoc per non contenere tutti i dati sensibili che il sito in effetti ha.\r\nSiete liberi di provarlo e farlo crescere.', '2006-08-25 17:37:04', 0, 0, 0);
-INSERT INTO `messaggi` VALUES (4, 'qwr', 1, 'qwerwer', '2006-08-25 17:41:13', 0, 3, 0);
-INSERT INTO `messaggi` VALUES (5, 'sdgd', 1, 'sdfgsd', '2006-08-25 17:41:45', 0, 3, 0);
-INSERT INTO `messaggi` VALUES (6, 'sdfgsdfg', 1, 'dsgd', '2006-08-25 17:41:49', 0, 3, 0);
-INSERT INTO `messaggi` VALUES (7, 'sdg', 1, 'sdgdf', '2006-08-25 17:41:54', 0, 2, 0);
+INSERT INTO `messaggi` VALUES (4, 'prima reply', 1, 'non sono d accordo', '2006-08-25 17:41:13', 0, 3, 0);
+INSERT INTO `messaggi` VALUES (5, 'mah', 1, 'io invece si', '2006-08-25 17:41:45', 0, 3, 0);
+INSERT INTO `messaggi` VALUES (6, 'venerdi', 1, 'si dice con o senza accento?', '2006-08-25 17:41:49', 0, 3, 0);
+INSERT INTO `messaggi` VALUES (7, 'senza', 1, 'imbecille', '2006-08-25 17:41:54', 0, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -886,8 +886,10 @@ CREATE TABLE `xxx_memoz` (
 
 INSERT INTO `xxx_memoz` VALUES ('benvenuto', 'Bela regaz! Sto ammodernando il sito (causa ferie sine viaggio); se qualcuno ha segnalazioni, consigli, cose da togliere o cose da aggiungere essi sono apprezzati. SOLO VIA MAIL PERO'' (n&eacute; al Contavalli, a meno che non siate gnocche, nè via MSN), all''indirizzo: <a href=''mailto:palladius@goliardia.org''>palladius@goliardia.org</a><br/> \r\n<br/>\r\nGrazie, \r\nPAL\r\n');
 INSERT INTO `xxx_memoz` VALUES ('header', 'Benvenuti 5.0 nel sito <a href="http://www.goliardia.it">www.goliardia.it</a>!<br/>\r\n\r\nVi ricordo che:<br>\r\n1) Questo sito e'' aperto a tutti ma SOLO sotto iscrizione, questo per poter moderare meno il forum e per mantenere un po'' sotto controllo le informazioni. Se vi iscrivete, NON riceverete spam ne merdate varie poiche'' io stesso le odio, e odio infliggere cio'' che odio ricevere.<br>\r\n2) Il sito e'' diventato opensource (ovvero libero). Nella sezione downloadz, potete scaricare liberamente il codice, sotto licenza <a href=''http://www.gnu.org/licenses/''>GNU GPL</a>. Potete altresi'' (ieri sera mi son letto l''intera A dello Zingarelli) scaricare la skin del sito, modificarla e spedirmela; siete dei pigri maledetti, ma se mi date una mano i colori (volutamente) pacchiani del sito possono cominciare a offendere meno l''occhio. Mio babbo e'' oculista e siamo alla ottava villa. Ora basta!<br>\r\n<br>\r\n<b>PS</b> Un grazie a Buddha, Npp e Kash per hosting e ciappini vari; un grazie inoltre ai miei aiutanti (Quine, Vipera, Cavedano, Gimmygod, ...) che mi aiutano a tenere tutto un po'' pulito e in ordine....<br>\r\n<div align=right><i>(26 Aug 05, il webmaster <a href="http://www.palladius.it/">Palladius</a>)</i></div>');
-INSERT INTO `xxx_memoz` VALUES ('fotoprimapagina', 'ricmondiali.jpg');
-INSERT INTO `xxx_memoz` VALUES ('qgfdp', 'el Palladius Maricòn');
+INSERT INTO `xxx_memoz` VALUES ('fotoprimapagina', 'RicKiltConFabio.jpg');
+INSERT INTO `xxx_memoz` VALUES ('didascaliahome', 'Palladius e Venerd“ a Edinbra - xxx_memoz');
+INSERT INTO `xxx_memoz` VALUES ('qgfdp', 'il Palladius dublinese');
+
 
 -- --------------------------------------------------------
 
@@ -910,4 +912,4 @@ CREATE TABLE `xxx_vari` (
 
 INSERT INTO `xxx_vari` VALUES ('benvenuto', 'benvenuto agosto 06');
 INSERT INTO `xxx_vari` VALUES ('fotoindex', 'logolargo200.jpg');
-        
+INSERT INTO `xxx_vari` VALUES ('didascaliahome', 'Palladius e Venerd“ a Edinbra - xxx_vari');
