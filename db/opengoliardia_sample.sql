@@ -691,7 +691,7 @@ CREATE TABLE `ordini` (
 -- Dump dei dati per la tabella `ordini`
 -- 
 
-INSERT INTO `ordini` VALUES (1, 'Pinco', 'Sacer Ordo Pinco Pallus', 'SOPP', -1, 1, 'Bologna', '2006-08-25 18:33:23', 'Bacco su bacco è scavolo, e solo noi lo sappiamo', 'pincopallo.jpg', 'pincopallo.jpg', 'Note sull''ordine', 'Storia dell''ordine', 1, '2006-08-25 18:34:12', 1, 'indirizzo di casa', 'email ordine');
+INSERT INTO `ordini` VALUES (1, 'PincoPallo', 'Sacer Ordo Pinco Pallus Marittimae Existentae Luganegae', 'SOPPMEL', -1, 1, 'Bologna', '2006-08-25 18:33:23', 'Bacco su bacco è scavolo, e solo noi lo sappiamo', 'pincopallo.jpg', 'pincopallo.jpg', 'Note sull''ordine', 'Storia dell''ordine', 1, '2006-08-25 18:34:12', 1, 'indirizzo di casa', 'email ordine');
 
 -- --------------------------------------------------------
 
@@ -863,6 +863,8 @@ INSERT INTO `regioni` VALUES ('Ozieri (SS)', 'XO', 'Sardegna', 101);
 INSERT INTO `regioni` VALUES ('Livorno', 'LI', 'Toscana', 102);
 INSERT INTO `regioni` VALUES ('Spoleto (PG)', 'XP', 'Umbria', 55);
 INSERT INTO `regioni` VALUES ('Verona', 'VR', 'Veneto', 45);
+INSERT INTO `regioni` VALUES ('Svizzera', 'CH', 'Nazione', 200);
+INSERT INTO `regioni` VALUES ('Irlanda', 'EI', 'Nazione', 201ag);
 
 -- --------------------------------------------------------
 
