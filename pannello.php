@@ -5,8 +5,7 @@ include "funzioni.php";
 include "header.php";
 
 #$DEBUG = 1;
-
-$GIORNI_OBSOLESCENZA_GMS = 60;
+$GIORNI_OBSOLESCENZA_GMS = 90;
 
 $menu= array (
 			#"OP1) concedi una CITTA a un UTENTE",	# obsoleta nel 2006
@@ -223,19 +222,13 @@ if(!empty($operazione)) {
 		autoAggiornaTabella("loginz","id_login");
 		logga2("cambiati dati di utente numero $id (ora chiamato '$nome')");
 		echo "<h2>Aggiornato!!!</h2>";
-                break;
-
+		break;
 	}
-
 	invio();
 	hline(80);
 	scrivib("Spero di averti soddisfatto.");
 	bona();
 	}
-
-
-
-
 
 	{
 		//////////////////////////////////////////////////
@@ -247,9 +240,8 @@ openTable();
 ?>
 <h3><big><b>DISKLEIMER</b></big><br>
 <?php 
-$diskleimerstr = "Io, amministratore, giuro solennemente di impegnarmi affinchè lo zio Pal non abbia a pentirsi del potere che mi ha dato. Giuro inoltre di cercare di mantenere l'Integrità Referenziale del database, e altresì di rafforzare il + possibile la tassonomia a duplice sussunzione alla base del meccanismo di naming delle foto. Cercherò <u>in ogni modo</u> (a costo di fare una cazzata in meno, vero Lorduccio?) di far si' che per ogni persona che si collega al sito vi sia uno e un solo utente. Mi impegno a guardare che non i siano utenti o goliardi doppioni. Mi impegno a mandare una mail ogni tanto allo zio Pal dicendogli: '<i>soccia ma che bello che sta venendo il tuo sito... complimenti!</i>'. Mi impegno a usare questi poteri solo a fin di bene e non abbraccerò mai il lato oscuro della Scamorza. Prometto inoltre (soccia che palle però Pal!) che non userò i miei poteri x giochini goliardici (tipo abbassare di grado il capoordine a me rivale (a meno che non sia dell'Oca, ovviamente) o scriverci 2 cazzate nel suo nome) poichè questi poteri trascendono il mio gioco; cercherò di scrivere invece più maialate possibili nei messaggi e in chat. Capisco inoltre che il messaggio occasionale è l'UNICA parte del sito visibile a chi non abbia un account, e m'impegno a non scrivere troppe volgarità in esso, per paura che questo bel sito chiuda. Capisco altresì che se violerò questi sacri e-vincoli il UebMonster mi potrà de-amministrare a volontà."
+$diskleimerstr = "Io, amministratore, giuro solennemente di impegnarmi affinchè lo zio Pal non abbia a pentirsi del potere che mi ha dato. Giuro inoltre di cercare di mantenere l'Integrità Referenziale del database, e altresì di rafforzare il più possibile la tassonomia a duplice sussunzione alla base del meccanismo di naming delle foto. Cercherò <u>in ogni modo</u> (a costo di fare una cazzata in meno) di far sì che per ogni persona che si collega al sito vi sia uno e un solo utente registrato. Mi impegno a guardare che non ci siano utenti o goliardi doppioni. Mi impegno a mandare una mail ogni tanto allo zio Pal dicendogli: '<i>soccia ma che bello che sta venendo il tuo sito... complimenti!</i>'. Mi impegno a usare questi poteri solo a fin di bene e non abbraccerò mai il lato oscuro della Scamorza. Prometto inoltre (soccia che palle però Pal!) che non userò i miei poteri x giochini goliardici (tipo abbassare di grado il capoordine a me rivale (a meno che non sia dell'Oca, ovviamente) o scriverci 2 cazzate nel suo nome) poichè questi poteri trascendono il mio gioco; cercherò di scrivere invece più maialate possibili nei messaggi e in chat. Capisco inoltre che il messaggio occasionale è l'UNICA parte del sito visibile a chi non abbia un account, e m'impegno a non scrivere troppe volgarità in esso, per paura che questo bel sito chiuda. Capisco altresì che se violerò questi sacri e-vincoli il UebMonster mi potrà de-amministrare a volontà."
     . "<br/><u>Accetto che la mia mail venga resa pub[bl]ica</u> e prometto di usare con criterio il potere di USERIZZARE utenti (avendo visto le FAQ). Se di sesso femminile, mi impegno a tirare su di morale Pal come ama lui (se sei bionda, ti do una dritta: leggi le faq su come guadagnare GP), e a sostenere la <u>propaganda affinchè superi Spanami, Ciapaso e il Levriero</u> nel  GdC.";
-
 
 //themesidebox("Diskleimer",diskleimerstr);
 ?>
@@ -258,11 +250,7 @@ $diskleimerstr = "Io, amministratore, giuro solennemente di impegnarmi affinchè 
 <?php 
 closeTable();
 
-
-
-
-
-		openTable2();
+	openTable2();
 
 	if ($op=="OP1) concedi una CITTA a un UTENTE") {
 		scrivib("OP1) concedi una CITTA a un UTENTE");
