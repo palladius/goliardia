@@ -46,6 +46,13 @@ CREATE TABLE `appuntamenti` (
 -- Dump dei dati per la tabella `appuntamenti`
 -- 
 
+--
+-- Dumping data for table `appuntamenti`
+--
+
+INSERT INTO `appuntamenti` (`ID_appuntamento`, `Nome`, `tipodiappuntamento`, `luogo`, `data_inizio`, `data_fine`, `città`, `Abdicabilita`, `recapitogoliarda1`, `recapitogoliarda2`, `recapitogoliarda3`, `id_login`, `note`, `data_invio`) VALUES
+(1, 'Feriae Matricolarum Dublinensis', 'Festa delle Matricole', 'O Connell St', '2012-09-17 17:28:57', '2012-09-17 17:28:57', 'Irlanda', 95, 2, 0, 0, 1, 'chiedere a Palladius', '2012-09-17 17:28:57');
+
 
 -- --------------------------------------------------------
 
