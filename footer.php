@@ -47,10 +47,8 @@ if ($DEBUG)
 </center>
 <?php  deltat() ?>
 <table width='500' border=0><tr width='500'><td width='500'>
- <?php 
-
- if ($DEBUG || contiene($AUTOPAGINA,"paginozza") || contiene($AUTOPAGINA,"antiprof"))
-	{
+<?php 
+ if ($DEBUG || contiene($AUTOPAGINA,"paginozza") || contiene($AUTOPAGINA,"antiprof")) {
 	 visualizzaDebug();
 	}
  ?>
@@ -63,12 +61,12 @@ if ($DEBUG)
 	DB: <i><?php echo $dbdatabase ?></i> on 
 	 <b><u><?= php_uname('n'); ?></u></b>, 
 	(v.<?= getMemozByChiave("db_ver") ?>, 
-		<? echo getMemozByChiave("db_type") ?> ); 
+		<? echo getMemozByChiave("db_type") ?> )
+		[ github_ver: TODO `cat ./VERSION` ]
 <?php 
  if ($ISPAL) { ?>
 	<br/>(PALONLY:) , php v<?php  echo phpversion()?>
 		<a href='http://www2.goliardia.it/phpmyadmin/'>PHPmyAdmin Hetzner</a>
-	<pre> $Id: footer.php 19 2009-09-06 23:18:02Z riccardo $ </pre>
 <?php  } ?>
 </small> 
 </body>
