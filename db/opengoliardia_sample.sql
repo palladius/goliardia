@@ -864,7 +864,7 @@ INSERT INTO `regioni` VALUES ('Livorno', 'LI', 'Toscana', 102);
 INSERT INTO `regioni` VALUES ('Spoleto (PG)', 'XP', 'Umbria', 55);
 INSERT INTO `regioni` VALUES ('Verona', 'VR', 'Veneto', 45);
 INSERT INTO `regioni` VALUES ('Svizzera', 'CH', 'Nazione', 200);
-INSERT INTO `regioni` VALUES ('Irlanda', 'EI', 'Nazione', 201ag);
+INSERT INTO `regioni` VALUES ('Irlanda', 'EI', 'Nazione', 201);
 
 -- --------------------------------------------------------
 
