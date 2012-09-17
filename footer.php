@@ -62,7 +62,7 @@ if ($DEBUG)
 	 <b><u><?= php_uname('n'); ?></u></b>, 
 	(v.<?= getMemozByChiave("db_ver") ?>, 
 		<? echo getMemozByChiave("db_type") ?> )
-		[ github_ver: TODO `cat ./VERSION` ]
+    [ GitHub VER: <?= `cat ./VERSION` ?> ]
 <?php 
  if ($ISPAL) { ?>
 	<br/>(PALONLY:) , php v<?php  echo phpversion()?>
