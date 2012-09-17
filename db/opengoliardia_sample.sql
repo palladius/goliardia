@@ -896,7 +896,7 @@ CREATE TABLE `xxx_memoz` (
 INSERT INTO `xxx_memoz` VALUES ('benvenuto', 'Bela regaz! Sto ammodernando il sito (causa ferie sine viaggio); se qualcuno ha segnalazioni, consigli, cose da togliere o cose da aggiungere essi sono apprezzati. SOLO VIA MAIL PERO'' (n&eacute; al Contavalli, a meno che non siate gnocche, ne'' via MSN), all''indirizzo: <a href=''mailto:palladius@goliardia.org''>palladius@goliardia.org</a><br/> \r\n<br/>\r\nGrazie, \r\nPAL\r\n');
 INSERT INTO `xxx_memoz` VALUES ('header', '<i>My sincere apologies: This site is written and mantained in Italian by Italian crazy goliardi. If you are fascineted by our world, please see <a href="http://it.wikipedia.org/wiki/Goliardia">this</a>.</i><br><br>\r\n<b>Benvenuti</b> alla versione 5.1 del sito <a href="http://www.goliardia.it">www.goliardia.it</a>!<br/>\r\n\r\nVi ricordo che:<br>\r\n1) Questo sito e'' aperto a tutti ma SOLO sotto iscrizione, questo per poter moderare meno il forum e per mantenere un po'' sotto controllo le informazioni. Se vi iscrivete, NON riceverete spam ne merdate varie poiche'' io stesso le odio, e odio infliggere cio'' che odio ricevere.<br>\r\n2) Il sito e'' diventato opensource (ovvero libero). Il codice lo trovate su <a href="http://github.com/palladius/goliardia">GitHUb</a>, sotto licenza <a href=''http://www.gnu.org/licenses/''>GNU GPL v3</a><br>\r\n<b>PS</b> Un grazie a tutti quelli che han contribuito a rendere questo sito quel che e'' Dopo 10 anni, e'' anche venuta l''ora di svernarlo un po''.. se volete rivoluzionare la grafica senza intaccare il DB siete piu'' che invitati a farlo.<br>\r\n<div align=right><i>(16 Set 12, il webmaster <a href="http://www.palladius.it/">Palladius</a>)</i></div>');
 INSERT INTO `xxx_memoz` VALUES ('fotoprimapagina', 'RicKiltConFabio.jpg');
-INSERT INTO `xxx_memoz` VALUES ('didascaliahome', 'Palladius e Venerdi a Edinbra - xxx_memoz');
+INSERT INTO `xxx_memoz` VALUES ('didascaliahome', 'Palladius e Venerdi a Edinbra');
 INSERT INTO `xxx_memoz` VALUES ('qgfdp', 'il Palladius dublinese');
 INSERT INTO `xxx_memoz` VALUES ('db_ver', '0.9a');
 INSERT INTO `xxx_memoz` VALUES ('db_type', 'MySQL in locale');
@@ -922,4 +922,3 @@ CREATE TABLE `xxx_vari` (
 
 INSERT INTO `xxx_vari` VALUES ('benvenuto', 'benvenuto settembre 12 da githubbe');
 INSERT INTO `xxx_vari` VALUES ('fotoindex', 'logolargo200.jpg');
-INSERT INTO `xxx_vari` VALUES ('didascaliahome', 'Palladius e Venerdi'' a Edinbra - xxx_vari');
