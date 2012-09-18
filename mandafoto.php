@@ -19,11 +19,9 @@ $PAZ_UPLOAD="uploads"; // va post slashato
 #echo h1("Le tue foto");
 #visualizzaThumbPaz($GETUTENTE);
 
-echo rosso(h2("Pagina prototipale per mandare foto (buon 2007!!!)"));
+echo rosso(h2("Pagina prototipale per mandare foto)"));
 
 echo "(per ora, l'upload funziona, ma non c'è ancora l'informativa automatica che vi dice se la foto va bene o no nel trasferitore automatico di foto da qua alla directory con tutte le persone effettive :) )";
-
-echo ("<br><b>PS</b> Addì 8 nov 04: corretto il baco degli spazi in underscore: ora gli spazi funzionano!!! Se trovate problemi ditemelo (grazie Vips)");
 
 #if ($ISGUEST || isadminvip())
 if (1)
