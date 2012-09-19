@@ -1,7 +1,7 @@
 Abstract
 --------
 
- <img src='https://github.com/palladius/sakura/raw/master/immagini/logoFooterIside.jpg' height='200' align='right' />
+ <img src='https://github.com/palladius/goliardia/raw/master/immagini/logoFooterIside.jpg' height='200' align='right' />
 
 This website was developed (just for the craic) to manage Goliardi (Italian fraternities).
 There is a forum, a chat and all the community stuff that was popular before Facebook.
