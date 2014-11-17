@@ -1,0 +1,7 @@
+
+apt-get update
+apt-get install git apache2 bash-completion mysql-client php5 php-pear php5-mysql
+
+mkdir /var/www/www.goliardia.it
+chown ricc.www-data /var/www/www.goliardia.it
+git clone github/palladius/goliardia /var/www/www.goliardia.it
