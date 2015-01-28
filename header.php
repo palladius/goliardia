@@ -1,10 +1,8 @@
 <?php 
-	 # versione 1.1
- ob_start(); 
- session_start(); 
-?>
- <!-- qui session_start, chi cavolo e' che me la sporca?!? -->
-<?php 
+	# versione 1.1
+	ob_start(); 
+	session_start(); 
+?><?php 
 	// non e' ottimizzato, così tiene + pagine in memoria. conviene che chi usa la ridirigi includa un file tipo need_redirect.php
 	// e nel file definisci SOLO la funzione e OBSTART, così se la usi in una pag x sbaglio dà errore, e da quel momento in poi SOLO
 	// le pagine che dan redirect son bufferizzate, e le altre vivon meglio. ok? è un'idea?
@@ -46,11 +44,10 @@ if ($ISSERIO ) {
 if ($NOMESKIN=="") 
 	$NOMESKIN =$DFLTSKIN;
 $NOMESFONDO =  "skin/$NOMESKIN/sfondopagina.jpg";  
-	// PROVIAMO l'esperimento!!!
-$VISUALIZZASKIN= TRUE; //Session("conf_fancy");   //15.23 10/01/2004  era = TRUE
-$WEBMASTERMAIL = "palladius@goliardia.org"; 
-$TAG_MIO_AIUTANTE = "<a href='mailto:viperottapisa@hotmail.com'>Vipera</a>";
-$SITENAME = "www.goliardia.org";
+$VISUALIZZASKIN= TRUE; 
+$WEBMASTERMAIL = "palladius.bon.ton+goliardia@gmail.com"; 
+$TAG_MIO_AIUTANTE = "<a href='mailto:viperottapisa@hotmail.com'>Vipera</a> o <a href='mailto:manuelb.ernardi.ni+goliardia@gmail.com'>Palo</a>";
+$SITENAME = "www.goliardia.it";
 $MAILNONVA = FALSE; // finchè è vero che le mail non partono, scrivo cose x gli utenti.
 $UPLOADVA = FALSE;  
 $GETUTENTE = getUtente();
@@ -155,41 +152,33 @@ while ($rsx=mysql_fetch_array($res))
 	}
 }
 
-function scriviListaUltimiUtenti($res,$frasepreposta)
-{
-$righe=mysql_num_rows($res);
+function scriviListaUltimiUtenti($res,$frasepreposta) {
+	$righe=mysql_num_rows($res);
 
-if ($righe>0)
-	echo("$frasepreposta: ");
-while ($rsx=mysql_fetch_array($res))
-	echo("<b>".$rsx["0"]."</b> (".$rsx["1"]."' fa) ");
+	if ($righe>0)
+		echo("$frasepreposta: ");
+	while ($rsx=mysql_fetch_array($res))
+		echo("<b>".$rsx["0"]."</b> (".$rsx["1"]."' fa) ");
 }
 
 
 
-function amezzanotte()
-{
-// "chiedi a venerdi' se sa fare un CRON demone in php";
+function amezzanotte() { // "chiedi a venerdi' se sa fare un CRON demone in php";
 }
 
-function h6($x)
-{return "<h6>$x</h6>";}
-
-
+function h6($x) {return "<h6>$x</h6>";} 
 ?>
 <html>
 <head>
 <?php  // meta http-equiv="Content-Type" content="text/html; charset=utf-8" 
 ?>
-<HTML lang="it" dir="LTR">
-<meta name="verify-v1" content="flSynBLe5vYUAQyFIHH62h+BTpm4cGkI8Ne4s2MyCBU=" />
-<META http-equiv="Content-type" content="text/html; charset=iso-8859-15">
-<meta http-equiv="expires" content="0"> 
-<meta name="description" content="Il sito della goGliardia italiana... una community aperta a goliardi e non solo per incontrarsi, scrivere cagate e conoscere gente. Creato da Riccardo 'zio Pal' Carlesso">
-<meta name="author" content="Riccardo Carlesso" />
-<meta name="keywords" content="goliardia, forum, chat, gioco delle coppie, Montecristo, fittone, SVQFO, cene, baccanali, palladius, carlesso, riccardo, gaudeamus, feriae matricolarum, università, bologna, Università, università degli studi ">
-<title>
- <?php 
+	<meta name="verify-v1" content="flSynBLe5vYUAQyFIHH62h+BTpm4cGkI8Ne4s2MyCBU=" />
+	<meta http-equiv="Content-type" content="text/html; charset=iso-8859-15">
+	<meta http-equiv="expires" content="0"> 
+	<meta name="description" content="Il sito della goGliardia italiana... una community aperta a goliardi e non solo per incontrarsi, scrivere cagate e conoscere gente. Creato da Riccardo 'zio Pal' Carlesso">
+	<meta name="author" content="Riccardo Carlesso" />
+	<meta name="keywords" content="goliardia, forum, chat, gioco delle coppie, Montecristo, fittone, SVQFO, cene, baccanali, palladius, carlesso, riccardo, gaudeamus, feriae matricolarum, università, bologna, Università, università degli studi, gogliardia, zingarata ">
+	<title><?php 
 $dinizio = time();
 $titolo="?!?";
 if (! Session("antiprof")) {
@@ -197,14 +186,8 @@ if (! Session("antiprof")) {
 	} else  {
 		$titolo = "La Repubblica";
 	} 
-?>
-	<?php  echo $titolo?>
-	</title>
-<?php 
-
-if ($VISUALIZZASKIN)
-{
-?>
+?><?php  echo $titolo?></title>
+<?php if ($VISUALIZZASKIN) { ?>
 	<link href="skin/<?php  echo $NOMESKIN?>/style/style.css" rel="stylesheet" type="text/css">
 <?php 
 }
