@@ -3129,8 +3129,8 @@ $MAILFOOTER = "</td></tr><tr><td bgcolor='#DDFFFF'>\n"
 	$MAILHEADER='';	#"(Questa email e' inviata automaticamente dal sito $SITENAME)\n\n";
 	$MAILFOOTER = "\n\n  ---\nQuesta mail è inviata automaticamente dal sito www.goliardia.it\nSe non la volevi "
                   ."ricevere, vuol dire che qualcuno si è iscritto dando la <i>TUA</i> mail anziché la propria."
-                  ." Non dovrebbe comunque capitare più, NON è spam. Grazie. Se puoi però scrivimi a: $WEBMASTERMAIL"
-                  ." per avvertirmi. Questo a me fa molto comodo.\nGrazie,\n<br><i>    $QGFDP</i>";
+                  ." Non dovrebbe comunque capitare più, NON è spam, fidati di uno che di spam se ne intende. Grazie. Se puoi però scrivimi a: $WEBMASTERMAIL"
+                  ." per avvertirmi. Questo a me fa molto comodo.\n\nGrazie,\n<br><i>    $QGFDP</i>";
 
 	$corpo = strip_tags($MAILHEADER.$body.$MAILFOOTER) ;
 	#$MAILHEADER.$body.$MAILFOOTER

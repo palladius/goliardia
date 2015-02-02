@@ -7,7 +7,7 @@
 	// e nel file definisci SOLO la funzione e OBSTART, così se la usi in una pag x sbaglio dà errore, e da quel momento in poi SOLO
 	// le pagine che dan redirect son bufferizzate, e le altre vivon meglio. ok? è un'idea?
 
-$SVNID=" $Id: header.php 53 2009-09-27 07:31:02Z riccardo $ ";
+$SVNID="Id: ma chi usa SVN piu!!";
 $SVN_REV=" $Rev: 53 $ ";
 $CONFSITO="sito06";
 $ABILITAJS = 0;  // in tal caso, disabilito il menu VECCHIO e metto il nuovo SOTTO a flash!!!
@@ -20,7 +20,7 @@ $APERTOATUTTI = 0;
 $indexAndAnonomo=0; //vale true se vogliamo rispettare Titanicus e far sì' che tutti possano vedere tutto senza login.
 $TIME=time();
 $VISUALIZZA_MSG_OCCASIONALE_NELLHEADER = FALSE;
-$QGFDP="il corretto Palladius";
+$QGFDP="quel Grüezi di Palladius";
 $VISUALIZZA_ORDINIPACCO=0;	# così li nascondo a TUTTI
 $tInizioPagina=getmicrotime();
 
@@ -45,7 +45,6 @@ if ($NOMESKIN=="")
 	$NOMESKIN =$DFLTSKIN;
 $NOMESFONDO =  "skin/$NOMESKIN/sfondopagina.jpg";  
 $VISUALIZZASKIN= TRUE; 
-$WEBMASTERMAIL = "palladius.bon.ton+goliardia@gmail.com"; 
 $TAG_MIO_AIUTANTE = "<a href='mailto:viperottapisa@hotmail.com'>Vipera</a> o <a href='mailto:manuelb.ernardi.ni+goliardia@gmail.com'>Palo</a>";
 $SITENAME = "www.goliardia.it";
 $MAILNONVA = FALSE; // finchè è vero che le mail non partono, scrivo cose x gli utenti.
