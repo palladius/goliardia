@@ -1,4 +1,6 @@
 <?php 
+	include "constants.php";
+
 		# $Id: funzioni.php 60 2009-09-27 09:45:55Z riccardo $
 	# versione 2.0a...
 
