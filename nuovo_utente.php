@@ -208,7 +208,7 @@ if ($postatoQualcosa) {
 				// operazione ok, spedisco i dati via mail...
 		scrivi("Invio mail...<br>");
 		log2("qualcuno iscritto col nome di '".$nick."' e pwd '$randompwd'");
-		mandaMail($email,$WEBMASTERMAIL,"Iscrizione riuscita di '".$nick."' nel sito www.goliardia.it",$bodi);
+		mandaMail($email,$WEBMASTERMAIL,"[www.goliardia.it] Iscrizione riuscita di '".$nick."'",$bodi);
 
 		$res=mq("select id_login from loginz where m_snome like '$nick'");
 		$rs=mysql_fetch_row($res) or die("non ti ho mica inserito nel sito, cacchio! sob! dillo a pal.");
@@ -270,8 +270,7 @@ if (! empty($msgErrore)) {
 		."<tr><td>POST TOTALE GLOBALE: INIZIA PER 'da'</td><td>".visualizzaArrIniziaPer($_POST,'da')."</td></tr> "
 		."<tr><td>SERV TOTALE GLOBALE:</td><td>".visualizzaArr($_SERVER)."</td></tr> "
 		."</table> ";
-	#mandaMail("$WEBMASTERMAIL,palladius@email.it",$WEBMASTERMAIL,"Iscrizione fallita: $nick@$utenteIp",$body);
-	mandaMail("$WEBMASTERMAIL",$WEBMASTERMAIL,"Iscrizione fallita: $nick@$utenteIp",$body);
+	mandaMail("$WEBMASTERMAIL",$WEBMASTERMAIL,"[www.goliardia.it] Iscrizione fallita: $nick@$utenteIp",$body);
 }
 
 if ($fatto)

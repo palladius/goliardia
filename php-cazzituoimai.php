@@ -1,0 +1,4 @@
+<?php  
+	# disattivato (insicuro)
+	phpinfo(); 
+?>
