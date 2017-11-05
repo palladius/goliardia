@@ -1,5 +1,4 @@
 <?php 
-	# vediamo un po'....
 	#echo '<'.'?xml version="1.0" encoding="utf-8" ?'.'>\n';
 ?>
 <rss version="2.0">
@@ -25,13 +24,13 @@
 ?>
 <item>
 	<!-- <enclosure url="http://www.palladius.it/palladius.jpg" type="image/jpeg"/> -->
-	<title>Prova titolo 2 Carlesso</title>
+	<title>Prova titolo</title>
 	<description> Prova descrizione carlessiana del mio sito</description>
 	<link>http://www.palladius.it/</link>
 </item>
 <item>
-	<title>prova 28feb06</title>
-	<description> descr2 </description>
+	<title>Test 28feb06</title>
+	<description> Test Description </description>
 </item>
 </channel>
 </rss>
