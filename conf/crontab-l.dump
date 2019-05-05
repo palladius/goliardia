@@ -1,0 +1,7 @@
+# backing up every night the DB
+1 2 * * *    /home/ricc/bin/backuppa-db.sh cron-notturno
+# backup logs sia applicativi che di Apache2
+3 3 * * *   /var/www/www.goliardia.it/bin/gsutil-rsync-logs.sh
+# backup foto persone
+42 3 * * *  /var/www/www.goliardia.it/bin/gsutil-rsync-images.sh
+
