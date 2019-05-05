@@ -1,16 +1,9 @@
 <html>
 	<head><title>Upload</title></head>
 <body>
-
-
-
 <?php
 
-#require "tmp_funzioncine.php";
-
 require("fileupload-class.php");
-
-
 
 #--------------------------------#
 # Variables
@@ -91,10 +84,10 @@ require("fileupload-class.php");
 		$my_uploader = new uploader($_POST['language']); // for error messages in french, try: uploader('fr');
 		
 		// OPTIONAL: set the max filesize of uploadable files in bytes
-		$my_uploader->max_filesize(47000);
+		$my_uploader->max_filesize(169000);
 		
 		// OPTIONAL: if you're uploading images, you can set the max pixel dimensions 
-		$my_uploader->max_image_size(600, 400); // max_image_size($width, $height)
+		$my_uploader->max_image_size(400, 800); // max_image_size($width, $height)
 		
 		// UPLOAD the file
 		if ($my_uploader->upload($upload_file_name, $acceptable_file_types, $default_extension)) {
@@ -108,7 +101,6 @@ require("fileupload-class.php");
 			// Successful upload!
 			print($my_uploader->file['name'] . " was successfully uploaded! <a href=\"" . $_SERVER['PHP_SELF'] . "\">Try Again</a><br>");
 		 	log2("utente $nick ha uploadato la foto: ".($my_uploader->file['name']),".uploadfoto.log");
-		 	#log2("utente $nick ha uploadato la foto: ".($my_uploader->file['name']));
 			// Print all the array details...
 			//print_r($my_uploader->file);
 			
