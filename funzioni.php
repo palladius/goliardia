@@ -171,8 +171,6 @@ if (isAdmin() && $rs["m_bGuest"] == 1)
 			 "RENDIUSER (idl=".$rs["ID_LOGIN"]."; tuo compaesano di ".$rs["provincia"].") \n ma SOLO se vedi una foto qui a fianco"
 			: "RENDIUSER (anche se è di '".$rs["provincia"]."')";
 
-//	var ospitechar= (String(rs("m_bguest")) == "TRUE")
-//mi fido di ospite char			: "ERRORISSIMO dillo al webmaster mi raccomando!!!";
 	formbottoneinvia($ospitechar);
 	formEnd();
 	}
@@ -1351,7 +1349,6 @@ return $ret;
 		Le 3 funzioni sull'applicazione. x ora serializzano, ma mi sembra inutile x il futuro... RIC
 	*/
 $pazApplication="application/_pvt_";
-	# asdfgh06 cambiato in var log
 $pazApplication="var/state/app_";
 $APPSERIALIZZA = FALSE;
 
@@ -1693,22 +1690,20 @@ return $_GET[$str];
 }
 
 
-function log2($str,$fname="log_ingressi.php")
-{
-global $GETUTENTE,$REMOTE_ADDR,$CONFSITO;
-$paz 		= "var/log/";
-$pazcompleto 	= $paz.$fname;
+function log2($str,$fname="log_ingressi.php") {
+	global $GETUTENTE,$REMOTE_ADDR,$CONFSITO;
+	$paz 		= "var/log/";
+	$pazcompleto 	= $paz.$fname;
 
-$now=dammiDataByJavaDate(time());
+	$now=dammiDataByJavaDate(time());
 
-$fp =fopen($pazcompleto,"a"); 
-if (empty($fp))
-	{echo "errore di logging... :("; 
-	 return;
-	}
-fputs($fp,"$now\t".str_pad($_SERVER["REMOTE_ADDR"],17," ").str_pad($GETUTENTE,30," ")."[$CONFSITO] $str\n"); 
-fclose ($fp); 
-
+	$fp =fopen($pazcompleto,"a"); 
+	if (empty($fp))
+		{echo "errore di logging... :("; 
+		 return;
+		}
+	fputs($fp,"$now\t".str_pad($_SERVER["REMOTE_ADDR"],17," ").str_pad($GETUTENTE,30," ")."[$CONFSITO] $str\n"); 
+	fclose ($fp); 
 }
 
 

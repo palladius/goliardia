@@ -8,7 +8,8 @@
 	// le pagine che dan redirect son bufferizzate, e le altre vivon meglio. ok? è un'idea?
 
 $SVNID="Id: ma chi usa SVN piu!!";
-$SVN_REV=" $Rev: 53 $ ";
+#$SVN_REV=" $Rev: 53 $ ";
+$SVN_REV=" Rev: 53 (Obsolete) ";
 $CONFSITO="sito06";
 $ABILITAJS = 0;  // in tal caso, disabilito il menu VECCHIO e metto il nuovo SOTTO a flash!!!
 $ANONIMO = "anonimo";
