@@ -1,0 +1,25 @@
+#!/bin/bash 
+
+# Note that real users and passwords have been removed!!!
+# TODO(ricc): DRY this with prod script by abstracting passwords and stuff into some .env file and source it.
+
+# backs up goliardia DB from www.goliardia.it into cloud Storage
+# TODO(ricc): gzip backup -> so occupies 1/3 of space (9.73MB vs 27.79MB)
+
+VER=1.2d
+DATA=`date +%Y%m%d-%H%M`
+YYYYMM=`date +%Y%m`
+MYARGS="${1:-NOARGS}"
+BU_FILE="$DATA-goliardia_backup_v$VER-$MYARGS.sql"
+BU_ERROR="$DATA-goliardia_backup_v$VER-$MYARGS.err"
+TOUCH_BASEFILE="$DATA-backupping-v$VER-$MYARGS"
+
+echo "$0 v$VER - start. ARGS=$MYARGS"
+mysqldump -u UTENTE -pPASSWORD DBNAME 1>$BU_FILE 2>$BU_ERROR &&
+	gzip $BU_FILE &&
+		touch $TOUCH_BASEFILE.ok.touch ||
+		touch $TOUCH_BASEFILE.err.touch
+# moving both backup and touchfile to gsutil to see if backup had some errors
+/usr/local/bin/gsutil mv $BU_FILE.gz $BU_ERROR $TOUCH_BASEFILE*.touch gs://www.goliardia.it/backups/www.goliardia.it/db/$YYYYMM/
+
+echo Moved all. List files via: gsutil ls gs://www.goliardia.it/backups/www.goliardia.it/db/
