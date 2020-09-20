@@ -11,3 +11,4 @@ UtentiVerbose: <? echo getApplication("UTENTI_ORA") ?>
 
 FakeLatency: 42
 TimestampLatestMessage: TODO(Ricc)
+VERSION: TODO read file
