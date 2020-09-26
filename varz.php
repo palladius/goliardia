@@ -4,6 +4,10 @@ header("Content-Type: text/plain");
 include "conf/setup.php";
 include "funzioni.php";
 
+# person and date -> to be split in two
+$lastlogin_sql = "SELECT m_dataLastCollegato, m_sNome FROM `loginz` order by m_dataLastCollegato DESC limit 1";
+
+
 ?>
 client-ip: <? echo $_SERVER['REMOTE_ADDR'], "\n"; ?>
 utenti-attivi: <? echo count(explode('$', getApplication("UTENTI_ORA"))) , "\n" ?>
