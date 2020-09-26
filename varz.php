@@ -15,17 +15,13 @@ mandafoto-pending-jpg-images: <? echo exec('ls -al /var/www/www.goliardia.it/upl
 people-in-chat: <? echo exec('cd /var/www/www.goliardia.it/bin ; ./people-in-chat.sh | wc -l '), "\n" ; ?>
 request-time: <? echo $_SERVER['REQUEST_TIME'] , "\n"; ?>
 HTTP_HOST: <? echo $_SERVER['HTTP_HOST'] , "\n"; ?>
+date-last-login: TODO(ricc): sql(SELECT m_dataLastCollegato, m_sNome FROM `loginz` order by m_dataLastCollegato DESC limit 1)
+last-login-username: TODO()
 <?
 # TODO
-<<<<<<< HEAD
-FakeLatency: 42
-TimestampLatestMessage: TODO(Ricc)
 PeopleInChat: TODO() exec command ./people-in-chat.sh |awk '{print $2}' | wc -l
- 
-=======
 #fake-latency: 42
 #timestamp-sql-latest-message: TODO(Ricc): query Forum for latest message.
 #REMOTE_USER: echo $_SERVER['REMOTE_USER'] , "\n"; 
 #PHP_AUTH_USER: echo $_SERVER['PHP_AUTH_USER'] , "\n"; 
 ?>
->>>>>>> ca2a0847cd92ac64a05d7f45b2b538291f1f5e6a
