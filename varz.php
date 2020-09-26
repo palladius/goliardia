@@ -13,3 +13,5 @@ VERSION: <? echo file_get_contents("VERSION"); ?>
 # TODO
 FakeLatency: 42
 TimestampLatestMessage: TODO(Ricc)
+PeopleInChat: TODO() exec command ./people-in-chat.sh |awk '{print $2}' | wc -l
+ 
