@@ -1,18 +1,14 @@
 <?
 
-	##########################################################
-	# $Id: setup.php,v 1.7 2007/03/10 20:37:07 rcarlesso Exp $
-	##########################################################
-
-$CONFVER = "7.2"; # 20120915 after github :)
+$CONFVER = "8.0"; # 20200926 after docker :)
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 
 	# INFO DB
-$dbhost     = $_ENV["GOLIARDIA_MYSQL_HOST"];
-$dbuser     = $_ENV["GOLIARDIA_MYSQL_USER"]; 
-$dbpassword = $_ENV["GOLIARDIA_MYSQL_PASS"]; 
-$dbdatabase = $_ENV["GOLIARDIA_MYSQL_DB"];		# nome del database
-$DOVE_SONO  = $_ENV["GOLIARDIA_DOVESONO"]; 		# dove è il server, a scopi mnemonici 
+$dbhost     = $_SERVER["GOLIARDIA_MYSQL_HOST"];
+$dbuser     = $_SERVER["GOLIARDIA_MYSQL_USER"]; 
+$dbpassword = $_SERVER["GOLIARDIA_MYSQL_PASS"]; 
+$dbdatabase = $_SERVER["GOLIARDIA_MYSQL_DB"];		# nome del database
+$DOVE_SONO  = $_SERVER["GOLIARDIA_DOVESONO"]; 		# dove ï¿½ il server, a scopi mnemonici 
 $FUSOORARIO = 16; 				# 6 non va provo 16Mi sembra inutile TODO toglimi
 $DEBUG_ON   = FALSE;			# abilita un sacco di verboso debug
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- personalizzazioni
@@ -20,8 +16,8 @@ $DEBUG_ON   = FALSE;			# abilita un sacco di verboso debug
 
 	# INFO SITO MIO
 $GODNAME = "prova"; // se cambi questo nome, viene un atro superuser...
-$SITENAME = $_ENV["GOLIARDIA_SITENAME"]; 
-$SITEPAZ  = $_ENV["GOLIARDIA_SITEPATH"]; 
+$SITENAME = $_SERVER["GOLIARDIA_SITENAME"]; 
+$SITEPAZ  = $_SERVER["GOLIARDIA_SITEPATH"]; # maybe use empty($var)
 	# ROBA GRAFICA
 $imglogo="inutilenonusato.jpg";	# logo del sito 
 #$color1="#000000"; 		# per lo sfondo dietro alla celle (centro pagina) tables
@@ -32,7 +28,7 @@ $skinPreferita="default";
 	# ALTRO
 $APERTOATUTTI = 1;
 $indexAndAnonomo = 1; 		// vale true se vogliamo rispettare Titanicus e 
-				// far sì' che tutti possano vedere tutto senza login.
+				// far sï¿½' che tutti possano vedere tutto senza login.
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-	NON MODIFICARE !!!!
 	# CODICE NON DI CONFIGURAZIONE (chiedo scusa per la sporchezza della cosa)
 
@@ -41,20 +37,19 @@ if (! extension_loaded('mysql')) {
 }
 
 function eroreConnessioneDB($spiegazione="no spieg") {
-   die(
+	die(
 	"<html><head><title>$SITEPAZ: problemi</title>\n"
 	. "</head><body><table><tr><td><img src='immagini/persone/palladius.jpg'></td>"
 	. "<td><h1>Errore di connessione al DB</h1>" 
-	. " Il DB esiste ma non riesco a connettermici. Lascio stare (motivo: <i class=debug>$spiegazione</i>). "
-	. "Provate ad andare su un sito piu' serio o a studiare (o mandate una mail di sbotro a <b>carlesso</b>) ;)<br>"
+	. "[".$_SERVER['GOLIARDIA_SITEPATH'] ."] Il DB esiste ma non riesco a connettermici, porca misera. Lascio stare.<br/>(error code: <tt><i class='debug'>$spiegazione</i></tt>). "
 	. " <i>Se proprio non trovate nulla di serio e/o costruttivo da fare, guardatevi il mio sito: "
-	. "<a href='http://www.palladius.it/carlesso/'>www.palladius.it</a> (andate sotto java e poi sotto Gioco "
-	. "del 15, l'ho fatto io! In alternativa c'e' un gioco a sfondo goliardico)</td></tr></table>\n"
+	. "<a href='http://www.palladius.it/'>www.palladius.it</a> (andate sotto java e poi sotto Gioco "
+	. "del 15, l'ho fatto io! In alternativa c'e' un gioco a sfondo goliardico) o meglio ancora <a href='http://septober.palladi.us/'>septober.palladi.us</a></td></tr></table>\n"
 	);
 }
 
 $connessione = mysql_connect($dbhost, $dbuser, $dbpassword) 
-	or eroreConnessioneDB("connessione DB: $dbuser//*****@$dbhost");
+	or eroreConnessioneDB("connessione DB: $dbuser//*****@".substr($dbhost,0,6)."..");
 
 mysql_select_db($dbdatabase, $connessione );
 
@@ -72,7 +67,7 @@ $paz_foto_ordini    = "immagini/ordini/";
 $paz_foto           = "immagini/";
 
 	//	PROPRIETA DEL SERVER
-$MAILNONVA = FALSE; // finchè è vero che le mail non partono, scrivo cose x gli utenti.
+$MAILNONVA = FALSE; // finchï¿½ ï¿½ vero che le mail non partono, scrivo cose x gli utenti.
 $UPLOADVA = FALSE; 
 # metti qualcosa sugli apostrofi (magic quote)
 $indexAndAnonomo=1; 	// se TRUE , tutti possano vedere tutto senza login.

@@ -84,10 +84,10 @@ require("fileupload-class.php");
 		$my_uploader = new uploader($_POST['language']); // for error messages in french, try: uploader('fr');
 		
 		// OPTIONAL: set the max filesize of uploadable files in bytes
-		$my_uploader->max_filesize(169000);
+		$my_uploader->max_filesize(690000);
 		
 		// OPTIONAL: if you're uploading images, you can set the max pixel dimensions 
-		$my_uploader->max_image_size(400, 800); // max_image_size($width, $height)
+		$my_uploader->max_image_size(800, 1600); // max_image_size($width, $height)
 		
 		// UPLOAD the file
 		if ($my_uploader->upload($upload_file_name, $acceptable_file_types, $default_extension)) {
