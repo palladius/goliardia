@@ -66,7 +66,7 @@ if ($DEBUG)
 <?php 
  if ($ISPAL) { ?>
 	<br/>(PALONLY:) , php v<?php  echo phpversion()?>
-		<a href='http://www2.goliardia.it/phpmyadmin/'>PHPmyAdmin Hetzner (obsoleto)</a>
+		<a href='http://pma-goliardia.palladi.us/'>PHPmyAdmin 2020 docker</a>
 <?php  } ?>
 </small> 
 </body>
