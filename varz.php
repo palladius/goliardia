@@ -30,10 +30,10 @@ mandafoto-pending-jpg-images: <? echo exec('ls -al /var/www/www.goliardia.it/upl
 people-in-chat: <? echo exec('cd /var/www/www.goliardia.it/bin ; ./people-in-chat.sh | wc -l '), "\n" ; ?>
 request-time: <? echo $_SERVER['REQUEST_TIME'] , "\n"; ?>
 HTTP_HOST: <? echo $_SERVER['HTTP_HOST'] , "\n"; ?>
-date-last-login: TODO(ricc): sql(SELECT m_dataLastCollegato, m_sNome FROM `loginz` order by m_dataLastCollegato DESC limit 1)
-last-login-username: TODO()
 <?
 # TODO
+#date-last-login: TODO(ricc): sql(SELECT m_dataLastCollegato, m_sNome FROM `loginz` order by m_dataLastCollegato DESC limit 1)
+#last-login-username: TODO()
 #PeopleInChat: TODO() exec command ./people-in-chat.sh |awk '{print $2}' | wc -l
 #fake-latency: 42
 #timestamp-sql-latest-message: TODO(Ricc): query Forum for latest message.
