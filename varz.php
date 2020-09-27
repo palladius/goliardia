@@ -7,6 +7,17 @@ include "funzioni.php";
 # person and date -> to be split in two
 $lastlogin_sql = "SELECT m_dataLastCollegato, m_sNome FROM `loginz` order by m_dataLastCollegato DESC limit 1";
 
+# prova con exceptions..
+function esegui($cmd, $senno) {
+	$retString = $senno ;
+	try {
+		$retString =  exec($cmd);
+	} catch (Exception $e) {
+		echo 'Esegui: Caught exception: ',  $e->getMessage(), "\n";
+	}
+	return 1/$x;
+}
+
 
 ?>
 client-ip: <? echo $_SERVER['REMOTE_ADDR'], "\n"; ?>
@@ -23,7 +34,7 @@ date-last-login: TODO(ricc): sql(SELECT m_dataLastCollegato, m_sNome FROM `login
 last-login-username: TODO()
 <?
 # TODO
-PeopleInChat: TODO() exec command ./people-in-chat.sh |awk '{print $2}' | wc -l
+#PeopleInChat: TODO() exec command ./people-in-chat.sh |awk '{print $2}' | wc -l
 #fake-latency: 42
 #timestamp-sql-latest-message: TODO(Ricc): query Forum for latest message.
 #REMOTE_USER: echo $_SERVER['REMOTE_USER'] , "\n"; 
