@@ -12,37 +12,32 @@ if ($DEBUG)
 	}
 ?>
 <table width='<?php  echo $CONSTLARGEZZA600?>'>
-<tr>
-<td width='100' valign='top'>
-	<div align=left>
-		<?php  if (! $ISSERIO)
-			img("persone/palladius.jpg",100);
-		  else
-			img("logoFooterIside.jpg",100); 
-		?>
-	</div>
-</td>
-<td width='<?php  echo $CONSTLARGEZZA600-400?>' valign='top'>
-	<center>
-	<img src="<?php  echo $IMMAGINI?>/powered_mini.jpg" width='150'>
-	<h6>
-	[ <a href="index.php">Home</a> 
-	| <a href="http://www.goliardia.it/joomla/">Sito Joomla</a> 
-	| <a href="mailpalladius.php">contatta <?php  echo $QGFDP?></a> 
-	]</h6>
-	</center>
-</td>
-<td width="100" valign='top'>
-	<div align=right>
-	<?php 
-	if (! $ISSERIO)
-		echo "<img src='immagini/palladius/pal-dublino.png' height='100' /> ";
-	else 
-		img("logo_sito.jpg","logoSITO",100)
-	?>
-	</right>
-</td>
-</tr>
+	<tr>
+		<td width='100' valign='top'>
+			<div align=left>
+				<?php  if (! $ISSERIO)
+					img("persone/palladius.jpg",100);
+				else
+					img("logoFooterIside.jpg",100); 
+				?>
+			</div>
+		</td>
+		<td width='<?php  echo $CONSTLARGEZZA600-400?>' valign='top'>
+			<center>
+			<img src="<?php  echo $IMMAGINI?>/powered_mini.jpg" width='150'>
+			<h6>
+			[ <a href="index.php">Home</a> 
+			| <a href="http://www.goliardia.it/joomla/">Sito Joomla</a> 
+			| <a href="mailpalladius.php">contatta <?php  echo $QGFDP?></a> 
+			]</h6>
+			</center>
+		</td>
+		<td width="100" valign='top'>
+			<div align=right>
+				<img src='immagini/palladius/palladius-lederhosen-aj.jpg' height='100' /> 
+			</right>
+		</td>
+	</tr>
 </table>
 </center>
 <?php  deltat() ?>
