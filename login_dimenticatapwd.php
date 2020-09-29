@@ -42,11 +42,11 @@ if ((Form("OPERAZIONE")) == "SPEDISCI_MAIL") // ereditata dall'index, sono le X 
 		
 	if ($ciucciook)
 		{// scrivid("CIUCCIO OK! ;)");
-		echo("klatu, verat nikto...<br>");
+		echo("klatu, verata nikto...<br>");
 		$body= "La password da te richiesta è: '<i><b>".$rs["m_spwd"]."</b></i>', caro/a <b>".$rs["m_snome"]."</b>."
 			." Se fai così fatica a ricordartela, puoi cambiarla nella sezione UTENTE.";
 		mandaMail($rs["m_hemail"],$from,"OK! La password smarrita di ".$rs["m_snome"],$body);
-#		mandaMail($WEBMASTERMAIL ,$from,"OK: la password di ".$rs["m_snome"],$body);	
+		mandaMail($WEBMASTERMAIL ,$from,"JFYI: la password di ".$rs["m_snome"],$body);	
 		}
 	else
 	{	//scrivid("NESSUNA MAIL, hai cannato");
