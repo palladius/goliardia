@@ -30,6 +30,12 @@ mandafoto-pending-jpg-images: <? echo exec('ls -al /var/www/www.goliardia.it/upl
 people-in-chat: <? echo exec('cd /var/www/www.goliardia.it/bin ; ./people-in-chat.sh | wc -l '), "\n" ; ?>
 request-time: <? echo $_SERVER['REQUEST_TIME'] , "\n"; ?>
 HTTP_HOST: <? echo $_SERVER['HTTP_HOST'] , "\n"; ?>
+<? # Env vars ?>
+GOLIARDIA_SITEPATH: <? echo $_SERVER['GOLIARDIA_SITEPATH'] , "\n"; ?>
+GOLIARDIA_DOVESONO: <? echo $_SERVER['GOLIARDIA_DOVESONO'] , "\n"; ?>
+GOLIARDIA_SITENAME: <? echo $_SERVER['GOLIARDIA_SITENAME'] , "\n"; ?>
+GOLIARDIA_DOCKER_VER: <? echo $_SERVER['GOLIARDIA_DOCKER_VER'] , "\n"; ?>
+GOLIARDIA_GMAIL_USER: <? echo $_SERVER['GOLIARDIA_GMAIL_USER'] , "\n"; ?>
 <?
 # TODO
 #date-last-login: TODO(ricc): sql(SELECT m_dataLastCollegato, m_sNome FROM `loginz` order by m_dataLastCollegato DESC limit 1)
