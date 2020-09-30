@@ -273,7 +273,7 @@ if ($ISANONIMO && ! $APERTOATUTTI ) {
 	$arrHeader[$i++]=linkaViola("statistiche.php","stats");
 	$arrHeader[$i++]=linkaViola("support.php","support");
 	if (! $ISPAL) $arrHeader[$i++]=linkaViola("utente.php","utente");
-	if (! $ISPAL) $arrHeader[$i++]=linkaViola("varz.php","varz");
+	if ($ISPAL) $arrHeader[$i++]=linkaViola("varz.php","varz");
 }
 //if ($ISPAL) 	$arrHeader[$i++]=linkaViola("powerquerysql.php","[SQL]");
 if (isadminvip()) 	$arrHeader[$i++]=linkaViola("powerquerysql.php","[SQL]");
