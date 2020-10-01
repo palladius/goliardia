@@ -1702,7 +1702,10 @@ function log2($str,$fname="log_ingressi.php") {
 		{echo "errore di logging... :("; 
 		 return;
 		}
+	# senza data
+	$frase_da_loggare = "[$GETUTENTE@".$_SERVER["REMOTE_ADDR"]."] $str";
 	fputs($fp,"$now\t".str_pad($_SERVER["REMOTE_ADDR"],17," ").str_pad($GETUTENTE,30," ")."[$CONFSITO] $str\n"); 
+	error_log("[log2] $frase_da_loggare" );
 	fclose ($fp); 
 }
 

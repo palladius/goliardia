@@ -1,1 +1,3 @@
+2020-10-01 v2.2.001	Fixed logs. Now I log on paache too not only on file. Good for gke :) 
 2020-09-20	added varz. Started working on dockerization
+

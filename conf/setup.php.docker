@@ -73,7 +73,8 @@ $UPLOADVA = FALSE;
 # metti qualcosa sugli apostrofi (magic quote)
 $indexAndAnonomo=1; 	// se TRUE , tutti possano vedere tutto senza login.
 $VISUALIZZA_MSG_OCCASIONALE_NELLHEADER = FALSE;
-$QGFDP = $_ENV["GOLIARDIA_SITEPATH"] or 'QGFDP' ; # e.g. "Palladius the GDubliner";
+#$QGFDP = $_SERVER["GOLIARDIA_SITEPATH"] or 'QGFDP' ; # e.g. "Palladius the GDubliner";
+$QGFDP = 'I han e fraag' ; # e.g. "Palladius the GDubliner";
 $CONFSITO = "sito20docker";
 $ABILITAJS = 0;  // in tal caso, disabilito il menu VECCHIO e metto il nuovo SOTTO a flash!!!
 $ANONIMO  = "anonimo";

@@ -181,7 +181,7 @@ function h6($x) {return "<h6>$x</h6>";}
 $dinizio = time();
 $titolo="?!?";
 if (! Session("antiprof")) {
-	$titolo =  $VIRTUALHOST ;
+	$titolo = $DOVE_SONO ; # $VIRTUALHOST ;
 	} else  {
 		$titolo = "La Repubblica Online";
 	} 
