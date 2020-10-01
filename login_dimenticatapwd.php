@@ -33,20 +33,21 @@ if ((Form("OPERAZIONE")) == "SPEDISCI_MAIL") // ereditata dall'index, sono le X 
 	invio();
 	$res=mq($sql);
 	$rs=mysql_fetch_array($res);
+	log2("[mandamail][debug] stop per mandare un email a ". Form("nomeutente") );
 	scrivi("sto inviando la mail al tuo indirizzo... (questo lo dico anche se non ci hai preso)<br/>");
 	$ciucciook=(! empty($rs));
 	if ($ISPAL)
 		scrivi("<br>x pal: ciuccio ok?!??!? <b>$ciucciook</b>");
 	$from= "\"php-mnemo-Webmaster di www.goliardia.it\" <$WEBMASTERMAIL>";
-	$body= "Un msg per te... :("; // (<i>".Form("messaggio")."</i>). La password da te richiesta, brutto smemorino, è: '<i><big>".rs("m_spwd")."</big></i>', caro/a <b>".$rs("m_snome")."</b> (prossimamente il check sul sesso!)"
-		
-	if ($ciucciook)
-		{// scrivid("CIUCCIO OK! ;)");
+	$body= "Un msg per te... :(";
+
+	if ($ciucciook) {// scrivid("CIUCCIO OK! ;)");
 		echo("klatu, verata nikto...<br>");
-		$body= "La password da te richiesta è: '<i><b>".$rs["m_spwd"]."</b></i>', caro/a <b>".$rs["m_snome"]."</b>."
-			." Se fai così fatica a ricordartela, puoi cambiarla nella sezione UTENTE.";
+		$body= "La password da te richiesta ï¿½: '<i><b>".$rs["m_spwd"]."</b></i>', caro/a <b>".$rs["m_snome"]."</b>."
+			." Se fai cosï¿½ fatica a ricordartela, puoi cambiarla nella sezione UTENTE.";
 		mandaMail($rs["m_hemail"],$from,"OK! La password smarrita di ".$rs["m_snome"],$body);
 		mandaMail($WEBMASTERMAIL ,$from,"JFYI: la password di ".$rs["m_snome"],$body);	
+		log2("[mandamail][notice] Mandata mail a Webmaster e a ". Form("nomeutente") );
 		}
 	else
 	{	//scrivid("NESSUNA MAIL, hai cannato");
@@ -58,14 +59,14 @@ if ((Form("OPERAZIONE")) == "SPEDISCI_MAIL") // ereditata dall'index, sono le X 
 			. "sql: $sql\n<br>"
 			. "vuota: ".intval(empty($rs))."\n<br>"
 			. "segue body:\n<br><br>";
-		#mandaMail($WEBMASTERMAIL ,$from,"NO pwd x ".$rs["m_snome"],$msgmsg);	
-		mandaMail($WEBMASTERMAIL ,$from,"NO pwd x $nomedato",$msgmsg);	
+		mandaMail($WEBMASTERMAIL ,$from,"ERRORE pwd x $nomedato",$msgmsg);	
+		log2("[mandamail][notice] NON Mandata mail a ". Form("nomeutente") );
 	}
 	}
 else
 {
 if ($vincolodatanascita)
-	scrivib(rosso("<center>Attenzione, la tua data di nascita devi averla inserita: se il tuo account è VECCHIO è possibile che sia messo al valore di default, ovvero Primo di Gennaio 1970. Prova anche quello se il primo non va, ok?!?\b<br>"));
+	scrivib(rosso("<center>Attenzione, la tua data di nascita devi averla inserita: se il tuo account ï¿½ VECCHIO ï¿½ possibile che sia messo al valore di default, ovvero Primo di Gennaio 1970. Prova anche quello se il primo non va, ok?!?\b<br>"));
 
 scrivi("sei proprio un picio! altresi' pirla, mona, scemo, imbelle... et ci'!<br>detto questo... compila la forma seguente:");
 openTable2();
@@ -87,7 +88,7 @@ formBegin($AUTOPAGINA);
 	trtdEnd();
 	tableEnd();
 	formbottoneinvia("spediscimela alla mia mail che tu sai");
-	scrivi(rosso("<br/>E ricorda che se metti l'utente PIPPO verra' spedito all'email con cui PIPPO si iscrisse la prima volta. Per privacy non te la posso dire (la tentazione giuro è forte, ma non posso se no chiunque potrebbe sapere la mail di chiunque!)... Se hai problemi scrivi al Webmaster dicendo UTENTE e MAIL a cui vorresti che fosse mandato!"));
+	scrivi(rosso("<br/>E ricorda che se metti l'utente PIPPO verra' spedito all'email con cui PIPPO si iscrisse la prima volta. Per privacy non te la posso dire (la tentazione giuro ï¿½ forte, ma non posso se no chiunque potrebbe sapere la mail di chiunque!)... Se hai problemi scrivi al Webmaster dicendo UTENTE e MAIL a cui vorresti che fosse mandato!"));
 formEnd();
 closeTable2();
 scrivi(h1("ric qnd puoi cntrl anche che il nome non sia vuoto, ricordi quante mail con nome vuoto?!?"));
