@@ -18,6 +18,7 @@ $DEBUG_ON   = FALSE;			# abilita un sacco di verboso debug
 $GODNAME = "prova"; // se cambi questo nome, viene un atro superuser...
 $SITENAME = $_SERVER["GOLIARDIA_SITENAME"]; 
 $SITEPAZ  = $_SERVER["GOLIARDIA_SITEPATH"]; # maybe use empty($var)
+$GOLIARDIA_SITEPATH = $_SERVER["GOLIARDIA_SITEPATH"]; # maybe use empty($var)
 	# ROBA GRAFICA
 $imglogo="inutilenonusato.jpg";	# logo del sito 
 #$color1="#000000"; 		# per lo sfondo dietro alla celle (centro pagina) tables
