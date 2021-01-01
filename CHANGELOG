@@ -1,4 +1,8 @@
+## Changelog
+
+2021-01-01 v2.2.003 Added docker entrypoint8080 and removed `HISTORY`
 2021-01-01 v2.2.001	Added dockerization files depured of password.
 2020-10-01 v2.2.001	Fixed logs. Now I log on paache too not only on file. Good for gke :) 
-2020-09-20	added varz. Started working on dockerization
+2020-09-20	        Added varz. Started working on dockerization
 
+2015-01-27 ???      Just added a gitignore in conf/

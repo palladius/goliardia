@@ -14,14 +14,18 @@
 
 	# Possible values include: debug, info, notice, warn, error, crit, alert, emerg.
 	LogLevel warn
-	CustomLog /var/log/apache2/www.goliardia.it.access.log combined
+	#CustomLog /var/log/apache2/www.goliardia.it.access.log combined
+
+	# Lets try to end Access Logs to STDOUT as per: https://serverfault.com/questions/763882/apache-in-docker-how-do-i-access-log
+	#CustomLog ${APACHE_LOG_DIR}/www.goliardia.it-access.log combined
+	CustomLog /dev/stdout combined
 
 	# Qui metto i SetEnv nota che ho avuto n sacco di BUG da questi..
 
 	# inutile. Solo per prove varie.
 	SetEnv APPLICATION_ENV "virtualhost-a-cazzo-di-cane"
-	SetEnv GOLIARDIA_DOCKER_VERSION_MANHOUSE 1.7
-	
+	SetEnv GOLIARDIA_DOCKER_VERSION_MANHOUSE 1.8
+
 	# servono
 	SetEnv GOLIARDIA_MYSQL_USER ${GOLIARDIA_MYSQL_USER}
 	SetEnv GOLIARDIA_MYSQL_HOST ${GOLIARDIA_MYSQL_HOST}
