@@ -1,0 +1,35 @@
+#########################################################
+# Virtualhost di www.goliardia.it per Docker
+#########################################################
+<VirtualHost *:80> 
+	ServerAdmin		${WEBMASTER_EMAIL} 
+	Servername		www.goliardia.it
+	DocumentRoot	/var/www/www.goliardia.it/
+
+	<Directory />
+		Options +Includes
+	</Directory>
+
+	ErrorLog /var/log/apache2/www.goliardia.it.error.log
+
+	# Possible values include: debug, info, notice, warn, error, crit, alert, emerg.
+	LogLevel warn
+	CustomLog /var/log/apache2/www.goliardia.it.access.log combined
+
+	# Qui metto i SetEnv nota che ho avuto n sacco di BUG da questi..
+
+	# inutile. Solo per prove varie.
+	SetEnv APPLICATION_ENV "virtualhost-a-cazzo-di-cane"
+	SetEnv GOLIARDIA_DOCKER_VERSION_MANHOUSE 1.7
+	
+	# servono
+	SetEnv GOLIARDIA_MYSQL_USER ${GOLIARDIA_MYSQL_USER}
+	SetEnv GOLIARDIA_MYSQL_HOST ${GOLIARDIA_MYSQL_HOST}
+	SetEnv GOLIARDIA_MYSQL_PASS ${GOLIARDIA_MYSQL_PASS}
+	SetEnv GOLIARDIA_MYSQL_DB   ${GOLIARDIA_MYSQL_DB}
+	SetEnv GOLIARDIA_SITEPATH   ${GOLIARDIA_SITEPATH}
+	SetEnv GOLIARDIA_DOVESONO   ${GOLIARDIA_DOVESONO}
+	SetEnv GOLIARDIA_SITENAME   ${GOLIARDIA_SITENAME}
+	SetEnv GOLIARDIA_DOCKER_VER ${GOLIARDIA_DOCKER_VER}
+	
+</VirtualHost>

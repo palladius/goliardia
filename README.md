@@ -32,16 +32,30 @@ If you don't know what I'm talking about then it might be a PEBKAC.
 
 If you think I might have done something wrong, please tell me!
 
+Filesystem explained
+--------------------
+
+I need to mention how the FS is built:
+
+* `/*.php`. This contains most of the logic of the website. I know its shit. I know.
+  Its pretty static.
+* `/var` contains most changeable stuff: logs, session state, .. needed to make CHAT work,
+  people in braghe, and last logins (I know, this could just be done with SQL).
+  You reset it and you wipe out the chat, basically.
+* `immagini/` this contains images. Mostly static, but `immagini/persone/` keeps growing from
+  uploads of people to `/uploads/thumb` which needs to be open in writing. People are manually
+  approving this to promote to `immagini/persone/` after which image becomes ACTIVE. I'm working
+  on dockerizing this and its giving me a headache, if you have ideas please contact me.
 
 Bugs
 ----
 
-This website is just *purfect*, also from a typo point of view. :)
+This website is just *purfect*, also no typos whatsoever. :)
 
 Notes
 -----
 
-This website is currently in *Italian*, except for this README which is totally in Oirish English.
+This website is currently in *Italian*, except for this README which is totally in Oirish-English.
 
 License
 -------
