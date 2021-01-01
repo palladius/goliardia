@@ -20,6 +20,7 @@ function esegui($cmd, $senno) {
 
 
 ?>
+# TODO solo palladius e pal-bot
 client-ip: <? echo $_SERVER['REMOTE_ADDR'], "\n"; ?>
 utenti-attivi: <? echo count(explode('$', getApplication("UTENTI_ORA"))) , "\n" ?>
 utenti-verbose: <? echo getApplication("UTENTI_ORA") , "\n"?>
@@ -32,12 +33,13 @@ request-time: <? echo $_SERVER['REQUEST_TIME'] , "\n"; ?>
 HTTP_HOST: <? echo $_SERVER['HTTP_HOST'] , "\n"; ?>
 goliardia-code-version: <? echo exec('cat VERSION'), "\n" ; ?>
 <? # Env vars ?>
-GOLIARDIA_SITEPATH: <? echo $_SERVER['GOLIARDIA_SITEPATH'] , "\n"; ?>
-GOLIARDIA_DOVESONO: <? echo $_SERVER['GOLIARDIA_DOVESONO'] , "\n"; ?>
-GOLIARDIA_SITENAME: <? echo $_SERVER['GOLIARDIA_SITENAME'] , "\n"; ?>
 GOLIARDIA_DOCKER_VER: <? echo $_SERVER['GOLIARDIA_DOCKER_VER'] , "\n"; ?>
+GOLIARDIA_DOVESONO: <? echo $_SERVER['GOLIARDIA_DOVESONO'] , "\n"; ?>
 GOLIARDIA_GMAIL_USER: <? echo $_SERVER['GOLIARDIA_GMAIL_USER'] , "\n"; ?>
-
+GOLIARDIA_SITENAME: <? echo $_SERVER['GOLIARDIA_SITENAME'] , "\n"; ?>
+GOLIARDIA_SITEPATH: <? echo $_SERVER['GOLIARDIA_SITEPATH'] , "\n"; ?>
+WEBMASTER_EMAIL: <? echo $_SERVER['WEBMASTER_EMAIL'] , "\n"; ?>  
+ENTRYPOINT8080_TIMESTAMP: <? echo $_SERVER['ENTRYPOINT8080_TIMESTAMP'] , "\n"; ?>
 <?
 # TODO
 #date-last-login: TODO(ricc): sql(SELECT m_dataLastCollegato, m_sNome FROM `loginz` order by m_dataLastCollegato DESC limit 1)

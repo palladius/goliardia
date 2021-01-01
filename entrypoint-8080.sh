@@ -5,6 +5,7 @@
 # even better: COMANDO_DEFAULT="/usr/local/bin/docker-php-entrypoint apache2-foreground" 
 DFLT_COMMAND="/usr/local/bin/docker-php-entrypoint apache2-foreground"
 COMMAND_TO_RUN=${@:-$DFLT_COMMAND}
+export ENTRYPOINT8080_TIMESTAMP="$(date)"
 
 function _fix_permissions() {
     PWD=$(pwd)
@@ -33,7 +34,6 @@ EOF
         exit 42
 fi
 }
-
 
 _activate_ssmtp
 _fix_permissions
