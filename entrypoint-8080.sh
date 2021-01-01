@@ -3,9 +3,14 @@
 #todo acicate ssmtp and stuff
 
 # even better: COMANDO_DEFAULT="/usr/local/bin/docker-php-entrypoint apache2-foreground" 
-DFLT_COMMAND="apache2 -D FOREGROUND"
+DFLT_COMMAND="/usr/local/bin/docker-php-entrypoint apache2-foreground"
 COMMAND_TO_RUN=${@:-$DFLT_COMMAND}
 
+function _fix_permissions() {
+    PWD=$(pwd)
+    echo DockerInitialize dir: $PWD. Im assuming you launch this from the rootdir or it wont work as wont be able to figure out where to get the script. 
+    echo $PWD/bin/docker-post-build-init.sh "$PWD"
+}
 function _activate_ssmtp() {
 
 # https://gist.github.com/titpetric/114eb27f6e453e3e8849d65ca1a3d360
@@ -31,6 +36,7 @@ fi
 
 
 _activate_ssmtp
+_fix_permissions
 
 echo "[$0] BEGIN"
 #echo "[$0] BEGIN"| lolcat # probably error
