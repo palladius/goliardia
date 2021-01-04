@@ -12,8 +12,17 @@ include "header.php";
 $PAZ_UPLOAD="uploads"; // va post slashato
 ?>
 
+
 <h2>Mandafoto 2021 (🙆 upload foto)</h2>
 
+
+<h3>Spiegone</h3>
+#UPDATE mandafoto_images SET image_md5 = MD5(image) -- WHERE image_md5 IS NULL
+#https://stackoverflow.com/questions/8196529/mysql-update-a-full-table-inserting-a-md5-hash-for-each-row-a-specific-one
+TODO ricc aggiungi md5 programmatico cosi poi mettiamo un bel filtro a livello di DB
+
+
+Hey 
 L'idea qui (un po prototipale) e di fare upload NON su file siccome ormai e' tutto dockerizzato
 ma diretamente nel DB cosi da ovunque tu uploadi, funge e synca.
 POi mi porro' il problema di SCARRICARe e uploadare ma li non e' un <problema class="">cominciamo dalla tabella
@@ -81,7 +90,6 @@ echo '<img src="' . $encoded_image . '"  height="200" />';
 <? } ?>
 
 <!--
-<h3>Spiegone</h3>
 Per me stesso.. -> coimmentato.
 
 Dovrei fare tipo 
@@ -112,31 +120,13 @@ Stati che mi vengono in mente:
  
 </pre>
 
-
-
-<h3>TMP DEBUG</h3>
 --> 
 
 <?php 
 
-# Nota: $_ENV on va a dflt in prod: 88
-# DEbvi abilitare esplicitamente in <php class="ini"># Siccome ho pwd
-# Ques ques eviterei...
-// echo "<pre>== DEBUG_INFO ==\n";
-// if($DEBUG) {
-// 	echo "DEB#UG: $DEBUG ";
-// } else {
-// 	echo "NODEBUG, prod!\n";
-// 	echo "getenv DEB: ". getenv("DEBUG") ."\n";
-// 	echo "getenv DON: ". getenv("DEBUG_ON") ."\n";
-// }
-// echo "ENV[debug] = " . $_ENV['DEBUG'] ."\n" ;
-// echo "ENV[debug_on] = " . $_ENV['DEBUG_ON'] ."\n" ;
-// echo "</pre>";
 
 
 #$PAZ_UPLOAD="moduli/fileupload/uploads";
-
 
 mandafotoUploadForm() ;
 
@@ -178,17 +168,14 @@ if(isset($_POST['upload2021'])){
 				'".$_SESSION["_SESS_nickname"]."', '".$_SESSION["_SESS_id_login"]."'
 				) "; 
 	// TODO aggiunti user_id
-	 #mysqli_query($connessione, $query);
 	 $rs2=mysql_query($query);
 	 if ($rs2) {
-		 echo "Successo!";
+		 echo "Successo! TODO(ricc): redirect cosi vedi effeto nella tabella. Se no reload.";
 	 } else {
 		echo "Mi sa che abbiamo cannato..!";
-
 	 } 
+	 scrivib("[result2 vale '$rs2' ]");
 
-	 scrivib("[rs2 vale '$rs2' ]");
-  
      // Upload file
 	 $ret = move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$name) ? "tutto ok" : "cannato";
 	 scrivib("move_uploaded_file -->  $ret");

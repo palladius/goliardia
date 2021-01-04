@@ -671,6 +671,32 @@ return $row[0];
 }
 
 
+function popolaComboMandafotoStati($ID) {
+	scrivi("\n<select name='".$ID."'>\n");
+
+	#* '00-NEW': Appena creata.
+#* '01-ACCEPTED': Accepted. Stil unprocessed - requires a script or a human to move to proper location.
+#and move to state 03.
+#* '02-DENIED': Not accepted. `Description` should contain the reason. Done.
+#* '03-ARCHIVED': Accepted -> moved to proper place. Should disappear from viisble but still remain in archive.
+
+	$a= array(
+		"00-NEW",
+		"01-ACCEPTED",
+		"02-DENIED",
+#		"03-ARCHIVED (SOLO PAL!)",
+	);
+		
+	$max=sizeof($a);
+
+	for($i=0;$i<$max;$i++) {
+		scrivi(" <option ");
+		scrivi(" value='".$a[$i]."'>".$a[$i]);
+		scrivi("</option>\n");
+	}
+	scrivi("</select>");
+}
+
 
 
 function popolaComboTipoLink($ID)
@@ -2348,14 +2374,18 @@ while (($row)  && $j != $righemax ) {
 	} else if (contiene($fieldname_i, "_mandafoto_id")) {
 		scrivi("<a href='mandafoto2021.php?image_id=$campo'>Foto #$campo</a>");
 	} else if (contiene($fieldname_i, "_mandafoto_action")) {
+		if (isAdminVip()) {
 		scrivi("<a href='pannello.php?opvip=AV2%29+Accetta%2Frifiuta+foto+mandafoto&image_id=$campo'>Prendi decisioni su sta foto nel Pannello #$campo</a>");
+		} else {
+			echo "Computer says no";
+		}
 	} else if (contiene($fieldname_i, "_base64image")) {
 		// https://www.w3schools.com/howto/howto_css_image_center.asp :)
 		scrivi(" <img src='$campo' height='80' style='display: block;margin-left: auto;margin-right: auto' />");
 	} else if (contiene($fieldname_i, "_foto_status")) { // mandafoto2021
 		switch ($campo) {
-			case "00-NEW":      img("waiting.png", 40) ; break;
-			case '01-ACCEPTED': img("semaforoverde.gif", 40) ; break;
+			case "00-NEW":      img("waiting.png", 40) ; echo "Fase 1. Nessun amministratore ha ancora gestito la tua foto. Chiedi aiuto in chat!"; break;
+			case '01-ACCEPTED': img("semaforoverde.gif", 40) ; echo "Fase 2. La foto e stata approvata, ora abbi solo un po di pazienza.."; break;
 			case '02-DENIED': img("semafororosso.gif", 40) ; echo "Icona X rossa, e aggiungi CHeck on Description for more" ; break;
 			case '03-ARCHIVED': echo "All good. Picture has been succesffuly uploaded. This shouldnt bother you anymore (and probably we should filter this out"; break;
 		}
@@ -3336,7 +3366,7 @@ function autoAggiornaTabella($NOMETABELLA,$NOME_ID_da_modificare,$pag_in_cui_and
 	$separatore="BOH";
 	$cont=0;
 
-		if ($DEBUG) tabled();	
+	if ($DEBUG) tabled();	
 
 	while(list($chiave,$valore)=each($_POST))
 	{	if ($DEBUG) trtd();
@@ -3366,7 +3396,7 @@ function autoAggiornaTabella($NOMETABELLA,$NOME_ID_da_modificare,$pag_in_cui_and
 	$myhiddenid=getHiddenId();
 
 	if ($myhiddenid=="" || $myhiddenid=="''")
-		if (isdevelop())
+		if (isdevelop() or isAdminVip())
 			echo rosso("attento ric, hai dimenticato nella form che spara all'autoaggiornamento l'id "
 				."my_hidden_id, del tipo formtext('my_hidden_id',42); che io lo matcho. in futuro se v"
 				."uoi checka se esiste form(myhiddenid)e basta. sti automatismi non mi convincono a "
@@ -6256,20 +6286,22 @@ function visualizza_foto_uploadate($is_admin) {
 
 	$where_addon = $is_admin ? "" : "	WHERE user_id = '$user_id' ";
 
+	#		--name as filename, 
+
 	$customized_query = "SELECT 
 		id as _mandafoto_id,
 		id AS _mandafoto_action,
-		name as filename, 
 		status AS _foto_status, 
 		user_id , 
 		user_name as utente, 
 		user_name as _fotoutente,
 		image AS _base64image ,
 		FLOOR(LENGTH(image)/1024) AS image_size_kb,
+		'todo' as md5sum,
 		description 
 	FROM mandafoto_images 
 	$where_addon
-	ORDER BY lastUpdated DESC
+	ORDER BY _foto_status ASC, lastUpdated DESC
 	LIMIT 10
 	";
 
@@ -6286,6 +6318,48 @@ function visualizza_foto_uploadate($is_admin) {
 } // end admin
 
 
+function showInfoToAdminvipReMandafotoById($foto_id) {
+	echo h2("Info su foto $foto_id ");
 
+	$rs2=mysql_query(
+		"SELECT 
+			id as _mandafoto_id,
+			name as filename, 
+			status, 
+			user_id , 
+			user_name as utente, 
+			user_name as _fotoutente,
+			image as encoded_image, # the blob, you dont wanna visualize this! :) 
+			FLOOR(LENGTH(image)/1024) AS image_size_kb,
+			description 
+		FROM mandafoto_images 
+		WHERE id = $foto_id"
+	);
+
+	$row = mysql_fetch_array($rs2);
+	$filename = $row['filename'];
+	$user_name = $row['utente'];
+	$encoded_image = $row['encoded_image'];
+	$image_src = "uploads/thumb/".$filename;
+	$inline_image = '<img src="' . $encoded_image . '"  height="100" />';
+
+
+	$visualizza_hash = array(
+		"filename" => $row['filename'],
+		'user_name' => $row['utente'],
+		'linked_path_image' => "<a href='' >magic link</a>",
+		'status' => $row['status'],
+		'inline_image' => $inline_image ,
+	);
+
+	#echo "1. Path/filename: $filename <br/>\n";
+	#echo "1. Path/image_src: $image_src <br/>\n";
+
+
+	foreach($visualizza_hash as $k => $v) {
+		echo "* " . $k . ": <b>$v</b>";
+		echo "<br>";
+	}
+}
 
 ?>

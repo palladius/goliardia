@@ -224,6 +224,15 @@ if(!empty($operazione)) {
 		logga2("cambiati dati di utente numero $id (ora chiamato '$nome')");
 		echo "<h2>Aggiornato!!!</h2>";
 		break;
+	case "EDITA_MANDAFOTO_2021": 		
+		#autoAggiornaTabella("loginz","id_login");
+		echo h2("TODO Riucc quando seby dorme");
+		echo "Qui fai un autoaggiornatabella.. ma prima abilita DEBUG e vedi i post :)";
+		//provato, va quasi, esegue questo:
+		// PdAtE mandafoto_images SET `admin_user_id`='3' , `status`='01-ACCEPTED' , `admin_description`='figatissima' WHERE `id`=''
+		print_r(Querystring());
+		autoAggiornaTabella("mandafoto_images", "id");
+		break;
 	}
 	invio();
 	hline(80);
@@ -241,7 +250,7 @@ openTable();
 ?>
 <h3><big><b>DISKLEIMER</b></big><br>
 <?php 
-$diskleimerstr = "Io, amministratore, giuro solennemente di impegnarmi affinché lo zio Pal non abbia a pentirsi del potere che mi ha dato. Giuro inoltre di cercare di mantenere l'Integrit� Referenziale del database, e altres� di rafforzare il pi� possibile la tassonomia a duplice sussunzione alla base del meccanismo di naming delle foto. Cercher� <u>in ogni modo</u> (a costo di fare una cazzata in meno) di far sì che per ogni persona che si collega al sito vi sia uno e un solo utente registrato. Mi impegno a guardare che non ci siano utenti o goliardi doppioni. Mi impegno a mandare una mail ogni tanto allo zio Pal dicendogli: '<i>soccia ma che bello che sta venendo il tuo sito... complimenti!</i>'. Mi impegno a usare questi poteri solo a fin di bene e non abbraccer� mai il lato oscuro della Scamorza. Prometto inoltre (soccia che palle per� Pal!) che non user� i miei poteri x giochini goliardici (tipo abbassare di grado il capoordine a me rivale (a meno che non sia dell'Oca, ovviamente) o scriverci 2 cazzate nel suo nome) poich� questi poteri trascendono il mio gioco; cercher� di scrivere invece pi� maialate possibili nei messaggi e in chat. Capisco inoltre che il messaggio occasionale � l'UNICA parte del sito visibile a chi non abbia un account, e m'impegno a non scrivere troppe volgarit� in esso, per paura che questo bel sito chiuda. Capisco altres� che se violer� questi sacri e-vincoli il UebMonster mi potr� de-amministrare a volont�."
+$diskleimerstr = "Io, amministratore, giuro solennemente di impegnarmi affinché lo zio Pal non abbia a pentirsi del potere che mi ha dato. Giuro inoltre di cercare di mantenere l'Integrità Referenziale del database, e altres� di rafforzare il pi� possibile la tassonomia a duplice sussunzione alla base del meccanismo di naming delle foto. Cercher� <u>in ogni modo</u> (a costo di fare una cazzata in meno) di far sì che per ogni persona che si collega al sito vi sia uno e un solo utente registrato. Mi impegno a guardare che non ci siano utenti o goliardi doppioni. Mi impegno a mandare una mail ogni tanto allo zio Pal dicendogli: '<i>soccia ma che bello che sta venendo il tuo sito... complimenti!</i>'. Mi impegno a usare questi poteri solo a fin di bene e non abbraccer� mai il lato oscuro della Scamorza. Prometto inoltre (soccia che palle per� Pal!) che non user� i miei poteri x giochini goliardici (tipo abbassare di grado il capoordine a me rivale (a meno che non sia dell'Oca, ovviamente) o scriverci 2 cazzate nel suo nome) poich� questi poteri trascendono il mio gioco; cercher� di scrivere invece pi� maialate possibili nei messaggi e in chat. Capisco inoltre che il messaggio occasionale � l'UNICA parte del sito visibile a chi non abbia un account, e m'impegno a non scrivere troppe volgarit� in esso, per paura che questo bel sito chiuda. Capisco altres� che se violer� questi sacri e-vincoli il UebMonster mi potr� de-amministrare a volont�."
     . "<br/><u>Accetto che la mia mail venga resa pub[bl]ica</u> e prometto di usare con criterio il potere di USERIZZARE utenti (avendo visto le FAQ). Se di sesso femminile, mi impegno a tirare su di morale Pal come ama lui (se sei bionda, ti do una dritta: leggi le faq su come guadagnare GP), e a sostenere la <u>propaganda affinché superi Spanami, Ciapaso e il Levriero</u> nel  GdC.";
 
 //themesidebox("Diskleimer",diskleimerstr);
@@ -256,10 +265,10 @@ closeTable();
 	if ($op=="OP1) concedi una CITTA a un UTENTE") {
 		scrivib("OP1) concedi una CITTA a un UTENTE");
 		formBegin();
-			popolaComboCitta("citt�");
+			popolaComboCitta("città");
 			popolaComboUtentiRegistrati("id_login");
 			formhidden("hidden_operazione","1");
-		scrivi("<input type='submit' value='concedi citt�'>\n</form>\n");
+		scrivi("<input type='submit' value='concedi città'>\n</form>\n");
 
 	} else if ($op=="OP2) concedi un ORDINE a un UTENTE") {
 		scrivib("OP2) concedi un ORDINE a un UTENTE");
@@ -351,7 +360,7 @@ closeTable();
 	{
 		scrivib("OP_CANCGOLIARDA) cancella goliarda");
 		scrivib(" (da usare con le pinze, solo in caso di doppioni); non funzioner� se qualche"
-			." IDIOTA ha concesso il goliarda ad altri utenti, per motivi di integrit� referenziale.");
+			." IDIOTA ha concesso il goliarda ad altri utenti, per motivi di integrità referenziale.");
 		formBegin();
 			popolaComboGoliardiConUtente("my_hidden_id");
 			formhidden("hidden_operazione","CANCGOLIARDA");
@@ -380,34 +389,34 @@ closeTable();
 		scriviRecordSetConTimeout($res,30,"2. goliardi con nome doppione","Bisogna cancellarne UNO tranne x i rari doppioni, veri come buddha, tigre, ...) Bisogna anche sgridare chi ha registrato il II...");
 		invio();
 
-		scrivi("3) Ordini appartenenti a una citt� INESISTENTE!!!");
-		$sql="SELECT m_fileImmagineTn AS _fotoordine,nome_veloce as nome,citt� FROM ordini WHERE citt� not in (select nomecitta from regioni)";
+		scrivi("3) Ordini appartenenti a una città INESISTENTE!!!");
+		$sql="SELECT m_fileImmagineTn AS _fotoordine,nome_veloce as nome,città FROM ordini WHERE città not in (select nomecitta from regioni)";
 		$res=mysql_query($sql) or sqlerror($sql);
-		scriviRecordSetConTimeout($res,30,"Ordini appartenenti a una citt� INESISTENTE","Bisogna segnalare iuna citt� mancante ed eventualmente aggiungerla");	
+		scriviRecordSetConTimeout($res,30,"Ordini appartenenti a una città INESISTENTE","Bisogna segnalare iuna città mancante ed eventualmente aggiungerla");	
 			
-		//scrivi("3.1) Sbur-user con citt� INESISTENTE!!! da guestizzare subito!");
+		//scrivi("3.1) Sbur-user con città INESISTENTE!!! da guestizzare subito!");
 		$sql="select m_snome,provincia from loginz WHERE m_bguest=0 AND provincia not in (select nomecitta from regioni)";
 		$res=mysql_query($sql) or sqlerror($sql);
-		scriviRecordSetConTimeout($res,50,"3.1) Sbur-user con citt� INESISTENTE!!! da guestizzare subito!");
+		scriviRecordSetConTimeout($res,50,"3.1) Sbur-user con città INESISTENTE!!! da guestizzare subito!");
 	//	scriviRecordSet($sql);
 		invio();
 
 		$sql="SELECT m_snome,provincia  FROM loginz WHERE m_bguest=0 AND provincia is null";
 		$res=mysql_query($sql) or sqlerror($sql);
-		scriviRecordSetConTimeout($res,50,"3.2) Sbur-user con citt� NULLA!!! da guestizzare subito!");
+		scriviRecordSetConTimeout($res,50,"3.2) Sbur-user con città NULLA!!! da guestizzare subito!");
 		invio();
 
-		scrivi("4.1) Guest con citt� INESISTENTE!!! piccolo problema... ma se � vostro amico diteglielo");
+		scrivi("4.1) Guest con città INESISTENTE!!! piccolo problema... ma se � vostro amico diteglielo");
 		$res=mysql_query($sql) or sqlerror($sql);
 		$sql="select m_snome,provincia from loginz WHERE m_bguest=1 AND provincia not in (select nomecitta from regioni)";
 		//scriviRecordSet($sql);
-		scriviRecordSetConTimeout($res,50,"4.1) Guest con citt� INESISTENTE!!! piccolo problema... ma se � vostro amico diteglielo");
+		scriviRecordSetConTimeout($res,50,"4.1) Guest con città INESISTENTE!!! piccolo problema... ma se � vostro amico diteglielo");
 		invio();
 
-		scrivi("4.2) Guest con citt� NULLA!!! piccolo problema... ma se � vostro amico diteglielo");
+		scrivi("4.2) Guest con città NULLA!!! piccolo problema... ma se � vostro amico diteglielo");
 		$sql="SELECT m_snome,provincia  FROM loginz WHERE m_bguest=1  AND provincia is null";
 		$res=mysql_query($sql) or sqlerror($sql);
-		scriviRecordSetConTimeout($res,50,"4.2) Guest con citt� NULLA!!! piccolo problema... ma se � vostro amico diteglielo");
+		scriviRecordSetConTimeout($res,50,"4.2) Guest con città NULLA!!! piccolo problema... ma se � vostro amico diteglielo");
 		invio();
 	}
 		else // presento il MENU;
@@ -448,13 +457,15 @@ if (isAdminVip()) {
 			formtext("sigla","");
 			invio();
 			scrivi("vassallo di: ");
-			popolaComboConEccezionePrescelta("id_ord_vassallo_di","select id_ord,nome_veloce,citt� from ordini where sovrano=1","-1","-1","- nessuno -");
+			popolaComboConEccezionePrescelta("id_ord_vassallo_di","select id_ord,nome_veloce,città from ordini where sovrano=1","-1","-1","- nessuno -");
 			invio();
 			scrivi("sovrano: ");
 			formScelta2("sovrano","true","false","true","false",2);
 			invio();
-			scrivi("citt�: ");
-			popolaComboCitta("citt�");
+			#scrivi("città: ");
+			#popolaComboCitta("città");
+			scrivi("Città: ");
+			popolaComboCitta("Città");
 			invio();
 			formtext("motto","");
 			invio();
@@ -481,9 +492,21 @@ if (isAdminVip()) {
 				echo "Caro amministratore, puoi scartarla, accettarla o non fare nulla (zen!)";
 				echo "Vediamo insieme la foto. Ti rammento che deve essere portrait, la faccia si deve vedere (non un francobollino!) e non pesi piu di 1-2MB per favore! Hai diritto di cambiare la AdminVip Description da qui :)";
 
+				showInfoToAdminvipReMandafotoById($foto_id);
+				formBegin();
+				formhidden("hidden_operazione","EDITA_MANDAFOTO_2021");
+				formhidden("admin_user_id",Session("SESS_id_utente"));
+				formhidden("my_hidden_id",$foto_id);
+				popolaComboMandafotoStati("status");
+				formtextarea("admin_description","",6,50,"dimmi perche");
+				formbottoneinvia("edita (non va ancora)!");
+				formEnd();
+
 			} else {
 				echo h2("Nessuna foto selezionate le mostro tutte");
+				echo "Nota che a te interessano quelli in fase 1 (00-NEW). Il tuo potere e di cambiare STATO (fondamentalmente accettare, negare o rimanere in 00-NEW) e aggiornatre l'adminVipStatus :)";
 				visualizza_foto_uploadate(true);
+
 			}
 	} else {
 
