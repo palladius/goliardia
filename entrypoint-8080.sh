@@ -5,6 +5,8 @@
 # even better: COMANDO_DEFAULT="/usr/local/bin/docker-php-entrypoint apache2-foreground" 
 DFLT_COMMAND="/usr/local/bin/docker-php-entrypoint apache2-foreground"
 COMMAND_TO_RUN=${@:-$DFLT_COMMAND}
+#export DEBUG=true
+#export DEBUG_ON=true
 export ENTRYPOINT8080_TIMESTAMP="$(date)"
 
 function _fix_permissions() {
@@ -39,9 +41,8 @@ _activate_ssmtp
 _fix_permissions
 
 echo "[$0] BEGIN"
-#echo "[$0] BEGIN"| lolcat # probably error
 _activate_ssmtp
 
 echo "[$0] Bando alle Cionce, lets now finally run: $COMMAND_TO_RUN "
-$COMMAND_TO_RUN 
+DEBUG=cerrrrtamente $COMMAND_TO_RUN 
 echo "[$0] END"

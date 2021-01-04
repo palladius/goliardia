@@ -17,16 +17,16 @@ $GODNAME = "palladius"; // se cambi questo nome, viene un atro superuser...
 $MAX_GMS_AMMISSIBILI = 8;
 $ISANONIMO = true;
 $APERTOATUTTI = 0;
-$indexAndAnonomo=0; //vale true se vogliamo rispettare Titanicus e far s�' che tutti possano vedere tutto senza login.
+$indexAndAnonomo=0; //vale true se vogliamo rispettare Titanicus e far sì che tutti possano vedere tutto senza login.
 $TIME=time();
 $VISUALIZZA_MSG_OCCASIONALE_NELLHEADER = FALSE;
 $QGFDP="Palladius of the Iron Islands";
-$VISUALIZZA_ORDINIPACCO=0;	# cos� li nascondo a TUTTI
+$VISUALIZZA_ORDINIPACCO=0;	# cosi li nascondo a TUTTI
 $tInizioPagina=getmicrotime();
 
-	$DEBUG_ON = 0;
+#	$DEBUG_ON = 0;
 
-$DEBUG=$DEBUG_ON || Session("conf_debug");
+$DEBUG=$DEBUG_ON || Session("conf_debug") || $_ENV['DEBUG_ON'];
 $VERBOSE=TRUE;
 $nomecognome="nomecognome";
 #$CONSTLARGEZZA600=730;
@@ -142,12 +142,11 @@ $righe=mysql_num_rows($res);
 
 if ($righe>0)
 	scrivib($frasepreposta);
-while ($rsx=mysql_fetch_array($res))
-	{
-	 $nome= ($rsx["m_snome"]);
-	 if (!($rsx["m_bguest"]))
+while ($rsx=mysql_fetch_array($res)) 	{
+	$nome= ($rsx["m_snome"]);
+	if (!($rsx["m_bguest"]))
 		$nome="<b>$nome</b>";
-	 echo("<a href='utente.php?nomeutente=".$rsx["m_snome"]."'>$nome</a> (".$rsx["quanti"].") ");
+	echo("<a href='utente.php?nomeutente=".$rsx["m_snome"]."'>$nome</a> (".$rsx["quanti"].") ");
 	}
 }
 
@@ -167,13 +166,19 @@ function amezzanotte() { // "chiedi a venerdi' se sa fare un CRON demone in php"
 
 function h6($x) {return "<h6>$x</h6>";} 
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="it" xml:lang="it" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <?php  // meta http-equiv="Content-Type" content="text/html; charset=utf-8" 
 ?>
 	<meta name="verify-v1" content="flSynBLe5vYUAQyFIHH62h+BTpm4cGkI8Ne4s2MyCBU=" />
-	<meta http-equiv="Content-type" content="text/html; charset=iso-8859-15">
+<!-- vecchissimo e non va piu benme! Dice w3c: https://validator.w3.org/nu/?doc=http%3A%2F%2Fwww.goliardia.it%2F
+    charset= must be followed by utf-8.
+		 <meta http-equiv="Content-type" content="text/html; charset=iso-8859-15" >
+-->
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<meta http-equiv="expires" content="0"> 
+	<meta charset="UTF-8">
 	<meta name="description" content="Il sito della goGliardia italiana... una community aperta a goliardi e non solo per incontrarsi, scrivere cagate e conoscere gente. Creato da Riccardo 'zio Pal' Carlesso">
 	<meta name="author" content="Riccardo Carlesso" />
 	<meta name="keywords" content="goliardia, forum, chat, gioco delle coppie, Montecristo, fittone, SVQFO, cene, baccanali, palladius, carlesso, riccardo, gaudeamus, feriae matricolarum, universit�, bologna, Universit�, universit� degli studi, gogliardia, zingarata ">
@@ -269,6 +274,7 @@ if ($ISANONIMO && ! $APERTOATUTTI ) {
 	if ($ISANONIMO) $arrHeader[$i++]=linkaViola("login.php","login");
 	$arrHeader[$i++]=linkaViola("linkz.php","Linkz");
 	$arrHeader[$i++]=linkaViola("mandafoto.php","mandaFoto");
+	$arrHeader[$i++]=linkaViola("mandafoto2021.php","mandaFoto2021");
 	$arrHeader[$i++]=linkaViola("votazioni.php","sondaggi");
 	$arrHeader[$i++]=linkaViola("statistiche.php","stats");
 	$arrHeader[$i++]=linkaViola("support.php","support");

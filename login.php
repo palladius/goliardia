@@ -24,7 +24,7 @@ if (!empty($nickname))
 	 bona();
 	}
 
-#echo "nickname vale '$nickname' ed è lungo ".strlen($nickname);
+#echo "nickname vale '$nickname' ed ï¿½ lungo ".strlen($nickname);
 #echo "<br>finisce x spazio?!? ".intval(finisceperspazio($nickname));
 #bona();
 
@@ -46,7 +46,7 @@ setApplication("utentiattivi",$attuale);
 if (! empty($_POST["nickname"])) // era if != "" && isset()
 {
 	// cerco nel db un match tra nick e pwd
- 	// USA M_BATTIVO x vedere se può entrare...
+ 	// USA M_BATTIVO x vedere se puï¿½ entrare...
 	// e fai check su email case unsensitive x il NUOVO UTENTE...
 
 
@@ -62,7 +62,7 @@ if (! empty($_POST["nickname"])) // era if != "" && isset()
 // debRiga($result,$riga); // non consuma la riga
 
 
- $rigaTrovata = intval(!empty($riga[0])); // pwd vuota(impossibile) o riga vuota (ciò che voglio)
+ $rigaTrovata = intval(!empty($riga[0])); // pwd vuota(impossibile) o riga vuota (ciï¿½ che voglio)
 
 // scrivib("rigaTrovata: $rigaTrovata.");
 
@@ -97,7 +97,7 @@ if (! empty($_POST["nickname"])) // era if != "" && isset()
 	}
 
    if ($riga["m_bAttivo"] != 1) {
-	 scrivi("<b>Attenzione, il tuo account non è attivo (vale ".$riga["m_bAttivo"]."), prossimamente questo implicherà che tu non potrai entrare...<br>");
+	 scrivi("<b>Attenzione, il tuo account non ï¿½ attivo (vale ".$riga["m_bAttivo"]."), prossimamente questo implicherï¿½ che tu non potrai entrare...<br>");
 	 scrivi("Questo vuol dire che NON PUOI ENTRARE. Manda una mail a zio Pal per spiegazioni.</b>");
 	 $autorizzato=0;
 	 $errore="Account disabilitato...";
@@ -120,7 +120,7 @@ if (! empty($_POST["nickname"])) // era if != "" && isset()
 
 		echo 	"<h1>Il login ha funzionato! altero il nick di sessione, che ora vale: <u>"
 			.Session("nickname") 
-			."</u>. Più in sotto trovi un link che ti manda in manuale alla HOME</h1>";
+			."</u>. Piï¿½ in sotto trovi un link che ti manda in manuale alla HOME</h1>";
 	 $dd=time();
 	 $_SESSION["_SESS_collegato_alle"]	= $dd;
 	 $_SESSION["_SESS_ADMIN"]		= $isAdmin;
@@ -132,7 +132,8 @@ if (! empty($_POST["nickname"])) // era if != "" && isset()
 	 $_SESSION["_SESS_PX"]			= $PX;
 	 $_SESSION["_SESS_provincia"] 	= $PROVINCIA;
 	 $_SESSION["_SESS_SESS_id_utente"]	= $user_id;
-	 $_SESSION["_SESS_antiprof"]		= 0; 
+	 $_SESSION["_SESS_id_login"]	= $user_id; # quello di sopra sembra un typo: boh! Ma quanto capra ero 10 anni fa?!?
+	 $_SESSION["_SESS_antiprof"]	= 0; 
 	 $_SESSION["_SESS_foto"]		= strval($thumby); // inutile
 	 $_SESSION["_SESS_nomecognome"]	= $thumby;
 	 $_SESSION["_SESS_isgoliard"]		= $isGoliard;
@@ -155,14 +156,14 @@ if (! empty($_POST["nickname"])) // era if != "" && isset()
 	$ISANONIMO = anonimo();
 
 	// aggiorno la tabella degli indirizzi... IP, HOST, USER eccetera...
-		 aggiornaIndirizzi();
+	aggiornaIndirizzi();
 
-	echo " qua non ci arrivo... boh!";
+	#echo " qua non ci arrivo... boh!";
 	$rs=mysql_query("update loginz set m_datalastcollegato='".dammiDataByJavaDate(time())
 			."' WHERE id_login=$user_id")
-				or die("cudd'not apdéit iòr m_datalastcollegato, shitt!");
+				or die("cudd'not apdï¿½it iï¿½r m_datalastcollegato, shitt!");
 
-	// devo decidere se la data è cambiata o no, se SI aumento di uno, se NO non faccio nulla
+	// devo decidere se la data ï¿½ cambiata o no, se SI aumento di uno, se NO non faccio nulla
 
 		// 		ad esser + fini... ma freghiamocene del bug...
 		//	monthlast=new String(datalastcollegato.getMonth());
@@ -173,7 +174,7 @@ if (! empty($_POST["nickname"])) // era if != "" && isset()
 	$nuovogiorno = ($daynow != $daylast ); // giorno diverso, ha il bug che se non ti colleghi da 1 mese esatto perdi quel GP... amen :-)
 
 	if ($nuovogiorno ) // x debug
-		{//echo "è l'alba di un nuovo giorno...";
+		{//echo "ï¿½ l'alba di un nuovo giorno...";
 		 gestisciGoliardPointz($user_id,1,"incrementa"); // aumento di 1 i GP...
 		}
 	setApplication("UTENTI_ORA", getApplication("UTENTI_ORA")."\$".strtolower($nickname)."@".time() );
@@ -206,22 +207,22 @@ if ($visualizzaMsgLogin)
 <br>
 <?php opentable();?>
 
-Se è la prima volta che vieni qui, devi sapere che x entrare devi prima 
-<a href="nuovo_utente.php"><i>registrarti</i></a>. Questo è stato scelto 
-da me e dalla maggioranza degli utenti per proteggere informazioni più o 
-meno riservate e poichè crediamo che il nostro mondo sia qualcosa di 'iniziatico' 
-e ci spiacerebbe vedere ogni pagina indicizzata in ogni motore di ricerca. L'iter è semplice:
+Se ï¿½ la prima volta che vieni qui, devi sapere che x entrare devi prima 
+<a href="nuovo_utente.php"><i>registrarti</i></a>. Questo ï¿½ stato scelto 
+da me e dalla maggioranza degli utenti per proteggere informazioni piï¿½ o 
+meno riservate e poichï¿½ crediamo che il nostro mondo sia qualcosa di 'iniziatico' 
+e ci spiacerebbe vedere ogni pagina indicizzata in ogni motore di ricerca. L'iter ï¿½ semplice:
 ti registri e ti viene inviata una password alla email indicata da te. Da quel momento potrai
 tornare qui, inserire il <i>nick</i> che avevi scelto e la <i>password</i> che ti era stata assegnata. <br>
-<i>Non dare la password in giro!!!</i>: a fini legali ogni cosa fatta col tuo utente è TUA responsabilità. <br/>
+<i>Non dare la password in giro!!!</i>: a fini legali ogni cosa fatta col tuo utente ï¿½ TUA responsabilitï¿½. <br/>
 Se hai dimenticato la password, clicca invece <a href="login_dimenticatapwd.php">qui</a> e se indovini la tua data di nascita
-ti verrà rispedita alla mail originaria. Se hai cambiato mail o non riesci a leggerla... scrivimi.
+ti verrï¿½ rispedita alla mail originaria. Se hai cambiato mail o non riesci a leggerla... scrivimi.
 
 <?php closetable();?>
 <!---
 
-<b>Sono <i>già</i> registrato <i>e</i> ricordo la password:</b><br>
-<i>(ovvero appartengo a una ristretta élite di rodati navigatori)</i><br/>
+<b>Sono <i>giï¿½</i> registrato <i>e</i> ricordo la password:</b><br>
+<i>(ovvero appartengo a una ristretta ï¿½lite di rodati navigatori)</i><br/>
 <b>attenzione, ho modificato il sistema di attribuzione dei GP: incrementano al + una volta al giorno, quindi non rompete 
 i coglioni e fate il login solo quando serve. Sempre vostro, Pal.</b>
 

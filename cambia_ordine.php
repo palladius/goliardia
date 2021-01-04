@@ -34,7 +34,7 @@ if (empty($idord)) {
 $hoDiritti=utenteHaDirittoScritturaSuOrdineById($idord);
 //echo "diritti=$hoDiritti,idord=$idord";
 
-$sql="select id_ord,nome_completo,nome_veloce,sigla,città,motto,datadinascita,m_fileImmagine,m_fileImmagineTn,note,storia,m_bSerio,m_bInSonno,indirizzo,emailordine  ,m_nPrecedenzaCittadina FROM ordini where id_ord=".$idord;
+$sql="select id_ord,nome_completo,nome_veloce,sigla,CittÃ ,motto,datadinascita,m_fileImmagine,m_fileImmagineTn,note,storia,m_bSerio,m_bInSonno,indirizzo,emailordine  ,m_nPrecedenzaCittadina FROM ordini where id_ord=".$idord;
 $res=mq($sql); // nome ordine
 $rs=mysql_fetch_array($res);
 
@@ -51,7 +51,7 @@ formtext("nome_completo",$rs["nome_completo"]);
 invio();
 formtext("sigla",$rs["sigla"]);
 invio();
-popolaComboCitta("città",$rs["città"]);
+popolaComboCitta("cittï¿½",$rs["cittï¿½"]);
 invio();
 formtext("motto",stripslashes($rs["motto"]));
 invio();
@@ -76,7 +76,7 @@ formSceltaTrueFalse("m_bInSonno","In Sonno",($rs["m_bInSonno"]));
 tdtd();
 formSceltaTrueFalse("m_bserio","Serio",($rs["m_bSerio"]));
 tdtd();
-scrivii("<i>Se sì, l'ordine è serio. Se NO, l'ordine è pacco. NON barate su questo o vi punirò pesantemente</i>");
+scrivii("<i>Se sï¿½, l'ordine ï¿½ serio. Se NO, l'ordine ï¿½ pacco. NON barate su questo o vi punirï¿½ pesantemente</i>");
 	# if ($ISPAL) scrivi(rosso("(serio vale: ".($rs["m_bSerio"]).")"));
 trtdEnd();
 
@@ -182,7 +182,7 @@ switch ($i)
 
 scrivi(mezzo);
 
-sql="SELECT * from CARICHE WHERE id_ordine=".$idord." AND id_car_STASOTTOA=-1 " ; // tutto ciò cher mi serve tranne la sottpopostanza
+sql="SELECT * from CARICHE WHERE id_ordine=".$idord." AND id_car_STASOTTOA=-1 " ; // tutto ciï¿½ cher mi serve tranne la sottpopostanza
 if (i<3)
 	rs=getRecordSetByQuery(sql+clausola_i) // nome ordine
 else 
@@ -204,10 +204,10 @@ else
 if (i==3) // caso ORFANE
 {scrivi("<h3>".$corsivoBluHtml("Orfane")."</h3>")
 
-scrivib(corsivoBluHtml("Attenzione, questo si verifica quando in una gerarchia A>B>C>D>E x esempio uccidi la B e la C (solo lei) rimane orfana del papà.".$
-	  " Ciò è possibile xchè io non controllo l'integrità referenziale del puntatore (x ottimi motivi) quindi a differenza di altre cose ".$
-	  "qua è possibile quest'incoerenza. Sta a te che hai fatto la cazzata di spezzare la gerarchia fere le giuste modifiche x togliere questo".$
-	  " messaggio. Se ti becco io, at fag un cul acsì, che vuol dire che ti aumento di uno l'escazzo. :-)"))
+scrivib(corsivoBluHtml("Attenzione, questo si verifica quando in una gerarchia A>B>C>D>E x esempio uccidi la B e la C (solo lei) rimane orfana del papï¿½.".$
+	  " Ciï¿½ ï¿½ possibile xchï¿½ io non controllo l'integritÃ  referenziale del puntatore (x ottimi motivi) quindi a differenza di altre cose ".$
+	  "qua ï¿½ possibile quest'incoerenza. Sta a te che hai fatto la cazzata di spezzare la gerarchia fere le giuste modifiche x togliere questo".$
+	  " messaggio. Se ti becco io, at fag un cul acsï¿½, che vuol dire che ti aumento di uno l'escazzo. :-)"))
 
 }
 $sql2,rs2
@@ -267,7 +267,7 @@ scrivi(" ".$ancora("Albo d'Oro").":</h2>");
 	  . " AND n.id_carica=c.id_carica ";
 	  . " AND c.hc=false";
 	  . " AND c.attiva=true ";
-	  . " AND (c.dignità='capoordine' OR c.dignità='capocittà')";
+	  . " AND (c.dignitï¿½='capoordine' OR c.dignitï¿½='capocittï¿½')";
 	  . " ORDER BY n.eventuale_numero_progressivo,n.[data_nomina]";
 
 recSet=getRecordSetByQuery(sql)

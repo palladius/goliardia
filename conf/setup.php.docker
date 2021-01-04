@@ -10,7 +10,6 @@ $dbpassword = $_SERVER["GOLIARDIA_MYSQL_PASS"];
 $dbdatabase = $_SERVER["GOLIARDIA_MYSQL_DB"];		# nome del database
 $DOVE_SONO  = $_SERVER["GOLIARDIA_DOVESONO"]; 		# dove � il server, a scopi mnemonici 
 $FUSOORARIO = 16; 				# 6 non va provo 16Mi sembra inutile TODO toglimi
-$DEBUG_ON   = FALSE;			# abilita un sacco di verboso debug
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- personalizzazioni
 
 
@@ -28,8 +27,9 @@ $pretab="goliardia";               # da cambiare per ogni sito
 $skinPreferita="default"; 
 	# ALTRO
 $APERTOATUTTI = 1;
-$indexAndAnonomo = 1; 		// vale true se vogliamo rispettare Titanicus e 
-				// far s�' che tutti possano vedere tutto senza login.
+$indexAndAnonomo = 1; 		
+				// vale true se vogliamo rispettare Titanicus e 
+				// far si' che tutti possano vedere tutto senza login.
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-	NON MODIFICARE !!!!
 	# CODICE NON DI CONFIGURAZIONE (chiedo scusa per la sporchezza della cosa)
 
@@ -74,12 +74,17 @@ $UPLOADVA = FALSE;
 $indexAndAnonomo=1; 	// se TRUE , tutti possano vedere tutto senza login.
 $VISUALIZZA_MSG_OCCASIONALE_NELLHEADER = FALSE;
 #$QGFDP = $_SERVER["GOLIARDIA_SITEPATH"] or 'QGFDP' ; # e.g. "Palladius the GDubliner";
-$QGFDP = 'I han e fraag' ; # e.g. "Palladius the GDubliner";
+$QGFDP = 'I haan e fraag' ; # e.g. "Palladius the GDubliner";
 $CONFSITO = "sito20docker";
 $ABILITAJS = 0;  // in tal caso, disabilito il menu VECCHIO e metto il nuovo SOTTO a flash!!!
 $ANONIMO  = "anonimo";
 $IMMAGINI  = "immagini"; // che POI va tabbato...
-$MAX_GMS_AMMISSIBILI = 10;
+$MAX_GMS_AMMISSIBILI = 12;
 $ISANONIMO = true;  // I believe this is the default
+
+# Gestisco debug in header.php, lascia qui costante..
+$DEBUG_ON   = 0;			# abilita un sacco di verboso debug
+#$DEBUG   = 1;			# abilita un sacco di verboso debug
+
 
 ?>

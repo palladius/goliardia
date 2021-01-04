@@ -47,10 +47,15 @@ I need to mention how the FS is built:
   approving this to promote to `immagini/persone/` after which image becomes ACTIVE. I'm working
   on dockerizing this and its giving me a headache, if you have ideas please contact me.
 
+* From version 3 (prototype): you can send a picture to the DB itself!
+
 Bugs
 ----
 
 This website is just *purfect*, also no typos whatsoever. :)
+
+* We need to solve the collastion part. All MySQL DB is in `latin1_swedish_ci` encoding
+  and Im so stupid that one field is called `Città` (under Ordini).
 
 Notes
 -----

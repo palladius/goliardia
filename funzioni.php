@@ -17,6 +17,7 @@ $arrAdminVip = array (
 				,"ophelia"
 				,"palo"
 				,"pariettus"
+				,"pal-bot"
 				,"vipera"
 				);
 
@@ -26,19 +27,20 @@ $arrDevelop = array (
 				"badello",
 				"cavedano",
 				"persevero",
-				"titanicus"
+				"titanicus",
+				"pal-bot"
 				);
 
 $IMMAGINI="immagini"; // che POI va tabbato...
 $globMenuItemz = "";
 
-$week = array ("domenica","luned�","marted�","mercold�","gioved�","venerd�","sabato");
+$week = array ("domenica","lunedì","martedì","mercoldì","giovedì","venerdì","sabato");
 $weekkina = array ("dom","lun","mart","merc","giov","ven","sab");
 $mesini = array ("gen","feb","mar","apr","mag","giu","lug","ago","set","ott","nov","dic");
 
-$icona_capoordine="corona30.png";//"capoordine.gif"
-$icona_manto="manto.gif";// "mantello30.jpg"  //"nobile.jpg"
-$icona_saio="saio.gif"; // "cacca34.png"      //""saio.gif"
+$icona_capoordine="corona30.png"; //"capoordine.gif"
+$icona_manto="manto.gif";         // "mantello30.jpg"  //"nobile.jpg"
+$icona_saio="saio.gif";           // "cacca34.png"   
 
 
 /*
@@ -46,7 +48,7 @@ HINT
 array file ( string filename [, int use_include_path [, resource context]])
 
 Identica a readfile(), eccetto per il fatto che file() restituisce il file in un vettore.
- Ogni elemento del vettore corrisponde ad una riga del file, con il carattere di newline 
+Ogni elemento del vettore corrisponde ad una riga del file, con il carattere di newline 
 ancora inserito. Se la funzione non riesce restituisce FALSE. 
 
 ci puoi fare una bella implementazione di chat!
@@ -57,7 +59,7 @@ ci puoi fare una bella implementazione di chat!
 	postcede("ciao@da@me","@") d� fuiori "da"
 */
 function ciochepostcede($frase,$sep)
-{//cerca ci� che in frase precede il separatore
+{//cerca ciì che in frase precede il separatore
 if (empty($frase)) return array();
 
 $tmparr=explode($sep,$frase);
@@ -69,7 +71,7 @@ return $ret; // inefficiente ma pulitissimo
 }
 
 /*
-	venerd�!!! si pu� sicuramente ottimizzare con una regex UNICA (usando i upper/lowercase), mal che vada con una PCRE
+	venerdì!!! si puì sicuramente ottimizzare con una regex UNICA (usando i upper/lowercase), mal che vada con una PCRE
 */
 function rimpiazzaErreMoscia($frase) {
 	$frase = replace($frase,"r","v");
@@ -99,7 +101,7 @@ die("erore sql, altro dirti non vo'<br/>");
 }
 function formSceltaTRUEFALSE($label,$msg,$seleziona_TRUE) {
 	scrivi($msg);
-	formScelta2($label,TRUE,FALSE,"s�","no",$seleziona_TRUE ? 1 : 2);
+	formScelta2($label,TRUE,FALSE,"sì","no",$seleziona_TRUE ? 1 : 2);
 }
 
 function scriviReport_LinkMini($rs) { 
@@ -110,23 +112,18 @@ function scriviReport_LinkMini($rs) {
 
 
 function scriviReport_Utente($rs,$linkami,$ii) {
- global $paz_foto_persone,$ISPAL;
- $simbolo=$rs["m_sNome"].".jpg"; 
- $sesso=$rs["m_bIsMaschio"] ? "maschio" : "femmina";
+  global $paz_foto_persone,$ISPAL;
+  $simbolo=$rs["m_sNome"].".jpg"; 
+  $sesso=$rs["m_bIsMaschio"] ? "maschio" : "femmina";
 
- echo "<tr class='$sesso'>";
- #tri($ii);         //    non c'� in php 
-// scrivi("<td width='20%'>".getFoto($paz_foto_persone.$simbolo,$simbolo,80)); // ottimizzabile...
-// scrivi("<br><center><b class='inizialemaiuscola'>".$rs["m_sNome"].
-//	"</b><br><a href='utente.php?nomeutente=".$rs["m_sNome"]."'>MORE INFO</a></center>");
+  echo "<tr class='$sesso'>";
 
+  scrivi("<td width='20%'>".getFotoUtenteDimensionata($rs["m_sNome"],80)); // ottimizzabile...
+  scrivi("<br><center><b class='utente'>".$rs["m_sNome"]."</b></center>");
 
- scrivi("<td width='20%'>".getFotoUtenteDimensionata($rs["m_sNome"],80)); // ottimizzabile...
- scrivi("<br><center><b class='utente'>".$rs["m_sNome"]."</b></center>");
-
- if ($ISPAL) // solo admin vip leggono la mail.
-	{ scrivi("<br><i>".$rs["m_sPwd"]."</i>");
-	  tdtd();
+ if ($ISPAL) { // solo admin vip leggono la mail.
+	scrivi("<br><i>".$rs["m_sPwd"]."</i>");
+	tdtd();
 
 #	formBegin("pag_messaggi.php");
 #	formhidden("my_hidden_id","id_login");
@@ -1604,7 +1601,7 @@ function isAdminVip($who="") {
 	return TRUE; 
  $user= Session("nickname") ;
 	 # prova anche return in_array($who,$arrAdminVip);
- return $user == "cavedano" || $user == "pariettus" || $user == "manolus" || $user == "gimmigod" || $user=="vipera" || $user=="ophelia" || "palo" ;
+ return $user == "cavedano" || $user == "pariettus" || $user == "manolus" || $user == "gimmigod" || $user=="vipera" || $user=="ophelia" || user== "palo" || user== "pal-bot" ;
 }
 
 
@@ -1926,8 +1923,7 @@ return $_SESSION["_SESS_$str"];
 }
 
 
-function visualizzaDebug()
-{
+function visualizzaDebug() {
  if (! isadminvip())
 	{
 	 echo rosso("mi spiace, non ti faccio visualizzare il visualizzaDebug()!!!");
@@ -1938,9 +1934,8 @@ function visualizzaDebug()
 
  echo "<table><tr><td valign='top'>";
 	 visualizzaArrayTitolo($_POST,"POSTZ"); 
-// echo "</td><td valign='top'>";
 	 visualizzaArrayTitolo($_GET,"GETZ"); 
-// echo "</td><td valign='top'>";
+	 visualizzaArrayTitolo($_ENV,"_ENV"); 
 	 visualizzaArrayTitolo($_SESSION,"SESS"); 
  echo "</td><td valign='top'>";
 	 visualizzaArrayTitolo($_SERVER,"SERVER"); 
@@ -1948,7 +1943,8 @@ function visualizzaDebug()
 
 }
 
-function debugga($s) { global $DEBUG; if ($DEBUG) scrivi("<span class='debug'>$s</span>\n"); }
+// icona bug: https://www.utf8icons.com/character/128027/bug
+function debugga($s) { global $DEBUG; if ($DEBUG) scrivi("<span class='debug'>🐛 $s</span>\n"); }
 
 function FANCYBEGIN($title) {
 	#debugga("FANCYBEGIN");
@@ -2258,8 +2254,8 @@ if ($EOF) {
 }
 $row = mysql_fetch_row($rs);
 if (! isset ($row)) {
-	 scrivib("Errore in scriviRecordSetConTimeout, secondo me la query non � di select");
-	 return 0;
+	scrivib("Errore in scriviRecordSetConTimeout, secondo me la query non � di select");
+	return 0;
 } 
 $ncolonne=mysql_num_fields($rs);
 $encoded= array($ncolonne);
@@ -2336,20 +2332,34 @@ while (($row)  && $j != $righemax ) {
                 }
          else   // LINKORDINE
          if (contiene($fieldname_i,"_linkOrd")) {
-                      scrivi("<a href='modifica_ordine.php?idord=$campo'>link</a>");
-                }
+                    scrivi("<a href='modifica_ordine.php?idord=$campo'>link</a>");
+         }
          else   // UTENTE (lo loinka e lo colora)
          if (contiene($fieldname_i,"utente")) {
                       scrivi("<a class='utente' href='utente.php?nomeutente=$campo'> $campo</a>");
                 }
 	 else	// SERIO FACETO
-	 if (contiene($fieldname_i,"_serio"))
-		{if ($campo==1) // � serio
+	 if (contiene($fieldname_i,"_serio")) {
+		if ($campo==1) // e' serio
 			 scrivi("<img src='$IMMAGINI/serio.gif' height='$heightFotoPersone '>");
 		 else
 			 #scrivi("<img src='$IMMAGINI/faceto.gif' height='$heightFotoPersone '>");
 			 echo "<!-- niente immagine -->"; #scrivi("-");
-		}	
+	} else if (contiene($fieldname_i, "_mandafoto_id")) {
+		scrivi("<a href='mandafoto2021.php?image_id=$campo'>Foto #$campo</a>");
+	} else if (contiene($fieldname_i, "_mandafoto_action")) {
+		scrivi("<a href='pannello.php?opvip=AV2%29+Accetta%2Frifiuta+foto+mandafoto&image_id=$campo'>Prendi decisioni su sta foto nel Pannello #$campo</a>");
+	} else if (contiene($fieldname_i, "_base64image")) {
+		// https://www.w3schools.com/howto/howto_css_image_center.asp :)
+		scrivi(" <img src='$campo' height='80' style='display: block;margin-left: auto;margin-right: auto' />");
+	} else if (contiene($fieldname_i, "_foto_status")) { // mandafoto2021
+		switch ($campo) {
+			case "00-NEW": echo "Icona waiting.." ; break;
+			case '01-ACCEPTED': echo "Icona V verde.." ; break;
+			case '02-DENIED': echo "Icona X rossa, e aggiungi CHeck on Description for more" ; break;
+			case '03-ARCHIVED': echo "All good. Picture has been succesffuly uploaded. This shouldnt bother you anymore (and probably we should filter this out"; break;
+		}
+	}
 	else {	// DEFAULT!!!
 		scrivi(trasformaGenericoCampo($campo));
 	}
@@ -6232,5 +6242,50 @@ function development() {
 		global $ENVIRONMENT ;
 	$ENVIRONMENT == "development" ;
 }
+
+// /////////////////////////////////////////
+// MandaFoto2021
+// /////////////////////////////////////////
+function visualizza_foto_uploadate($is_admin) {
+	$user_id = $_SESSION["_SESS_id_login"];
+
+	echo h1($is_admin ? 
+		"[ADMINVIP] Thumbs buttate su fin oggi su DB" :
+		"Le TUE foto buttate su"
+	);
+
+	$where_addon = $is_admin ? "" : "	WHERE user_id = '$user_id' ";
+
+	$customized_query = "SELECT 
+		id as _mandafoto_id,
+		id AS _mandafoto_action,
+		name as filename, 
+		status AS _foto_status, 
+		user_id , 
+		user_name as utente, 
+		user_name as _fotoutente,
+		image AS _base64image ,
+		FLOOR(LENGTH(image)/1024) AS image_size_kb,
+		description 
+	FROM mandafoto_images 
+	$where_addon
+	ORDER BY lastUpdated DESC
+	LIMIT 10
+	";
+
+	// LEFT(image, 50) AS cropped_image,
+			
+	$rs2=mysql_query($customized_query);
+	scriviRecordSetConTimeout($rs2,1000,
+	"Foto uploadate via mandafoto su DB",
+	"Queste foto esistono sia su FS (ephemeral) che DB (piuttosto stabile - si spera)");
+
+	# cambiatio il 26ago05
+	echo h2("Sempre per te admin guarda anche le foto uploadate nel FS locale..");
+	visualizzaThumbPaz("*",false,"$PAZ_UPLOAD/thumb/",TRUE,40,7);
+} // end admin
+
+
+
 
 ?>

@@ -5,8 +5,9 @@
 global $CONSTLARGEZZA600,$AUTOPAGINA,$DEBUG,$ISSERIO,$ISPAL,$POST_DEBUG,$DOVE_SONO,$IMMAGINI,$QGFDP,$VERSION, $PAGEVER;
 lineaViola($CONSTLARGEZZA600);
 ?> <center> <?php 
-if ($DEBUG)
-	{scrivi(rossone("POST DEBUG:<br>"));
+if ($DEBUG) {
+	scrivi("<hr/>");
+	scrivi(rossone("POST DEBUG:<br>"));
 	 scrivi($POST_DEBUG);
 	 hline();
 	}
