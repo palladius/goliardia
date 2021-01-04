@@ -137,44 +137,6 @@ Stati che mi vengono in mente:
 
 #$PAZ_UPLOAD="moduli/fileupload/uploads";
 
-function visualizza_foto_uploadate($is_admin) {
-	$user_id = $_SESSION["_SESS_id_login"];
-
-	echo h1($is_admin ? 
-		"[ADMINVIP] Thumbs buttate su fin oggi su DB" :
-		"Le TUE foto buttate su"
-	);
-
-	$where_addon = $is_admin ? "" : "	WHERE user_id = '$user_id' ";
-
-	$customized_query = "SELECT 
-		id as _mandafoto_id,
-		name as filename, 
-		status AS _foto_status, 
-		user_id , 
-		user_name as utente, 
-		user_name as _fotoutente,
-		image AS _base64image ,
-		FLOOR(LENGTH(image)/1024) AS image_size_kb,
-		description 
-	FROM mandafoto_images 
-	$where_addon
-	ORDER BY lastUpdated DESC
-	LIMIT 10
-	";
-
-	// LEFT(image, 50) AS cropped_image,
-			
-	$rs2=mysql_query($customized_query);
-	scriviRecordSetConTimeout($rs2,1000,
-	"Foto uploadate via mandafoto su DB",
-	"Queste foto esistono sia su FS (ephemeral) che DB (piuttosto stabile - si spera)");
-
-	# cambiatio il 26ago05
-	echo h2("Sempre per te admin guarda anche le foto uploadate nel FS locale..");
-	visualizzaThumbPaz("*",false,"$PAZ_UPLOAD/thumb/",TRUE,40,7);
-} // end admin
-
 
 mandafotoUploadForm() ;
 

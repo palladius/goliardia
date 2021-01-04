@@ -2354,9 +2354,9 @@ while (($row)  && $j != $righemax ) {
 		scrivi(" <img src='$campo' height='80' style='display: block;margin-left: auto;margin-right: auto' />");
 	} else if (contiene($fieldname_i, "_foto_status")) { // mandafoto2021
 		switch ($campo) {
-			case "00-NEW": echo "Icona waiting.." ; break;
-			case '01-ACCEPTED': echo "Icona V verde.." ; break;
-			case '02-DENIED': echo "Icona X rossa, e aggiungi CHeck on Description for more" ; break;
+			case "00-NEW":      img("waiting.png", 40) ; break;
+			case '01-ACCEPTED': img("semaforoverde.gif", 40) ; break;
+			case '02-DENIED': img("semafororosso.gif", 40) ; echo "Icona X rossa, e aggiungi CHeck on Description for more" ; break;
 			case '03-ARCHIVED': echo "All good. Picture has been succesffuly uploaded. This shouldnt bother you anymore (and probably we should filter this out"; break;
 		}
 	}
