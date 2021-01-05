@@ -25,6 +25,35 @@ URL: http://pma-goliardia.palladi.us/index.php?db=goliardiaprod&table=mandafoto_
 
 log2("TOGLI STA MERDA sto testando log2") ;
 
+echo flash_notice("error", "Allora caro Ric hai solo due possibilita
+
+1. chiedi a utente un NOME bello 
+
+2. chiedi a utente di selezionare un ID da una form di loginz.
+facile da implementare ma piu error prone. pensa a gente che sclitorida per sbaglio.
+SENZA ECHO non dovresti vedermi..
+
+sarebbe bello fare un upload con INSERT dipendendte da WHERE blah ma sembra fantascientifico
+
+https://stackoverflow.com/questions/24895272/mysql-insert-row-for-each-id-of-other-table
+
+forse se puo fare hguarda
+"); 
+
+/*
+
+https://www.sqlshack.com/learn-mysql-add-data-in-tables-using-the-insert-statement/
+
+INSERT INTO destination_table_name(column_1, column_2)
+SELECT 
+   column_1,column_2
+FROM 
+   source_table
+WHERE
+   condition;
+
+*/
+	
 
 // ispirato da https://www.php.net/manual/en/language.oop5.basic.php
 class MandaFoto
@@ -130,7 +159,6 @@ function visualizza_foto_uploadate($is_admin) {
 	"Foto uploadate via mandafoto su DB",
 	"Queste foto esistono sia su FS (ephemeral) che DB (piuttosto stabile - si spera)");
 
-	flash_notice("error", "SENZA ECHO non dovresti vedermi.."); 
 	echo flash_notice("notice", "Clicca sul <A href='mandafoto.php' >vecchio mandafoto</a>!");
 	#$PAZ_UPLOAD = get_paz_upload();
 	#visualizzaThumbPaz("*",false,"$PAZ_UPLOAD/thumb/",TRUE,40,7);
@@ -298,8 +326,9 @@ function   manage_upload_foto2021() {
 		   echo flash_notice("success", "Successo! TODO(ricc): redirect cosi vedi effetto nella tabella. Se no clicca su <a href='mandafoto2021.php' >mandafoto2021.php</a>.");
 		   db_importantlog_slow("mandafoto", "Uploadato foto '$name' (md5: $image_md5, size: TODO)"); # logga
 	   } else {
-		  debugga("Mi sa che abbiamo cannato..! Non e andata. result2 vale '$rs2'. ". mysql_error());
-	   } 
+		#debugga("Mi sa che abbiamo cannato..! Non e andata. result2 vale '$rs2'. ". mysql_error());
+		echo flash_notice("error", "Mi sa che abbiamo cannato..! Non e andata. result2 vale '$rs2'. ". mysql_error());
+	} 
 	   scrivib("[result2 vale '$rs2' ]");
   
 	   // Upload file
