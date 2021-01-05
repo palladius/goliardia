@@ -45,7 +45,7 @@ function scriviReport_Ordine($recSet)
 echo("<h6>");
 echo(getOrdineGraficoById($recSet["id_ord"],30));
 echo("<a href='modifica_ordine.php?idord=".$recSet["id_ord"]."'>".$recSet["nome_veloce"]."</a> ("
-	.$recSet["città"].")</h6>");
+	.$recSet["cittï¿½"].")</h6>");
 }
 
 
@@ -81,7 +81,7 @@ if (FALSE)
 	FANCYBEGIN("Il motorone di ricerca di $QGFDP");
 ?>	<big>In questa pagina troverete dei <i>match</i> tra la parola da voi digitata (<?php  echo $parole?>) 
 	e varie informazioni del database (inserite soprattuto da VOI). Attenzione che ci sono
-	novità. Scrollando la pagina, troverete informazioni su <b>goliardi</b>, <b>utenti</b>, 
+	novitï¿½. Scrollando la pagina, troverete informazioni su <b>goliardi</b>, <b>utenti</b>, 
 	<b>messaggi</b>, <b>FAQ</b>, <b>ordini</b>.</big>
 <?php  	  FANCYMIDDLE() ;	
 	  linkamenu("goliardi");
@@ -198,7 +198,7 @@ if ($EOF) {
 		scriviReport_Messaggio($riga,$linkami,0,$i%2); // condizione di stampaggio lungo
 		trtdEnd();
 	} 
-	if (! recSet.EOF) // ce n'erano ancora
+	if (! EOF($recSet)) // ce n'erano ancora
 		scrivi("<tr><td><i>Attenzione! ce ne sono ancora, ma ho visualizzati solo i primi ".$MAXNUMERORECORDZ."</i>!</td></td>");
 	epilogo(); // questa qua
 } 
@@ -223,8 +223,9 @@ if (EOF($recSet)) {
 		trtdEnd();
 		#recSet.MoveNext();
 	}
-	
-	if (! recSet.EOF) // ce n'erano ancora
+	#Use of undefined constant recSet - assumed 'recSet' in 
+	#[Tue Jan 05 16:51:13.226120 2021] [:error] [pid 139] [client 172.17.0.1:43250] PHP Notice:  Use of undefined constant recSet - assumed 'recSet' in /var/www/www.goliardia.it/cerca.php on line 227, referer: http://localhost:8090/www.goliardia.it/mandafoto2021.php
+	if (! EOF($recSet)) // ce n'erano ancora
 		scrivi("<i>Attenzione! ce ne sono ancora, ma ho visualizzati solo i primi ".$MAXNUMERORECORDZ."</i>!<br>"); 
 	epilogo();
 }
@@ -252,7 +253,7 @@ $recSet=mysql_query($qwertmp);
 	 scrivi(big(big("<h3>".creaAncora("ordini")." contenenti '<b>".$parole."</b>':</h3>")));
 
 scrivi("TBDS");
-scrivi("<i>Se conosci la città dell'ordine, ti consiglio di cliccare su 'città' e troverai tutti gli ordini esistenti... la funzionalità di ricerca verrà implementata quando qualcuno si degnerà di dare una mano ;)</i>");
+scrivi("<i>Se conosci la cittï¿½ dell'ordine, ti consiglio di cliccare su 'cittï¿½' e troverai tutti gli ordini esistenti... la funzionalitï¿½ di ricerca verrï¿½ implementata quando qualcuno si degnerï¿½ di dare una mano ;)</i>");
 
 /*
 if (recSet.EOF)
@@ -264,7 +265,7 @@ if (recSet.EOF)
 	for (i=0;i<$MAXNUMERORECORDZ && (!recSet.EOF  );i++)
 	{
 		 scriviReport_Ordine(recSet);
-	// id_ord,nome_veloce,città from ordini
+	// id_ord,nome_veloce,cittï¿½ from ordini
 
 		recSet.MoveNext();
 	}

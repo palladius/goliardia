@@ -40,8 +40,9 @@ fi
 _activate_ssmtp
 _fix_permissions
 
-echo "[$0] BEGIN"
+echo "[$0] BEGIN. Turning on SSMTP.."
 _activate_ssmtp
+echo "[$0] Consider turning ENV[DEBUG_ON]! Currently: DEBUG_ON=$DEBUG_ON"
 
 echo "[$0] Bando alle Cionce, lets now finally run: $COMMAND_TO_RUN "
 DEBUG=cerrrrtamente $COMMAND_TO_RUN 

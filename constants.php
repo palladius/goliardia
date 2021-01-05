@@ -12,4 +12,9 @@
 	#$DEBUG = 1 ;
 	#$DEBUG_ON = 1 ;
 	$PAZ_UPLOAD="uploads";
+
+	// NON VA! FIXIT! Non va perche constant non ha ancora session start.
+	// La session start e fatta nell header :P
+	//$current_user = $_SESSION["_SESS_nickname"]; # NON FUNZIONA! Non capisco perche ma viene vuoto..
+	//$current_user_id = $_SESSION["_SESS_id_login"];
 ?>

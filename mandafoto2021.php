@@ -17,7 +17,9 @@ include "header.php";
 <h2>Mandafoto 2021 (🙆 upload foto)</h2>
 
 
+<!--
 <h3>Spiegone</h3>
+
 #UPDATE mandafoto_images SET image_md5 = MD5(image) -- WHERE image_md5 IS NULL
 #https://stackoverflow.com/questions/8196529/mysql-update-a-full-table-inserting-a-md5-hash-for-each-row-a-specific-one
 TODO ricc aggiungi md5 programmatico cosi poi mettiamo un bel filtro a livello di DB
@@ -29,7 +31,7 @@ ma diretamente nel DB cosi da ovunque tu uploadi, funge e synca.
 POi mi porro' il problema di SCARRICARe e uploadare ma li non e' un <problema class="">cominciamo dalla tabella
 
 Secondo il tizio in https://makitweb.com/upload-and-store-an-image-in-the-database-with-php/ 
-
+-->
 <? if(String(QueryString("image_id"))) { ?>
 	<h2>Habemus imaginem! Provemus id renderlam</h2>
 	Image id: <?= String(QueryString("image_id")) ?><br/>
@@ -120,7 +122,6 @@ Stati che mi vengono in mente:
 
 #$PAZ_UPLOAD="moduli/fileupload/uploads";
 
-mandafotoUploadForm() ;
 
 ?>
 
@@ -129,17 +130,19 @@ Con questo, potrai aggiungere una foto direttasmente nel DB e poco conta dove ri
 Woohoo! Docker FTW!
 <?php
 
-#include("config.php");
-
 //////////////////////////////////////
 // UPLOAD LOGIC
 //////////////////////////////////////
 if(isset($_POST['upload2021'])){
+	// qualcuno ha buttato su una foto via POST. Dobbiamo gestirla.
   manage_upload_foto2021();
+  mandafotoUploadForm() ; // in fondo
 }
  else {
 	echo "<h2>No upload photo. Ricc qui visualizzi la pagina NORMALE</h2>";
 	visualizza_foto_uploadate(isadminvip());
+	mandafotoUploadForm() ; // di sotto
+
 }
 
 include "footer.php";

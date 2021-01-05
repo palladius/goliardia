@@ -24,6 +24,11 @@ $QGFDP="Palladius of the Iron Islands";
 $VISUALIZZA_ORDINIPACCO=0;	# cosi li nascondo a TUTTI
 $tInizioPagina=getmicrotime();
 
+
+// NON VA! FIXIT! Non va perche constant non ha ancora session start.
+$current_user = $_SESSION["_SESS_nickname"]; # NON FUNZIONA! Non capisco perche ma viene vuoto..
+$current_user_id = $_SESSION["_SESS_id_login"];
+
 #	$DEBUG_ON = 0;
 
 $DEBUG = $DEBUG_ON || 

@@ -1,26 +1,32 @@
 <?php
 
-// costanti
-#$PAZ_UPLOAD="uploads";  -> messa in costanti
+// Nel DB vale cosi
+/*
+URL: http://pma-goliardia.palladi.us/index.php?db=goliardiaprod&table=mandafoto_images&target=tbl_structure.php
 
-// $MANDAFOTO_UN_SOLO_RECORD_BY_ID_SQL = "SELECT 
-// 			id as _mandafoto_id,
-// 			name as filename, 
-// 			status, 
-// 			user_id , 
-// 			user_name as utente, 
-// 			user_name as _fotoutente,
-// 			image as encoded_image, # the blob, you dont wanna visualize this! :) 
-// 			FLOOR(LENGTH(image)/1024) AS image_size_kb,
-// 			description 
-// 		FROM mandafoto_images 
-// 		WHERE id = ___ID___";
+
+#	Name	Type	Collation	Attributes	Null	Default	Comments	Extra	Action
+1	id					Primary	int(11)			No	None		AUTO_INCREMENT	
+2	name				varchar(200)	latin1_swedish_ci		No	None			
+3	image				longtext		latin1_swedish_ci		No	None			
+4	image_md5			varchar(40)		utf8_general_ci		Yes	NULL	da implementare ancora e usare per unicita		
+5	status				varchar(20)		latin1_swedish_ci		Yes	00-NEW			
+6	user_id				int(11)				Yes	NULL			
+7	user_name			varchar(255)	latin1_swedish_ci		No	None			
+8	description	text	utf8_general_ci		Yes	NULL			
+9	admin_user_id		int(11)				Yes	NULL			
+10	admin_description	text			utf8_general_ci		Yes	NULL			
+11	docker_context		varchar(500)	utf8_general_ci		Yes	NULL	Contesto di esecuzione tipo hostname e qualche va ENV che mi aiuti a capire dove sono i files	
+12	lastUpdated			timestamp			on update CURRENT_TIMESTAMP	No	CURRENT_TIMESTAMP		ON UPDATE CURRENT_TIMESTAMP	
+
+*/
 
 // ispirato da https://www.php.net/manual/en/language.oop5.basic.php
 class MandaFoto
 {
+	// scopiazzato da https://www.php.net/manual/en/language.oop5.basic.php
     // property declaration
-    public $var = 'a default value';
+    //ublic $var = 'a default value';
 	public $md5 = 'class_todo'; 
 	public $id  = -1;
 	
@@ -168,6 +174,7 @@ function mandafotoUploadForm($verbose=null) {
 
 	opentable();
 	if ($verbose) {
+		echo "</tr><tr colspan='100' >"; # si combina con le colonne di dopo.
 		echo h3("<a href='https://www.youtube.com/watch?v=nxwuBymFRjA' >Carrica</a> una tua foto (come tua foto personale)");
 		echo "<i>Attenzione, &egrave; importante che tu capisca i vincoli su questa foto, che sono: <br/>(1) non deve essere + grossa di tot KB; <br/>(2) dev'essere <u>portrait</u> ( ovvero pi&ugrave; alta che larga, come nelle fototessere), indicativamente 100x150 tanto x dare un'idea; <br/>(3) non dev'essere scema (tipo la tua foto a 3 anni, la foto di un maiale o lo stemma del tuo ordine): vista la connotazione 'rosa' del sito, &egrave; importante che chi veda la tua foto possa farsi un'idea di come sei fatto 'de fora';<br/>";
 		echo "(4) dev'essere di tipo jpg;<br/> (5) dev'essere tua omonima: <b>se ti chiami pippo si deve chiamare <u>pippo.jpg</u> con le maiuscole GIUSTE</b> x favore, cosi' mi eviti di entrare in telnet nel sito x cambiare uno stupido nome. grazie!</i><br>";
@@ -182,14 +189,52 @@ function mandafotoUploadForm($verbose=null) {
 	</style>
 
 	<form method="post" action="" enctype='multipart/form-data'>
+	<!-- 
+			Nota che se cambi le colonne da 2 a 3, devi mettere a posto il CSS di sopra e il colspan nel verbose ;)
+			Anzi no, messo a 100 (da Centocelle) cosi hai un pensiero in meno. 
+			1 2
+			3 4
+			5 6
+
+		PS Usa rowspan="0" per spannare su piu righe :)
+	-->
 	<tr>
-		<td rowspan="0"><textarea type='textarea' name='description' value='Note sulla foto' cols="30" />Note sulla foto 2</textarea>
-		<td>2 File da buttar su</td>
-		<td>3 <input type='file' name='file' /> </td>
+		<td>
+			<b>1. Note addizionali</b><br/>
+			perche' vuoi metter us questa foto? Per conto di chi?
+			C'e' altro contesto addizionale di cui dovrei essere avvisato? <br/>
+		<td><!-- tassello 2 --> 
+		<textarea type='textarea' name='description' value='Note sulla foto' cols="30" >Note sulla foto 2</textarea>
 	</tr>
 	<tr>
-	<td>5
-		<td>6 <input type='submit' value='Butta Su' name='upload2021'>
+		<td><!-- tassello 3 -->
+		<b>2. File da buttar su</b><br/>
+			Clicca per upload da file locale. Mi raccomando: JPG non troppo grande, portrait, e faccia BEN visibile!
+			No mascherina grazie :P 
+		<td><!-- tassello 4 --><input type='file' name='file' /> </td>
+	</tr>
+	<tr>
+		<td><!-- tassello 5 -->
+			<b>3. Utente per cui mandi foto</b><br/>
+			Il 99% della gente manda foto per se stessi. Ma sai mai che tu sia super zelante,
+			gentile o semplicmente un bravo leccaculo: ebbene, questo campo e per te.
+			Mi raccomando NIENTE typo nel nome utente<br/>
+			<!--
+			TODO(ricc): non fidarti dell input del popol bue - metti una bella choice con tutti user
+			-->
+		<td><!-- tassello 6 --> 
+		<input type='textfield' name='description' value='<? echo $_SESSION["_SESS_nickname"] ; ?>' cols="20" />
+	
+	</tr>
+	<tr>
+		<td><!-- tassello 7 -->
+			<b>4. Controlla 3 volte..</b><br/>
+			Quando sei sicuro che le notule siano ben a posto, e che il file sia attacchato (ovvero non vedi la frase "No file chosen")
+			direi che ci siamo. <br/>
+			Persino una <i>foetentissima matricola</i> dovrebbe riuscirci..
+
+		<td><!-- tassello 8 -->
+			<input type='submit' value='Butta Su' name='upload2021' >
 	</tr>
 
 	</form>
