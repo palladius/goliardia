@@ -1,6 +1,8 @@
 ## Changelog
 
-2021-01-05 v3.0.004 Fixed bugs in cerca.
+2021-01-05 v3.1.001 Added DBLogs table and already patched log2 to work with it. Woohoo!
+2021-01-05 v3.0.004 Fixed bugs in cerca. Fixing masndafoto and adding docker_context with DB
+2021-01-05 v3.0.004 Fixed bugs in cerca. Added notices and Md5
 2021-01-04 v3.0.001 Finally HABEMUS foto nel DB!!!
 2021-01-04 v2.2.003 Added docker entrypoint8080 and removed `HISTORY`
 2021-01-01 v2.2.001	Added dockerization files depured of password.

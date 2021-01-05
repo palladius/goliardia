@@ -26,7 +26,6 @@ utenti-attivi: <? echo count(explode('$', getApplication("UTENTI_ORA"))) , "\n" 
 utenti-verbose: <? echo getApplication("UTENTI_ORA") , "\n"?>
 hostname: <? echo gethostname() , "\n" ?>
 code-version: <? echo file_get_contents("VERSION"); ?>
-project-id: <? echo exec('curl http://169.254.169.254/0.1/meta-data/project-id'), "\n" ; ?>
 mandafoto-pending-jpg-images: <? echo exec('ls -al /var/www/www.goliardia.it/uploads/thumb/ |egrep -i jpg | wc -l '), "\n" ; ?>
 people-in-chat: <? echo exec('cd /var/www/www.goliardia.it/bin ; ./people-in-chat.sh | wc -l '), "\n" ; ?>
 request-time: <? echo $_SERVER['REQUEST_TIME'] , "\n"; ?>
@@ -36,6 +35,7 @@ goliardia-code-version: <? echo exec('cat VERSION'), "\n" ; ?>
 GOLIARDIA_DOCKER_VER: <? echo $_SERVER['GOLIARDIA_DOCKER_VER'] , "\n"; ?>
 GOLIARDIA_DOVESONO: <? echo $_SERVER['GOLIARDIA_DOVESONO'] , "\n"; ?>
 GOLIARDIA_GMAIL_USER: <? echo $_SERVER['GOLIARDIA_GMAIL_USER'] , "\n"; ?>
+GOLIARDIA_MYSQL_DB: <? echo $_SERVER['GOLIARDIA_MYSQL_DB'] , "\n"; ?>
 GOLIARDIA_SITENAME: <? echo $_SERVER['GOLIARDIA_SITENAME'] , "\n"; ?>
 GOLIARDIA_SITEPATH: <? echo $_SERVER['GOLIARDIA_SITEPATH'] , "\n"; ?>
 WEBMASTER_EMAIL: <? echo $_SERVER['WEBMASTER_EMAIL']  , "\n"; ?>

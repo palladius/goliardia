@@ -23,6 +23,9 @@ URL: http://pma-goliardia.palladi.us/index.php?db=goliardiaprod&table=mandafoto_
 
 */
 
+log2("TOGLI STA MERDA sto testando log2") ;
+
+
 // ispirato da https://www.php.net/manual/en/language.oop5.basic.php
 class MandaFoto
 {
@@ -127,8 +130,8 @@ function visualizza_foto_uploadate($is_admin) {
 	"Foto uploadate via mandafoto su DB",
 	"Queste foto esistono sia su FS (ephemeral) che DB (piuttosto stabile - si spera)");
 
-	echo h2("Admin se vuoi vedere le foto nel FS locale..");
-	echo "Clicca sul <A href='mandafoto.php' >vecchio mandafoto</a>!";
+	flash_notice("error", "SENZA ECHO non dovresti vedermi.."); 
+	echo flash_notice("notice", "Clicca sul <A href='mandafoto.php' >vecchio mandafoto</a>!");
 	#$PAZ_UPLOAD = get_paz_upload();
 	#visualizzaThumbPaz("*",false,"$PAZ_UPLOAD/thumb/",TRUE,40,7);
 } // end admin
@@ -195,11 +198,6 @@ function mandafotoUploadForm($verbose=null) {
 
 	?>
 
-	<!-- -->
-	<style>
-		.equalDivide tr td { width:33%; }
-	</style>
-
 	<form method="post" action="" enctype='multipart/form-data'>
 	<!-- 
 			Nota che se cambi le colonne da 2 a 3, devi mettere a posto il CSS di sopra e il colspan nel verbose ;)
@@ -259,6 +257,9 @@ function mandafotoUploadForm($verbose=null) {
 function   manage_upload_foto2021() {
 
 	echo "<h2>Upload in progresso.. </h2>";
+
+	log2("Qualcuno uploada un file di nome ".  $_FILES['file']['name'] );
+
 	$name = $_FILES['file']['name'];
 	#$target_dir = "upload/";
 	$target_dir = "uploads/thumb/" ;
@@ -293,8 +294,8 @@ function   manage_upload_foto2021() {
 	   #db_importantlog_slow("mysql", "Query: $query"); // IMAGE e troppo grossa per log..
 	   $rs2=mysql_query($query); #  or die(mysql_error());
 	   if ($rs2) {
-		   echo "Successo! TODO(ricc): redirect cosi vedi effeto nella tabella. Se no reload. toglimi quando flash funge";
-		   flash_notice_success("Successo! TODO(ricc): redirect cosi vedi effeto nella tabella. Se no reload.");
+		   #echo "Successo! TODO(ricc): redirect cosi vedi effeto nella tabella. Se no reload. toglimi quando flash funge";
+		   echo flash_notice("success", "Successo! TODO(ricc): redirect cosi vedi effetto nella tabella. Se no clicca su <a href='mandafoto2021.php' >mandafoto2021.php</a>.");
 		   db_importantlog_slow("mandafoto", "Uploadato foto '$name' (md5: $image_md5, size: TODO)"); # logga
 	   } else {
 		  debugga("Mi sa che abbiamo cannato..! Non e andata. result2 vale '$rs2'. ". mysql_error());

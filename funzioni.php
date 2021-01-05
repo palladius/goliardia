@@ -1559,28 +1559,25 @@ if  ($rs = mysql_fetch_array($result))
 
 
 
-function escape($x)
-{return urlencode($x);}
+function escape($x) {return urlencode($x);}
 
-function visualizzaArray($arr)
-{
-if (is_array($arr))
-{
-while(list($k,$v)=each($arr))
-	{echo "<b>$k</b>: $v<br/>";}
-}
-else	{echo "<b>$arr</b>: non � un array.<br/>";}
+function visualizzaArray($arr) {
+	if (is_array($arr)) {
+		while(list($k,$v)=each($arr))
+			{echo "<b>$k</b>: $v<br/>";}
+	} 	else {
+		echo "<b>$arr</b>: non � un array.<br/>";
+	}
 }
 
-function visualizzaArrayMini($arr)
-{
-obsoleta("chiama la visualizzaArray e basta, � + veloce da digitare!!!");
-if (is_array($arr))
-{
-while(list($k,$v)=each($arr))
-	{echo "<b>$k</b>: $v<br/>";}
-}
-else	{echo "<b>$arr</b>: non � un array.<br/>";}
+function visualizzaArrayMini($arr)	{
+	obsoleta("chiama la visualizzaArray e basta, � + veloce da digitare!!!");
+	if (is_array($arr))	{
+		while(list($k,$v)=each($arr))
+			{echo "<b>$k</b>: $v<br/>";}
+	} 	else	{
+		echo "<b>$arr</b>: non � un array.<br/>";
+	}
 }
 
 
@@ -1710,21 +1707,37 @@ return $_GET[$str];
 
 
 function log2($str,$fname="log_ingressi.php") {
-	global $GETUTENTE,$REMOTE_ADDR,$CONFSITO;
+	global $GETUTENTE,$REMOTE_ADDR,$CONFSITO, $CURRENT_USER_ID;
 	$paz 		= "var/log/";
 	$pazcompleto 	= $paz.$fname;
 
 	$now=dammiDataByJavaDate(time());
 
 	$fp =fopen($pazcompleto,"a"); 
-	if (empty($fp))
-		{echo "errore di logging... :("; 
-		 return;
-		}
+	if (empty($fp)) {
+		echo "errore di logging... :("; 
+		return;
+	}
 	# senza data
 	$frase_da_loggare = "[$GETUTENTE@".$_SERVER["REMOTE_ADDR"]."] $str";
 	fputs($fp,"$now\t".str_pad($_SERVER["REMOTE_ADDR"],17," ").str_pad($GETUTENTE,30," ")."[$CONFSITO] $str\n"); 
 	error_log("[log2] $frase_da_loggare" );
+	$frase_da_loggare_mysql_safe = mysql_real_escape_string($frase_da_loggare);
+
+	try {
+		$SQL = "INSERT INTO `dblogs` 
+		(`id`, `severity`, `facility`, `log`, `user_id`, `user_name`, `docker_context`) 
+		VALUES 
+		(NULL, 'warning', 'log2', '$frase_da_loggare_mysql_safe TODO remove quotes', '$CURRENT_USER_ID', '$GETUTENTE', NULL);
+		";
+		mysql_query($SQL);
+		#fputs($fp,"TODO ricc add via SQL\n");
+	} catch (Exception $e) {
+		echo '[log2] Caught exception: ',  $e->getMessage(), "\n";
+
+	}
+
+
 	fclose ($fp); 
 }
 
@@ -1956,12 +1969,13 @@ function visualizzaDebug() {
  echo (h1("visualizzaDebug()"));
 
  echo "<table><tr><td valign='top'>";
-	 visualizzaArrayTitolo($_POST,"POSTZ"); 
-	 visualizzaArrayTitolo($_GET,"GETZ"); 
-	 visualizzaArrayTitolo($_ENV,"_ENV"); 
-	 visualizzaArrayTitolo($_SESSION,"SESS"); 
+	visualizzaArrayTitolo($_POST,"POSTZ"); 
+	visualizzaArrayTitolo($_GET,"GETZ"); 
+	visualizzaArrayTitolo($_ENV,"_ENV"); 
+	visualizzaArrayTitolo($_SESSION,"SESS"); 
  echo "</td><td valign='top'>";
-	 visualizzaArrayTitolo($_SERVER,"SERVER"); 
+	visualizzaArrayTitolo($_FILES,"_FILES"); 
+ 	visualizzaArrayTitolo($_SERVER,"SERVER"); 
  echo "</td></tR></table>";
  deltat("visualizzaDebugEnd");
 
@@ -6308,22 +6322,10 @@ function get_paz_upload() {
 
 function flash_notice($action, $msg) {
 	// https://stackoverflow.com/questions/31854717/rails-bootstrap-flash-notice-success-is-now-red-and-not-green
-	?>
-	<div class="alert alert-<?= $action ?> alert-dismissible" role="alert">
-    	[<?= $action ?>] <?= $msg ?>
-    </div>
-	<?
-	
+	return "<div class='alert alert-$action alert-dismissible' role='alert'>
+		[$action] $msg
+	</div>";
 }
 
-function flash_notice_success($green_msg) {
-	// https://stackoverflow.com/questions/31854717/rails-bootstrap-flash-notice-success-is-now-red-and-not-green
-	?>
-	<div class="alert alert-success alert-dismissible" role="alert">
-    	[flash_notice_success deprecated use flash_notice(:success, ..) instead] <?= $green_msg ?>
-    </div>
-	<?
-	
-}
 
 ?>

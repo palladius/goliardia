@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#todo acicate ssmtp and stuff
-
 # even better: COMANDO_DEFAULT="/usr/local/bin/docker-php-entrypoint apache2-foreground" 
 DFLT_COMMAND="/usr/local/bin/docker-php-entrypoint apache2-foreground"
 COMMAND_TO_RUN=${@:-$DFLT_COMMAND}

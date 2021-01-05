@@ -120,7 +120,7 @@ if (! empty($_POST["nickname"])) // era if != "" && isset()
 
 		echo 	"<h1>Il login ha funzionato! altero il nick di sessione, che ora vale: <u>"
 			.Session("nickname") 
-			."</u>. Pi� in sotto trovi un link che ti manda in manuale alla HOME</h1>";
+			."</u>. Piu in sotto trovi un link che ti manda in manuale alla HOME</h1>";
 	 $dd=time();
 	 $_SESSION["_SESS_collegato_alle"]	= $dd;
 	 $_SESSION["_SESS_ADMIN"]		= $isAdmin;

@@ -16,11 +16,26 @@ include "header.php";
 
 <h1>Mandafoto 2021 (🙆 upload foto)</h1>
 
+<h2>Foto putativa</h2>
+
+Ideona: <pre>SE sei un utente guest 
+	E non hai una foto in immagini/persone/ (nota questo non so come verificarlo) 
+	E hai almeno una foto validata
+
+	allora... 
+
+	posso visualizzarla direttamente dal DB anche se non e stata ancora validata! :)
+
+	Come dire: sbrigati zio pal che la gente qui freme! Posso anche associare tale foto come foto_id in loginz
+	Cosi utente si sceglie la SUA foto.
+</pre>
+
+<!--
 <?= flash_notice("success", "Testing success") ?>
 <?= flash_notice("error", "Testing error") ?>
 <?= flash_notice("alert", "Testing alert") ?>
 <?= flash_notice("notice", "Testing notice") ?>
-
+-->
 
 <!--
 <h3>Spiegone</h3>
@@ -144,7 +159,8 @@ if(isset($_POST['upload2021'])){
   mandafotoUploadForm() ; // in fondo
 }
  else {
-	echo "<h2>No upload photo. Ricc qui visualizzi la pagina NORMALE</h2>";
+	echo flash_notice("notice", "No upload photo. Ricc qui visualizzi la pagina NORMALE");
+
 	visualizza_foto_uploadate(isadminvip());
 	mandafotoUploadForm() ; // di sotto
 
