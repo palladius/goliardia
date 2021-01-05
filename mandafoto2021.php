@@ -35,6 +35,7 @@ Ideona: <pre>SE sei un utente guest
 <?= flash_notice("error", "Testing error") ?>
 <?= flash_notice("alert", "Testing alert") ?>
 <?= flash_notice("notice", "Testing notice") ?>
+<? log2("Nel bel mezzo cosi sessione funge") ?>
 -->
 
 <!--

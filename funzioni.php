@@ -1707,19 +1707,30 @@ return $_GET[$str];
 
 
 function log2($str,$fname="log_ingressi.php") {
-	global $GETUTENTE,$REMOTE_ADDR,$CONFSITO, $CURRENT_USER_ID;
+	global $GETUTENTE, $REMOTE_ADDR, $CONFSITO, $CURRENT_USER_ID, $CURRENT_USER;
 	$paz 		= "var/log/";
 	$pazcompleto 	= $paz.$fname;
+
+
+	#if(isset($_SESSION['_SESS_nickname'])) {
+#		$current_user = Session["_SESS_nickname"];
+
+	$current_user = $_SESSION["_SESS_nickname"] ;
+	$current_user_id = $_SESSION["_SESS_id_login"];
+	if(! isset($_SESSION['_SESS_nickname'])) 
+		$current_user = 'nusacciu';
+	if(! isset($_SESSION['_SESS_id_login'])) 
+		$current_user = -1 ;
 
 	$now=dammiDataByJavaDate(time());
 
 	$fp =fopen($pazcompleto,"a"); 
 	if (empty($fp)) {
-		echo "errore di logging... :("; 
+		echo "[log2] errore di logging... non trovo $pazcompleto :("; 
 		return;
 	}
 	# senza data
-	$frase_da_loggare = "[$GETUTENTE@".$_SERVER["REMOTE_ADDR"]."] $str";
+	$frase_da_loggare = "[$GETUTENTE @".$_SERVER["REMOTE_ADDR"]."] $str";
 	fputs($fp,"$now\t".str_pad($_SERVER["REMOTE_ADDR"],17," ").str_pad($GETUTENTE,30," ")."[$CONFSITO] $str\n"); 
 	error_log("[log2] $frase_da_loggare" );
 	$frase_da_loggare_mysql_safe = mysql_real_escape_string($frase_da_loggare);
@@ -1728,16 +1739,19 @@ function log2($str,$fname="log_ingressi.php") {
 		$SQL = "INSERT INTO `dblogs` 
 		(`id`, `severity`, `facility`, `log`, `user_id`, `user_name`, `docker_context`) 
 		VALUES 
-		(NULL, 'warning', 'log2', '$frase_da_loggare_mysql_safe TODO remove quotes', '$CURRENT_USER_ID', '$GETUTENTE', NULL);
+		(NULL, 'warning', 'log2', '$frase_da_loggare_mysql_safe', $current_user_id, '$current_user', 'TODO docker $CONFSITO');
 		";
-		mysql_query($SQL);
-		#fputs($fp,"TODO ricc add via SQL\n");
+		$rs = mysql_query($SQL);
+		if (! $rs) {
+			#fputs($fp,"TODO1 ricc add via SQL error: " . mysql_error() );
+			die('Invalid query TODO toglimi quando va: ' . mysql_error());
+		} else {
+			fputs($fp,"TODO2 ricc add via SQL error: " . mysql_error() );
+
+		}
 	} catch (Exception $e) {
-		echo '[log2] Caught exception: ',  $e->getMessage(), "\n";
-
+		echo '[log2] Caught exception nel mio delirio di loggare su DB: ',  $e->getMessage(), "\n";
 	}
-
-
 	fclose ($fp); 
 }
 

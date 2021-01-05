@@ -23,8 +23,6 @@ URL: http://pma-goliardia.palladi.us/index.php?db=goliardiaprod&table=mandafoto_
 
 */
 
-log2("TOGLI STA MERDA sto testando log2") ;
-
 echo flash_notice("error", "Allora caro Ric hai solo due possibilita
 
 1. chiedi a utente un NOME bello 
