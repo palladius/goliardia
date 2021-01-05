@@ -395,37 +395,33 @@ function HTMLEncode($s)
 function scriviln($str)
 	{echo "$str\n";}	
 
-function visualizzaThumbPaz($nomepersona,$TRASFERISCI_FILE_OPT=FALSE,$dir="immagini/persone/",$visualizzatutto=false,$MAXFILE=30,$numcolonne=3)
-{
-global $GETUTENTE,$ISPAL;
-#$MAXFILE = 20; // prossimamente lo passer� alla funzione
-#$dir = "immagini/persone/";
-$handle = opendir($dir);
-$i=0;
-#$numcolonne=5;
+function visualizzaThumbPaz($nomepersona,$TRASFERISCI_FILE_OPT=FALSE,$dir="immagini/persone/",$visualizzatutto=false,$MAXFILE=30,$numcolonne=3) {
+	global $GETUTENTE,$ISPAL;
+	#$dir = "immagini/persone/";
+	$handle = opendir($dir);
+	$i=0;
+	#$numcolonne=5;
 
-echo "<table width=500><tr>";
-while ($file = readdir ($handle)) 
-if ($i <$MAXFILE )
-{ $dim=42;//filesize($file) ;
-   if (eregi("^\.{1,2}$",$file))  // salta . e ..
-	{          continue;
-      }
-  #if ($ISPAL) echo rosso("nome file: $file.<br>");
-  if (iniziaPer(strtolower($file),$nomepersona) || $visualizzatutto)
-	{ // foto interessante
-	$i++;
-	thumbino($dir.$file);
- 	if ($TRASFERISCI_FILE_OPT)
-		if (isdevelop())
-			echo rosso("trasferisci file (mette sto file al posto della tua foto e la foto nel "
-				."nuovo posto: 2 operazioni in una funzione).");
-	 if ($i % $numcolonne == 0) echo "</tr><tr>";
- 	}
-}
-echo "</tr>";
-tableEnd();
-  closedir($handle);
+	echo "<table width=500><tr>";
+	while ($file = readdir ($handle)) 
+		if ($i <$MAXFILE ) 	{
+			$dim=42;//filesize($file) ;
+			if (eregi("^\.{1,2}$",$file)) {  // salta . e ..
+				continue;
+			}
+		if (iniziaPer(strtolower($file),$nomepersona) || $visualizzatutto) { // foto interessante
+			$i++;
+			thumbino($dir.$file);
+			if ($TRASFERISCI_FILE_OPT)
+				if (isdevelop())
+					echo rosso("trasferisci file (mette sto file al posto della tua foto e la foto nel "
+						."nuovo posto: 2 operazioni in una funzione).");
+			if ($i % $numcolonne == 0) echo "</tr><tr>";
+		}
+	}
+	echo "</tr>";
+	tableEnd();
+	closedir($handle);
 }
 
 
@@ -1950,7 +1946,8 @@ return $_SESSION["_SESS_$str"];
 
 
 function visualizzaDebug() {
- if (! isadminvip())
+	deltat("visualizzaDebugStart");
+	if (! isadminvip())
 	{
 	 echo rosso("mi spiace, non ti faccio visualizzare il visualizzaDebug()!!!");
 	 return;
@@ -1966,6 +1963,7 @@ function visualizzaDebug() {
  echo "</td><td valign='top'>";
 	 visualizzaArrayTitolo($_SERVER,"SERVER"); 
  echo "</td></tR></table>";
+ deltat("visualizzaDebugEnd");
 
 }
 
@@ -2553,6 +2551,8 @@ function millesimi($n) { return parseInt($n * 1000000)  ; }
 
 function deltat($titoloEventuale="") {
  global $tInizioPagina,$tIntermedio;
+ global $DISABLE_DELTAT_LOGGING; //  = true;
+ if ($DISABLE_DELTAT_LOGGING) return; // :)
  $ora=getmicrotime();
  debugga("(dt:$titoloEventuale:".millesimi($ora-$tInizioPagina).")<br>\n");
 
@@ -6273,5 +6273,57 @@ function development() {
 	$ENVIRONMENT == "development" ;
 }
 
+function db_importantlog_slow($appname, $log_string) {
+	// vogloi mettere nero su bianco che questa operazione e LENTA e costosa quindi non 
+	// voglio farne troppe. :)
+	// 1. Login con IP per cattive azioni e timestamp cross-correlation.
+	// 2. AdminVip operazioni di cambio DB cosi so chi fa cosa quando.. 
+	$who = $_SESSION["_SESS_nickname"];
+	$where = 'todo where';
+	error_log("db_importantlog_slow $who@$where [$appname] \033[1;33m $log_string \033[0m (TODO(ricc): upload su DB da bon"); 
+
+}
+
+//function get_session_var_or_null();  TODO hai gia capito come fare DRY :P
+function current_user() {
+	if(isset($_SESSION['_SESS_nickname'])) {
+		return $_SESSION['_SESS_nickname'];
+	} else {
+		return NULL;
+	}
+}
+function current_user_id() {
+	if(isset($_SESSION['_SESS_id_login'])) {
+		return $_SESSION['_SESS_id_login'];
+	} else {
+		return NULL;
+	}
+}
+
+// DRY siccome non spanna su sottomoduli :/
+function get_paz_upload() {
+	$PAZ_UPLOAD="uploads"; // va post slashato, sussunto in classes/manda_foto	$PAZ_UPLOAD
+	return $PAZ_UPLOAD;
+}
+
+function flash_notice($action, $msg) {
+	// https://stackoverflow.com/questions/31854717/rails-bootstrap-flash-notice-success-is-now-red-and-not-green
+	?>
+	<div class="alert alert-<?= $action ?> alert-dismissible" role="alert">
+    	[<?= $action ?>] <?= $msg ?>
+    </div>
+	<?
+	
+}
+
+function flash_notice_success($green_msg) {
+	// https://stackoverflow.com/questions/31854717/rails-bootstrap-flash-notice-success-is-now-red-and-not-green
+	?>
+	<div class="alert alert-success alert-dismissible" role="alert">
+    	[flash_notice_success deprecated use flash_notice(:success, ..) instead] <?= $green_msg ?>
+    </div>
+	<?
+	
+}
 
 ?>

@@ -14,7 +14,12 @@ include "header.php";
 ?>
 
 
-<h2>Mandafoto 2021 (🙆 upload foto)</h2>
+<h1>Mandafoto 2021 (🙆 upload foto)</h1>
+
+<?= flash_notice("success", "Testing success") ?>
+<?= flash_notice("error", "Testing error") ?>
+<?= flash_notice("alert", "Testing alert") ?>
+<?= flash_notice("notice", "Testing notice") ?>
 
 
 <!--

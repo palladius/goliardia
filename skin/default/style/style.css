@@ -251,3 +251,27 @@ AAA.titolo { background-color: #fcc; width: 100%; }
 .femmina {  background-color: #fcc;  filter: alpha(opacity=50); }
 
 .scatolabella { filter: alpha(opacity=80); }
+
+
+/* Rails stuff 
+  https://stackoverflow.com/questions/14349131/rails-3-flash-notice-styling
+*/
+
+.alert {
+	font-weight: bold;
+	-moz-border-radius: 4px 4px 4px 4px;
+	-webkit-border-radius: 4px 4px 4px 4px;
+	border-radius: 4px 4px 4px 4px;
+	margin-bottom: 18px;
+	padding: 12px 25px 12px 24px;
+	-moz-box-shadow: 3px 3px 1px 1px #CCCCCC;
+	-webkit-box-shadow: 3px 3px 1px 1px #CCCCCC;
+	box-shadow: 3px 3px 1px 1px #CCCCCC;
+ }
+ .alert-success {
+	background-color: #66E167;
+	border-color: #D6E9C6;
+	width: 280px;
+	color: black;
+	padding-top: 20px;
+ }

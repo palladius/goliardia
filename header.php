@@ -26,6 +26,7 @@ $tInizioPagina=getmicrotime();
 
 
 // NON VA! FIXIT! Non va perche constant non ha ancora session start.
+global $current_user, $current_user_id;
 $current_user = $_SESSION["_SESS_nickname"]; # NON FUNZIONA! Non capisco perche ma viene vuoto..
 $current_user_id = $_SESSION["_SESS_id_login"];
 
@@ -182,7 +183,7 @@ function h6($x) {return "<h6>$x</h6>";}
 	<meta name="verify-v1" content="flSynBLe5vYUAQyFIHH62h+BTpm4cGkI8Ne4s2MyCBU=" />
 <!-- vecchissimo e non va piu benme! Dice w3c: https://validator.w3.org/nu/?doc=http%3A%2F%2Fwww.goliardia.it%2F
     charset= must be followed by utf-8.
-		 <meta http-equiv="Content-type" content="text/html; charset=iso-8859-15" >
+	<meta http-equiv="Content-type" content="text/html; charset=iso-8859-15" >
 -->
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<meta http-equiv="expires" content="0"> 
@@ -190,6 +191,7 @@ function h6($x) {return "<h6>$x</h6>";}
 	<meta name="description" content="Il sito della goGliardia italiana... una community aperta a goliardi e non solo per incontrarsi, scrivere cagate e conoscere gente. Creato da Riccardo 'zio Pal' Carlesso">
 	<meta name="author" content="Riccardo Carlesso" />
 	<meta name="keywords" content="goliardia, forum, chat, gioco delle coppie, Montecristo, fittone, SVQFO, cene, baccanali, palladius, carlesso, riccardo, gaudeamus, feriae matricolarum, universit�, bologna, Universit�, universit� degli studi, gogliardia, zingarata ">
+	<link rel="stylesheet" href="public/css/default.css" rel="stylesheet" type="text/css">
 	<title><?php 
 $dinizio = time();
 $titolo="?!?";
@@ -202,11 +204,9 @@ if (! Session("antiprof")) {
 <?php if ($VISUALIZZASKIN) { ?>
 	<link href="skin/<?php  echo $NOMESKIN?>/style/style.css" rel="stylesheet" type="text/css">
 <?php 
-}
-else
-{
+} else {
 ?>
-	<link href="provaric.css" rel="stylesheet" type="text/css">
+	<link href="Provaric.css" rel="stylesheet" type="text/css">
 <?php 
 }
 ?>
@@ -246,7 +246,7 @@ $arrHeader=array();
 $i=0;
 
 
-deltat("preMenu");
+#deltat("preMenu"); // se lo abilito mi imputtana la sessione :P fa conto 119ms
 
 if (! $ABILITAJS) { // vecchio menu consequenziale...
 	// LOGIN O LOGOUT???
@@ -281,7 +281,7 @@ if ($ISANONIMO && ! $APERTOATUTTI ) {
 	$arrHeader[$i++]=linkaViola("index.php","home");
 	if ($ISANONIMO) $arrHeader[$i++]=linkaViola("login.php","login");
 	$arrHeader[$i++]=linkaViola("linkz.php","Linkz");
-	$arrHeader[$i++]=linkaViola("mandafoto.php","mandaFoto");
+	//$arrHeader[$i++]=linkaViola("mandafoto.php","mandaFoto");
 	$arrHeader[$i++]=linkaViola("mandafoto2021.php","mandaFoto2021");
 	$arrHeader[$i++]=linkaViola("votazioni.php","sondaggi");
 	$arrHeader[$i++]=linkaViola("statistiche.php","stats");

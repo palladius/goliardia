@@ -17,4 +17,8 @@
 	// La session start e fatta nell header :P
 	//$current_user = $_SESSION["_SESS_nickname"]; # NON FUNZIONA! Non capisco perche ma viene vuoto..
 	//$current_user_id = $_SESSION["_SESS_id_login"];
+
+	// questo va da dio!
+	global $DISABLE_DELTAT_LOGGING;
+	$DISABLE_DELTAT_LOGGING=true;
 ?>

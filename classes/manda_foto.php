@@ -1,5 +1,7 @@
 <?php
 
+global $current_user;
+
 // Nel DB vale cosi
 /*
 URL: http://pma-goliardia.palladi.us/index.php?db=goliardiaprod&table=mandafoto_images&target=tbl_structure.php
@@ -61,6 +63,15 @@ function varDumpToString($var) {
 	return $result;
 }
 
+// server per docker_context
+function server_info() {
+#	GOLIARDIA_DOVESONO	docker-locale
+#GOLIARDIA_GMAIL_USER	goliardia.it.daemon@gmail.com
+#GOLIARDIA_DOCKER_VER	2.0_alpha
+#HTTP_HOST	localhost:8090
+	return "HTTP_HOST=". $_SERVER["HTTP_HOST"];
+}
+
 function MANDAFOTO_UN_SOLO_RECORD_BY_ID_sql($id) {
 	#--  as _foto_status, 
 	
@@ -116,9 +127,10 @@ function visualizza_foto_uploadate($is_admin) {
 	"Foto uploadate via mandafoto su DB",
 	"Queste foto esistono sia su FS (ephemeral) che DB (piuttosto stabile - si spera)");
 
-	# cambiatio il 26ago05
-	echo h2("Sempre per te admin guarda anche le foto uploadate nel FS locale..");
-	visualizzaThumbPaz("*",false,"$PAZ_UPLOAD/thumb/",TRUE,40,7);
+	echo h2("Admin se vuoi vedere le foto nel FS locale..");
+	echo "Clicca sul <A href='mandafoto.php' >vecchio mandafoto</a>!";
+	#$PAZ_UPLOAD = get_paz_upload();
+	#visualizzaThumbPaz("*",false,"$PAZ_UPLOAD/thumb/",TRUE,40,7);
 } // end admin
 
 
@@ -223,7 +235,7 @@ function mandafotoUploadForm($verbose=null) {
 			TODO(ricc): non fidarti dell input del popol bue - metti una bella choice con tutti user
 			-->
 		<td><!-- tassello 6 --> 
-		<input type='textfield' name='description' value='<? echo $_SESSION["_SESS_nickname"] ; ?>' cols="20" />
+		<input type='textfield' name='description' value='<? echo current_user(); ?>' cols="20" />
 	
 	</tr>
 	<tr>
@@ -265,22 +277,27 @@ function   manage_upload_foto2021() {
 		$image_base64 = base64_encode(file_get_contents($_FILES['file']['tmp_name']) );
 		$image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
 		$description = $_POST['description']; # todo escapa quotes
-		$image_md5 = "TODO_TOGLIMI_MANHOUSE" . md5($image_base64 ); // nota che md5o l'encoded... cosi per comodita cosi e piu facile da ricomputare.
-
+		$image_md5 = # "TODO_TOGLIMI_MANHOUSE" . 
+			md5($image_base64 ); // nota che md5o l'encoded... cosi per comodita cosi e piu facile da ricomputare.
+		$docker_context = server_info();
 	   // Insert record
 		$query = "INSERT INTO `mandafoto_images` (
-					`id`, `name`, `image`, `status`,`description`, # riga1
-					`user_name`, `user_id`, `image_md5`) # riga2
+					`name`, `image`, `status`,`description`, 
+					`user_name`, `user_id`, `image_md5`, 
+				`id`) -- tengo id sempre per ultimo cosi non sbaglio le virgole :P
 				VALUES ( 
-					NULL, '".$name."', '".$image."', '00-NEW', '".$description."',
-					'".$_SESSION["_SESS_nickname"]."', '".$_SESSION["_SESS_id_login"]."', '$image_md5'
-				) "; 
+					'".$name."', '".$image."', '00-NEW', '".$description."',
+					'".$_SESSION["_SESS_nickname"]."', '".$_SESSION["_SESS_id_login"]."', '$image_md5',
+				NULL) "; # tengo id sempre per ultimo cosi non sbaglio le virgole :P
 	  // TODO aggiunti user_id
-	   $rs2=mysql_query($query);
+	   #db_importantlog_slow("mysql", "Query: $query"); // IMAGE e troppo grossa per log..
+	   $rs2=mysql_query($query); #  or die(mysql_error());
 	   if ($rs2) {
-		   echo "Successo! TODO(ricc): redirect cosi vedi effeto nella tabella. Se no reload.";
+		   echo "Successo! TODO(ricc): redirect cosi vedi effeto nella tabella. Se no reload. toglimi quando flash funge";
+		   flash_notice_success("Successo! TODO(ricc): redirect cosi vedi effeto nella tabella. Se no reload.");
+		   db_importantlog_slow("mandafoto", "Uploadato foto '$name' (md5: $image_md5, size: TODO)"); # logga
 	   } else {
-		  echo "Mi sa che abbiamo cannato..!";
+		  debugga("Mi sa che abbiamo cannato..! Non e andata. result2 vale '$rs2'. ". mysql_error());
 	   } 
 	   scrivib("[result2 vale '$rs2' ]");
   

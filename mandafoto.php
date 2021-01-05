@@ -14,7 +14,8 @@ include "header.php";
 
 */
 
-#$PAZ_UPLOAD="uploads"; // va post slashato, sussunto in classes/manda_foto
+$PAZ_UPLOAD=get_paz_upload (); # "uploads"; // va post slashato, sussunto in classes/manda_foto
+
 ?>
 
 <h2>Mandafoto Classico (🙆 nel senso che suka)</h2>
