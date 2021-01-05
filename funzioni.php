@@ -2377,7 +2377,7 @@ while (($row)  && $j != $righemax ) {
 		if (isAdminVip()) {
 		scrivi("<a href='pannello.php?opvip=AV2%29+Accetta%2Frifiuta+foto+mandafoto&image_id=$campo'>Prendi decisioni su sta foto nel Pannello #$campo</a>");
 		} else {
-			echo "Computer says no";
+			echo "non 6 admin"; // non sei admin
 		}
 	} else if (contiene($fieldname_i, "_base64image")) {
 		// https://www.w3schools.com/howto/howto_css_image_center.asp :)
@@ -6273,93 +6273,5 @@ function development() {
 	$ENVIRONMENT == "development" ;
 }
 
-// /////////////////////////////////////////
-// MandaFoto2021
-// /////////////////////////////////////////
-function visualizza_foto_uploadate($is_admin) {
-	$user_id = $_SESSION["_SESS_id_login"];
-
-	echo h1($is_admin ? 
-		"[ADMINVIP] Thumbs buttate su fin oggi su DB" :
-		"Le TUE foto buttate su"
-	);
-
-	$where_addon = $is_admin ? "" : "	WHERE user_id = '$user_id' ";
-
-	#		--name as filename, 
-
-	$customized_query = "SELECT 
-		id as _mandafoto_id,
-		id AS _mandafoto_action,
-		status AS _foto_status, 
-		user_id , 
-		user_name as utente, 
-		user_name as _fotoutente,
-		image AS _base64image ,
-		FLOOR(LENGTH(image)/1024) AS image_size_kb,
-		'todo' as md5sum,
-		description 
-	FROM mandafoto_images 
-	$where_addon
-	ORDER BY _foto_status ASC, lastUpdated DESC
-	LIMIT 10
-	";
-
-	// LEFT(image, 50) AS cropped_image,
-			
-	$rs2=mysql_query($customized_query);
-	scriviRecordSetConTimeout($rs2,1000,
-	"Foto uploadate via mandafoto su DB",
-	"Queste foto esistono sia su FS (ephemeral) che DB (piuttosto stabile - si spera)");
-
-	# cambiatio il 26ago05
-	echo h2("Sempre per te admin guarda anche le foto uploadate nel FS locale..");
-	visualizzaThumbPaz("*",false,"$PAZ_UPLOAD/thumb/",TRUE,40,7);
-} // end admin
-
-
-function showInfoToAdminvipReMandafotoById($foto_id) {
-	echo h2("Info su foto $foto_id ");
-
-	$rs2=mysql_query(
-		"SELECT 
-			id as _mandafoto_id,
-			name as filename, 
-			status, 
-			user_id , 
-			user_name as utente, 
-			user_name as _fotoutente,
-			image as encoded_image, # the blob, you dont wanna visualize this! :) 
-			FLOOR(LENGTH(image)/1024) AS image_size_kb,
-			description 
-		FROM mandafoto_images 
-		WHERE id = $foto_id"
-	);
-
-	$row = mysql_fetch_array($rs2);
-	$filename = $row['filename'];
-	$user_name = $row['utente'];
-	$encoded_image = $row['encoded_image'];
-	$image_src = "uploads/thumb/".$filename;
-	$inline_image = '<img src="' . $encoded_image . '"  height="100" />';
-
-
-	$visualizza_hash = array(
-		"filename" => $row['filename'],
-		'user_name' => $row['utente'],
-		'linked_path_image' => "<a href='' >magic link</a>",
-		'status' => $row['status'],
-		'inline_image' => $inline_image ,
-	);
-
-	#echo "1. Path/filename: $filename <br/>\n";
-	#echo "1. Path/image_src: $image_src <br/>\n";
-
-
-	foreach($visualizza_hash as $k => $v) {
-		echo "* " . $k . ": <b>$v</b>";
-		echo "<br>";
-	}
-}
 
 ?>

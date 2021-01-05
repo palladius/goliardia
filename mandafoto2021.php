@@ -1,15 +1,16 @@
 <?php 
 
 # Qui voglio invece uploadare foto sul DB direttamente cosi
-# tremoli tu me lo sleghi 
+# tremoli tu me lo sleghi :)
 
 include "conf/setup.php";
 include "skin/$skinPreferita/theme.php";
 include "funzioni.php";
+include "classes/manda_foto.php";
 include "header.php";
 
 
-$PAZ_UPLOAD="uploads"; // va post slashato
+#$PAZ_UPLOAD="uploads"; // c e gia nella classe mandafoto :) 
 ?>
 
 
@@ -34,23 +35,8 @@ Secondo il tizio in https://makitweb.com/upload-and-store-an-image-in-the-databa
 	Image id: <?= String(QueryString("image_id")) ?><br/>
 <?
 	$id = String(QueryString("image_id"));
-	#--  as _foto_status, 
-	$rs2=mysql_query(
-		"SELECT 
-			id as _mandafoto_id,
-			name as filename, 
-			status, 
-			user_id , 
-			user_name as utente, 
-			user_name as _fotoutente,
-			image as encoded_image, # the blob, you dont wanna visualize this! :) 
-			FLOOR(LENGTH(image)/1024) AS image_size_kb,
-			description 
-		FROM mandafoto_images 
-		WHERE id = $id"
-	);
-	#scriviRecordSetConTimeout($rs2,1729,
-	#"Ecco la tua foto",
+	$rs2=mysql_query(MANDAFOTO_UN_SOLO_RECORD_BY_ID_sql($id));
+
 	#" (TODO ricc veridica che utente possa vederla tipo AdminVip o Proprietario..)");
 	$row = mysql_fetch_array($rs2);
 	$filename = $row['filename'];
@@ -58,8 +44,14 @@ Secondo il tizio in https://makitweb.com/upload-and-store-an-image-in-the-databa
 	$encoded_image = $row['encoded_image'];
 	$image_src = "uploads/thumb/".$filename;
 
+//	$mandafoto_myfirstobject = MandaFoto.construct_by_id($id) ;
+	$mandafoto_myfirstobject = new MandaFoto($id) ;
+
 	echo "1. Path/filename: $filename <br/>\n";
 	echo "1. Path/image_src: $image_src <br/>\n";
+
+	echo h1("Il mio primo oggetto:");
+	echo $mandafoto_myfirstobject->to_s();
 	
 	#print_r($row);
 ?>
@@ -139,75 +131,16 @@ Woohoo! Docker FTW!
 
 #include("config.php");
 
+//////////////////////////////////////
+// UPLOAD LOGIC
+//////////////////////////////////////
 if(isset($_POST['upload2021'])){
-  echo "<h2>Upload in progresso.. </h2>";
-  $name = $_FILES['file']['name'];
-  #$target_dir = "upload/";
-  $target_dir = "uploads/thumb/" ;
-  $file_basename = "TODO_U_SESS_nickname-" . basename($_FILES["file"]["name"]);
-  $target_file = $target_dir .  $file_basename ;
-
-  // Select file type
-  $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
-  // Valid file extensions
-  $extensions_arr = array("jpg","jpeg","png","gif");
-
-  // Check extension
-  if( in_array($imageFileType,$extensions_arr) ){
-	  // Convert to base64 
-	  $image_base64 = base64_encode(file_get_contents($_FILES['file']['tmp_name']) );
-	  $image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
-	  $description = $_POST['description']; # todo escapa quotes
- 
-     // Insert record
-     $query = "INSERT INTO `mandafoto_images`
-	 			(`id`, `name`, `image`, `status`,`description`,`user_name`, `user_id`) 
-				VALUES ( 
-				NULL, '".$name."', '".$image."', '00-NEW', '".$description."',
-				'".$_SESSION["_SESS_nickname"]."', '".$_SESSION["_SESS_id_login"]."'
-				) "; 
-	// TODO aggiunti user_id
-	 $rs2=mysql_query($query);
-	 if ($rs2) {
-		 echo "Successo! TODO(ricc): redirect cosi vedi effeto nella tabella. Se no reload.";
-	 } else {
-		echo "Mi sa che abbiamo cannato..!";
-	 } 
-	 scrivib("[result2 vale '$rs2' ]");
-
-     // Upload file
-	 $ret = move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$name) ? "tutto ok" : "cannato";
-	 scrivib("move_uploaded_file -->  $ret");
-  }
- 
+  manage_upload_foto2021();
 }
  else {
-
-	echo "<h2>No upload click to see magic! TODO retrieve code</h2>";
+	echo "<h2>No upload photo. Ricc qui visualizzi la pagina NORMALE</h2>";
+	visualizza_foto_uploadate(isadminvip());
 }
 
-visualizza_foto_uploadate(isadminvip());
-
-function mandafotoUploadForm() {
-
-
-opentable();
-echo h3("<a href='https://www.youtube.com/watch?v=nxwuBymFRjA' >Carrica</a> una tua foto (come tua foto personale)");
-echo "<i>Attenzione, &egrave; importante che tu capisca i vincoli su questa foto, che sono: <br/>(1) non deve essere + grossa di tot KB; <br/>(2) dev'essere <u>portrait</u> ( ovvero pi&ugrave; alta che larga, come nelle fototessere), indicativamente 100x150 tanto x dare un'idea; <br/>(3) non dev'essere scema (tipo la tua foto a 3 anni, la foto di un maiale o lo stemma del tuo ordine): vista la connotazione 'rosa' del sito, &egrave; importante che chi veda la tua foto possa farsi un'idea di come sei fatto 'de fora';<br/>";
-echo "(4) dev'essere di tipo jpg;<br/> (5) dev'essere tua omonima: <b>se ti chiami pippo si deve chiamare <u>pippo.jpg</u> con le maiuscole GIUSTE</b> x favore, cosi' mi eviti di entrare in telnet nel sito x cambiare uno stupido nome. grazie!</i><br>";
-echo "<br><b>Un'altra cosa: le foto messe qui sono IN UN POSTO DIVERSO per motivi di sicurezza, quindi c'e' bisogno che un amministratore ci metta mano, potete buttare su 600 foto ma non vi comparir&agrave; dove deve. Insomma, consideratelo un parcheggio che ogni tanto viene spostato da me nel posto giusto. Ok? Grazie per la vostra pazienza - se non ne avete posso consigliarvi una musica Funky - molto Cool!<b><br>";
-closetable();
-
-?>
-
-<form method="post" action="" enctype='multipart/form-data'>
-  <input type='file' name='file' />
-  <input type='text' name='description' value='Note sulla foto' />
-  <input type='submit' value='Butta Su' name='upload2021'>
-</form>
-
-<?php
-}
 include "footer.php";
 ?>

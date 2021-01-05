@@ -3,6 +3,7 @@
 include "conf/setup.php";
 include "skin/$skinPreferita/theme.php";
 include "funzioni.php";
+include "classes/manda_foto.php";
 include "header.php";
 
 # Ricc: i parametri sono in "moduli/fileupload/upload_ric_thumb.php"
@@ -13,10 +14,10 @@ include "header.php";
 
 */
 
-$PAZ_UPLOAD="uploads"; // va post slashato
+#$PAZ_UPLOAD="uploads"; // va post slashato, sussunto in classes/manda_foto
 ?>
 
-<h2>Mandafoto Classico (🙆 upload foto)</h2>
+<h2>Mandafoto Classico (🙆 nel senso che suka)</h2>
 
 Per ora, l'upload funziona, ma non c'&egrave; ancora l'informativa automatica che vi dice se 
 la foto va bene o no nel trasferitore automatico di foto da qua alla directory con tutte le persone effettive :) ) 

@@ -26,7 +26,10 @@ $tInizioPagina=getmicrotime();
 
 #	$DEBUG_ON = 0;
 
-$DEBUG=$DEBUG_ON || Session("conf_debug") || $_ENV['DEBUG_ON'];
+$DEBUG = $DEBUG_ON || 
+	Session("conf_debug") || 
+		getenv("DEBUG_ON");
+//		$_ENV['DEBUG_ON'];
 $VERBOSE=TRUE;
 $nomecognome="nomecognome";
 #$CONSTLARGEZZA600=730;

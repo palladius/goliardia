@@ -11,4 +11,5 @@
 
 	#$DEBUG = 1 ;
 	#$DEBUG_ON = 1 ;
+	$PAZ_UPLOAD="uploads";
 ?>

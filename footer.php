@@ -52,13 +52,14 @@ if ($DEBUG) {
 
 <small>
 	<b><?php  echo $DOVE_SONO?></b>, 
-   v: <b><?php  echo $VERSION?></b>
+   v: <b><?php  echo $VERSION ?></b>
 	 PHPver: <b><?php  echo $PAGEVER?></b>,
 	DB: <i><?php echo $dbdatabase ?></i> on 
 	 <b><u><?= php_uname('n'); ?></u></b>, 
 	(v.<?= getMemozByChiave("db_ver") ?>, 
 		<? echo getMemozByChiave("db_type") ?> )
-	 [ <a href='https://github.com/palladius/goliardia'>Code on gitHub</a> VER: <?= `cat ./VERSION` ?> ]
+	 [ <a href='https://github.com/palladius/goliardia'>Code on gitHub</a> 
+	 VER: <b><?= `cat ./VERSION` ?></b> ]
 <?php 
  if ($ISPAL) { ?>
 	<br/>(PALONLY:) , php v<?php  echo phpversion()?>

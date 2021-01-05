@@ -2,10 +2,11 @@
 include "conf/setup.php";
 include "skin/$skinPreferita/theme.php";
 include "funzioni.php";
+include "classes/manda_foto.php";
 include "header.php";
 
 #$DEBUG = 1;
-$GIORNI_OBSOLESCENZA_GMS = 90;
+$GIORNI_OBSOLESCENZA_GMS = 90; // solo per la query nel pannello, non e globale
 
 $menu= array (
 			#"OP1) concedi una CITTA a un UTENTE",	# obsoleta nel 2006
