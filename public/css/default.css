@@ -54,3 +54,9 @@ AAAA.rosso, .rosso { color: orange; }
     color: #9dac9d;
     text-align: left;
  }
+ .alert-warning {
+	background-color: #ebe15a;
+    border-color: #bab300;
+    color: #9dac9d;
+    text-align: left;
+ }

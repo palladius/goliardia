@@ -444,13 +444,12 @@ echo rosso("Hai trovato un <b>bug</b>. X FAVORE contatta l'amministratore con la
 log2("bug: [$spiegazione] in pag[$AUTOPAGINA]","log_bugz.php");
 }
 
-function diesql($sql,$motivo="cacchioNeSacciuIo")
-{
-global $ISPAL;
-if ($ISPAL)
-	die("SQL diesel andata a male (<i>$motivo</i>): <b>$sql</b>.");
-else 
-	die("SQL andata a male (<i>$motivo</i>), mi spiace...");
+function diesql($sql,$motivo="cacchioNeSacciuIo") {
+	global $ISPAL;
+	if ($ISPAL)
+		die("SQL diesel andata a male (<i>$motivo</i>): SOLOPAL <b><pre>$sql</pre></b>.");
+	else 
+		die("SQL andata a male (<i>$motivo</i>), mi spiace...");
 }
 
 
@@ -1705,6 +1704,14 @@ if (empty($_GET[$str])) return "";
 return $_GET[$str];
 }
 
+#'rubyish way: https://stackoverflow.com/questions/9555758/default-array-values-if-key-doesnt-exist
+function fetch(&$value, $default = null) {
+    return isset($value) ? $value : $default;
+}
+
+function now() {
+	return dammiDataByJavaDate(time());
+}
 
 function log2($str,$fname="log_ingressi.php") {
 	global $GETUTENTE, $REMOTE_ADDR, $CONFSITO, $CURRENT_USER_ID, $CURRENT_USER;
@@ -1712,17 +1719,11 @@ function log2($str,$fname="log_ingressi.php") {
 	$pazcompleto 	= $paz.$fname;
 
 
-	#if(isset($_SESSION['_SESS_nickname'])) {
-#		$current_user = Session["_SESS_nickname"];
+	$current_user = fetch($_SESSION["_SESS_nickname"], "_CREDO_ANONIMO_") ;
+	$current_user_id = fetch($_SESSION["_SESS_id_login"] , "NULL"); # Nota: stringa perche inserisco ... 'blah', NULL, 'blah' ... e' nu numero quindi NON va quotato
 
-	$current_user = $_SESSION["_SESS_nickname"] ;
-	$current_user_id = $_SESSION["_SESS_id_login"];
-	if(! isset($_SESSION['_SESS_nickname'])) 
-		$current_user = 'nusacciu';
-	if(! isset($_SESSION['_SESS_id_login'])) 
-		$current_user = -1 ;
-
-	$now=dammiDataByJavaDate(time());
+#	$now=dammiDataByJavaDate(time());
+	$now = now();
 
 	$fp =fopen($pazcompleto,"a"); 
 	if (empty($fp)) {
@@ -1745,7 +1746,7 @@ function log2($str,$fname="log_ingressi.php") {
 		$rs = mysql_query($SQL);
 		if (! $rs) {
 			#fputs($fp,"TODO1 ricc add via SQL error: " . mysql_error() );
-			die('Invalid query TODO toglimi quando va: ' . mysql_error());
+			die('Invalid query TODO toglimi quando va: ' . mysql_error() . "<br/> La query era $SQL");
 		} else {
 			fputs($fp,"TODO2 ricc add via SQL error: " . mysql_error() );
 
@@ -2246,40 +2247,38 @@ function scrivirecordset2($sql) {
 
 
 function scriviIntestazioneConTimeout($rs,$righemax=10,$tit="warning: manca titolo2",$desc="nisba2") {
-global $IMMAGINI;
-scrivi("<table class='recordset' >\n <th colspan='12'>$tit");
-$heightFotoPersone = 28;
-$EOF = ! $rs;
-if ($desc != "")
-        scrivi("<br/><span class='descrizione'>$desc</span>");
-scrivi("</th>");
-if ($EOF) {
-        scrivib("<tr><td class='notefinetabella'>La query non ha prodotto risultati (o c'era un errore)</td></tr></table>");
-        return;
-}
-$row = mysql_fetch_row($rs);
-if (! isset ($row)) {
-         scrivib("Errore in scriviRecordSetConTimeout, secondo me la query non � di select");
-         return 0;
-}
-$ncolonne=mysql_num_fields($rs);
-$encoded= array($ncolonne);
-scrivi(" <tr class='intestazione'>\n");
-                // TITOLI
- for ($i=0; $i<$ncolonne; $i++)
-        {$nome=String(mysql_field_name($rs,$i));
-         if (contiene($nome,"encoded"))
-                {$nome.=corsivoBluHtml(" (decodificato)");
-                 $encoded[$i]=TRUE;
-                }
-         else
-                 $encoded[$i]=FALSE;
-                 #if (isNull($nome)) $nome="<i>nisba</i>";
-                 scrivi("  <td><b><small>".$nome." </small></b></td>\n");
-        }
-
-                // CORPO
-scrivi(" </tr>\n");
+	global $IMMAGINI;
+	scrivi("<table class='recordset' >\n <th colspan='12'>$tit");
+	$heightFotoPersone = 28;
+	$EOF = ! $rs;
+	if ($desc != "")
+			scrivi("<br/><span class='descrizione'>$desc</span>");
+	scrivi("</th>");
+	if ($EOF) {
+		scrivib("<tr><td class='notefinetabella'>La query non ha prodotto risultati (o c'era un errore)</td></tr></table>");
+		return;
+	}
+	$row = mysql_fetch_row($rs);
+	if (! isset ($row)) {
+		scrivib("Errore in scriviRecordSetConTimeout, secondo me la query non � di select");
+		return 0;
+	}
+	$ncolonne=mysql_num_fields($rs);
+	$encoded= array($ncolonne);
+	scrivi(" <tr class='intestazione'>\n");
+		// TITOLI
+	for ($i=0; $i<$ncolonne; $i++) {
+		$nome=String(mysql_field_name($rs,$i));
+		if (contiene($nome,"encoded"))
+			{$nome.=corsivoBluHtml(" (decodificato)");
+			$encoded[$i]=TRUE;
+		} else
+			$encoded[$i]=FALSE;
+			#if (isNull($nome)) $nome="<i>nisba</i>";
+		scrivi("  <td><b><small>".$nome." </small></b></td>\n");
+	}
+	// CORPO
+	scrivi(" </tr>\n");
 }
 
 
@@ -2456,11 +2455,10 @@ else
 	echo "<h1>In debug ti fo vedere l porcherie, POI ti ridirigi da solo a <a href='$pag'>$pag</a>...</h1><br/>";
 ?>
 
-finch� qualcuno non mi insegna come CAZZO si fa un redirect in PHP a met� pagina, che non � banalmente l'uso di hedaer("location.."); 
-
-
-
-o si fa cos� bufferizzando l'output  e rimangiandosi tuttol'output prima di header(...) o altrimenti esister� pure un altro modo... AIUTATEMI!
+finche' qualcuno non mi insegna come CAZZO si fa un redirect in PHP a meta' pagina, 
+che non e' banalmente l'uso di header("location.."); 
+o si fa cosi' bufferizzando l'output  e rimangiandosi tuttol'output prima di header(...) 
+o altrimenti esistera' pure un altro modo... AIUTATEMI!
 <?php 
  // come cacchio si fa a ridirigere la gente?!? in asp � banale... fare un GOTO a un'altra pagina...
 bona(); // mi sembra d'uopo! dopo posson esserci cagate.
@@ -3146,7 +3144,7 @@ function mandaMail($to,$from,$subject,$body) {
 	if ($MAILNONVA) {
 		if (contiene($AUTOPAGINA,"nuovo_utente")) {
 			echo h2(
-			 "attenzione, devo mandarti una mail all'indirizzo $to ma il server non pu� mandare mail"
+			"attenzione, devo mandarti una mail all'indirizzo $to ma il server non pu� mandare mail"
 			." quindi facciamo una bella cosa: mandami una mail a <a href='mailto:"
 			."$WEBMASTERMAIL'>$WEBMASTERMAIL</a> e informami"
 			." di esserti iscrito. di solito rispondo in fretta (a volte pi� delle mail automatiche, giuro!). Cos� ti mando "
@@ -3156,7 +3154,7 @@ function mandaMail($to,$from,$subject,$body) {
 			);
 			die("muoio!");
 		} else
-			 die(rosso(h2("Attenzione la mail non va (o almeno cos� dice la variabile impostata!), quindi non posso spedire mail "
+			die(rosso(h2("Attenzione la mail non va (o almeno cos� dice la variabile impostata!), quindi non posso spedire mail "
 				."a '$to'. Mi scuso x l'inconveniente, ma ci stiamo lavorando."
 				." Per favore, se hai proprio bisogno manda una <a href='mailto:$WEBMASTERMAIL'>mail a"
 				."l webmaster</a>, ma <u>solo</u> se � importante."
@@ -5286,8 +5284,7 @@ if (! $ok)
 
 
 
-function autoInserisciTabella($NOMETABELLA,$AUTOMSG="",$pag_in_cui_andare="")
-{
+function autoInserisciTabella($NOMETABELLA,$AUTOMSG="",$pag_in_cui_andare="") {
 	global $ISPAL,$DEBUG;
 
 	$sqlForm="";
@@ -5300,36 +5297,30 @@ function autoInserisciTabella($NOMETABELLA,$AUTOMSG="",$pag_in_cui_andare="")
 	$skippa=FALSE;
 	scrivid("<table border=3>\n");
 
- 	while(list($chiave,$valore)=each($_POST))
-
-		{
+	while(list($chiave,$valore)=each($_POST)) {
 		scrivid("<tr>");
 		if ($cont==0)
-				$separatore = "( ";
-		 	else 
-				$separatore = ", ";
+			$separatore = "( ";
+		else 
+			$separatore = ", ";
 		scrivid("<td>$chiave</td><td>$valore</td><td>");
 		$TIPO=getTipo($chiave);
 		scrivid($TIPO."</td><td>");
 			// tipi veri e propri
 		if ($TIPO=="data")
-
-		 	if ($valore == "") //QWERTY se la data � nulla inserisci un valore nullo secondo me...
-				{
-		 		 scrivid("[NON MOVONEXT n� brekko!!!]</td></tr>");
-				 $skippa=TRUE;
-				}
-		if (! $skippa)
-			{
-			 $valore=getNuovoValoreByTipo($valore,$TIPO);
-	 		 if ($TIPO != "nascosto")
-				 {//sqlForm += separatore + "[".$chiave."]=".$valore." " 
-				  // ATTEBNZIONE ci van le quadre x parole doppie in asp, in php invece le backquotez...
-   				  $CAMPI  .= $separatore . "`$chiave`";
-				  $VALORI .= $separatore . $valore;
-				  $cont++;
-				 }
+		 	if ($valore == "") { //QWERTY se la data � nulla inserisci un valore nullo secondo me...
+				scrivid("[NON MOVONEXT n� brekko!!!]</td></tr>");
+				$skippa=TRUE;
 			}
+		if (! $skippa) 	{
+			$valore=getNuovoValoreByTipo($valore,$TIPO);
+			if ($TIPO != "nascosto") {//sqlForm += separatore + "[".$chiave."]=".$valore." " 
+				// ATTENZIONE ci van le quadre x parole doppie in asp, in php invece le backquotez...
+				$CAMPI  .= $separatore . "`$chiave`";
+				$VALORI .= $separatore . $valore;
+				$cont++;
+			}
+		}
 		$skippa=FALSE;
 		scrivid("</td></tr>");
 		}
@@ -5338,19 +5329,21 @@ function autoInserisciTabella($NOMETABELLA,$AUTOMSG="",$pag_in_cui_andare="")
 	$sqlForm .= $CAMPI . ") values $VALORI)";
 	if ($ISPAL) echo("<br><br>La form SQL �: $sqlForm.<br/>");
 
-		/////////////// adesso ho la query sql giusta!!!
+	log2("[AUTOINSERT] $sqlForm");
+		////////////// adesso ho la query sql giusta!!!
 	$erore=FALSE;
 	mysql_query($sqlForm)
 		or $erore=TRUE;
 	
-	if ($erore)
-			{$e=mysql_error();
-			if ($ISPAL)
-				scrivi(rossone("PAL ONLY) errore a mandare la queri3 ($sqlForm): '$e'."));
-			 else
-				scrivi(rossone("errore DBstico: $e."));
-			 $erore=TRUE;
-			}
+	if ($erore)	{
+		$e=mysql_error();
+		log2("[autoInserisciTabella] SQL:[$sqlForm] => MYSQL_ERROR: [$e]");
+		if ($ISPAL)
+			scrivi(rossone("PAL ONLY) errore a mandare la queri3 ($sqlForm): '$e'."));
+		else
+			scrivi(rossone("errore DBstico: $e."));
+		$erore=TRUE;
+	}
 
 	if (! $erore)
 		{if ($AUTOMSG=="")
@@ -5431,7 +5424,7 @@ tabled(); trtd();
 scrivi(getFotoUtenteDimensionata($GODNAME,100));
 
 tdtd(); //?!?!?
-scrivi(bigg("Ciuccio benei (come diceva Madonna),<br> la query di <i>$tipo</i> � andata a buon fine!!!"));
+scrivi(bigg("Ciuccio benei (come diceva Madonna),<br> la query di <i>$tipo</i> e' andata a buon fine!!!"));
 
 if ($msg != "nihil dictu")
 	scrivi(big("<br/>Ti volevo dire: <i>$msg</i>"));
@@ -5443,7 +5436,7 @@ if ((Form("hidden_tornaindietroapagina")) != "")
 else if ((Form("hidden_tornaindietroAUTOMATICOFORM")) != "")
 	scrivi(bigg("<br><a href='".Form("hidden_tornaindietroAUTOMATICOFORM")."'>Torna mo' indietro</a>"));
 
-else scrivib("<br>PS. non so come farti tornare indietro... � un problema concettuale?<br>Se si', scrivimi dove ti compare sto problema... che cerco di correggerlo.<br>");
+else scrivib("<br>PS. non so come farti tornare indietro... e' un problema concettuale?<br>Se si', scrivimi dove ti compare sto problema... che cerco di correggerlo.<br>");
 trtdEnd();
 tableEnd();
 }
@@ -5457,8 +5450,10 @@ return ($pos == $str);
 }
 
 
-function getNuovoValoreByTipo($valore,$TIPO)
-{
+/**
+ * [2021] Se ho ben capito questo altera i campi di un generico campo SQL. Quindi e quello che encoda gli apostrofi :) 
+ */
+function getNuovoValoreByTipo($valore,$TIPO) {
 	if ($TIPO=="data")
 
 
@@ -5478,8 +5473,8 @@ function getNuovoValoreByTipo($valore,$TIPO)
 		{if ($valore=="")
 			$valore="null"; // venerdi' in pohp questa la toglierei, che dici? 
 		 else
-			$valore=encodeApostrofi($valore);
-		} 			// trafsormo apostrofi semplici in doppi
+			$valore=encodeApostrofi($valore); // trafsormo apostrofi semplici in doppi
+		} 			
 
 	if ($TIPO=="numero" && $valore=="")
 		$valore=-1;
@@ -5515,30 +5510,18 @@ function getNuovoValoreByTipo($valore,$TIPO)
 			}
 		 scrivid(rosso("E ORA DATA VALE: $valore<br>"));
 		}
-
 return $valore;
-
 }
 
 
-
-
-function tdtdtop()
-{ echo "</td><td valign='top'>";}
+function tdtdtop() { echo "</td><td valign='top'>";}
 
 
 
-function encodeApostrofi($testo)
-
-
-
-{ 
-// global $ISPAL; // venerdi' aiuto! xch� cazzo i magic quotes fa i capricci?!?!? dacci un'occhiata!
-
-
-//if (isdevelop()) 	scrivi(rosso("ma non lo fa il php di raddoppiare gli apostrofi, tu lascia perdere grazie! TOLTO ENCODE!"));
-return $testo;
-// return  ereg_replace("'","''",$testo);
+function encodeApostrofi($testo) { 
+	//	return $testo;
+	return  mysql_real_escape_string($testo); // 2021
+	// return  ereg_replace("'","''",$testo);
 }
 
 
@@ -6301,6 +6284,9 @@ function get_rails_env() {
 	#return $ENVIRONMENT  ;
 	return getMemozByChiave("db_type"); // assicurati che staging sia staging
 }
+function get_rails_env2() {
+	return getenv("RAILS_ENV");
+}
 
 function db_importantlog_slow($appname, $log_string) {
 	// vogloi mettere nero su bianco che questa operazione e LENTA e costosa quindi non 
@@ -6338,7 +6324,8 @@ function get_paz_upload() {
 function flash_notice($action, $msg) {
 	// https://stackoverflow.com/questions/31854717/rails-bootstrap-flash-notice-success-is-now-red-and-not-green
 	return "<div class='alert alert-$action alert-dismissible' role='alert'>
-		[$action] $msg
+		<!-- flash_notice [$action] -->
+		$msg
 	</div>";
 }
 

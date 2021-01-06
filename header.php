@@ -240,6 +240,8 @@ if (! Session("antiprof")) {
 <center>
 <?php 
 
+if(getenv("MESSAGGIO_OCCASIONALE")) echo flash_notice("notice", "[MESSAGGIO_OCCASIONALE] " . getenv("MESSAGGIO_OCCASIONALE"));
+
 $arrHeader=array();
 $i=0;
 
@@ -612,24 +614,16 @@ if (!isValidNick($GETUTENTE))
 <? } ?>
 
 <center>
-<h1>
-Production: <?=production() ?>
-dev: <?=development() ?>
-env: <?=get_rails_env() ?>
-</h1>
 
-if (development() or production()) {
-	echo h2("Siamo in dev!");
-}
 
 <?
 //2021
-if(getenv("MESSAGGIO_OCCASIONALE"))
-	echo flash_notice("notice", "[MESSAGGIO_OCCASIONALE] " . getenv("MESSAGGIO_OCCASIONALE"));
+if(getenv("MESSAGGIO_OCCASIONALE")) echo flash_notice("notice", "[MESSAGGIO_OCCASIONALE] " . getenv("MESSAGGIO_OCCASIONALE"));
 
-if (development() or production()) {
-	echo h2("[Attenzione Siamo in dev!]");
-#	echo flash_notice("notice", "MESSAGGIO_OCCASIONALE:" . getenv("MESSAGGIO_OCCASIONALE"));
+if (development()) {
+	echo h1("getMemozByChiave ENV: ".get_rails_env());
+	echo h1("RAILS_ENV: ".get_rails_env2());
+	#echo h2("[Attenzione Siamo in dev!]");
 	echo flash_notice("success", "Attenzione Siamo in dev");
 }
 

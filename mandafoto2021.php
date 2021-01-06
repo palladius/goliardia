@@ -30,13 +30,13 @@ Ideona: <pre>SE sei un utente guest
 	Cosi utente si sceglie la SUA foto.
 </pre>
 
-<!--
 <?= flash_notice("success", "Testing success") ?>
+<?= flash_notice("success-vecchio", "Testing success-vecchio") ?>
 <?= flash_notice("error", "Testing error") ?>
 <?= flash_notice("alert", "Testing alert") ?>
+<?= flash_notice("warning", "Testing warning") ?>
 <?= flash_notice("notice", "Testing notice") ?>
 <? log2("Nel bel mezzo cosi sessione funge") ?>
--->
 
 <!--
 <h3>Spiegone</h3>
