@@ -1734,12 +1734,13 @@ function log2($str,$fname="log_ingressi.php") {
 	fputs($fp,"$now\t".str_pad($_SERVER["REMOTE_ADDR"],17," ").str_pad($GETUTENTE,30," ")."[$CONFSITO] $str\n"); 
 	error_log("[log2] $frase_da_loggare" );
 	$frase_da_loggare_mysql_safe = mysql_real_escape_string($frase_da_loggare);
+	$ip_address = $_SERVER["REMOTE_ADDR"] ;
 
 	try {
 		$SQL = "INSERT INTO `dblogs` 
-		(`id`, `severity`, `facility`, `log`, `user_id`, `user_name`, `docker_context`) 
+		(`id`, `severity`, `facility`, `log`, `user_id`, `user_name`, `docker_context`, `ip_address`) 
 		VALUES 
-		(NULL, 'warning', 'log2', '$frase_da_loggare_mysql_safe', $current_user_id, '$current_user', 'TODO docker $CONFSITO');
+		(NULL, 'warning', 'log2', '$frase_da_loggare_mysql_safe', $current_user_id, '$current_user', 'TODO docker $CONFSITO', '$ip_address');
 		";
 		$rs = mysql_query($SQL);
 		if (! $rs) {

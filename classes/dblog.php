@@ -21,6 +21,27 @@ class DBLog {
 
 } 
 
+function select_all_dblogs_sql($limit=10) {
+    return "SELECT 
+        created,
+        user_name,
+        `severity`,`facility`,`log`,`user_id`,`ip_address`,`docker_context` 
+        FROM `dblogs` 
+        ORDER BY created DESC 
+        limit $limit ;
+    "; # todo $limit
+
+}
+
+function visualizza_tabella_ultimi_logs() {
+
+    			
+	$rs2=mysql_query(select_all_dblogs_sql(50));
+	scriviRecordSetConTimeout($rs2,1000,
+	"Ultimi logs solo PAL",
+	"Ultimi DBLogs");
+
+}
 
 
 
