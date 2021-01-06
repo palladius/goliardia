@@ -1396,20 +1396,19 @@ fclose ($fp);
 
 
 
-function setApplication($key,$val)
-{ 
-global $pazApplication,$APPSERIALIZZA ;
+function setApplication($key,$val) { 
+	global $pazApplication,$APPSERIALIZZA ;
 
-setApplicationEnv($key,$val);
+	setApplicationEnv($key,$val);
 
-$fp =fopen($pazApplication."$key.txt","w")
-	 or die("No c'� il file in writtura relativo all'App -$key-!!!\n");
+	$fp =fopen($pazApplication."$key.txt","w")
+		or die("No c'� il file in writtura relativo all'App -$key-!!!\n");
 
-if ($APPSERIALIZZA)
-	 $val=serialize($val);
+	if ($APPSERIALIZZA)
+		$val=serialize($val);
 
- fputs( $fp, $val);
-fclose ($fp); 
+	fputs( $fp, $val);
+	fclose ($fp); 
 }
 
 
@@ -1907,27 +1906,22 @@ echo"</table>";
 
 }
 
-function setSession($str,$val)
-{
-$_SESSION["_SESS_$str"]=$val;
-
+function setSession($str,$val) {
+	$_SESSION["_SESS_$str"]=$val;
 }
 
 
-function issetSession($str)
-{
-return isset($_SESSION["_SESS_$str"]);
+function issetSession($str){
+	return isset($_SESSION["_SESS_$str"]);
 }
 
-function setApplicationEnv($key,$val)
-
-{
-global $ISPAL,$DEBUG;
-if ($ISPAL && $DEBUG) 	echo "setApplicationEnv($key): provalo!";
-
-//apache_setenv("GOLIARDIA_".$key,$val);
-
-//echo "setApplicationEnv DOPO";
+function setApplicationEnv($key,$val) {
+	#global $ISPAL,$DEBUG;
+	// sembra non vada un granche :)
+	log2("[setApplicationEnv] '$key' ==> '$val'");
+#	if ($ISPAL && $DEBUG) 
+#		echo "setApplicationEnv($key): provalo!";
+	//apache_setenv("GOLIARDIA_".$key,$val);
 }
 
 function appendApplicationEnv($key,$val)

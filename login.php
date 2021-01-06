@@ -32,32 +32,26 @@ $datalastcollegato="BOH";
 
 $pwdDB="?!?!??!?!?";
 
-function incrementaUtentiAttivi()
-{
-$attuale = intval(getApplication("utentiattivi"));
-$attuale ++;
-setApplication("utentiattivi",$attuale);
+function incrementaUtentiAttivi() {
+	$attuale = intval(getApplication("utentiattivi"));
+	$attuale ++;
+	setApplication("utentiattivi",$attuale);
 }
 
 
-
-
-
-if (! empty($_POST["nickname"])) // era if != "" && isset()
-{
+if (! empty($_POST["nickname"])) {
 	// cerco nel db un match tra nick e pwd
  	// USA M_BATTIVO x vedere se pu� entrare...
 	// e fai check su email case unsensitive x il NUOVO UTENTE...
 
+$autorizzato=0;
+$nick=strtolower($nickname);
 
- $autorizzato=0;
- $nick=strtolower($nickname);
-
- $sql= "select m_spwd,m_bAdmin,id_login,m_thumbnail,m_bIsMaschio,m_bGuest,m_bAttivo,m_bsingle,"
+$sql= "select m_spwd,m_bAdmin,id_login,m_thumbnail,m_bIsMaschio,m_bGuest,m_bAttivo,m_bsingle,"
 	."m_bserio,m_nPX,m_berremoscia,m_datalastcollegato,provincia,m_bIsGoliard from loginz where m_snome='$nick'";
 
- $result=mysql_query($sql);
- $riga = mysql_fetch_array($result);
+$result=mysql_query($sql);
+$riga = mysql_fetch_array($result);
 
 // debRiga($result,$riga); // non consuma la riga
 
@@ -68,12 +62,9 @@ if (! empty($_POST["nickname"])) // era if != "" && isset()
 
 	// if (! $rigaTrovata)	scrivi("errore teribbile con fetch row (dovrei dare errore nick non trovato mi sa...sorry): ".mysql_error());
 
- if (! $rigaTrovata)
-	{$errore="Nome '$nick' non trovato nel myDB!!!";	
-	}
- else
-	{
-	
+if (! $rigaTrovata) {
+	$errore="Nome '$nick' non trovato nel myDB!!!";	
+}  else	{	
 	$pwdDB = strtolower($riga["m_spwd"]); 
 	$isAdmin=$riga["m_bAdmin"];
 	$user_id=String($riga["id_login"]);
@@ -88,63 +79,63 @@ if (! empty($_POST["nickname"])) // era if != "" && isset()
 	$datalastcollegato = date($riga["m_datalastcollegato"]);
 	$isGoliard = $riga["m_bIsGoliard"];
 
-   if (strtolower($pwdDB)==strtolower($password))
-	  {$autorizzato=1;
-	   $errore="";
-	  } else {
+   	if (strtolower($pwdDB)==strtolower($password)) {
+		$autorizzato=1;
+	   	$errore="";
+	} else {
 		$errore="passuorde invalida";
-	 	log2("password invalida [$nick//$password]");
+		log2("password invalida [$nick//$password]");
 	}
 
-   if ($riga["m_bAttivo"] != 1) {
-	 scrivi("<b>Attenzione, il tuo account non � attivo (vale ".$riga["m_bAttivo"]."), prossimamente questo implicher� che tu non potrai entrare...<br>");
-	 scrivi("Questo vuol dire che NON PUOI ENTRARE. Manda una mail a zio Pal per spiegazioni.</b>");
-	 $autorizzato=0;
-	 $errore="Account disabilitato...";
+    if ($riga["m_bAttivo"] != 1) {
+		scrivi("<b>Attenzione, il tuo account non � attivo (vale ".$riga["m_bAttivo"]."), prossimamente questo implicher� che tu non potrai entrare...<br>");
+		scrivi("Questo vuol dire che NON PUOI ENTRARE. Manda una mail a zio Pal per spiegazioni.</b>");
+		$autorizzato=0;
+		$errore="Account disabilitato...";
 	}
 }
 
-  	 $STAIBARANDO = 0;
+	$STAIBARANDO = 0;
 
-  if ($autorizzato) {// metto la sessione giusta...
+if ($autorizzato) {// metto la sessione giusta...
 	echo "yes autorizzato!";
 	log2("loggato [$nick]");
-  	 if (Session("nickname") == strtolower($nickname))
+  	if (Session("nickname") == strtolower($nickname))
   	 	$STAIBARANDO = 1; // si sta riloggando
 
-	 $tipo = "sbur-user";
-	 if ($isGuest)
-	 	$tipo="ospite";
+	$tipo = "sbur-user";
+	if ($isGuest)
+		$tipo="ospite";
 
-	 $_SESSION["_SESS_nickname"] = ($nickname);
+	$_SESSION["_SESS_nickname"] = ($nickname);
 
 		echo 	"<h1>Il login ha funzionato! altero il nick di sessione, che ora vale: <u>"
 			.Session("nickname") 
 			."</u>. Piu in sotto trovi un link che ti manda in manuale alla HOME</h1>";
-	 $dd=time();
-	 $_SESSION["_SESS_collegato_alle"]	= $dd;
-	 $_SESSION["_SESS_ADMIN"]		= $isAdmin;
-	 $_SESSION["_SESS_single"] 		= $isSingle;
-	 $_SESSION["_SESS_serio"]  		= $isSerio;
-	 $_SESSION["_SESS_SEX"] 		= $Sex;
-	 //Session.Timeout=60; chiedi a venerdi' come si imposta la durata di una sessione (in mninuti)
-	 $_SESSION["_SESS_erremoscia"]	= $Rmoscia;
-	 $_SESSION["_SESS_PX"]			= $PX;
-	 $_SESSION["_SESS_provincia"] 	= $PROVINCIA;
-	 $_SESSION["_SESS_SESS_id_utente"]	= $user_id;
-	 $_SESSION["_SESS_id_login"]	= $user_id; # quello di sopra sembra un typo: boh! Ma quanto capra ero 10 anni fa?!?
-	 $_SESSION["_SESS_antiprof"]	= 0; 
-	 $_SESSION["_SESS_foto"]		= strval($thumby); // inutile
-	 $_SESSION["_SESS_nomecognome"]	= $thumby;
-	 $_SESSION["_SESS_isgoliard"]		= $isGoliard;
- 	 $_SESSION["_SESS_livello"]=$tipo;
- 	 $_SESSION["_SESS_powermode"] = 1;
+	$dd=time();
+	$_SESSION["_SESS_collegato_alle"]	= $dd;
+	$_SESSION["_SESS_ADMIN"]		= $isAdmin;
+	$_SESSION["_SESS_single"] 		= $isSingle;
+	$_SESSION["_SESS_serio"]  		= $isSerio;
+	$_SESSION["_SESS_SEX"] 		= $Sex;
+	//Session.Timeout=60; chiedi a venerdi' come si imposta la durata di una sessione (in mninuti)
+	$_SESSION["_SESS_erremoscia"]	= $Rmoscia;
+	$_SESSION["_SESS_PX"]			= $PX;
+	$_SESSION["_SESS_provincia"] 	= $PROVINCIA;
+	$_SESSION["_SESS_SESS_id_utente"]	= $user_id;
+	$_SESSION["_SESS_id_login"]	= $user_id; # quello di sopra sembra un typo: boh! Ma quanto capra ero 10 anni fa?!?
+	$_SESSION["_SESS_antiprof"]	= 0; 
+	$_SESSION["_SESS_foto"]		= strval($thumby); // inutile
+	$_SESSION["_SESS_nomecognome"]	= $thumby;
+	$_SESSION["_SESS_isgoliard"]		= $isGoliard;
+	$_SESSION["_SESS_livello"]=$tipo;
+	$_SESSION["_SESS_powermode"] = 1;
 
-	 setSession("conf_fancy", 1); 
-	 setSession("conf_immagini", 1); 
-	 setSession("conf_debug",0);
-	 setSession("conf_balbuziente",0);
-	 setSession("skin",$DFLTSKIN);
+	setSession("conf_fancy", 1); 
+	setSession("conf_immagini", 1); 
+	setSession("conf_debug",0);
+	setSession("conf_balbuziente",0);
+	setSession("skin",$DFLTSKIN);
 
 #	 sendGms($user_id,"login a userid($user_id) (prova gms automatico by ric!)");
 #	 sendGms(3,"login a 3 Benentrato TRE (prova gms automatico by ric!)");
@@ -161,7 +152,7 @@ if (! empty($_POST["nickname"])) // era if != "" && isset()
 	#echo " qua non ci arrivo... boh!";
 	$rs=mysql_query("update loginz set m_datalastcollegato='".dammiDataByJavaDate(time())
 			."' WHERE id_login=$user_id")
-				or die("cudd'not apd�it i�r m_datalastcollegato, shitt!");
+				or die("cudd'not apdeit ior m_datalastcollegato, scit!");
 
 	// devo decidere se la data � cambiata o no, se SI aumento di uno, se NO non faccio nulla
 
@@ -207,10 +198,10 @@ if ($visualizzaMsgLogin)
 <br>
 <?php opentable();?>
 
-Se � la prima volta che vieni qui, devi sapere che x entrare devi prima 
-<a href="nuovo_utente.php"><i>registrarti</i></a>. Questo � stato scelto 
+Se e' la prima volta che vieni qui, devi sapere che x entrare devi prima 
+<a href="nuovo_utente.php"><i>registrarti</i></a>. Questo e' stato scelto 
 da me e dalla maggioranza degli utenti per proteggere informazioni pi� o 
-meno riservate e poich� crediamo che il nostro mondo sia qualcosa di 'iniziatico' 
+meno riservate e poiche' crediamo che il nostro mondo sia qualcosa di 'iniziatico' 
 e ci spiacerebbe vedere ogni pagina indicizzata in ogni motore di ricerca. L'iter � semplice:
 ti registri e ti viene inviata una password alla email indicata da te. Da quel momento potrai
 tornare qui, inserire il <i>nick</i> che avevi scelto e la <i>password</i> che ti era stata assegnata. <br>

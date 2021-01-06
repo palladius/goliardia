@@ -10,7 +10,7 @@ if (! Session("ADMIN"))
 else 
 	scrivib(rosso("Benvenuto, Administrator...<br>"));
 
-    if ($DEBUG ) log2("[DEBUG] Qualcuno si e intrufolato nei tuoi logs.. testing logs :)");
+#if ($DEBUG ) log2("[DEBUG] Qualcuno si e intrufolato nei tuoi logs.. testing logs :)");
 
 ?>
 <h1>Latest logs</h1>
