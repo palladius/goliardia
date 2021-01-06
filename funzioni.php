@@ -1756,23 +1756,16 @@ function log2($str,$fname="log_ingressi.php") {
 	fclose ($fp); 
 }
 
-
-
-
-
-function reportRicorsivoCariche($idord,$result,$hoDiritti)
-{
-scrivi("\n<table>\n");
-while ($row = mysql_fetch_array($result))
-{
-scrivi("<tr valign=top>\n <td witdh=30>".getFotoReport_Carica($row,$hoDiritti)."</td>\n <td>");
-scriviReport_Carica($row,$hoDiritti);
-scrivi("\n </td>\n</tr>\n");
-scrivi("\n<tr valign=top>\n <td witdh=30></td><td>\n");
-ricors_figli_cariche($idord,$row,$hoDiritti);
-scrivi("\n </td>\n</tr>\n");
-}
-
+function reportRicorsivoCariche($idord,$result,$hoDiritti) {
+	scrivi("\n<table>\n");
+	while ($row = mysql_fetch_array($result)) 	{
+		scrivi("<tr valign=top>\n <td witdh=30>".getFotoReport_Carica($row,$hoDiritti)."</td>\n <td>");
+		scriviReport_Carica($row,$hoDiritti);
+		scrivi("\n </td>\n</tr>\n");
+		scrivi("\n<tr valign=top>\n <td witdh=30></td><td>\n");
+		ricors_figli_cariche($idord,$row,$hoDiritti);
+		scrivi("\n </td>\n</tr>\n");
+	}
 scrivi("</table>\n");
 }
 
@@ -6268,38 +6261,45 @@ $bgcolor3 = "#d3e2ea";  # grigino
 $bgcolor4 = "#0E3259";  # nerone
 $textcolor1 = "#000000";
 $textcolor2 = "#000000";
+
 function openTableVecchia() { global $bgcolor1, $bgcolor2; 
     echo ("<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"0\" bgcolor=\"$bgcolor2\"><tr><td>\n");
     echo ("<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"8\" bgcolor=\"$bgcolor1\"><tr><td>\n"); 
 } 
+
 function closeTable() { echo ("</td></tr></table></td></tr></table>\n"); } 
 function openTable2() { global $bgcolor1, $bgcolor2; 
     echo ("<table border=\"0\" cellspacing=\"1\" cellpadding=\"0\" bgcolor=\"$bgcolor2\" align=\"center\"><tr><td>\n");
     echo ("<table border=\"0\" cellspacing=\"1\" cellpadding=\"8\" bgcolor=\"$bgcolor1\"><tr><td>\n"); 
 } 
+
 function closeTable2() { echo ("</td></tr></table></td></tr></table>\n"); }
 
 
 function pubblicaBanner() {
-   if (! Session("antiprof")) {
-         #if ($ISSERIO)
-                        #img("logoFooterIside.jpg",100);
-                        img("logoiside06-mini.jpg",120);
-         #       else
-         #               flashTesto("$IMMAGINI/anibelli9_ver5",366,100);
-        }
-   else
+	if (! Session("antiprof")) {
+        img("logoiside06-mini.jpg",120);
+    } else {
         scrivi("<img src='".$paz_foto."serie/worldscientific.jpg' alt='eq. sbura' align='Center' >");
+	}
 }
 
+// is production?
 function production() {
-		global $ENVIRONMENT ;
-	$ENVIRONMENT == "production" ;
+	#global $ENVIRONMENT ;
+	#return $ENVIRONMENT == "production" ;
+	return get_rails_env() == "production";
 }
 
 function development() {
-		global $ENVIRONMENT ;
-	$ENVIRONMENT == "development" ;
+	global $ENVIRONMENT ;
+	return get_rails_env() != "production" ;
+}
+
+function get_rails_env() {
+	global $ENVIRONMENT ;
+	#return $ENVIRONMENT  ;
+	return getMemozByChiave("db_type"); // assicurati che staging sia staging
 }
 
 function db_importantlog_slow($appname, $log_string) {

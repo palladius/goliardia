@@ -19,7 +19,8 @@ URL: http://pma-goliardia.palladi.us/index.php?db=goliardiaprod&table=mandafoto_
 9	admin_user_id		int(11)				Yes	NULL			
 10	admin_description	text			utf8_general_ci		Yes	NULL			
 11	docker_context		varchar(500)	utf8_general_ci		Yes	NULL	Contesto di esecuzione tipo hostname e qualche va ENV che mi aiuti a capire dove sono i files	
-12	lastUpdated			timestamp			on update CURRENT_TIMESTAMP	No	CURRENT_TIMESTAMP		ON UPDATE CURRENT_TIMESTAMP	
+12 on_behalf_of_user_id int(11)	
+13	lastUpdated			timestamp			on update CURRENT_TIMESTAMP	No	CURRENT_TIMESTAMP		ON UPDATE CURRENT_TIMESTAMP	
 
 */
 
@@ -104,6 +105,7 @@ function server_info() {
 
 function MANDAFOTO_UN_SOLO_RECORD_BY_ID_sql($id) {
 	#--  as _foto_status, 
+	# image: # the blob, you dont wanna visualize this! :) 
 	
 	return  "SELECT 
 		id as _mandafoto_id,
@@ -112,8 +114,9 @@ function MANDAFOTO_UN_SOLO_RECORD_BY_ID_sql($id) {
 		user_id , 
 		user_name as utente, 
 		user_name as _fotoutente,
-		image as encoded_image, # the blob, you dont wanna visualize this! :) 
+		image as encoded_image, 
 		FLOOR(LENGTH(image)/1024) AS image_size_kb,
+		on_behalf_of_user_id,
 		description 
 		FROM mandafoto_images 
 		WHERE id = $id";
@@ -132,7 +135,7 @@ function visualizza_foto_uploadate($is_admin) {
 	$where_addon = $is_admin ? "" : "	WHERE user_id = '$user_id' ";
 
 	#		--name as filename, 
-
+	#--image_md5,
 	$customized_query = "SELECT 
 		id as _mandafoto_id,
 		id AS _mandafoto_action,
@@ -141,8 +144,8 @@ function visualizza_foto_uploadate($is_admin) {
 		user_name as utente, 
 		user_name as _fotoutente,
 		image AS _base64image ,
+		on_behalf_of_user_id as behalf_userid,
 		FLOOR(LENGTH(image)/1024) AS image_size_kb,
-		image_md5,
 		description 
 	FROM mandafoto_images 
 	$where_addon
@@ -171,7 +174,9 @@ function showInfoToAdminvipReMandafotoById($foto_id) {
 			id as _mandafoto_id,
 			name as filename, 
 			status, 
+			image_md5,
 			user_id , 
+			on_behalf_of_user_id,
 			user_name as utente, 
 			user_name as _fotoutente,
 			image as encoded_image, # the blob, you dont wanna visualize this! :) 
@@ -190,10 +195,15 @@ function showInfoToAdminvipReMandafotoById($foto_id) {
 
 
 	$visualizza_hash = array(
+		'mandafoto_id' => $row['_mandafoto_id'],
 		"filename" => $row['filename'],
 		'user_name' => $row['utente'],
+		'user_id' => $row['user_id'],
 		'linked_path_image' => "<a href='' >magic link</a>",
+		'md5' => $row['image_md5'],
 		'status' => $row['status'],
+		'image_size' => $row['image_size_kb'] . "KB",
+		'on_behalf_of_user_id' => $row['on_behalf_of_user_id'], # or 'null',
 		'inline_image' => $inline_image ,
 	);
 
@@ -201,6 +211,11 @@ function showInfoToAdminvipReMandafotoById($foto_id) {
 	#echo "1. Path/image_src: $image_src <br/>\n";
 
 
+	if ( $DEBUG) {
+		echo h2("debug row values");
+		echo print_r($row);
+		echo "<br/>";
+	}
 	foreach($visualizza_hash as $k => $v) {
 		echo "* " . $k . ": <b>$v</b>";
 		echo "<br>";

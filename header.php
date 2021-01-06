@@ -68,6 +68,8 @@ $SERIOSTRING= ($ISSERIO ? " and m_bSerio=1 " : "");
 $PAGEVER = "7.1"; # versione delle pagine
 $DEBUGVENERDI = 1;
 setSession("sessprovaric","boh - ".time());
+$ENVIRONMENT = 'TODO sno nell header cmq';
+
 
 function listaAuguri() {
 	$res=mysql_query(
@@ -123,11 +125,7 @@ function richiediRegistrazione() {
 }
 
 
-
-
-
-function formlogin()
-{
+function formlogin() {
 ?>
 <table height="20"><tr><td>
 <form method="post" action="login.php" name="login">
@@ -614,3 +612,25 @@ if (!isValidNick($GETUTENTE))
 <? } ?>
 
 <center>
+<h1>
+Production: <?=production() ?>
+dev: <?=development() ?>
+env: <?=get_rails_env() ?>
+</h1>
+
+if (development() or production()) {
+	echo h2("Siamo in dev!");
+}
+
+<?
+//2021
+if(getenv("MESSAGGIO_OCCASIONALE"))
+	echo flash_notice("notice", "[MESSAGGIO_OCCASIONALE] " . getenv("MESSAGGIO_OCCASIONALE"));
+
+if (development() or production()) {
+	echo h2("[Attenzione Siamo in dev!]");
+#	echo flash_notice("notice", "MESSAGGIO_OCCASIONALE:" . getenv("MESSAGGIO_OCCASIONALE"));
+	echo flash_notice("success", "Attenzione Siamo in dev");
+}
+
+?>

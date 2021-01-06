@@ -57,7 +57,7 @@ if ($DEBUG) {
 	DB: <i><?php echo $dbdatabase ?></i> on 
 	 <b><u><?= php_uname('n'); ?></u></b>, 
 	(v.<?= getMemozByChiave("db_ver") ?>, 
-		<? echo getMemozByChiave("db_type") ?> )
+		<? echo get_rails_env() ?> )
 	 [ <a href='https://github.com/palladius/goliardia'>Code on gitHub</a> 
 	 VER: <b><?= `cat ./VERSION` ?></b> ]
 <?php 
