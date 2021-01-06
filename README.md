@@ -87,4 +87,5 @@ in helping me maintaining the real website. Among them:
 - `Kilhadurolavince`, `Manolus`, `Gimmigod` to alert me when website was down and lots of other stuff :)
 - My mum Lucilla for making me the totally awesome man I actually am :)
 - Rudi Bertaccini for itching (or slagging?) my ego: http://www.vgnetwork.it/images/anime/slow-clap.gif
+- `bootstrap` CSS for flash_notice CSS. 
 

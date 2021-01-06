@@ -1,14 +1,18 @@
 
-AAAA.rosso, .rosso { color: orange; }
-
+.rosso { color: orange; }
 
 /* Rails stuff 
   https://stackoverflow.com/questions/14349131/rails-3-flash-notice-styling
   https://stackoverflow.com/questions/22566072/rails-4-flash-notice
+  
+  Bootstrap 8 alerts: #FIGATA 
+  https://getbootstrap.com/docs/4.0/components/alerts/
+
+
 */
 
+/*
 .alert {
-	font-weight: bold;
 	-moz-border-radius: 4px 4px 4px 4px;
 	-webkit-border-radius: 4px 4px 4px 4px;
 	border-radius: 4px 4px 4px 4px;
@@ -17,6 +21,7 @@ AAAA.rosso, .rosso { color: orange; }
 	-moz-box-shadow: 3px 3px 1px 1px #CCCCCC;
 	-webkit-box-shadow: 3px 3px 1px 1px #CCCCCC;
 	box-shadow: 3px 3px 1px 1px #CCCCCC;
+	width: 70% ;
  }
  .alert-success-vecchio {
 	background-color: #66E167;
@@ -26,7 +31,6 @@ AAAA.rosso, .rosso { color: orange; }
 	padding-top: 20px;
  }
 
-/*flash*/
 .alert-error {
     background-color: #f2dede;
     border-color: #eed3d7;
@@ -37,26 +41,182 @@ AAAA.rosso, .rosso { color: orange; }
 .alert-alert {
     background-color: #e01818;
     border-color: #ed4e66;
-    color: #f7dcb5;
+	color: #faf4ea;
+	font-weight: bold;
     text-align: left;
  }
 
-.alert-success {
+.alert-success2 {
     background-color: #dff0d8;
     border-color: #d6e9c6;
-    color: #468847;
+	color: #468847;
+	font-weight: bold;
     text-align: left;
  }
-
+ / * sto fenomeno: https://stackoverflow.com/questions/14349131/rails-3-flash-notice-styling * /
+ .alert-success {
+	background-color: #66E167;
+	border-color: #D6E9C6;
+	width: 280px;
+	font-weight: bold;
+	color: black;
+	padding-top: 20px;
+ }
 .alert-notice {
     background-color: #e5e8e4;
     border-color: #d6e9c6;
-    color: #9dac9d;
-    text-align: left;
+    color: #787c78;
+	text-align: left;
+	font-weight: normal; 
+	font-style: oblique;
+
  }
  .alert-warning {
 	background-color: #ebe15a;
     border-color: #bab300;
-    color: #9dac9d;
+	color: black;
     text-align: left;
  }
+*/
+
+
+.alert {
+	position: relative;
+	padding: 0.75rem 1.25rem;
+	margin-bottom: 1rem;
+	border: 1px solid transparent;
+	border-radius: 0.25rem;
+  }
+  
+  .alert-heading {
+	color: inherit;
+  }
+  
+  .alert-link {
+	font-weight: 700;
+  }
+  
+  .alert-dismissible {
+	padding-right: 4rem;
+  }
+  
+  .alert-dismissible .close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 0.75rem 1.25rem;
+	color: inherit;
+  }
+  
+  .alert-primary {
+	color: #004085;
+	background-color: #cce5ff;
+	border-color: #b8daff;
+  }
+  
+  .alert-primary hr {
+	border-top-color: #9fcdff;
+  }
+  
+  .alert-primary .alert-link {
+	color: #002752;
+  }
+  
+  .alert-secondary {
+	color: #383d41;
+	background-color: #e2e3e5;
+	border-color: #d6d8db;
+  }
+  
+  .alert-secondary hr {
+	border-top-color: #c8cbcf;
+  }
+  
+  .alert-secondary .alert-link {
+	color: #202326;
+  }
+  
+  .alert-success {
+	color: #155724;
+	background-color: #d4edda;
+	border-color: #c3e6cb;
+  }
+  
+  .alert-success hr {
+	border-top-color: #b1dfbb;
+  }
+  
+  .alert-success .alert-link {
+	color: #0b2e13;
+  }
+  
+  .alert-info {
+	color: #0c5460;
+	background-color: #d1ecf1;
+	border-color: #bee5eb;
+  }
+  
+  .alert-info hr {
+	border-top-color: #abdde5;
+  }
+  
+  .alert-info .alert-link {
+	color: #062c33;
+  }
+  
+  .alert-warning {
+	color: #856404;
+	background-color: #fff3cd;
+	border-color: #ffeeba;
+  }
+  
+  .alert-warning hr {
+	border-top-color: #ffe8a1;
+  }
+  
+  .alert-warning .alert-link {
+	color: #533f03;
+  }
+  
+  .alert-danger {
+	color: #721c24;
+	background-color: #f8d7da;
+	border-color: #f5c6cb;
+  }
+  
+  .alert-danger hr {
+	border-top-color: #f1b0b7;
+  }
+  
+  .alert-danger .alert-link {
+	color: #491217;
+  }
+  
+  .alert-light {
+	color: #818182;
+	background-color: #fefefe;
+	border-color: #fdfdfe;
+  }
+  
+  .alert-light hr {
+	border-top-color: #ececf6;
+  }
+  
+  .alert-light .alert-link {
+	color: #686868;
+  }
+  
+  .alert-dark {
+	color: #1b1e21;
+	background-color: #d6d8d9;
+	border-color: #c6c8ca;
+  }
+  
+  .alert-dark hr {
+	border-top-color: #b9bbbe;
+  }
+  
+  .alert-dark .alert-link {
+	color: #040505;
+  }
+  

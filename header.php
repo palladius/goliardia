@@ -240,8 +240,9 @@ if (! Session("antiprof")) {
 <center>
 <?php 
 
-if(getenv("MESSAGGIO_OCCASIONALE")) echo flash_notice("notice", "[MESSAGGIO_OCCASIONALE] " . getenv("MESSAGGIO_OCCASIONALE"));
-
+if(getenv("MESSAGGIO_OCCASIONALE")) {
+	echo flash_notice("info", "[MESSAGGIO_OCCASIONALE] " . getenv("MESSAGGIO_OCCASIONALE"));
+}
 $arrHeader=array();
 $i=0;
 
@@ -603,8 +604,10 @@ if ($ISSERIO)
 
 
 
-if (!isValidNick($GETUTENTE))
-	{bug("attento! il tuo nome '$GETUTENTE' non mi piace!!! Dillo al webmaster, grazie. (Sto creando regole stringenti chi inventa nuovi login, ma non posso modificare i vecchi in automatico. mi appello dunque alla vostra sensibilit�)");}
+if (!isValidNick($GETUTENTE)) {
+	echo flash_notice("info", "Attento! il tuo nome '$GETUTENTE' non e' CONFORME: contiene caratteri strani. Un giorno potrei sanificarlo a mio I.T.d.C. Leggi la carta dei tuoi diritti <a href='https://www.google.com/search?tbm=isch&q=carta%20igienica' ><b>qui</b></a>.");
+	#	Per favore contatta il webmaster per dirgli se ti va bene che il tuo utente (e foto) venga reso corretto (rimuovendo spazi e trattini e caratteri strani), grazie. (Sto creando regole stringenti chi inventa nuovi login, ma non posso modificare i vecchi in automatico.)");
+}
 
 ?>
 <? if ( $MESSAGGINO_HEADER ) { ?>
@@ -618,8 +621,9 @@ if (!isValidNick($GETUTENTE))
 
 <?
 //2021
-if(getenv("MESSAGGIO_OCCASIONALE")) echo flash_notice("notice", "[MESSAGGIO_OCCASIONALE] " . getenv("MESSAGGIO_OCCASIONALE"));
-
+#if(getenv("MESSAGGIO_OCCASIONALE")) {#
+#	echo flash_notice("info", "[MESSAG#GIO_OCCASIONALE][ENV] INFO" . getenv("MESSAGGIO_OCCASIONALE"));
+#}
 if (development()) {
 	echo h1("getMemozByChiave ENV: ".get_rails_env());
 	echo h1("RAILS_ENV: ".get_rails_env2());

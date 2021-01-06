@@ -109,9 +109,9 @@ if ($autorizzato) {// metto la sessione giusta...
 
 	$_SESSION["_SESS_nickname"] = ($nickname);
 
-		echo 	"<h1>Il login ha funzionato! altero il nick di sessione, che ora vale: <u>"
+	echo flash_notice("success","Il login ha funzionato! altero il nick di sessione, che ora vale: <u>"
 			.Session("nickname") 
-			."</u>. Piu in sotto trovi un link che ti manda in manuale alla HOME</h1>";
+			."</u>. Piu in sotto trovi un link che ti manda in manuale alla HOME");
 	$dd=time();
 	$_SESSION["_SESS_collegato_alle"]	= $dd;
 	$_SESSION["_SESS_ADMIN"]		= $isAdmin;
@@ -139,6 +139,7 @@ if ($autorizzato) {// metto la sessione giusta...
 
 #	 sendGms($user_id,"login a userid($user_id) (prova gms automatico by ric!)");
 #	 sendGms(3,"login a 3 Benentrato TRE (prova gms automatico by ric!)");
+#	log2("login con success")
 
 	incrementaUtentiAttivi();
 
@@ -149,7 +150,6 @@ if ($autorizzato) {// metto la sessione giusta...
 	// aggiorno la tabella degli indirizzi... IP, HOST, USER eccetera...
 	aggiornaIndirizzi();
 
-	#echo " qua non ci arrivo... boh!";
 	$rs=mysql_query("update loginz set m_datalastcollegato='".dammiDataByJavaDate(time())
 			."' WHERE id_login=$user_id")
 				or die("cudd'not apdeit ior m_datalastcollegato, scit!");
@@ -164,13 +164,11 @@ if ($autorizzato) {// metto la sessione giusta...
 	$daylast = date("d",strtotime($datalastcollegato));
 	$nuovogiorno = ($daynow != $daylast ); // giorno diverso, ha il bug che se non ti colleghi da 1 mese esatto perdi quel GP... amen :-)
 
-	if ($nuovogiorno ) // x debug
-		{//echo "� l'alba di un nuovo giorno...";
+	if ($nuovogiorno ) {
 		 gestisciGoliardPointz($user_id,1,"incrementa"); // aumento di 1 i GP...
-		}
+	}
 	setApplication("UTENTI_ORA", getApplication("UTENTI_ORA")."\$".strtolower($nickname)."@".time() );
 
-    echo "CIUCCIO OK!!!!!!!!!!!";
     ridirigi("index.php");
   } else echo "non autorizzato";
 }

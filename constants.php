@@ -7,7 +7,9 @@
 		<a href='https://distillery.fogbugz.com/default.asp?pg=pgPublicEdit'>qui</a>. Tuttora c'e' un baco sugli apostrofi. \
 		Se avete problemi a inserire/modificare dati per favore provate a non usare il single quote (') ma magari qualunque altro carattere (grazie Criceto). \
 		Anzi, potete usare il quote basta RADDOPPIARLO ('') e ne avrete uno solo. Grazie per la pazienza... -- IronPal <br/>\n
-		<b>PS</b> Sto lavorando ad ammodernare il mandafoto perche e l unica dependency che mi impedisce di dockerizzare goliardia." ;
+		<b>PS</b> Sto lavorando ad ammodernare il mandafoto perche e l unica dependency che mi impedisce di dockerizzare goliardia.
+		<b>PPS</b> Addi' 6/1/2021 ho quasi finito! Ci sono quasi in STAGING.
+		" ;
 
 	#$DEBUG = 1 ;
 	#$DEBUG_ON = 1 ;

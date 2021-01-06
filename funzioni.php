@@ -112,49 +112,19 @@ function scriviReport_LinkMini($rs) {
 
 
 function scriviReport_Utente($rs,$linkami,$ii) {
-  global $paz_foto_persone,$ISPAL;
-  $simbolo=$rs["m_sNome"].".jpg"; 
-  $sesso=$rs["m_bIsMaschio"] ? "maschio" : "femmina";
+global $paz_foto_persone,$ISPAL;
+$simbolo=$rs["m_sNome"].".jpg"; 
+$sesso=$rs["m_bIsMaschio"] ? "maschio" : "femmina";
 
-  echo "<tr class='$sesso'>";
+echo "<tr class='$sesso'>";
 
-  scrivi("<td width='20%'>".getFotoUtenteDimensionata($rs["m_sNome"],80)); // ottimizzabile...
-  scrivi("<br><center><b class='utente'>".$rs["m_sNome"]."</b></center>");
+scrivi("<td width='20%'>".getFotoUtenteDimensionata($rs["m_sNome"],80)); // ottimizzabile...
+scrivi("<br><center><b class='utente'>".$rs["m_sNome"]."</b></center>");
 
  if ($ISPAL) { // solo admin vip leggono la mail.
 	scrivi("<br><i>".$rs["m_sPwd"]."</i>");
 	tdtd();
-
-#	formBegin("pag_messaggi.php");
-#	formhidden("my_hidden_id","id_login");
-#	formhidden("id_login",$rs["ID_LOGIN"]);
-#	formhidden("OPERAZIONE","CANCELLA_LOGIN");
-#	$ospitechar= ($rs["m_bGuest"] == "TRUE") ? "XX" : "XX (U)";
-#	formbottoneinvia($ospitechar);
-#	formEnd();
-
-
-
-//	if ($rs["m_bguest"] == 1)
-//	{ // guest
-//	formBegin("pag_messaggi.php");
-//	formhidden("id_login",rs["ID_LOGIN"]);
-//	formhidden("OPERAZIONE","RENDIUSER");
-//	$ospitechar= ($rs["m_bGuest"] == 1) ? "RENDIUSER (RIC)" : "ERRORISSIMO dillo al webmaster mi raccomando!!!";
-//	formbottoneinvia($ospitechar);
-//	formEnd();
-//	}
-
-#	formBegin("pag_messaggi.php");
-#	formhidden("my_hidden_id","ID_LOGIN");
-#	formhidden("id_login",$rs["id_login"]);
-#	formhidden("OPERAZIONE","MODIFY tbds");
-#	formbottoneinvia("MODIFY");
-#	formEnd();
-
-}
-else
-if (isAdmin() && $rs["m_bGuest"] == 1)
+} else if (isAdmin() && $rs["m_bGuest"] == 1)
 	{ // guest
 	//$stessaprovincia = (strtolower($rs["provincia"]) == strtolower($_SESSION["provincia"]));
 	$stessaprovincia = (strtolower($rs["provincia"]) == strtolower(Session("provincia")));
@@ -165,7 +135,7 @@ if (isAdmin() && $rs["m_bGuest"] == 1)
 		// qui son maiuscolo di la' invece minuscolo!!!
 	formhidden("OPERAZIONE","RENDIUSER");
 	$ospitechar= $stessaprovincia ?
-			 "RENDIUSER (idl=".$rs["ID_LOGIN"]."; tuo compaesano di ".$rs["provincia"].") \n ma SOLO se vedi una foto qui a fianco"
+			"RENDIUSER (idl=".$rs["ID_LOGIN"]."; tuo compaesano di ".$rs["provincia"].") \n ma SOLO se vedi una foto qui a fianco"
 			: "RENDIUSER (anche se � di '".$rs["provincia"]."')";
 
 	formbottoneinvia($ospitechar);
@@ -175,8 +145,7 @@ if (isAdmin() && $rs["m_bGuest"] == 1)
 	}
 
 
- echo"</td><td width='50%'>";
-
+echo"</td><td width='50%'>";
 
 
 scriviTRUEFALSE($rs["m_bAttivo"],	"Attivo",		"Inattivo");
@@ -206,20 +175,16 @@ scriviCoppia("Citt�",$rs["provincia"]);
 
 
 
+function getFotoIcona($paz,$h,$alt) {
+	if (Session("antiprof"))
+		return "PHPUF�";
 
+	$temp = "<img src='$paz' alt='$alt' align='Center' ";
+	if ($h>0)
+		$temp.="height=$h";
 
-function getFotoIcona($paz,$h,$alt)
-{
-
- if (Session("antiprof"))
-         return "PHPUF�";
-
-	  $temp = "<img src='$paz' alt='$alt' align='Center' ";
-	   if ($h>0)
-	           $temp.="height=$h";
-
-		   return $temp.">";
-		   }
+	return $temp.">";
+}
 
 
 function scriviTabellaInscatolataBellaBeginVarianteConIcona($titolo="NESSUN TITOLO, ERRORE!!!",$variante,$pazicona,$haltezza=35) {
@@ -436,12 +401,14 @@ echo "</td>";
 
 
 
-function bug($spiegazione)
-{global $AUTOPAGINA;
-echo rosso("Hai trovato un <b>bug</b>. X FAVORE contatta l'amministratore con la spiegazione '<b>$spiegazione</b>'."
-	." X farlo, manda un GMS al gruppo @BUG (sotto <a href='gms.php'>GMS</a>) segnalando le circostanze in cui "
-	."la cosa � successa (dati che hai mandato, pagina da cui venivi, ...).Grazie del contributo. intanto loggo la cosa.");
-log2("bug: [$spiegazione] in pag[$AUTOPAGINA]","log_bugz.php");
+function bug($spiegazione) {
+	global $AUTOPAGINA;
+	echo flash_notice("info",
+		"Hai trovato un <b>bug</b>: '<b>$spiegazione</b>'. <br/>"
+	."X FAVORE contatta l'amministratore con la spiegazione X farlo, manda un GMS al gruppo @BUG (sotto <a href='gms.php'>GMS</a>) segnalando le circostanze in cui "
+	."la cosa e' successa (dati che hai mandato, pagina da cui venivi, ...).Grazie del contributo. intanto loggo la cosa."
+	);
+	log2("bug: [$spiegazione] in pag[$AUTOPAGINA]","log_bugz.php");
 }
 
 function diesql($sql,$motivo="cacchioNeSacciuIo") {
@@ -890,96 +857,51 @@ function popolaComboTipo($tipo,$nomeid)
 
 
 
-function ridirigerai($pagina="")
-{
-tornaindietro("quando sar� sicuro della mossa, ridiriger� il tutto con RIDIRIGI. X ora ti dico questo cos� ric pu� vedere tutti i cambiamenti x benino. Abbi pazienza",$pagina);
+function ridirigerai($pagina="") {
+tornaindietro("quando saro' sicuro della mossa, ridirigero' il tutto con RIDIRIGI. X ora ti dico questo cosi ric pu� vedere tutti i cambiamenti x benino. Abbi pazienza",$pagina);
 }
 
-function popolaComboTipoAppuntamento($ID)
-{
- scrivi("\n<select name='".$ID."'>\n");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- $a = array (
+function popolaComboTipoAppuntamento($ID) {
+	scrivi("\n<select name='".$ID."'>\n");
+	$a = array (
 		"Festa delle Matricole",
-	 	"Cena di Apertura",
-	 	"Cena di Chiusura",
+		"Cena di Apertura",
+		"Cena di Chiusura",
 		"Cena di Compleaano",
 		"Altra Festa",
 		"Altra cena",
 		"Altro"
-		 );
+			);
 
-for($i=0;$i<sizeof($a);$i++)
-{
+	for($i=0;$i<sizeof($a);$i++) {
 	scrivi(" <option ");
 	scrivi(" value='".$a[$i]."'>".$a[$i]);
 	scrivi("</option>\n");
-}
-scrivi("</select>");
-}
-
-
-function linkancora($str)
-{
-return "<a href='#$str'>$str</a>";
-}
-
-
-function scriviRecordSetConVirgoleGestori($res)
-{
-$str="";
-
-if (!$res)
-	die("getRecordSetConVirgole su RES nullo...");
-/*
-	vorrei mA VIENE formattato a uno schifo di roba, con queste x che spezzano la bellezza del libercolo..
-
-if (isadminvip())
-	{tabled();
-	while ($rs=mysql_fetch_row($res))
-		{
-		echo "<tr><td>".$rs[1]." </td><td>";
-	formBegin("modifica_ordine.php");
-	formhidden("my_hidden_id","ID_gest_ordini");
-	formhidden("id_gest_ordini",$rs[0]);
-	formhidden("OPERAZIONE","CANCELLA");
-
-
-	formbottoneinvia("X");
-	formEnd();
-		echo "</td></tr>";
-		}
-	 tableend();
 	}
- else
-*/
-	{
-	while ($rs=mysql_fetch_row($res))
-		$str .= $rs[1].", ";
-	}	
-$str=substr($str,0,strlen($str)-2); // spazio e virgola tolte...
-echo  $str;
+	scrivi("</select>");
 }
 
 
-function getRecordSetConVirgole($res)
-{
+function linkancora($str) {
+	return "<a href='#$str'>$str</a>";
+}
+
+
+function scriviRecordSetConVirgoleGestori($res) {
+	$str="";
+
+	if (!$res)
+		die("getRecordSetConVirgole su RES nullo...");
+	{
+		while ($rs=mysql_fetch_row($res))
+			$str .= $rs[1].", ";
+	}	
+	$str=substr($str,0,strlen($str)-2); // spazio e virgola tolte...
+	echo  $str;
+}
+
+
+function getRecordSetConVirgole($res) {
 $str="";
 //if ($res=="") {return("vuoto");}
 if (!$res)
@@ -1433,8 +1355,7 @@ function scriviReport_GoliardAlboDoro($recSet)
 
 
 
-function getApplication($key="eroreKeyNulla")
-{
+function getApplication($key="eroreKeyNulla") {
 global $pazApplication,$APPSERIALIZZA ;
 $erore=FALSE;
 if ($key=="utentiattivi")
@@ -2436,17 +2357,17 @@ function scrividevelop($body="BODY ASSDENTE ERRORE!!!") {
 }
 
 
+function ridirigi($pag) {
+	global $DEBUG;
+	$redirect_time_secs = 5;
+	if (! $DEBUG)
+		header("Location: $pag");
+	else {
+		echo flash_notice("notice", "[DEBUG] Disabilito la redirect con header(location) per motivi di debug ma in compenso 
+		faccio IO il refresh in <b>$redirect_time_secs</b> secondi! Ti fo vedere le porcherie, ma se hai fretta clicca su: <a href='$pag'>$pag</a>...");
+		header("refresh:$redirect_time_secs;url=$pag");
+	}	
 
-
-function ridirigi($pag)
-{
-global $DEBUG;
-if (! $DEBUG)
-	header("Location: $pag");
-else
-
-
-	echo "<h1>In debug ti fo vedere l porcherie, POI ti ridirigi da solo a <a href='$pag'>$pag</a>...</h1><br/>";
 ?>
 
 finche' qualcuno non mi insegna come CAZZO si fa un redirect in PHP a meta' pagina, 
@@ -2454,8 +2375,9 @@ che non e' banalmente l'uso di header("location..");
 o si fa cosi' bufferizzando l'output  e rimangiandosi tuttol'output prima di header(...) 
 o altrimenti esistera' pure un altro modo... AIUTATEMI!
 <?php 
- // come cacchio si fa a ridirigere la gente?!? in asp � banale... fare un GOTO a un'altra pagina...
-bona(); // mi sembra d'uopo! dopo posson esserci cagate.
+
+	// come cacchio si fa a ridirigere la gente?!? in asp � banale... fare un GOTO a un'altra pagina...
+	bona(); // mi sembra d'uopo! dopo posson esserci cagate.
 }
 
 
@@ -6317,7 +6239,38 @@ function get_paz_upload() {
 
 function flash_notice($action, $msg) {
 	// https://stackoverflow.com/questions/31854717/rails-bootstrap-flash-notice-success-is-now-red-and-not-green
-	return "<div class='alert alert-$action alert-dismissible' role='alert'>
+
+	# siccome uso
+	#$css_action = 'light'; # default
+	#$action;
+	if ($action == 'error')	$css_action = "danger";
+	if ($action == 'alert')	$css_action = "primary";
+	if ($action == 'notice')	$css_action = "secondary";
+	switch ($action) {
+		// ridefiniti da me con fantasia
+		case 'error': 	$css_action = "danger"; break;
+		case 'alert':	$css_action = "primary"; break;
+		case 'notice':	$css_action = "secondary"; break;
+
+		// normal ones:
+		case 'success':	
+		case 'info':	
+		case 'warning':
+		case 'danger':
+		case 'primary':	
+		case 'secondary':
+		case 'dark':	
+		case 'light':	
+		case 'danger':
+			$css_action = $action; break;
+		// typos
+		case 'warn':	$css_action = "warning"; break;
+		// dafult
+		default:		$css_action = "light"; break;
+	}
+	#if ($action == 'info')	$css_action = "light";
+	
+	return "<div class='alert alert-$css_action alert-dismissible' role='alert'>
 		<!-- flash_notice [$action] -->
 		$msg
 	</div>";
