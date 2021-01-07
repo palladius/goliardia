@@ -13,9 +13,8 @@ function _fix_permissions() {
     echo $PWD/bin/docker-post-build-init.sh "$PWD"
 }
 function _activate_ssmtp() {
-
-# https://gist.github.com/titpetric/114eb27f6e453e3e8849d65ca1a3d360
-if [[ $WEBMASTER_EMAIL ]] && [[ $SMTP_USER ]] && [[ $SMTP_PASS ]]; then
+    # https://gist.github.com/titpetric/114eb27f6e453e3e8849d65ca1a3d360
+    if [[ $WEBMASTER_EMAIL ]] && [[ $SMTP_USER ]] && [[ $SMTP_PASS ]]; then
     cat << EOF > /etc/ssmtp/ssmtp.conf
 root=${WEBMASTER_EMAIL}
 
@@ -30,11 +29,12 @@ UseSTARTTLS=YES
 EOF
 
     else 
-        echo "[$0] SSMTP variables unavailable. Exiting"
+        echo "[$0] SSMTP variables unavailable. Exiting. Dont believe me? Try: printenv WEBMASTER_EMAIL SMTP_USER SMTP_PASS"
         exit 42
-fi
+    fi
 }
 
+echo "#MINOR TODO(ricc): move apache from 80 to 8080 for ease of GKE.."
 _activate_ssmtp
 _fix_permissions
 

@@ -20,7 +20,7 @@ if ( $perchi  != "")
 $myProv=$_SESSION["_SESS_provincia"];
 
 /*
-	 figata! un array dinamico!!! e l'id sar� una funzione univoca (mica oneway, la sicurezza non c'entra!) 
+	Figata! un array dinamico!!! e l'id sar� una funzione univoca (mica oneway, la sicurezza non c'entra!) 
 	in funzione del nome del gruppo in modo che io vedo @admin,@buhgs,@prov_BO e un altro vede @admin,@buhgs,@prov_FE.
 	e dato che vanno come idutente devo pregare che non capitino nei numeri dei VERI login!!!
 

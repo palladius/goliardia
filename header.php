@@ -458,7 +458,7 @@ scrivi("<table width='$CONSTLARGEZZA600'><tr><td><center>");
 			global $TAG_MIO_AIUTANTE; 
 		 	definizioni(rosso("Sei <b>ospite</b>. Metti il mouse qui sopra che mo' ti spiego..."),
 			"In quanto tale, avrai poteri limitati in questo sito. Se hai problemi, guardati le FAQ e se proprio non resisti scrivi al webmaster (trovi la mail in fondo in basso). Per non essere ospite, la cosa migliore e + veloce � mandare una tua foto (thumbnail: guarda nelle FAQ se non vuoi che ti venga rimandata indietro con un niente di fatto) via mail a "
-			."$TAG_MIO_AIUTANTE e aspettare di essere promosso. Se la tua foto non rispecchia le esigenze descritte, <i>non</i> ti promuover�. <br/><u>Non fare l'errore di credere che questo sia un sito goliardico, non sopravvalutarlo!</u> ;-)"
+			."$TAG_MIO_AIUTANTE e aspettare di essere promosso. Se la tua foto non rispecchia le esigenze descritte, <i>non</i> ti promuovero'<br/><u>Non fare l'errore di credere che questo sia un sito goliardico, non sopravvalutarlo!</u> ;-)"
 				);
 		} 
 	}
@@ -601,7 +601,6 @@ if ($ISPAL)
 
 if ($ISSERIO) 
 	scrivii("<small>Attenzione, sei <b>Serio</b>. Questo vuol dire che ti verranno nascoste certe cose (tra cui il mitico Gioco delle Coppie) nel sito e lo vedrai in maniera + sobria. Per cambiare questo stato di cose, vai sotto <a href='utente.php'>Utente</a> e mettiti faceto :-)</small><br/>");
-
 
 
 if (!isValidNick($GETUTENTE)) {
