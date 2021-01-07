@@ -1,6 +1,6 @@
 <?php
 
-global $current_user;
+global $current_user, $ISPAL;
 
 // Nel DB vale cosi
 /*
@@ -24,20 +24,24 @@ URL: http://pma-goliardia.palladi.us/index.php?db=goliardiaprod&table=mandafoto_
 
 */
 
-echo flash_notice("error", "Allora caro Ric hai solo due possibilita
+if ($ISPAL) {
+	echo flash_notice("error", "Allora caro Ric hai solo due possibilita
 
-1. chiedi a utente un NOME bello 
+	1. chiedi a utente un NOME bello 
 
-2. chiedi a utente di selezionare un ID da una form di loginz.
-facile da implementare ma piu error prone. pensa a gente che sclitorida per sbaglio.
-SENZA ECHO non dovresti vedermi..
+	2. chiedi a utente di selezionare un ID da una form di loginz.
+	facile da implementare ma piu error prone. pensa a gente che sclitorida per sbaglio.
+	SENZA ECHO non dovresti vedermi..
 
-sarebbe bello fare un upload con INSERT dipendendte da WHERE blah ma sembra fantascientifico
+	sarebbe bello fare un upload con INSERT dipendendte da WHERE blah ma sembra fantascientifico
 
-https://stackoverflow.com/questions/24895272/mysql-insert-row-for-each-id-of-other-table
+	https://stackoverflow.com/questions/24895272/mysql-insert-row-for-each-id-of-other-table
 
-forse se puo fare hguarda
-"); 
+	forse se puo fare hguarda
+	"); 
+} else {
+	echo flash_notice("warning", "[NONPAL] Attenti questa pagina e un prototipo.. Abbiate pazienza con me"); 
+}
 
 /*
 

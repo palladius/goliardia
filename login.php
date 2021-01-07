@@ -198,14 +198,14 @@ if ($visualizzaMsgLogin)
 
 Se e' la prima volta che vieni qui, devi sapere che x entrare devi prima 
 <a href="nuovo_utente.php"><i>registrarti</i></a>. Questo e' stato scelto 
-da me e dalla maggioranza degli utenti per proteggere informazioni pi� o 
+da me e dalla maggioranza degli utenti per proteggere informazioni piu' o 
 meno riservate e poiche' crediamo che il nostro mondo sia qualcosa di 'iniziatico' 
-e ci spiacerebbe vedere ogni pagina indicizzata in ogni motore di ricerca. L'iter � semplice:
+e ci spiacerebbe vedere ogni pagina indicizzata in ogni motore di ricerca. L'iter &egrave; semplice:
 ti registri e ti viene inviata una password alla email indicata da te. Da quel momento potrai
 tornare qui, inserire il <i>nick</i> che avevi scelto e la <i>password</i> che ti era stata assegnata. <br>
-<i>Non dare la password in giro!!!</i>: a fini legali ogni cosa fatta col tuo utente � TUA responsabilit�. <br/>
+<i>Non dare la password in giro!!!</i>: a fini legali ogni cosa fatta col tuo utente &egrave; TUA responsabilita'. <br/>
 Se hai dimenticato la password, clicca invece <a href="login_dimenticatapwd.php">qui</a> e se indovini la tua data di nascita
-ti verr� rispedita alla mail originaria. Se hai cambiato mail o non riesci a leggerla... scrivimi.
+ti verra' rispedita alla mail originaria. Se hai cambiato mail o non riesci a leggerla... scrivimi dandomi quante piu' informazioni possibili.
 
 <?php closetable();?>
 <!---

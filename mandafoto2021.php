@@ -9,7 +9,7 @@ include "funzioni.php";
 include "classes/manda_foto.php";
 include "header.php";
 
-$troubleshoot_rails_flash_notices_figata = false;
+$troubleshoot_rails_flash_notices_figata = true;
 
 ?>
 

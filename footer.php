@@ -55,7 +55,9 @@ if ($DEBUG) {
    v: <b><?php  echo $VERSION ?></b>
 	 PHPver: <b><?php  echo $PAGEVER?></b>,
 	DB: <i><?php echo $dbdatabase ?></i> on 
-	 <b><u><?= php_uname('n'); ?></u></b>, 
+	<!-- hostname -->
+	 <b><u><?= php_uname('n'); ?></u></b> 
+	 (figlio di  <b><u><?= getenv("DOCKER_HOST_HOSTNAME") ?></u></b> ), 
 	(v.<?= getMemozByChiave("db_ver") ?>, 
 		<? echo get_rails_env() ?> )
 	 [ <a href='https://github.com/palladius/goliardia'>Code on gitHub</a> 
