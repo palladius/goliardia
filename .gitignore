@@ -26,3 +26,5 @@ Thumbs.db
 .DS_Store
 README.riccardo
 uploads/thumb/
+.env.dev
+.env.prod

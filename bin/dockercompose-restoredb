@@ -1,0 +1,23 @@
+#!/bin/bash
+
+echo To be called from OUT of docker not within. And from GH basedir
+
+# _mysql() {
+#     mysql -u root -p'R00tPwdDifficilissim4' "$@"
+# }
+
+	
+set -x
+set -z
+set -e 
+
+echo 1. Create DB - fast to execute and fails fast.
+echo CREATE DATABASE backup_del_menga | docker exec -i mysql_o_maria mysql -u root -p'R00tPwdDifficilissim4'  
+echo 2. Populate DB. Takes longer
+cat db/opengoliardia_sample.sql | docker exec -i mysql_o_maria mysql -u root -p'R00tPwdDifficilissim4'  -f -D backup_del_menga ||
+       echo "This can fail as there are some errors anyHoo"	
+
+# Migrations:
+cat db/migrations/20210105-add-dblogs.sql | docker exec -i mysql_o_maria mysql -u root -p'R00tPwdDifficilissim4' -f -D backup_del_menga 
+cat db/migrations/20210104-add-mandafoto-images.sql | docker exec -i mysql_o_maria mysql -u root -p'R00tPwdDifficilissim4' -f -D backup_del_menga
+

@@ -1,0 +1,118 @@
+# non dovrebbe essere troppo difficile qui far partire 3 dockerini:
+# 1. PMA
+# 2. MySQL che si ciucca il dump n db/
+# 3. goliardia che usa quello come DB.
+# Appena il mio Docker e' pronto e non ci sono cose private, e tutto sta in ENV vars -> posso finalmente andare.
+
+# To restore DB: https://stackoverflow.com/questions/46579381/how-to-restore-mysql-dump-from-host-to-docker-container
+
+# Quando lo fai documenta qui o metti in Makefile.
+
+version: '3.7'
+
+##########################################
+# NO VOLUMES qui tutto docker!
+# QUI TUTTO PUBBLICO! NO PASSWORD da PROD!
+##########################################
+
+
+services:
+
+    # PHPMYAdmin
+    pma:
+        image: phpmyadmin/phpmyadmin
+        ports:
+        - 8082:80
+        #restart: always
+        depends_on:
+            - db
+        environment:
+            #PMA_PASSWORD: DockerComposeLamePassword
+            #PMA_USER: dockercomposeuser
+            PMA_PASSWORD: R00tPwdDifficilissim4
+            PMA_USER: root
+            PMA_HOST: db
+    # exec one off sth like thisvia docker exec
+    #$ mysql --host=127.0.0.1 --port=3306 -u test -p testdb < dump_on_host.sql
+
+    # copiato da qui: https://hub.docker.com/_/mariadb sara un fratello di PHPMYadmin..
+    # Carino ma preferisco PHPMYADMIN :)
+    # adminer:
+    #     image: adminer
+    #     restart: always
+    #     ports:
+    #     - 8083:8080
+
+    # OneOff Commands:
+    # Per entrare: 🐼 docker exec -it mysql_o_maria bash
+    # - echo create database backup_del_menga   | mysql -u root -p'R00tPwdDifficilissim4!'
+    # - cat db/opengoliardia_sample.sql | docker exec -i mysql_o_maria mysql -u root -p'R00tPwdDifficilissim4!' -f -D backup_del_menga 
+    # (Cosi evito di montare) :)
+
+
+    db:
+        image: mariadb 
+        container_name: mysql_o_maria
+        restart: always
+        ports:
+            - '3306:3306'
+        environment:
+            MYSQL_ROOT_PASSWORD: R00tPwdDifficilissim4
+            MYSQL_USER: dockercomposeuser
+            MYSQL_PASS: DockerComposeLamePassword
+            #MYSQL_ALLOW_EMPTY_PASSWORD: true
+    
+    # volume:   serve per il dev dove monta la directory e i cambianmenti vanno sul tuo git pronto per commit du GH
+    # novolume: per prod, statico come su GKE. E quel che provo QUI.
+    goliardia-novolume:
+        # fucked up:  '[/etc/apache2/sites-enabled,/var/www,/var/log/apache2]'
+        image: gcr.io/goliardia-prod/goliardia-it-matrioska:2.5
+        container_name: goliardia-it-matrioska-novolume 
+        command: ["/var/www/www.goliardia.it/entrypoint-8080.sh"]
+        ports:
+        - 8443:443
+        - 8080:80
+        restart: always
+        # Sono obbligato perche la cosa e fatta da culo - rende il montaggio OBBLIGATORIO :/
+        #volumes:
+        #- /etc/apache2/sites-enabled
+        #- /var/www
+        #- /var/log/apache2
+        environment:
+            GOLIARDIA_MYSQL_HOST: db 
+            GOLIARDIA_MYSQL_USER: root
+            GOLIARDIA_MYSQL_PASS: R00tPwdDifficilissim4
+            #GOLIARDIA_MYSQL_USER: dockercomposeuser
+            #GOLIARDIA_MYSQL_PASS: DockerComposeLamePassword
+            GOLIARDIA_MYSQL_DB:   backup_del_menga
+            TZ: Europe/Rome
+            GOLIARDIA_SITEPATH: dockercompose-su-github
+            GOLIARDIA_SITENAME: goGliardia-containerizzata (DEV) 
+            #DOCKER_HOST_HOSTNAME: TODO mnettici il tuo hostname
+            MESSAGGIO_OCCASIONALE: |
+                Ci siamo. Ormai la dockerizzazione e' gratuita e disponibile a tutti! Figata! 
+                Devi solo ricordarti di far partire il cluster e poi eseguire questo:
+
+                    bin/dockercompose-restoredb
+            
+            SMTP_USER: you-user-gmail@gmail.com
+            WEBMASTER_EMAIL: you-user-gmail@gmail.com
+            SMTP_PASS: your-unguessable-password
+            DEBUG_ON: "certamente" # se metto TRUE dockercompose si incazza che e BOOLEAN e vuole STRING. Cretino!
+            RAILS_ENV: development
+
+#volumes:
+#    porchn-apache2-conf:
+# ERRORE DI MONTAGGIO
+#ERROR: for goliardia-novolume  Cannot create container for service goliardia-novolume: 
+# invalid volume specification: 'c6d6de51efd34b5b041246e24a50278ee3d8e28630d49b1e304933706a29bbb7:[/etc/apache2/sites-enabled,/var/www,/var/log/apache2]:rw': invalid mount config for type "volume": 
+# invalid mount path: '[/etc/apache2/sites-enabled,/var/www,/var/log/apache2]' mount path must be absolute
+
+# docker inspect     goliardia-novolume:
+#            "Volumes": {
+#                "[/etc/apache2/sites-enabled,/var/www,/var/log/apache2]": {}
+#            },
+# BUG: 
+# docker inspect  --format='{{.Config.Volumes}}'  porchn/php5.6-apache 
+#docker inspect  --format='{{.Config.Volumes}}'  porchn/php5.6-apache 
+#map[[/etc/apache2/sites-enabled,/var/www,/var/log/apache2]:{}]
