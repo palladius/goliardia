@@ -67,7 +67,7 @@ $ISSINGLE = Session('single');
 $ISPAL = ($GETUTENTE == $GODNAME) && Session("powermode");
 $ISGOLIARD = Session("isgoliard");
 $SERIOSTRING= ($ISSERIO ? " and m_bSerio=1 " : "");
-$PAGEVER = "7.1"; # versione delle pagine
+$PAGEVER = "7.1obsoleta"; # versione delle pagine. OBSOLETA -> usa cat VERSION instead.
 $DEBUGVENERDI = 1;
 setSession("sessprovaric","boh - ".time());
 $ENVIRONMENT = 'TODO sno nell header cmq';
