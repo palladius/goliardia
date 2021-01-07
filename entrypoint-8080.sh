@@ -3,9 +3,7 @@
 # even better: COMANDO_DEFAULT="/usr/local/bin/docker-php-entrypoint apache2-foreground" 
 DFLT_COMMAND="/usr/local/bin/docker-php-entrypoint apache2-foreground"
 COMMAND_TO_RUN=${@:-$DFLT_COMMAND}
-GOLIARDIA_ENTRYPOINT_VER="1.1"
-#export DEBUG=true
-#export DEBUG_ON=true
+GOLIARDIA_ENTRYPOINT_VER="1.1a"
 export ENTRYPOINT8080_TIMESTAMP="$(date)"
 
 function _fix_permissions() {
@@ -42,7 +40,8 @@ echo "[$0] BEGIN (`date`) GOLIARDIA_ENTRYPOINT_VER=$GOLIARDIA_ENTRYPOINT_VER"
 echo "[$0] 1. Setting SSMTP config thanks to succulent ENV vars like SMTP_USER=$SMTP_USER.."
 _activate_ssmtp
 echo "[$0] 2. Consider turning ENV[DEBUG_ON]! Currently: DEBUG='$DEBUG' DEBUG_ON='$DEBUG_ON'"
-echo "[$0] 3. Bando alle Cionce, lets now finally run: $COMMAND_TO_RUN "
+echo "[$0] 3. Verifoco double quotes: GOLIARDIA_DOVESONO=$GOLIARDIA_DOVESONO (nota non ho messo quote a dx dell uguale)"
+echo "[$0] 4. Bando alle Cionce, lets now finally run: $COMMAND_TO_RUN "
 #DEBUG=cerrrrtamente 
 # E qui eseguo il comando vero e proiprio. Ricorda che entrypoint e' un cazzillo PASSANTE
 # Che esegue inizializzazione ma poi passa alla parola allo script passato da docker run.
