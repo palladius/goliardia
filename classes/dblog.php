@@ -78,18 +78,20 @@ function dblog($facility, $frase_da_loggare=NULL, $severity="notice") {
 	$docker_context_concise_escaped = mysql_real_escape_string( "[".getHostnameAndDockerHostname()."] " . $_SERVER["GOLIARDIA_DOVESONO"] );
 
     try {
-		$SQL = "INSERT INTO `dblogs` 
-		(`id`, `severity`, `facility`, `log`, `user_id`, `user_name`, `docker_context`, `ip_address`) 
-		VALUES 
-		(NULL, '$severity', '$facility', '$frase_da_loggare_mysql_safe', $current_user_id, '$current_user', '$docker_context_concise_escaped', '$ip_address');
+		$SQL = "INSERT INTO `dblogs` (
+		    `id`, `severity`, `facility`, `log`, 
+            `user_id`, `user_name`, `docker_context`, `ip_address`
+		) VALUES ( 
+		    NULL, '$severity', '$facility', '$frase_da_loggare_mysql_safe', 
+            $current_user_id, '$current_user', '$docker_context_concise_escaped', '$ip_address'
+        );
 		";
 		$rs = mysql_query($SQL);
 		if (! $rs) {
 			#fputs($fp,"TODO1 ricc add via SQL error: " . mysql_error() );
-			die('Invalid query TODO toglimi quando va: ' . mysql_error() . "<br/> La query era $SQL");
+			log2('Invalid query TODO toglimi quando va: ' . mysql_error() . "<br/> La query era $SQL", "log_ingressi.php", false);
 		} else {
-			fputs($fp,"TODO2 ricc add via SQL error: " . mysql_error() );
-
+			#fputs($fp,"TODO2 ricc add via SQL error: " . mysql_error() );
 		}
 	} catch (Exception $e) {
 		echo '[log2] Caught exception nel mio delirio di loggare su DB: ',  $e->getMessage(), "\n";

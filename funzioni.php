@@ -1313,23 +1313,13 @@ fclose ($fp);
 
 
 
-// // sembra non vada un granche :) almeno logghiamo...
-// function setApplicationEnv($key,$val) {
-// 	#global $ISPAL,$DEBUG;
-// 	$chiavi_di_cui_non_mi_frega_na_cippa = "UTENTI_ORA";  // cmq lo loggo 
-// 	if ("$key" !=  = "UTENTI_ORA") {
-// 		log2("[setApplicationEnv] '$key' ==> '$val'");
-// 	}
-// }
-
-
 // sto cercando di muovere il SetApp a livello di DB... se posso e se non costa troppo. 
 // Chissa con InnoDB se va anche la chat!
 function setApplication($key,$val) { 
 	global $pazApplication,$APPSERIALIZZA ;
 
 	#setApplicationEnv($key,$val); // non va
-	log2("[setApplication] '$key' ==> '$val'");
+	log3("[setApplication] '$key' ==> '$val'"); # no DB log
 
 	$fp =fopen($pazApplication."$key.txt","w")
 		or die("No c'è il file in writtura relativo all'App -$key-!!!\n");
@@ -1647,11 +1637,14 @@ function getHostnameAndDockerHostname() {
 	return getenv("DOCKER_HOST_HOSTNAME") . "::" . php_uname('n') ;	  
 }
 
-function log2($str,$fname="log_ingressi.php") {
+function log3($str) {
+	log2($str, NULL, FALSE );
+}
+function log2($str,$fname=NULL, $log_to_db=True) {
 	global $GETUTENTE, $REMOTE_ADDR, $CONFSITO, $CURRENT_USER_ID, $CURRENT_USER;
+	if ($fname == NULL) $fname = "log_ingressi.php";
 	$paz 		= "var/log/";
 	$pazcompleto 	= $paz.$fname;
-
 
 	$current_user = fetch($_SESSION["_SESS_nickname"], "_CREDO_ANONIMO_") ;
 	$current_user_id = fetch($_SESSION["_SESS_id_login"] , "NULL"); # Nota: stringa perche inserisco ... 'blah', NULL, 'blah' ... e' nu numero quindi NON va quotato
@@ -1667,38 +1660,13 @@ function log2($str,$fname="log_ingressi.php") {
 	# senza data
 	$frase_da_loggare = "[$GETUTENTE @".$_SERVER["REMOTE_ADDR"]."] $str";
 	fputs($fp,"$now\t".str_pad($_SERVER["REMOTE_ADDR"],17," ").str_pad($GETUTENTE,30," ")."[$CONFSITO] $str\n"); 
-	error_log("[log2] $frase_da_loggare" );
+	if ($log_to_db) {
+		error_log("[log2] $frase_da_loggare" ); //  se no abbiamo un problema di circolarita perche dblog logga qui :P
+	}
+	fclose ($fp); 
 
 	## DB Logga
 	dblog("log2", "$str", "debug");
-	# dblog()
-	// $frase_da_loggare_mysql_safe = mysql_real_escape_string($frase_da_loggare);
-	// $ip_address = $_SERVER["REMOTE_ADDR"] ;
-	// $docker_context_escaped = mysql_real_escape_string("Context_VER=1.1\n"  
-	// . "DOVE_SONO: ". $_SERVER["GOLIARDIA_DOVESONO"] ."\n" 
-	// . "CONFSITO: ". $CONFSITO ."\n" 
-	// . "@ HOSTNAME: " .  getHostnameAndDockerHostname() ."\n" 
-	// );
-	// $docker_context_concise_escaped = mysql_real_escape_string(  $_SERVER["GOLIARDIA_DOVESONO"] . " @ " . getHostnameAndDockerHostname());
-
-	// try {
-	// 	$SQL = "INSERT INTO `dblogs` 
-	// 	(`id`, `severity`, `facility`, `log`, `user_id`, `user_name`, `docker_context`, `ip_address`) 
-	// 	VALUES 
-	// 	(NULL, 'warning', 'log2', '$frase_da_loggare_mysql_safe', $current_user_id, '$current_user', '$docker_context_concise_escaped', '$ip_address');
-	// 	";
-	// 	$rs = mysql_query($SQL);
-	// 	if (! $rs) {
-	// 		#fputs($fp,"TODO1 ricc add via SQL error: " . mysql_error() );
-	// 		die('Invalid query TODO toglimi quando va: ' . mysql_error() . "<br/> La query era $SQL");
-	// 	} else {
-	// 		fputs($fp,"TODO2 ricc add via SQL error: " . mysql_error() );
-
-	// 	}
-	// } catch (Exception $e) {
-	// 	echo '[log2] Caught exception nel mio delirio di loggare su DB: ',  $e->getMessage(), "\n";
-	// }
-	fclose ($fp); 
 }
 
 function reportRicorsivoCariche($idord,$result,$hoDiritti) {

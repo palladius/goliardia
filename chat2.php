@@ -14,7 +14,7 @@ function spapla($msg) { ?>
 	</table>
 <?php }
 
- session_start();
+session_start();
 
 if ("" == (Session("nickname"))) 
 	{echo "<center>";
@@ -26,38 +26,21 @@ if ("" == (Session("nickname")))
 ?>
 <html>
 <head>
-  <title>Chat di Palladius!</title>
+	<title>Chat di Palladius!</title>
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="content-language" content="it"> 
 <link rel="stylesheet" href="/public/css/Provaric.css" rel="stylesheet" type="text/css">
 </head>
-
-
-
-
 <?php 
-
-if (! Session("antiprof"))
-	{	// normale
-?>	
-<frameset rows="90,*,130"  frameborder="NO" border="2" framespacing="0"  class='bkg_chat'>
-  <frame src="chatscrivi.php" scrolling="NO" noresize name="scrivi" class='bkg_chat'>
-  <frame src="chatleggi.php" name="leggi" class='bkg_chat'>
-  <frame src="chatculo.php" scrolling="NO" noresize name="footer" class='bkg_chat'>
-</frameset>
-<?php 
-	}
-else  
-	{	// antiproffato
-
-/*
-<frameset rows="50,*"  frameborder="NO" border="2" framespacing="0" >
-  <frame src="chatscrivi.php" scrolling="NO" noresize name="scrivi">
-  <frame src="leggiprof.php" name="leggi">
-</frameset>
-*/
-	echo h1("con l'antiprof la chat x ora non va, mi spiace.");
-
+if (! Session("antiprof")) {	// normale
+	?>	
+		<frameset rows="90,*,130"  frameborder="NO" border="2" framespacing="0"  class='bkg_chat'>
+		<frame src="chatscrivi.php" scrolling="NO" noresize name="scrivi" class='bkg_chat'>
+		<frame src="chatleggi.php" name="leggi" class='bkg_chat'>
+		<frame src="chatculo.php" scrolling="NO" noresize name="footer" class='bkg_chat'>
+		</frameset>
+<?php  } else {	// antiproffato
+		echo h1("con l'antiprof la chat x ora non va, mi spiace.");
 	}	
 ?>
 

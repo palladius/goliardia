@@ -54,7 +54,7 @@ for ($i=0;$i<sizeof($stringa_utente);$i++)
    $inbraghe=FALSE;
    $inbraghestr = "in braghe";
 
-	//verifico se è in braghe
+	//verifico se Ã¨ in braghe
   for ($j=0;$j<sizeof($arrbraghe);$j++)
 	{
 //	 echo rosso("arrb_j=".$arrbraghe[$j]);
@@ -89,7 +89,7 @@ for ($i=0;$i<sizeof($stringa_utente);$i++)
 			."</td></tr><tr><td>"
 			.getdefinizioni(
 				"(<u>GUEST</u>)"
-				,"affinchè $nome diventi utente deve spedire una foto a..."
+				,"affinchÃ¨ $nome diventi utente deve spedire una foto a..."
 						)
 			."</td></tr></table></td>";
 			// nON FUNZIONA! VA CON LA TA SESSIONE NON LA N-MA!!!  

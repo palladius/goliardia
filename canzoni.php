@@ -75,11 +75,11 @@ $seria = TRUE;
  <tr><td><center>
 	<h1>'<?php  echo $azione?>' canzone</h1>
 <center>
-Ho aggiunto la possibilit‡ di dire se la canzone Ë 'seria'.
+Ho aggiunto la possibilit√† di dire se la canzone √® 'seria'.
 Ovviamente difficilmente si troveranno canti goliardici seri. 
 X serio intendo qualcosa di strettamente attinente alla goliardia x cui 
 se la vede un clerico di 70 anni non storca <i>troppo</i> il naso... :-)
-PunirÚ chi usa male questo flag. <b>Mettete gli accordi tra parentesi graffe pliz!!! Vedrete che figata!</b>
+Punir√≤ chi usa male questo flag. <b>Mettete gli accordi tra parentesi graffe pliz!!! Vedrete che figata!</b>
 <br>
 <table><tr><td bgcolor="#EEEEEE">
 <i>Esempio (per Manino):</i><br>
@@ -113,11 +113,11 @@ scrivi("<tr><td valign=top>");
 scrivi("Metti qui il testo vero e proprio della canzone<br>");
 formtextarea("Corpo",$corpo,30,50);
 scrivi("</td><td valign=top>");
-scrivi("Metti qui eventuali note (coefficiente di cantabilit‡ patavino,...)<br>");
+scrivi("Metti qui eventuali note (coefficiente di cantabilit√† patavino,...)<br>");
 formtextarea("Note",$note,30,50);
 trtdEnd();
 tableEnd();
-formSceltaTrueFalse("m_bSeria","La Canzone Ë seria?",$seria);
+formSceltaTrueFalse("m_bSeria","La Canzone √® seria?",$seria);
 formbottoneinvia("invia");
 formEnd();
 ?>
