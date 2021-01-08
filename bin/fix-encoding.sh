@@ -16,14 +16,24 @@ for PHPFILE in *.php ; do
         # Anzi si proviamoci
         sed -e "s/ignit�/ignità/g" |
         sed -e "s/acolt�/acoltà/g" |
+        sed -e "s/implicher�/implicherà/g" |
+        sed -e "s/dar�/darà/g" |
         sed -e "s/sar�/sarà/g" | # puo essere saro'# ma chissene
         sed -e "s/ovit�/ovità/g" | 
-        sed -e "s/verr/verrà/g" | 
+        sed -e "s/verr�/verrà/g" | 
+        sed -e "s/servir�/servirà/g" | 
+        sed -e "s/funzioner�/funzionerà/g" | 
+        sed -e "s/varr�/varrà/g" | 
         sed -e "s/ealt�/ealtà/g" | 
+        sed -e "s/si degner�/si degnerà/g" | 
+        sed -e "s/pap�/papà/g" | 
         sed -e "s/itt�/ittà/g" | 
         sed -e "s/gi�/già/g" | # puo essere GIU ma amen 
         sed -e "s/t�/tà/g" | # Ho impressione che Tx sia sempre TA a parte RIVOLTO' e IMBRUTTI' :) si confermo
-
+        sed -e "s/ d� / dà /g" | # Ho impressione che Tx sia sempre TA a parte RIVOLTO' e IMBRUTTI' :) si confermo
+        sed -e "s/Ullall�/Ullallà/g" | # Ho impressione che Tx sia sempre TA a parte RIVOLTO' e IMBRUTTI' :) si confermo
+        sed -e "s/D�/Dà/g" | 
+        
         ##################################################
         # "e" accentata GRAVE è
         ##################################################
@@ -31,9 +41,10 @@ for PHPFILE in *.php ; do
         sed -e "s/'�/'è/g" | 
         sed -e "s/\"�/\"è/g" | 
         ##################################################
-        # "e" accentata e acuta perché
+        # "e" accentata e acuta perché Né
         ##################################################
-        sed -e "s/ch�/chè/g" | 
+        sed -e "s/ch�/ché/g" | 
+        sed -e "s/ n�/ né/g" | 
 
         ##################################################
         # I accentata
@@ -41,6 +52,7 @@ for PHPFILE in *.php ; do
         # SI da solo e con virgole perche e difficile da prendere..
         sed -e "s/s� /sì /" | 
         sed -e "s/s�!/sì!/" | 
+        sed -e "s/tres�/tresì/" | 
         sed -e "s/s�\"/sì\"/" | 
         sed -e "s/\"s�/\"sì/" | 
         sed -e "s/s�,/sì,/" |
@@ -52,12 +64,31 @@ for PHPFILE in *.php ; do
         # O accentata chennesò
         ##################################################
         sed -e "s/ci�/ciò/" | 
+        sed -e "s/Ci�/Ciò/" | 
         sed -e "s/iapas�/iapasò/" | 
         sed -e "s/pu�/può/" | 
-        sed -e "s/abbasser/abbasserò/" | 
+        sed -e "s/per�/però/" | 
+        sed -e "s/ccer�/ccerò/g" | # abbreccero' 
+        sed -e "s/abbasser�/abbasserò/g" | 
+        sed -e "s/picchier�/picchierò/g" | 
+        sed -e "s/punir�/punirò/g" | 
+        sed -e "s/Io mander�/Io manderò/" |
         sed -e "s/far�/farò/" | # non e mai FARA ho guardato.. 
+        sed -e "s/ercher�/ercherò/g" | # cerchero'
+        sed -e "s/uaer�/userò/" | # cerchero'
+        
+
+        sed -e "s/pou�/può/" | # era un typo ma lo fixiamo qui :P  pou�
         ##################################################
-        # U accentata
+        # U accentata Più
+        # Nota maiuscole: È, À Ò, Ù, Ì,
         ##################################################
+        sed -e "s/pi�/più/" | # non e mai FARA ho guardato.. 
+        sed -e "s/Pi�/Più/" | # non e mai FARA ho guardato.. 
+        sed -e "s/PI�/PIÙ/" | # non e mai FARA ho guardato.. 
+
+        ##################################################
+        # ridirigo (tee >/dev/null) cosi va ok con pipe a SX :P
+
         tee $PHPFILE.codificato 1>/dev/null
 done
