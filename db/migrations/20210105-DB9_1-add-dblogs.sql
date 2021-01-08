@@ -13,3 +13,5 @@ CREATE TABLE `dblogs` (
 
 ALTER TABLE `dblogs` ADD `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'date creation' AFTER `docker_context`;
 ALTER TABLE `dblogs` ADD `ip_address` VARCHAR(16) NULL DEFAULT NULL COMMENT 'IP address dell utente' AFTER `user_name`;
+
+UPDATE xxx_memoz SET valore = "9.1" WHERE chiave = "DB_VER";

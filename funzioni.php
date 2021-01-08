@@ -6184,14 +6184,12 @@ function pubblicaBanner() {
 
 // is production?
 function production() {
-	#global $ENVIRONMENT ;
-	#return $ENVIRONMENT == "production" ;
-	return get_rails_env() == "production";
+	return get_rails_env() == "production" or get_rails_env() == "staging";
 }
 
 function development() {
 	global $ENVIRONMENT ;
-	return get_rails_env() != "production" ;
+	return get_rails_env() == "development" ;
 }
 
 function get_rails_env() {

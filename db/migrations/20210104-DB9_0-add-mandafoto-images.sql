@@ -24,3 +24,5 @@ ALTER TABLE `mandafoto_images` ADD UNIQUE( `image_md5`);
 -- per doppio: https://www.mysqltutorial.org/mysql-unique-constraint/#:~:text=A%20UNIQUE%20constraint%20is%20an,constraint%20or%20a%20table%20constraint.&text=In%20this%20syntax%2C%20you%20include,to%20enforce%20the%20uniqueness%20rule.
 -- ma attento questo mi dava syntax error:
 --  UNIQUE KEY `un_solo_md5_per_utente` (`user_id`,`image_md5`)
+
+UPDATE xxx_memoz SET valore = "9.0" WHERE chiave = "DB_VER";

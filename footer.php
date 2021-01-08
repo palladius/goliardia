@@ -28,8 +28,12 @@ if ($DEBUG) {
 			<img src="<?php  echo $IMMAGINI?>/powered_mini.jpg" width='150'>
 			<h6>
 			[ <a href="index.php">Home</a> 
-			| <a href="http://www.goliardia.it/joomla/">Sito Joomla</a> 
+			<!--			| <a href="http://www.goliardia.it/joomla/">Sito Joomla</a>  -->
+			| <a href='https://github.com/palladius/goliardia'>Code on gitHub</a> 
 			| <a href="mailpalladius.php">contatta <?php  echo $QGFDP?></a> 
+			| <a href="http://goliardia-development.palladi.us/" >Gol-DEV</a>
+			| <a href="http://goliardia-staging.palladi.us/" >Gol-staging</a>
+			| <a href="http://goliardia-prod2.palladi.us/" >Gol-prod2</a> (GKE)
 			]</h6>
 			</center>
 		</td>
@@ -52,16 +56,14 @@ if ($DEBUG) {
 
 <small>
 	<b><?php  echo $DOVE_SONO?></b>, 
-   v: <b><?php  echo $VERSION ?></b>
-	 PHPver: <b><?php  echo $PAGEVER?></b>,
+   <!-- NON VA v: <b><?php  echo $VERSION ?></b> -->
+   <!-- non ci interessa	 PHPver: <b><?php  echo $PAGEVER?></b>,  -->
 	DB: <i><?php echo $dbdatabase ?></i> on 
 	<!-- hostname -->
-	 <b><u><?= php_uname('n'); ?></u></b> 
-	 (figlio di  <b><u><?= getenv("DOCKER_HOST_HOSTNAME") ?></u></b> ), 
-	(v.<?= getMemozByChiave("db_ver") ?>, 
+	 <b><u><?= getHostnameAndDockerHostname(); ?></u></b>, 
+	(DB_VER <?= getMemozByChiave("db_ver") ?>, 
 		<? echo get_rails_env() ?> )
-	 [ <a href='https://github.com/palladius/goliardia'>Code on gitHub</a> 
-	 VER: <b><?= `cat ./VERSION` ?></b> ]
+	 CodeVer: <b><?= `cat ./VERSION` ?></b> ]
 <?php 
  if ($ISPAL) { ?>
 	<br/>(PALONLY:) , php v<?php  echo phpversion()?>

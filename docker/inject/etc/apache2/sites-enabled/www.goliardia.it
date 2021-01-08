@@ -8,6 +8,8 @@
 	ServerAlias     goliardia-prod2.palladi.us
 	ServerAlias     goliardia-staging.palladi.us
 	ServerAlias     goliardia-development.palladi.us
+	# Questo l configuri in /etc/hosts in localhost ;) per testare sti cacchio di alias.
+	ServerAlias     goliardia-localhost.palladi.us
 	DocumentRoot	/var/www/www.goliardia.it/
 
 	<Directory />

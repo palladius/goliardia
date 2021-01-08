@@ -32,10 +32,10 @@ function toDataSburaConMinuti($d)
 global $weekkina,$mesini;
 if ($d == -1)
 	return "1-1-1970 <small><i>(cercate di cambiare sta data, se possibile. se no "
-		."segnalate il BUG mandando un gms a @BUGS x favore dicendo a cosa Ë riferita)</i></small>";
+		."segnalate il BUG mandando un gms a @BUGS x favore dicendo a cosa √® riferita)</i></small>";
 $mese=$mesini[date("n",$d)-1]; // mese senza zeri
 $giorno = $weekkina[date("w",$d)];
-$format = date("\%\s\ j \%\s y, H:m",$d); // j Ë come d ma 1..31 non 01..31
+$format = date("\%\s\ j \%\s y, H:m",$d); // j √® come d ma 1..31 non 01..31
 return sprintf($format,$giorno,$mese);
 }
 
@@ -138,7 +138,7 @@ if ($ISPAL)
 	scriviCoppia(rosso("NoteAdmin (solo pal)"),$rs["m_snoteadmin"]." <i>(edit tbds)</i>"); 
 scriviCoppia(rosso("Mail pubblica (1=yes,0=no: cambiatevi sto valore se volete!)"),$rs["m_bmailpubblica"]); 
 if ($rs["m_bmailpubblica"])
-	scriviCoppia(("Email (poichÈ Ë consenziente)"),"<a href='mailto:".$rs["m_hEmail"]."'>".$rs["m_hEmail"]."</a>"); 
+	scriviCoppia(("Email (poich√© √® consenziente)"),"<a href='mailto:".$rs["m_hEmail"]."'>".$rs["m_hEmail"]."</a>"); 
 else // se no, la faccio vedere agli admin vip...
 #if (isAdminVip())
 if ($ISPAL)
@@ -163,8 +163,8 @@ if (! $ISANONIMO)
 }
 scriviCoppia("Gusti sessuali",$rs["gustisessuali"]);
 scriviCoppia("interessi",$rs["interessi"],TRUE);
-#scriviCoppia("citt‡",$rs["provincia"],TRUE);
-scriviCoppia("citt‡","<a href='citta.php?citta=".$rs["provincia"]
+#scriviCoppia("citt√†",$rs["provincia"],TRUE);
+scriviCoppia("citt√†","<a href='citta.php?citta=".$rs["provincia"]
 	."'>".$rs["provincia"]."</a> (new)",TRUE);
 #http://www.goliardia.it/citta.php?citta=Macerata
 
@@ -172,7 +172,7 @@ scriviCoppia01("Sesso",				$rs["m_bIsMaschio"],"maschio","femmina");
 scriviCoppia01("Account attivo",		$rs["m_bAttivo"],"attivo","in punizione");
 scriviCoppia01("Account da ospite",		$rs["m_bGuest"],"ospite","sbur-user");
 scriviCoppia01("Sei un goliarda?!?",		$rs["m_bIsGoliard"],"goliarda","filisteo");
-scriviCoppia01("Seriet‡",				$rs["m_bSerio"],"serio","faceto");
+scriviCoppia01("Seriet√†",				$rs["m_bSerio"],"serio","faceto");
 scriviCoppia01("Single",				$rs["m_bSingle"],"single","accoppiato");
 scriviCoppia01("Ha la erre moscia?!?",	$rs["m_bErreMoscia"],"erre moscia!!!","niep");
 #scriviCoppiaImgTrueFalse("Sesso",				$rs["m_bIsMaschio"],"maschio.gif","femmina.gif");
@@ -184,7 +184,7 @@ scriviCoppia01("Ha la erre moscia?!?",	$rs["m_bErreMoscia"],"erre moscia!!!","ni
 #scriviCoppiaImgTrueFalse("Ha la erre moscia?!?",	$rs["m_bErreMoscia"],"erremoscia.gif","errenormale.gif");
 
 
-scriviCoppia("goliard pointzÆ",$rs["m_nPX"]);
+scriviCoppia("goliard pointz¬Æ",$rs["m_nPX"]);
 
 tdtdtop();
 //echo "<div align='right'>";
@@ -253,7 +253,7 @@ tdtd();
 	$rs=query1("select count(*) from polls_titoli where id_utente_creatore=".$MYLOGIN);
 	scriviCoppia("Sondaggi creati",$rs[0]);
 	if ($HADIRITTOACANCELLARE ) 
-		formquery("CANC ".$rs[0]." sondaggi (non andr‡ mai)"
+		formquery("CANC ".$rs[0]." sondaggi (non andr√† mai)"
 			,"delete  from polls_titoli where id_utente_creatore=".$MYLOGIN);
 
 	$rs=query1("select count(*) from appuntamenti where id_login=".$MYLOGIN);
@@ -275,10 +275,10 @@ trtd();
 	scrivib("Ordini in gestione");
 tdtd();
 
-	$sqlGestori=mysql_query("select citt‡ from gestione_citta where id_login=".$MYLOGIN);
-	scriviCoppia("Citt‡",getRecordSetConVirgole($sqlGestori));
+	$sqlGestori=mysql_query("select citt√† from gestione_citta where id_login=".$MYLOGIN);
+	scriviCoppia("Citt√†",getRecordSetConVirgole($sqlGestori));
 	if ($HADIRITTOACANCELLARE ) 
-		formquery("CANC ".$sqlGestori[0]." gest. citt‡","delete  from gestione_citta  where id_login=".$MYLOGIN);
+		formquery("CANC ".$sqlGestori[0]." gest. citt√†","delete  from gestione_citta  where id_login=".$MYLOGIN);
 
 
 	invio();
@@ -433,7 +433,7 @@ if (String(Form("operazione")) == "SPEDISCI_MAIL") // ereditata dall'index, sono
 		// devo solo cancellare un login...
 	$rs=query1("select m_spwd,m_snome from loginz where id_login=".Session("SESS_id_utente"));
 	scrivi("sto inviando la mail al tuo indirizzo...");
-	provaMail("La password da te richiesta Ë: '<i>".rs("m_spwd")."</i>', caro <b>".rs("m_snome")."</b>");
+	provaMail("La password da te richiesta √®: '<i>".rs("m_spwd")."</i>', caro <b>".rs("m_snome")."</b>");
 	bona();
 	}
 
@@ -466,28 +466,28 @@ if (String(Form("operazione")) == "CAMBIA_MAIL")
 		 if ($ISPAL) echo rosso("pal: nuova mail: $nuovamail.<br>");
 		 scrivi(rossone("mail vecchia OK (".$rs[0]."), verifico ora la mail nuova"));
 		 $ok=isValidMail($nuovamail);
-		 if (!$ok) // vediamos e esiste gi‡...
+		 if (!$ok) // vediamos e esiste gi√†...
 			{
 			 $res=mq("select count(*) from loginz where m_hemail like '$nuovamail'");
 			 $rs=mysql_fetch_row($res);
-			 $ok= (intval($rs[0]) == 0); // ve3rifico che la mail none sista gi‡
+			 $ok= (intval($rs[0]) == 0); // ve3rifico che la mail none sista gi√†
 			}
 		 if (! $ok)
-			{tornaindietro("mail nuova ($nuovamail) non corretta (o xchË Ë malformata "
-					."o xchË Ë gi‡ in uso), mi spiace...");
+			{tornaindietro("mail nuova ($nuovamail) non corretta (o xch√® √® malformata "
+					."o xch√® √® gi√† in uso), mi spiace...");
 			}
 		 else
 			{
 			 $nuovapwd=creaPassword();
 			 $sql="UPDATE loginz SET m_spwd='$nuovapwd', m_hemail='$nuovamail' WHERE ID_login="
 					.Session("SESS_id_utente")."";
-			 if ($ISPAL) echo rosso("pal: nuova pwd ($nuovapwd), la sql Ë: <b>$sql</b><br>");
+			 if ($ISPAL) echo rosso("pal: nuova pwd ($nuovapwd), la sql √®: <b>$sql</b><br>");
 			 $rs=tentaquery($sql)
-				or die("qualcosa Ë andato storto nella query di modifica, uffi!");
+				or die("qualcosa √® andato storto nella query di modifica, uffi!");
 		 	 tornaindietro("Password aggiornata, mail aggiornata. Novit' spedite via mail. "
 				."Controlla la posta x sapere la mail.");
-			 $body= "La password da te richiesta Ë: '<i><b>$nuovapwd</b></i>', caro/a <b>$GETUTENTE</b>."
-				." Se fai cosÏ fatica a ricordartela, puoi cambiarla nella sezione UTENTE.";
+			 $body= "La password da te richiesta √®: '<i><b>$nuovapwd</b></i>', caro/a <b>$GETUTENTE</b>."
+				." Se fai cos√¨ fatica a ricordartela, puoi cambiarla nella sezione UTENTE.";
 			mandaMail($nuovamail,$WEBMASTERMAIL,"OK! La password modificata di $GETUTENTE",$body);
 			}
 		}	
@@ -574,7 +574,7 @@ trtd();
 
 formBegin($AUTOPAGINA);
 	formhidden("operazione","SPEDISCI_MAIL");
-	scrivi("se hai dimenticato la password, premendo questo bottone riceverai via mail la tua password. Attento, la mail a cui verr‡ mandata sar‡ esattamente la stessa che mi hai segnalato all'iscrizione. Speriamo sia giusta... :-)");
+	scrivi("se hai dimenticato la password, premendo questo bottone riceverai via mail la tua password. Attento, la mail a cui verr√† mandata sar√† esattamente la stessa che mi hai segnalato all'iscrizione. Speriamo sia giusta... :-)");
 	invio();
 	formbottoneinvia("spediscimela via mail");
 formEnd();
@@ -585,7 +585,7 @@ formBegin();
 	formhidden("operazione","CAMBIA_DATANASCITA");
 	scrivi("se ti sei iscritto prima del 13-10-02, devi inserire la tua data di nascita (che ora a me risulta essere"
 		."<b>$dataBirth</b>). Altrimenti, puoi comunque cambiarla. "
-		."Attento che ti verr‡ chiesta questa data se e quando dimenticherai la password (forse!)."
+		."Attento che ti verr√† chiesta questa data se e quando dimenticherai la password (forse!)."
 		."<b>PS</b> <i>Nota che la data che segue non e' (probabilmente) la tua: era troppo difficile da settare"
 		." e mi rugava farla bene, abbi pazienza. Quindi quissotto vedrai sempre lo stesso valore. Il valore corretto lo trovi piu' in alto sotto 'nato il'. In futuro forse...</i>");
 	invio();
@@ -598,9 +598,9 @@ scrivi("<h3>Cambia Mail</h3>");
 formBegin();
 	formhidden("operazione","CAMBIA_MAIL");
 	scrivi("Tu ti sei iscritto con mail MAIL. Se vuoi cambiarla, puoi. ma x essere sicuro che la mail che"
-		."metti sia giusta, <b>ti cambierÚ di conseguenza la password</b> a caso. Niente paura:"
+		."metti sia giusta, <b>ti cambier√≤ di conseguenza la password</b> a caso. Niente paura:"
 
-		."Sar‡ sufficiente uscire, e usare il form HO DIMETICATO LA PASSWORD e ti verr‡ spedita alla mail nuova."
+		."Sar√† sufficiente uscire, e usare il form HO DIMETICATO LA PASSWORD e ti verr√† spedita alla mail nuova."
 		."Attento xtanto a scrivere bene la mail!!!");
 	invio();
 	 formtext("vecchiamail","vecchia mail");
@@ -626,7 +626,7 @@ formhidden("hidden_operazione","CAMBIA_DATI");
 	formtext("Icq",$rss["icq"]);
 	invio();
 	scrivi("Nome Cognome: \n<input type='text' name='m_thumbnail'  value='".$rss["m_thumbnail"]."'>\n");
-	//formtext("Nome Cognome",$rss["m_thumbnail"]); // NO xchË scritta Ë diversa da roba da CAMPO
+	//formtext("Nome Cognome",$rss["m_thumbnail"]); // NO xch√® scritta √® diversa da roba da CAMPO
 
 	invio();
 	scrivi("provincia: ");
@@ -662,7 +662,7 @@ scrivi("<h3>Cambia password</h3>");
 
 formBegin();
 	formhidden("operazione","SPEDISCI_CHANGE_PWD");
-	scrivi("Se invece vuoi cambiuarla perchË non ti piace, basta inserire la vecchia (x conferma, se no un tuo compagno di laboratorio puÚ farti la bastardata) e la nuova voluta. Attento, non ti do la doppia scelta come nei siti seri xchË evito un controllo in +, vuoi mettere? Quindi sii prudente.");
+	scrivi("Se invece vuoi cambiuarla perch√® non ti piace, basta inserire la vecchia (x conferma, se no un tuo compagno di laboratorio pu√≤ farti la bastardata) e la nuova voluta. Attento, non ti do la doppia scelta come nei siti seri xch√® evito un controllo in +, vuoi mettere? Quindi sii prudente.");
 	invio();
 	formtext("vecchiapwd","<vecchiapwd>");
 	invio();
