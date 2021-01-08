@@ -27,8 +27,8 @@ $tInizioPagina=getmicrotime();
 
 // NON VA! FIXIT! Non va perche constant non ha ancora session start.
 global $current_user, $current_user_id;
-$current_user = $_SESSION["_SESS_nickname"]; # NON FUNZIONA! Non capisco perche ma viene vuoto..
-$current_user_id = $_SESSION["_SESS_id_login"];
+$current_user = fetch($_SESSION["_SESS_nickname"],"_ANONIMO_FUNZIONALE_"); # NON FUNZIONA! Non capisco perche ma viene vuoto..
+$current_user_id = fetch($_SESSION["_SESS_id_login"], NULL);
 #$current_user = fetch($_SESSION["_SESS_nickname"], NULL); # NON FUNZIONA! Non capisco perche ma viene vuoto..
 #$current_user_id = fetch($_SESSION["_SESS_id_login"], NULL);
 

@@ -43,7 +43,6 @@ $icona_capoordine="corona30.png"; //"capoordine.gif"
 $icona_manto="manto.gif";         // "mantello30.jpg"  //"nobile.jpg"
 $icona_saio="saio.gif";           // "cacca34.png"   
 
-
 /*
 HINT 
 array file ( string filename [, int use_include_path [, resource context]])
@@ -1638,18 +1637,21 @@ function getHostnameAndDockerHostname() {
 }
 
 function log3($str) {
-	log2($str, NULL, FALSE );
+	log2("[log3-nodb] NEVER LOGS ON DB NEVER! $str", NULL, FALSE );
 }
 function log2($str,$fname=NULL, $log_to_db=True) {
+	## INIZIALIZZAZIONE
 	global $GETUTENTE, $REMOTE_ADDR, $CONFSITO, $CURRENT_USER_ID, $CURRENT_USER;
-	if ($fname == NULL) $fname = "log_ingressi.php";
+	if ($fname == NULL) 
+		$fname = "log_ingressi.php";
+	if ($log_to_db == NULL ) 
+		$log_to_db=True;
 	$paz 		= "var/log/";
 	$pazcompleto 	= $paz.$fname;
-
+	## CODICE
 	$current_user = fetch($_SESSION["_SESS_nickname"], "_CREDO_ANONIMO_") ;
 	$current_user_id = fetch($_SESSION["_SESS_id_login"] , "NULL"); # Nota: stringa perche inserisco ... 'blah', NULL, 'blah' ... e' nu numero quindi NON va quotato
 
-#	$now=dammiDataByJavaDate(time());
 	$now = now();
 
 	$fp =fopen($pazcompleto,"a"); 

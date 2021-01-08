@@ -41,6 +41,8 @@ GOLIARDIA_SITEPATH: <? echo $_SERVER['GOLIARDIA_SITEPATH'] , "\n"; ?>
 DOCKER_HOST_HOSTNAME: <? echo getenv('DOCKER_HOST_HOSTNAME') , "\n"; ?>
 WEBMASTER_EMAIL: <? echo getenv('WEBMASTER_EMAIL'), "\n"; ?>
 ENTRYPOINT8080_TIMESTAMP: <?= getenv('ENTRYPOINT8080_TIMESTAMP')."\n"; ?>
+DB_DOVE_STA: <?= getenv("DB_DOVE_STA")."\n"; ?>
+FQDN: <?= getenv("FQDN")."\n"; ?>
 <?
 # TODO
 #date-last-login: TODO(ricc): sql(SELECT m_dataLastCollegato, m_sNome FROM `loginz` order by m_dataLastCollegato DESC limit 1)
@@ -50,5 +52,8 @@ ENTRYPOINT8080_TIMESTAMP: <?= getenv('ENTRYPOINT8080_TIMESTAMP')."\n"; ?>
 #timestamp-sql-latest-message: TODO(Ricc): query Forum for latest message.
 #REMOTE_USER: echo $_SERVER['REMOTE_USER'] , "\n"; 
 #PHP_AUTH_USER: echo $_SERVER['PHP_AUTH_USER'] , "\n"; 
+
 ?>
-TIME_TO_WRITE_THIS_PAGE: TODO
+TIME_TO_WRITE_THIS_PAGE_MILLIS: TODO
+<? log2("REMOVEME Chiamato varz da qualcuno") ?>
+<? log3("Chiamato varz da qualcuno") ?>

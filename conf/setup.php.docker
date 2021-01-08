@@ -13,8 +13,8 @@ $FUSOORARIO = 16; 				# 6 non va provo 16Mi sembra inutile TODO toglimi
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- personalizzazioni
 
 # NOvita 2021.
-$DB_DOVE_STA = $_SERVER["DB_DOVE_STA"];  # dove e il DB a scopi mnemonici (equivalente a ..)
-$FQDN = $_SERVER["FQDN"];  # Importantissimo. Questa e' la camicia attorno alla quale disegni il sito.
+$DB_DOVE_STA = getenv("DB_DOVE_STA");  # dove e il DB a scopi mnemonici (equivalente a ..)
+$FQDN = getenv("FQDN");  # Importantissimo. Questa e' la camicia attorno alla quale disegni il sito.
 	# di default dovrebbe essere www.goliardia.it ma con Docker e GKE ora posso creare
 	# tante istanze in posti diversi ed e' importante dire al sito: 
 	# "Hey ciao! TU sei www.goliardia-stikazzi-staging.palladius.it"
