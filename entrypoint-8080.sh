@@ -40,6 +40,10 @@ echo "[$0] BEGIN (`date`) GOLIARDIA_ENTRYPOINT_VER=$GOLIARDIA_ENTRYPOINT_VER"
 echo "[$0] 1. Setting SSMTP config thanks to succulent ENV vars like SMTP_USER=$SMTP_USER.."
 _activate_ssmtp
 echo "[$0] 2. Consider turning ENV[DEBUG_ON]! Currently: DEBUG='$DEBUG' DEBUG_ON='$DEBUG_ON'"
+if [ "" != "$DEBUG" ] ; then
+	echo DEBUG sembra enabled.
+	export MESSAGGIO_OCCASIONALE="[DEBUG=$DEBUG from entrypoint] $MESSAGGIO_OCCASIONALE"	
+fi
 echo "[$0] 3. Verifoco double quotes: GOLIARDIA_DOVESONO=$GOLIARDIA_DOVESONO (nota non ho messo quote a dx dell uguale)"
 echo "[$0] 4. Bando alle Cionce, lets now finally run: $COMMAND_TO_RUN "
 #DEBUG=cerrrrtamente 

@@ -1,5 +1,7 @@
 ## Changelog
 
+2021-01-08 v3.2.006 Fixed so many things: lettere accentate ce nerano molte altre -> fixed most. Un sacco di query rotte, rimesse a posto ora.
+                    Log loggava tutto su DB e si invorniva in chat -> messo a posto pure quello. Ora tutto ok!
 2021-01-08 v3.2.001 Fixed ACCENTI! Ora tutte le vocali sono accentate correttamente. #epochal #FIX 
 2021-01-06 v3.1.004 Fixed quoting issues! WOWOW #epochal #FIX 
 2021-01-05 v3.1.001 Added DBLogs table and already patched log2 to work with it. Woohoo!
