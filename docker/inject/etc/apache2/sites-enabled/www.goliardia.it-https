@@ -1,7 +1,19 @@
+##########################################################################################################
+# TODO(ricc): 2021 DRY it come spiega qua ma intanto vediam se va :) 
+# https://serverfault.com/questions/303744/serve-http-port-80-and-https-port-443-on-same-virtualhost
+##########################################################################################################
+
+#<VirtualHost 192.0.2.12:443>
+#    SSLEngine On
+#    # etc
+#    Include /etc/apache2/sites/example.com
+#</VirtualHost>
+
+
 #########################################################
-# Virtualhost di www.goliardia.it per Docker
+# Copiato da sopra il 8jan2021 (version 3.2.04)
 #########################################################
-<VirtualHost *:80> 
+<VirtualHost *:443> 
 	ServerAdmin		${WEBMASTER_EMAIL} 
 	Servername		www.goliardia.it
 	ServerAlias     goliardia-prod.palladi.us
@@ -9,6 +21,8 @@
 	ServerAlias     goliardia-staging.palladi.us
 	ServerAlias     goliardia-development.palladi.us
 	DocumentRoot	/var/www/www.goliardia.it/
+
+    SSLEngine On
 
 	<Directory />
 		Options +Includes
