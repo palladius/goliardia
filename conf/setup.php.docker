@@ -8,10 +8,19 @@ $dbhost     = $_SERVER["GOLIARDIA_MYSQL_HOST"];
 $dbuser     = $_SERVER["GOLIARDIA_MYSQL_USER"]; 
 $dbpassword = $_SERVER["GOLIARDIA_MYSQL_PASS"]; 
 $dbdatabase = $_SERVER["GOLIARDIA_MYSQL_DB"];		# nome del database
-$DOVE_SONO  = $_SERVER["GOLIARDIA_DOVESONO"]; 		# dove � il server, a scopi mnemonici 
+$DOVE_SONO  = $_SERVER["GOLIARDIA_DOVESONO"]; 		# dove e' il server, a scopi mnemonici 
 $FUSOORARIO = 16; 				# 6 non va provo 16Mi sembra inutile TODO toglimi
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- personalizzazioni
 
+# NOvita 2021.
+$DB_DOVE_STA = $_SERVER["DB_DOVE_STA"];  # dove e il DB a scopi mnemonici (equivalente a ..)
+$FQDN = $_SERVER["FQDN"];  # Importantissimo. Questa e' la camicia attorno alla quale disegni il sito.
+	# di default dovrebbe essere www.goliardia.it ma con Docker e GKE ora posso creare
+	# tante istanze in posti diversi ed e' importante dire al sito: 
+	# "Hey ciao! TU sei www.goliardia-stikazzi-staging.palladius.it"
+	# Questo e' particolarmente importante per il VirtualHost e poi altre cose.
+	# Aiuta il sito ad avere una maggiore coscenza di se. Che quando Skynet arriva
+	# non voglio che goliardia arrivi ultimo.. :P
 
 	# INFO SITO MIO
 $GODNAME = "prova"; // se cambi questo nome, viene un atro superuser...
@@ -68,7 +77,7 @@ $paz_foto_ordini    = "immagini/ordini/";
 $paz_foto           = "immagini/";
 
 	//	PROPRIETA DEL SERVER
-$MAILNONVA = FALSE; // finch� � vero che le mail non partono, scrivo cose x gli utenti.
+$MAILNONVA = FALSE; // finche e vero che le mail non partono, scrivo cose x gli utenti.
 $UPLOADVA = FALSE; 
 # metti qualcosa sugli apostrofi (magic quote)
 $indexAndAnonomo=1; 	// se TRUE , tutti possano vedere tutto senza login.

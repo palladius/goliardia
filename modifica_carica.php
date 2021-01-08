@@ -223,7 +223,7 @@ if ($AGGIUNGISOLO)
 
 ?>
 		<h2>Wizard: Crea un'intera gerarchia (*) tutta di botto che modificherai in seguito</h2>
-<big>Clausole: le cariche saranno tutte ritenute attive e non HC, e senza note. Verr� semplicemente 
+<big>Clausole: le cariche saranno tutte ritenute attive e non HC, e senza note. Verrà semplicemente 
 creata la lista discendente dal primo all'ultimo nome con i giusti legami goliardici, tale che il primo
 (che sarà il capoordine o comunque un 'capofilone') non abbia nessuno sopra, il secondo discenda dal primo, 
  il terzo dal secondo e così via!<br><b>PS</b> Non ti preoccupare se questo wizard non fa <i>esattamente</i> ciò

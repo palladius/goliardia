@@ -1,6 +1,16 @@
 #!/bin/bash
 
 # 2021
+
+## Mannaggia ho appena scoperto guardando la storia del GIT che se vai indietro abbastanza nel tempo
+# i caratteri NON erano tutti a cazzo :)
+# Guarda:
+# $ git show 5e59f88eb345eae5d4e69b474aef9d4642eaaad3:funzioni.php # rev del 20120916 in cui cambiavo a 644 tutto. 
+# [..]
+# // venerd<EC> puoi (1) capire xch<E8> va ottimizzata; (2) ottimizzarla. il passo 1 <E8> + difficile ;-) scherzo.
+# # la PRIMISSIMA revisione e questa: edc7d44c4595d7a761f17e97935e31b5857d1c7e
+# $ git show edc7d44c4595d7a761f17e97935e31b5857d1c7e:funzioni.php > funzioni.php.aleph0 # rev primissima, meglio non si puo fare
+
 echo Facciamo a manhouse e vediamo se va
 # HEXDUMP STUDY: i caratteri sono purtroppo indistinguibili: tutti "ef bf bd"
 #cat test-encoding.txt  | hd -c ; tail -2 test-encoding.txt
@@ -33,6 +43,7 @@ for PHPFILE in *.php ; do
         sed -e "s/ d� / dà /g" | # Ho impressione che Tx sia sempre TA a parte RIVOLTO' e IMBRUTTI' :) si confermo
         sed -e "s/Ullall�/Ullallà/g" | # Ho impressione che Tx sia sempre TA a parte RIVOLTO' e IMBRUTTI' :) si confermo
         sed -e "s/D�/Dà/g" | 
+        sed -e "s/mi potr�/mi potrà/g" | 
         
         ##################################################
         # "e" accentata GRAVE è
@@ -75,7 +86,8 @@ for PHPFILE in *.php ; do
         sed -e "s/Io mander�/Io manderò/" |
         sed -e "s/far�/farò/" | # non e mai FARA ho guardato.. 
         sed -e "s/ercher�/ercherò/g" | # cerchero'
-        sed -e "s/uaer�/userò/" | # cerchero'
+        sed -e "s/user�/userò/" | # cerchero'
+        sed -e "s/se violer�/se violerò/" | # cerchero'
         
 
         sed -e "s/pou�/può/" | # era un typo ma lo fixiamo qui :P  pou�
@@ -98,3 +110,4 @@ for i in *.codificato ; do
 done > se-ti-fidi-bashami-ma-assicurati-prima-che-sia-diffabile-e-rollbackabile.sh
 
 echo Creato: se-ti-fidi-bashami-ma-assicurati-prima-che-sia-diffabile-e-rollbackabile.sh
+echo "Per vedere ulteriori errori, digita:  fgrep --color=auto � *php"

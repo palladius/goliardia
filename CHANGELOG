@@ -1,5 +1,6 @@
 ## Changelog
 
+2021-01-08 v3.2.001 Fixed ACCENTI! Ora tutte le vocali sono accentate correttamente. #epochal #FIX 
 2021-01-06 v3.1.004 Fixed quoting issues! WOWOW #epochal #FIX 
 2021-01-05 v3.1.001 Added DBLogs table and already patched log2 to work with it. Woohoo!
 2021-01-05 v3.0.004 Fixed bugs in cerca. Fixing masndafoto and adding docker_context with DB
