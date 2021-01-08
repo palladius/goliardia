@@ -69,7 +69,7 @@ opentable2();
 	popolaComboFilePattern("skin","skin/","*",Session("skin"));
 	//visualizzaarray($arrSkin);
 	if (isdevelop())
-			echo rosso("figata! poi replichi tutto con un altro paz che un giorno sar� la directory di upload!!!");
+			echo rosso("figata! poi replichi tutto con un altro paz che un giorno sarà la directory di upload!!!");
 	invio();
 	formbottoneinvia("vai!");
 closetable2();
@@ -78,11 +78,11 @@ closetable2();
 
 /*
 scrivi("<bR>l'ANTIPROF ora vale: <b>$NEW (che vuol dire: ".rosso($NEW ? "attivo":"disattivo").")</b><bR><bR>");
-scrivib("Questa pagina � per chi, come me, si collega dal alvoro e n"
-	."on si pu� permettere che chi gira veda tette a dx e a manca. Og"
+scrivib("Questa pagina è per chi, come me, si collega dal alvoro e n"
+	."on si può permettere che chi gira veda tette a dx e a manca. Og"
 	."ni volta che caricate questa pagina alterate l'interruttore tra im"
 	."magini ON e immagini OFF. Ok?!? Un bacione a tutti. Per gl'ingegner"
-	."i: lo switch viene cambiato in mezzo a queste parole quindi questa �"
+	."i: lo switch viene cambiato in mezzo a queste parole quindi questa è"
 	." l'unica pagina in cui siete un po' antiprof e un po' no ;)");
 */
 include "footer.php";

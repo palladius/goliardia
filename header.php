@@ -3,9 +3,9 @@
 	ob_start(); 
 	session_start(); 
 ?><?php 
-	// non e' ottimizzato, cos� tiene + pagine in memoria. conviene che chi usa la ridirigi includa un file tipo need_redirect.php
-	// e nel file definisci SOLO la funzione e OBSTART, cos� se la usi in una pag x sbaglio d� errore, e da quel momento in poi SOLO
-	// le pagine che dan redirect son bufferizzate, e le altre vivon meglio. ok? � un'idea?
+	// non e' ottimizzato, così tiene + pagine in memoria. conviene che chi usa la ridirigi includa un file tipo need_redirect.php
+	// e nel file definisci SOLO la funzione e OBSTART, così se la usi in una pag x sbaglio dà errore, e da quel momento in poi SOLO
+	// le pagine che dan redirect son bufferizzate, e le altre vivon meglio. ok? è un'idea?
 
 #$SVNID="Id: ma chi usa SVN piu!!";
 #$SVN_REV=" Rev: 53 (Obsolete) ";
@@ -58,7 +58,7 @@ $NOMESFONDO =  "skin/$NOMESKIN/sfondopagina.jpg";
 $VISUALIZZASKIN= TRUE; 
 $TAG_MIO_AIUTANTE = "<a href='mailto:viperottapisa@hotmail.com'>Vipera</a> o <a href='mailto:manuelb.ernardi.ni+goliardia@gmail.com'>Palo</a>";
 $SITENAME = "www.goliardia.it";
-$MAILNONVA = FALSE; // finch� � vero che le mail non partono, scrivo cose x gli utenti.
+$MAILNONVA = FALSE; // finché è vero che le mail non partono, scrivo cose x gli utenti.
 $UPLOADVA = FALSE;  
 $GETUTENTE = getUtente();
 $ISANONIMO = anonimo();
@@ -120,7 +120,7 @@ function richiediRegistrazione() {
 		"Se <b>SI</b>, fai il <a href='login.php'><b><BIG>login</BIG></B></a>.<br/>".
 		"Se <b>NI</b>, (ovvero lo 6 ma non t ricordi + la pwd) clicca (dopo averci indugiato".
 		" qualche secondo sopra col mouse (ah! le nuove frontiere dell'html!)...) su <a href='login_dimenticatapwd.php'>".
-		getdefinizioni("Ho dimenticato la password","ti dico che sei pirla xch� FORSE NON SAI che su UTENTE puoi cambiare la bruttissima password che ti ho assegnato automaticamente io e renderla mnemonicamente + accessibile. EHI! Brutta pwd a chi? ma lo sai che viene calcolata appicciacando 3 pezzi a caso da 69 parole scelte accuratamente x voi? Per rendere meno grigio il vostro login? Chi vi d� questo?!? Eh? Oh! La prox volta che offendi pensaci prima!").
+		getdefinizioni("Ho dimenticato la password","ti dico che sei pirla xché FORSE NON SAI che su UTENTE puoi cambiare la bruttissima password che ti ho assegnato automaticamente io e renderla mnemonicamente + accessibile. EHI! Brutta pwd a chi? ma lo sai che viene calcolata appicciacando 3 pezzi a caso da 69 parole scelte accuratamente x voi? Per rendere meno grigio il vostro login? Chi vi dà questo?!? Eh? Oh! La prox volta che offendi pensaci prima!").
 		"</a>.</div>"
 		),"login.php");
 	bona();
@@ -190,7 +190,7 @@ function h6($x) {return "<h6>$x</h6>";}
 	<meta charset="UTF-8">
 	<meta name="description" content="Il sito della goGliardia italiana... una community aperta a goliardi e non solo per incontrarsi, scrivere cagate e conoscere gente. Creato da Riccardo 'zio Pal' Carlesso">
 	<meta name="author" content="Riccardo Carlesso" />
-	<meta name="keywords" content="goliardia, forum, chat, gioco delle coppie, Montecristo, fittone, SVQFO, cene, baccanali, palladius, carlesso, riccardo, gaudeamus, feriae matricolarum, universit�, bologna, Universit�, universit� degli studi, gogliardia, zingarata ">
+	<meta name="keywords" content="goliardia, forum, chat, gioco delle coppie, Montecristo, fittone, SVQFO, cene, baccanali, palladius, carlesso, riccardo, gaudeamus, feriae matricolarum, università, bologna, Università, università degli studi, gogliardia, zingarata ">
 	<link rel="stylesheet" href="public/css/default.css" rel="stylesheet" type="text/css">
 	<title><?php 
 $dinizio = time();
@@ -459,13 +459,13 @@ scrivi("<table width='$CONSTLARGEZZA600'><tr><td><center>");
 		if (isGuest()) {
 			global $TAG_MIO_AIUTANTE; 
 		 	definizioni(rosso("Sei <b>ospite</b>. Metti il mouse qui sopra che mo' ti spiego..."),
-			"In quanto tale, avrai poteri limitati in questo sito. Se hai problemi, guardati le FAQ e se proprio non resisti scrivi al webmaster (trovi la mail in fondo in basso). Per non essere ospite, la cosa migliore e + veloce � mandare una tua foto (thumbnail: guarda nelle FAQ se non vuoi che ti venga rimandata indietro con un niente di fatto) via mail a "
+			"In quanto tale, avrai poteri limitati in questo sito. Se hai problemi, guardati le FAQ e se proprio non resisti scrivi al webmaster (trovi la mail in fondo in basso). Per non essere ospite, la cosa migliore e + veloce è mandare una tua foto (thumbnail: guarda nelle FAQ se non vuoi che ti venga rimandata indietro con un niente di fatto) via mail a "
 			."$TAG_MIO_AIUTANTE e aspettare di essere promosso. Se la tua foto non rispecchia le esigenze descritte, <i>non</i> ti promuovero'<br/><u>Non fare l'errore di credere che questo sia un sito goliardico, non sopravvalutarlo!</u> ;-)"
 				);
 		} 
 	}
 	#if (isAdmin()) {
-	#	echo (("<font class=debug>Sei admin, complimenti! <br/><b>ATTENZIONE</b>, forse spie di Cofferati sono nel sito. Per favore, cerca di tenere buone le persone, cerchiamo di non censurare niente ma stiamo attenti ai toni... tenete d'occhio l'utente 'Trombino I'. Capite anche voi che questa cosa non dev'essere visibile alle spie, se anche x sbaglio ne avessimo userizzato uno di sicuro non sar� admin!!! Diffondete la notizia con msn e canali fidati a persone fidate.</font>"));
+	#	echo (("<font class=debug>Sei admin, complimenti! <br/><b>ATTENZIONE</b>, forse spie di Cofferati sono nel sito. Per favore, cerca di tenere buone le persone, cerchiamo di non censurare niente ma stiamo attenti ai toni... tenete d'occhio l'utente 'Trombino I'. Capite anche voi che questa cosa non dev'essere visibile alle spie, se anche x sbaglio ne avessimo userizzato uno di sicuro non sarà admin!!! Diffondete la notizia con msn e canali fidati a persone fidate.</font>"));
 	#}
 scrivi("</center></td></tr></table>");
 
@@ -490,7 +490,7 @@ scriviTabellaInscatolataBellaEnd();
 }
 
 
-formEnd(); // � una maialata: lo faccio finire fuori dalla tabella, ma funge!!!!! se vuoi saperlo � la form dio ricerca dell'header
+formEnd(); // è una maialata: lo faccio finire fuori dalla tabella, ma funge!!!!! se vuoi saperlo è la form dio ricerca dell'header
 
 
 
@@ -538,7 +538,7 @@ else  {if ($ISANONIMO)
 	}
 
 
-if (! contiene($AUTOPAGINA,"index")) // l'index � gi� troppo pesante...
+if (! contiene($AUTOPAGINA,"index")) // l'index è già troppo pesante...
 	if (! $ISANONIMO && !isGuest())
 {deltat("fgcB");
  if (! $ISSERIO && !(Session("antiprof")) )
@@ -550,7 +550,7 @@ deltat("fgcE");
 
 if ($indexAndAnonomo && 0) {
 	echo "<table><tr><td><img src='immagini/palladius/pal-zoolander.jpg' height='180'> <br/> <small><b>Pal ha appena rivisto Zoolander</b></small> </td><td>" 
-	. "<small> Mi spiace, ma da utente <i>NON</i> registrato ti lascio vedere <u>solo</u> 'sta pagina; se ho fatto le cose x benino, tutti i link ti dovrebbero catapultare al login!!! Ora tu penserai (lo dico perch� in siti simili l'ho pensato anch'io): perch� brutto bastardo vuoi registrarmi?!? Per vendere informazioni su di me al Grande Fratello che osserva? Per far soldi? Per inviarmi pubblicit� via mail?!? Nulla di tuto questo. Ogni utente del sito ha possibilita' di scrivere, commentare e in generale <i>fare danni</i> e siccome io NON sono un indovino se non creo un utente per te e tu non lo scrivi ogni volta che entri, non so chi tu sia quando tu ti colleghi. Il bello � che se fai questa fatica (e non mi prendi per il culo inserendo una mail farlocca) avrai un sacco di servizi <i>agratis</i> e senza pubblicit� alcuna, che � pi� di quello che offre la maggior parte dei siti. Ricorda che se fai danni io (e chi per me) ti osservo... Intelligenti pauca ;) <br />"
+	. "<small> Mi spiace, ma da utente <i>NON</i> registrato ti lascio vedere <u>solo</u> 'sta pagina; se ho fatto le cose x benino, tutti i link ti dovrebbero catapultare al login!!! Ora tu penserai (lo dico perché in siti simili l'ho pensato anch'io): perché brutto bastardo vuoi registrarmi?!? Per vendere informazioni su di me al Grande Fratello che osserva? Per far soldi? Per inviarmi pubblicità via mail?!? Nulla di tuto questo. Ogni utente del sito ha possibilita' di scrivere, commentare e in generale <i>fare danni</i> e siccome io NON sono un indovino se non creo un utente per te e tu non lo scrivi ogni volta che entri, non so chi tu sia quando tu ti colleghi. Il bello è che se fai questa fatica (e non mi prendi per il culo inserendo una mail farlocca) avrai un sacco di servizi <i>agratis</i> e senza pubblicità alcuna, che è più di quello che offre la maggior parte dei siti. Ricorda che se fai danni io (e chi per me) ti osservo... Intelligenti pauca ;) <br />"
 	. "<b>PS</b> Se avete voglia, vi invito a iscrivervi e a usare un nuovo sito meno 'casereccio' di questo (non l'ho <i>scritto</i> io, ma solo isntallato e personalizzato un po') che e' <a href='http://www.goliardia.it/joomla/'>QUI</a>. Se nei prossimi 10 anni la tecnologia cambiera' (ricordate Vanderhoff di Wayne's world?) e io avro' (come temo) poco tempo per tener dietro ad essa, probabilmente tal sito sara' il naturale approdo di questa comunita'; vi invito caldamente, dunque, a perderci 10 minuti a testa a iscrivervi, riempire i dati del vostro utente in community, e tentare di usare il forum; saro' ben lieto di fornirvi maggiori poteri e maggiori responsabilita' (come ad un certo fotografo) se me lo chiedete via <a href='mailto:$WEBMASTERMAIL'>e-maiala</a> (e non offendetevi, vi rispondo con MOOOOLTA calma, abbiate pazienza, se avete fretta leggetevi le FAQ, c'e' di solito tutto cio' di cui avete bisogno). <BR /> "
 	. "<b>PPS</b> Pezzi di merda, se tra di voi c'e' un programmatore che ha voglia di dare una mano SI FACCIA VIVO, vi supplico. Possibile che nessuno dica nulla? Bah... Se non per altruismo fatelo per la gloria! E per la Chiara, Giovanna, Ilaria...</small>"
 	. "</td></tr></table>";

@@ -24,7 +24,7 @@ if (!empty($nickname))
 	 bona();
 	}
 
-#echo "nickname vale '$nickname' ed � lungo ".strlen($nickname);
+#echo "nickname vale '$nickname' ed è lungo ".strlen($nickname);
 #echo "<br>finisce x spazio?!? ".intval(finisceperspazio($nickname));
 #bona();
 
@@ -41,7 +41,7 @@ function incrementaUtentiAttivi() {
 
 if (! empty($_POST["nickname"])) {
 	// cerco nel db un match tra nick e pwd
- 	// USA M_BATTIVO x vedere se pu� entrare...
+ 	// USA M_BATTIVO x vedere se può entrare...
 	// e fai check su email case unsensitive x il NUOVO UTENTE...
 
 $autorizzato=0;
@@ -56,7 +56,7 @@ $riga = mysql_fetch_array($result);
 // debRiga($result,$riga); // non consuma la riga
 
 
- $rigaTrovata = intval(!empty($riga[0])); // pwd vuota(impossibile) o riga vuota (ci� che voglio)
+ $rigaTrovata = intval(!empty($riga[0])); // pwd vuota(impossibile) o riga vuota (ciò che voglio)
 
 // scrivib("rigaTrovata: $rigaTrovata.");
 
@@ -88,7 +88,7 @@ if (! $rigaTrovata) {
 	}
 
     if ($riga["m_bAttivo"] != 1) {
-		scrivi("<b>Attenzione, il tuo account non � attivo (vale ".$riga["m_bAttivo"]."), prossimamente questo implicher� che tu non potrai entrare...<br>");
+		scrivi("<b>Attenzione, il tuo account non è attivo (vale ".$riga["m_bAttivo"]."), prossimamente questo implicherà che tu non potrai entrare...<br>");
 		scrivi("Questo vuol dire che NON PUOI ENTRARE. Manda una mail a zio Pal per spiegazioni.</b>");
 		$autorizzato=0;
 		$errore="Account disabilitato...";
@@ -154,7 +154,7 @@ if ($autorizzato) {// metto la sessione giusta...
 			."' WHERE id_login=$user_id")
 				or die("cudd'not apdeit ior m_datalastcollegato, scit!");
 
-	// devo decidere se la data � cambiata o no, se SI aumento di uno, se NO non faccio nulla
+	// devo decidere se la data è cambiata o no, se SI aumento di uno, se NO non faccio nulla
 
 		// 		ad esser + fini... ma freghiamocene del bug...
 		//	monthlast=new String(datalastcollegato.getMonth());
@@ -210,8 +210,8 @@ ti verra' rispedita alla mail originaria. Se hai cambiato mail o non riesci a le
 <?php closetable();?>
 <!---
 
-<b>Sono <i>gi�</i> registrato <i>e</i> ricordo la password:</b><br>
-<i>(ovvero appartengo a una ristretta �lite di rodati navigatori)</i><br/>
+<b>Sono <i>già</i> registrato <i>e</i> ricordo la password:</b><br>
+<i>(ovvero appartengo a una ristretta èlite di rodati navigatori)</i><br/>
 <b>attenzione, ho modificato il sistema di attribuzione dei GP: incrementano al + una volta al giorno, quindi non rompete 
 i coglioni e fate il login solo quando serve. Sempre vostro, Pal.</b>
 

@@ -45,7 +45,7 @@ function scriviReport_Ordine($recSet)
 echo("<h6>");
 echo(getOrdineGraficoById($recSet["id_ord"],30));
 echo("<a href='modifica_ordine.php?idord=".$recSet["id_ord"]."'>".$recSet["nome_veloce"]."</a> ("
-	.$recSet["citt�"].")</h6>");
+	.$recSet["città"].")</h6>");
 }
 
 
@@ -81,7 +81,7 @@ if (FALSE)
 	FANCYBEGIN("Il motorone di ricerca di $QGFDP");
 ?>	<big>In questa pagina troverete dei <i>match</i> tra la parola da voi digitata (<?php  echo $parole?>) 
 	e varie informazioni del database (inserite soprattuto da VOI). Attenzione che ci sono
-	novit�. Scrollando la pagina, troverete informazioni su <b>goliardi</b>, <b>utenti</b>, 
+	novità. Scrollando la pagina, troverete informazioni su <b>goliardi</b>, <b>utenti</b>, 
 	<b>messaggi</b>, <b>FAQ</b>, <b>ordini</b>.</big>
 <?php  	  FANCYMIDDLE() ;	
 	  linkamenu("goliardi");
@@ -253,7 +253,7 @@ $recSet=mysql_query($qwertmp);
 	 scrivi(big(big("<h3>".creaAncora("ordini")." contenenti '<b>".$parole."</b>':</h3>")));
 
 scrivi("TBDS");
-scrivi("<i>Se conosci la citt� dell'ordine, ti consiglio di cliccare su 'citt�' e troverai tutti gli ordini esistenti... la funzionalit� di ricerca verr� implementata quando qualcuno si degner� di dare una mano ;)</i>");
+scrivi("<i>Se conosci la città dell'ordine, ti consiglio di cliccare su 'città' e troverai tutti gli ordini esistenti... la funzionalità di ricerca verrà implementata quando qualcuno si degnerà di dare una mano ;)</i>");
 
 /*
 if (recSet.EOF)
@@ -265,7 +265,7 @@ if (recSet.EOF)
 	for (i=0;i<$MAXNUMERORECORDZ && (!recSet.EOF  );i++)
 	{
 		 scriviReport_Ordine(recSet);
-	// id_ord,nome_veloce,citt� from ordini
+	// id_ord,nome_veloce,città from ordini
 
 		recSet.MoveNext();
 	}

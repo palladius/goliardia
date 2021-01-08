@@ -15,7 +15,7 @@ $menu= array (
 			"OP3) REGALA un  goliarda a un altro utente",
 			"OP4) dai in Ulteriore gestione un goliarda",
 			"OP4.1) ATTIVA utente in punizione",
-			"OP4.2) DISATTIVA utente (non pou� + far login)",
+			"OP4.2) DISATTIVA utente (non può + far login)",
 			"OP4.3) rendi EFFETTIVO utente (full user)",
 			"OP4.4) rendi GUEST utente (guest)",
 			"OP_CANCGOLIARDA) cancella goliarda",
@@ -127,11 +127,11 @@ if(!empty($operazione)) {
 			 scriviRecordSetConDelete($res,$sql);
 			}
 		 break;
-	   case "8bis":		// aggiungo 100 GPz all'utente (in futuro 100 sar� personalizzabile... INUTILE!
+	   case "8bis":		// aggiungo 100 GPz all'utente (in futuro 100 sarà personalizzabile... INUTILE!
   		  $id=Form("id_login");
 		  gestisciGoliardPointz($id,Form("PX"),"incrementa");
 		  break;
-	   case "8tris":		// aggiungo 100 GPz all'utente (in futuro 100 sar� personalizzabile...
+	   case "8tris":		// aggiungo 100 GPz all'utente (in futuro 100 sarà personalizzabile...
   		  $id=Form("id_login");
 		  $PX=Form("PX");
 		  gestisciGoliardPointz($id,PX,"setta");
@@ -151,8 +151,8 @@ if(!empty($operazione)) {
 		  $to=$rs["m_hemail"];
 		  $nome=$rs["m_snome"];
 		  $body .= "<br>---------------------<br>Mail mandata dal sito <b>$SITENAME</b> dall'utente <b>$GETUTENTE</b>"
-				.". Dal sito $DOVESONO (in quanto questa ($to) � la mail che corrisponde all'utente $nome).<br> "
-				."Se ti � stata recapitata per sbaglio manda una mail a $WEBMASTERMAIL."
+				.". Dal sito $DOVESONO (in quanto questa ($to) è la mail che corrisponde all'utente $nome).<br> "
+				."Se ti è stata recapitata per sbaglio manda una mail a $WEBMASTERMAIL."
 				.$MAILFOOTER."<br>---------------------";
 		  opentable();
 		   scrivicoppia("titolo",$titolo);
@@ -251,7 +251,7 @@ openTable();
 ?>
 <h3><big><b>DISKLEIMER</b></big><br>
 <?php 
-$diskleimerstr = "Io, amministratore, giuro solennemente di impegnarmi affinché lo zio Pal non abbia a pentirsi del potere che mi ha dato. Giuro inoltre di cercare di mantenere l'Integrità Referenziale del database, e altres� di rafforzare il pi� possibile la tassonomia a duplice sussunzione alla base del meccanismo di naming delle foto. Cercher� <u>in ogni modo</u> (a costo di fare una cazzata in meno) di far sì che per ogni persona che si collega al sito vi sia uno e un solo utente registrato. Mi impegno a guardare che non ci siano utenti o goliardi doppioni. Mi impegno a mandare una mail ogni tanto allo zio Pal dicendogli: '<i>soccia ma che bello che sta venendo il tuo sito... complimenti!</i>'. Mi impegno a usare questi poteri solo a fin di bene e non abbraccer� mai il lato oscuro della Scamorza. Prometto inoltre (soccia che palle per� Pal!) che non user� i miei poteri x giochini goliardici (tipo abbassare di grado il capoordine a me rivale (a meno che non sia dell'Oca, ovviamente) o scriverci 2 cazzate nel suo nome) poich� questi poteri trascendono il mio gioco; cercher� di scrivere invece pi� maialate possibili nei messaggi e in chat. Capisco inoltre che il messaggio occasionale � l'UNICA parte del sito visibile a chi non abbia un account, e m'impegno a non scrivere troppe volgarit� in esso, per paura che questo bel sito chiuda. Capisco altres� che se violer� questi sacri e-vincoli il UebMonster mi potr� de-amministrare a volont�."
+$diskleimerstr = "Io, amministratore, giuro solennemente di impegnarmi affinché lo zio Pal non abbia a pentirsi del potere che mi ha dato. Giuro inoltre di cercare di mantenere l'Integrità Referenziale del database, e altresì di rafforzare il più possibile la tassonomia a duplice sussunzione alla base del meccanismo di naming delle foto. Cercherò <u>in ogni modo</u> (a costo di fare una cazzata in meno) di far sì che per ogni persona che si collega al sito vi sia uno e un solo utente registrato. Mi impegno a guardare che non ci siano utenti o goliardi doppioni. Mi impegno a mandare una mail ogni tanto allo zio Pal dicendogli: '<i>soccia ma che bello che sta venendo il tuo sito... complimenti!</i>'. Mi impegno a usare questi poteri solo a fin di bene e non abbraccerò mai il lato oscuro della Scamorza. Prometto inoltre (soccia che palle però Pal!) che non user� i miei poteri x giochini goliardici (tipo abbassare di grado il capoordine a me rivale (a meno che non sia dell'Oca, ovviamente) o scriverci 2 cazzate nel suo nome) poiché questi poteri trascendono il mio gioco; cercherò di scrivere invece pi� maialate possibili nei messaggi e in chat. Capisco inoltre che il messaggio occasionale è l'UNICA parte del sito visibile a chi non abbia un account, e m'impegno a non scrivere troppe volgarità in esso, per paura che questo bel sito chiuda. Capisco altresì che se violer� questi sacri e-vincoli il UebMonster mi potr� de-amministrare a volontà."
     . "<br/><u>Accetto che la mia mail venga resa pub[bl]ica</u> e prometto di usare con criterio il potere di USERIZZARE utenti (avendo visto le FAQ). Se di sesso femminile, mi impegno a tirare su di morale Pal come ama lui (se sei bionda, ti do una dritta: leggi le faq su come guadagnare GP), e a sostenere la <u>propaganda affinché superi Spanami, Ciapaso e il Levriero</u> nel  GdC.";
 
 //themesidebox("Diskleimer",diskleimerstr);
@@ -317,9 +317,9 @@ closeTable();
 			formhidden("hidden_operazione","4.1");
 		scrivi("<input type='submit' value='attiva'>\n</form>\n");
 	}	
-		else if ($op=="OP4.2) DISATTIVA utente (non pou� + far login)")
+		else if ($op=="OP4.2) DISATTIVA utente (non può + far login)")
 	{
-		scrivib("OP4.2) DISATTIVA utente (non pou� + far login)");
+		scrivib("OP4.2) DISATTIVA utente (non può + far login)");
 		formBegin();
 			popolaComboBySqlDoppia_Key_Valore("my_hidden_id","select id_login,m_snome from loginz where m_bAttivo=1 order by m_snome",1);
 			formhidden("M_BATTIVO","0");
@@ -328,10 +328,10 @@ closeTable();
 	}	
 		else if ($op=="OP4.3) rendi EFFETTIVO utente (full user)")
 	{	if (isdevelop()) 
-			echo rosso("prossimamente metti nella lista SOLO coloro che hanno il file uguale al nome... magari con system(GREP) se + veloce... ma no � + lenta della fopen, ovviamente!");
+			echo rosso("prossimamente metti nella lista SOLO coloro che hanno il file uguale al nome... magari con system(GREP) se + veloce... ma no è + lenta della fopen, ovviamente!");
 		scrivib("OP4.3) rendi EFFETTIVO utente (full user)");
 		if (isadminvip()) {
-			echo rosso("solo xch� sei adminvip...");
+			echo rosso("solo xché sei adminvip...");
 			formBegin();
 				popolaComboBySqlDoppia_Key_Valore("my_hidden_id","select id_login,m_snome from loginz where m_bGuest=1 order by m_snome",1);
 				formhidden("M_BGUEST","0");
@@ -360,7 +360,7 @@ closeTable();
 		else if ($op=="OP_CANCGOLIARDA) cancella goliarda")
 	{
 		scrivib("OP_CANCGOLIARDA) cancella goliarda");
-		scrivib(" (da usare con le pinze, solo in caso di doppioni); non funzioner� se qualche"
+		scrivib(" (da usare con le pinze, solo in caso di doppioni); non funzionerà se qualche"
 			." IDIOTA ha concesso il goliarda ad altri utenti, per motivi di integrità referenziale.");
 		formBegin();
 			popolaComboGoliardiConUtente("my_hidden_id");
@@ -377,7 +377,7 @@ closeTable();
 		scrivi(bigg("BUGS:"));
 		//scrivi("1) <i>ulteriori gestioni goliardiche</i> doppioni...");
 		$sql="select u.id_gol as idgoliardico,u.id_login as idlogin,g.nomegoliardico,l.m_snome as diChi,count(*) as quanteGetsioniXLui from ulteriori_gestioni_goliardiche u,goliardi g,loginz l WHERE g.id_gol=u.id_gol AND u.id_login=l.id_login GROUP BY u.id_gol,u.id_login,g.nomegoliardico,l.m_snome having COUNT(*)>1";
-		//scriviRecordSet($sql); //?!? cazzo �?		
+		//scriviRecordSet($sql); //?!? cazzo è?		
 		$res=mysql_query($sql) or sqlerror($sql);
 		scriviRecordSetConTimeout($res,30,"1. Ulteriori gestioni goliardiche DOPPIONE","Bisogna ovviamente toglierne fino a farle arrivare a UNA!");
 		invio();
@@ -407,24 +407,24 @@ closeTable();
 		scriviRecordSetConTimeout($res,50,"3.2) Sbur-user con città NULLA!!! da guestizzare subito!");
 		invio();
 
-		scrivi("4.1) Guest con città INESISTENTE!!! piccolo problema... ma se � vostro amico diteglielo");
+		scrivi("4.1) Guest con città INESISTENTE!!! piccolo problema... ma se è vostro amico diteglielo");
 		$res=mysql_query($sql) or sqlerror($sql);
 		$sql="select m_snome,provincia from loginz WHERE m_bguest=1 AND provincia not in (select nomecitta from regioni)";
 		//scriviRecordSet($sql);
-		scriviRecordSetConTimeout($res,50,"4.1) Guest con città INESISTENTE!!! piccolo problema... ma se � vostro amico diteglielo");
+		scriviRecordSetConTimeout($res,50,"4.1) Guest con città INESISTENTE!!! piccolo problema... ma se è vostro amico diteglielo");
 		invio();
 
-		scrivi("4.2) Guest con città NULLA!!! piccolo problema... ma se � vostro amico diteglielo");
+		scrivi("4.2) Guest con città NULLA!!! piccolo problema... ma se è vostro amico diteglielo");
 		$sql="SELECT m_snome,provincia  FROM loginz WHERE m_bguest=1  AND provincia is null";
 		$res=mysql_query($sql) or sqlerror($sql);
-		scriviRecordSetConTimeout($res,50,"4.2) Guest con città NULLA!!! piccolo problema... ma se � vostro amico diteglielo");
+		scriviRecordSetConTimeout($res,50,"4.2) Guest con città NULLA!!! piccolo problema... ma se è vostro amico diteglielo");
 		invio();
 	}
 		else // presento il MENU;
 	{
 
 
-// se nessuna OP � stata visualizzata, presento il MENU:
+// se nessuna OP è stata visualizzata, presento il MENU:
 
 
 
@@ -524,7 +524,7 @@ closeTable2();
 }
 
 ///////////////////////////////////////
-// da qua in poi solo il GM pu� ovvvero io....
+// da qua in poi solo il GM può ovvvero io....
 
 
 		accertaAdministratorAltrimentiBona();
@@ -584,7 +584,7 @@ closeTable2();
 		formend();
 
 		if (isdevelop())
-			echo rosso("figata! poi replichi tutto con un altro paz che un giorno sar� la directory di upload!!!");
+			echo rosso("figata! poi replichi tutto con un altro paz che un giorno sarà la directory di upload!!!");
 
 	}
 		else if ($opgod=="OP12) Manda mail a utente")
@@ -601,7 +601,7 @@ closeTable2();
 		formend();
 	}
 		else	// nessuna OPGOD definita - - > chiamo il menugod... 
-	{			// se nessuna OP � stata visualizzata, presento il MENU:
+	{			// se nessuna OP è stata visualizzata, presento il MENU:
 	 echo "<h2>Menu-God</h2>";
 	 for ($i=0;$i<sizeof($menugod);$i++)
 		echo   "<b><font color=red>(*)</b></font> <a href=$AUTOPAGINA"

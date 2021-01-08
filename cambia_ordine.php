@@ -51,7 +51,7 @@ formtext("nome_completo",$rs["nome_completo"]);
 invio();
 formtext("sigla",$rs["sigla"]);
 invio();
-popolaComboCitta("citt�",$rs["citt�"]);
+popolaComboCitta("città",$rs["città"]);
 invio();
 formtext("motto",stripslashes($rs["motto"]));
 invio();
@@ -76,7 +76,7 @@ formSceltaTrueFalse("m_bInSonno","In Sonno",($rs["m_bInSonno"]));
 tdtd();
 formSceltaTrueFalse("m_bserio","Serio",($rs["m_bSerio"]));
 tdtd();
-scrivii("<i>Se s�, l'ordine � serio. Se NO, l'ordine � pacco. NON barate su questo o vi punir� pesantemente</i>");
+scrivii("<i>Se sì, l'ordine è serio. Se NO, l'ordine è pacco. NON barate su questo o vi punirò pesantemente</i>");
 	# if ($ISPAL) scrivi(rosso("(serio vale: ".($rs["m_bSerio"]).")"));
 trtdEnd();
 
@@ -182,7 +182,7 @@ switch ($i)
 
 scrivi(mezzo);
 
-sql="SELECT * from CARICHE WHERE id_ordine=".$idord." AND id_car_STASOTTOA=-1 " ; // tutto ci� cher mi serve tranne la sottpopostanza
+sql="SELECT * from CARICHE WHERE id_ordine=".$idord." AND id_car_STASOTTOA=-1 " ; // tutto ciò cher mi serve tranne la sottpopostanza
 if (i<3)
 	rs=getRecordSetByQuery(sql+clausola_i) // nome ordine
 else 
@@ -204,10 +204,10 @@ else
 if (i==3) // caso ORFANE
 {scrivi("<h3>".$corsivoBluHtml("Orfane")."</h3>")
 
-scrivib(corsivoBluHtml("Attenzione, questo si verifica quando in una gerarchia A>B>C>D>E x esempio uccidi la B e la C (solo lei) rimane orfana del pap�.".$
-	  " Ci� � possibile xch� io non controllo l'integrità referenziale del puntatore (x ottimi motivi) quindi a differenza di altre cose ".$
-	  "qua � possibile quest'incoerenza. Sta a te che hai fatto la cazzata di spezzare la gerarchia fere le giuste modifiche x togliere questo".$
-	  " messaggio. Se ti becco io, at fag un cul acs�, che vuol dire che ti aumento di uno l'escazzo. :-)"))
+scrivib(corsivoBluHtml("Attenzione, questo si verifica quando in una gerarchia A>B>C>D>E x esempio uccidi la B e la C (solo lei) rimane orfana del papà.".$
+	  " Ciò è possibile xché io non controllo l'integrità referenziale del puntatore (x ottimi motivi) quindi a differenza di altre cose ".$
+	  "qua è possibile quest'incoerenza. Sta a te che hai fatto la cazzata di spezzare la gerarchia fere le giuste modifiche x togliere questo".$
+	  " messaggio. Se ti becco io, at fag un cul acsì, che vuol dire che ti aumento di uno l'escazzo. :-)"))
 
 }
 $sql2,rs2
@@ -267,7 +267,7 @@ scrivi(" ".$ancora("Albo d'Oro").":</h2>");
 	  . " AND n.id_carica=c.id_carica ";
 	  . " AND c.hc=false";
 	  . " AND c.attiva=true ";
-	  . " AND (c.dignit�='capoordine' OR c.dignit�='capocitt�')";
+	  . " AND (c.dignità='capoordine' OR c.dignità='capocittà')";
 	  . " ORDER BY n.eventuale_numero_progressivo,n.[data_nomina]";
 
 recSet=getRecordSetByQuery(sql)

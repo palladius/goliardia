@@ -9,7 +9,7 @@
 
 	echo h1("medialink: youtube etc...");
 	
-	echo "Questa nuova pagina vuol essere un ponte sulla rete, e contiene rferimenti a tutto ci� che ci pu� essere di esterno,
+	echo "Questa nuova pagina vuol essere un ponte sulla rete, e contiene rferimenti a tutto ciò che ci può essere di esterno,
 	se vi vengono idee mandatemele e io le aggiungo, per ora sono supportati:
 		- Youtube
 		- Foto

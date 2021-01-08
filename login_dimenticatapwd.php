@@ -43,8 +43,8 @@ if ((Form("OPERAZIONE")) == "SPEDISCI_MAIL") // ereditata dall'index, sono le X 
 
 	if ($ciucciook) {// scrivid("CIUCCIO OK! ;)");
 		echo("klatu, verata nikto...<br>");
-		$body= "La password da te richiesta �: '<i><b>".$rs["m_spwd"]."</b></i>', caro/a <b>".$rs["m_snome"]."</b>."
-			." Se fai cos� fatica a ricordartela, puoi cambiarla nella sezione UTENTE.";
+		$body= "La password da te richiesta è: '<i><b>".$rs["m_spwd"]."</b></i>', caro/a <b>".$rs["m_snome"]."</b>."
+			." Se fai così fatica a ricordartela, puoi cambiarla nella sezione UTENTE.";
 		mandaMail($rs["m_hemail"],$from,"OK! La password smarrita di ".$rs["m_snome"],$body);
 		mandaMail($WEBMASTERMAIL ,$from,"JFYI: la password di ".$rs["m_snome"],$body);	
 		log2("[mandamail][notice] Mandata mail a Webmaster e a ". Form("nomeutente") );
@@ -66,7 +66,7 @@ if ((Form("OPERAZIONE")) == "SPEDISCI_MAIL") // ereditata dall'index, sono le X 
 else
 {
 if ($vincolodatanascita)
-	scrivib(rosso("<center>Attenzione, la tua data di nascita devi averla inserita: se il tuo account � VECCHIO � possibile che sia messo al valore di default, ovvero Primo di Gennaio 1970. Prova anche quello se il primo non va, ok?!?\b<br>"));
+	scrivib(rosso("<center>Attenzione, la tua data di nascita devi averla inserita: se il tuo account è VECCHIO è possibile che sia messo al valore di default, ovvero Primo di Gennaio 1970. Prova anche quello se il primo non va, ok?!?\b<br>"));
 
 scrivi("sei proprio un picio! altresi' pirla, mona, scemo, imbelle... et ci'!<br>detto questo... compila la forma seguente:");
 openTable2();
@@ -88,7 +88,7 @@ formBegin($AUTOPAGINA);
 	trtdEnd();
 	tableEnd();
 	formbottoneinvia("spediscimela alla mia mail che tu sai");
-	scrivi(rosso("<br/>E ricorda che se metti l'utente PIPPO verra' spedito all'email con cui PIPPO si iscrisse la prima volta. Per privacy non te la posso dire (la tentazione giuro � forte, ma non posso se no chiunque potrebbe sapere la mail di chiunque!)... Se hai problemi scrivi al Webmaster dicendo UTENTE e MAIL a cui vorresti che fosse mandato!"));
+	scrivi(rosso("<br/>E ricorda che se metti l'utente PIPPO verra' spedito all'email con cui PIPPO si iscrisse la prima volta. Per privacy non te la posso dire (la tentazione giuro è forte, ma non posso se no chiunque potrebbe sapere la mail di chiunque!)... Se hai problemi scrivi al Webmaster dicendo UTENTE e MAIL a cui vorresti che fosse mandato!"));
 formEnd();
 closeTable2();
 scrivi(h1("ric qnd puoi cntrl anche che il nome non sia vuoto, ricordi quante mail con nome vuoto?!?"));

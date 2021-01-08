@@ -92,3 +92,9 @@ for PHPFILE in *.php ; do
 
         tee $PHPFILE.codificato 1>/dev/null
 done
+
+for i in *.codificato ; do 
+    echo mv "$i" $(basename $i .codificato); 
+done > se-ti-fidi-bashami-ma-assicurati-prima-che-sia-diffabile-e-rollbackabile.sh
+
+echo Creato: se-ti-fidi-bashami-ma-assicurati-prima-che-sia-diffabile-e-rollbackabile.sh

@@ -26,18 +26,18 @@ $AGGIUNGISOLO = ($ordine !="");
 $operazione= Form("hidden_operazione");
 if ($operazione != "")
 	{
-      $linkOrdine="modifica_ordine.php?idord=".Form("id_ordine"); // servir� x tornare POI alla pag ord
+      $linkOrdine="modifica_ordine.php?idord=".Form("id_ordine"); // servirà x tornare POI alla pag ord
 
 	if ($operazione=="1")	// FORM NORMALE
 		{
 		 autoInserisciTabella("cariche","NON CLICCARE QUA A SINISTRA "
-			."MA PI� IN BASSO SU 'OSSERVA...' CORREZIONE tbds");
+			."MA PIÙ IN BASSO SU 'OSSERVA...' CORREZIONE tbds");
 	 	 scrivi(rossone("OK! Inserimento1 fatto!"));
 		}
 	if ($operazione=="5")	// FORM NORMALE CON DEFAULT DI CUI HAI APPENA VOLUTO SALVARE LE MODIFICHE
 		{autoAggiornaTabella("cariche","id_carica");
 	 	 scrivi(rossone("OK! Aggiornamento5 fatto"));
-		 tornaindietro("guarda la carica cos� modificata","$AUTOPAGINA?id=".Form("my_hidden_id"));
+		 tornaindietro("guarda la carica così modificata","$AUTOPAGINA?id=".Form("my_hidden_id"));
 		}
 	if ($operazione=="3")	// CANCELLA x IDCARICA
 		{if ($ISPAL) visualizzaformz();
@@ -85,11 +85,11 @@ if ($operazione != "")
 			scrivi("<h2>modifica carica</h2>");
 			formtextln("nomecarica",$recSet["nomecarica"]);
 			if ($ISPAL)
-				scrivi(rosso("<br>attento ric il capocitt� potrebbe non essere contemplato"
+				scrivi(rosso("<br>attento ric il capocittà potrebbe non essere contemplato"
 					." nel DB remoto, provalo in remoto!<br>"));
 			invio();
-			scrivi("dignit�: ");
-			popolaComboDignita("dignit�",$recSet["Dignit�"]);
+			scrivi("dignità: ");
+			popolaComboDignita("dignità",$recSet["Dignità"]);
 			invio();
 			$sql3="SELECT id_carica,nomecarica FROM cariche WHERE id_ordine=".$ordine
 				." AND NOT (id_carica = ".$recSet["ID_CARICA"].")";
@@ -97,10 +97,10 @@ if ($operazione != "")
 			scrivi("che sta <i>direttamente</i> sotto a:");
 			popolaComboConEccezionePrescelta("ID_CAR_STASOTTOA",$sql3,$recSet["ID_CAR_staSottoA"],"-1","NESSUNA");
 				// adesso una bella combo con numerilli da 0 a 30 + opzione di 
-				// NESSUNA cardin. max... e il gioco � fatto
+				// NESSUNA cardin. max... e il gioco è fatto
 			//QWERTY
-			scrivi("<br><b>Cardinalit� massima</b>: ");
-			popolaComboNumerilliConAlias("cardinalit�max",0,30,$recSet["Cardinalit�Max"],0,"qualunque");
+			scrivi("<br><b>Cardinalità massima</b>: ");
+			popolaComboNumerilliConAlias("cardinalitàmax",0,30,$recSet["CardinalitàMax"],0,"qualunque");
 			scrivi("<br>(leggasi <i>massimo numero di goliardi che<br>possono avere "
 				."questa carica in un certo istante</i>):<br>");
 			formScelta2("attiva",TRUE,FALSE,"da attivo","da vecchio",($recSet["Attiva"]?1:2));
@@ -129,11 +129,11 @@ if ($operazione != "")
 
 	if ($operazione=="2")	// WIZARD FORM 10 cariche
 		{
-			// costruisco 2 array con cariche e dignit�
+			// costruisco 2 array con cariche e dignità
 		 $arrCarica  = Array();
 		 $arrDignita = Array();
 		 $i=1;
-		 $arr1=Array("id_ordine","dignit�","nomecarica","cardinalit�Max","attiva","HC","id_car_stasottoa");
+		 $arr1=Array("id_ordine","dignità","nomecarica","cardinalitàMax","attiva","HC","id_car_stasottoa");
 		 $stasottoA="-1";
 		 $ord2=Form("id_ordine");
 		 while (($str=(Form("nomecarica".$i)))!="" )
@@ -141,7 +141,7 @@ if ($operazione != "")
 			 if (str == "")
 				break;
 				//	 scrivid($str."<br>\n");
-			 $arrDignita[i]=Form("dignit�".$i);
+			 $arrDignita[i]=Form("dignità".$i);
 			 $arrCarica[i]=$str;
 			 $arr2=Array($ord2,$arrDignita[$i],$str,-1,"true","false",$stasottoA);
 			 autoInserisciTabellaByTwoArray("cariche",$arr1,$arr2);
@@ -158,7 +158,7 @@ if ($operazione != "")
 			}
 		scrivid("Questo nomecarica valeva: ".$str);		
 		if ($DEBUG)
-			{scrivi("<br>DEBUG! ti fo vedere 1) le cariche x dignit� e carica, 2) x carica e dignit�<br>\n");
+			{scrivi("<br>DEBUG! ti fo vedere 1) le cariche x dignità e carica, 2) x carica e dignità<br>\n");
 			 popolaComboArray("cariche",$arrDignita,$arrCarica);
 			 popolaComboArray("cariche",$arrCarica,$arrDignita);
 			}
@@ -193,17 +193,17 @@ if ($AGGIUNGISOLO)
 			scrivi("<h2>Crea/modifica carica</h2>");
 			formtext("nomecarica","");
 			invio();
-			scrivi("dignit�: ");
-			popolaComboDignita("dignit�");
+			scrivi("dignità: ");
+			popolaComboDignita("dignità");
 			invio();
 			$sql3="SELECT id_carica,nomecarica FROM cariche WHERE id_ordine=".$ordine;
 			scrivi("che sta <i>direttamente</i> sotto a:");
 			popolaComboConEccezionePrescelta("ID_CAR_STASOTTOA",$sql3,"-1","-1","NESSUNA");	
 				// adesso una bella combo con numerilli da 0 a 30 + opzione 
-				// di NESSUNA cardin. max... e il gioco � fatto
+				// di NESSUNA cardin. max... e il gioco è fatto
 				//QWERTY
-			scrivi("<br><b>Cardinalit� massima</b>: ");
-			popolaComboNumerilliConAlias("cardinalit�max",0,30,0,0,"qualunque");
+			scrivi("<br><b>Cardinalità massima</b>: ");
+			popolaComboNumerilliConAlias("cardinalitàmax",0,30,0,0,"qualunque");
 			scrivi("<br>(leggasi <i>massimo numero di goliardi che<br>possono avere ques"
 				."ta carica in un certo istante</i>):<br>");
 			formScelta2("attiva",TRUE,FALSE,"da attivo","da vecchio",1);
@@ -225,10 +225,10 @@ if ($AGGIUNGISOLO)
 		<h2>Wizard: Crea un'intera gerarchia (*) tutta di botto che modificherai in seguito</h2>
 <big>Clausole: le cariche saranno tutte ritenute attive e non HC, e senza note. Verr� semplicemente 
 creata la lista discendente dal primo all'ultimo nome con i giusti legami goliardici, tale che il primo
-(che sar� il capoordine o comunque un 'capofilone') non abbia nessuno sopra, il secondo discenda dal primo, 
- il terzo dal secondo e cos� via!<br><b>PS</b> Non ti preoccupare se questo wizard non fa <i>esattamente</i> ci�
+(che sarà il capoordine o comunque un 'capofilone') non abbia nessuno sopra, il secondo discenda dal primo, 
+ il terzo dal secondo e così via!<br><b>PS</b> Non ti preoccupare se questo wizard non fa <i>esattamente</i> ciò
  che vuoi: potrai sempre cambiare in futuro i dati; da ingegnere, non posso che dirti di cercare di <b>minimizzare</b> lo
-  sforzo (che � dentro a ognuno di noi) tra ora e il futuro.
+  sforzo (che è dentro a ognuno di noi) tra ora e il futuro.
 </big>
 
 <?php 
@@ -237,11 +237,11 @@ creata la lista discendente dal primo all'ultimo nome con i giusti legami goliar
 		scrivi("<tr><td><div align=right>");
 			formtext("nomecarica1","");
 		scrivi("</div></td><td>");
-			formScelta3("dignit�1","capocitt�","capoordine","nobile","capocitt�","capoordine","nobile",2);
+			formScelta3("dignità1","capocittà","capoordine","nobile","capocittà","capoordine","nobile",2);
 		scrivi("</td></tr><tr><td><div align=right>");
 			formtext("nomecarica2","");
 		scrivi("</td><td>");
-			formScelta2("dignit�2","capoordine","nobile","capoordine","nobile",2);
+			formScelta2("dignità2","capoordine","nobile","capoordine","nobile",2);
 		scrivi("</td></tr><tr><td><div align=right>");
 
 
@@ -252,35 +252,35 @@ creata la lista discendente dal primo all'ultimo nome con i giusti legami goliar
 
 			formtext("nomecarica3","");
 		scrivi("</td><td>");
-			formScelta2("dignit�3","nobile","saio","nobile","saio",1);
+			formScelta2("dignità3","nobile","saio","nobile","saio",1);
 		scrivi("</td></tr><tr><td><div align=right>");
 			formtext("nomecarica4","");
 		scrivi("</td><td>");
-			formScelta2("dignit�4","nobile","saio","nobile","saio",1);
+			formScelta2("dignità4","nobile","saio","nobile","saio",1);
 		scrivi("</td></tr><tr><td><div align=right>");
 			formtext("nomecarica5","")	;
 		scrivi("</td><td>");
-			formScelta2("dignit�5","nobile","saio","nobile","saio",1);
+			formScelta2("dignità5","nobile","saio","nobile","saio",1);
 		scrivi("</td></tr><tr><td><div align=right>");
 			formtext("nomecarica6","")	;
 		scrivi("</td><td>");
-			formScelta2("dignit�6","nobile","saio","nobile","saio",1);
+			formScelta2("dignità6","nobile","saio","nobile","saio",1);
 		scrivi("</td></tr><tr><td><div align=right>");
 			formtext("nomecarica7","")	;
 		scrivi("</td><td>");
-			formScelta2("dignit�7","nobile","saio","nobile","saio",2);
+			formScelta2("dignità7","nobile","saio","nobile","saio",2);
 		scrivi("</td></tr><tr><td><div align=right>");
 			formtext("nomecarica8","")	;
 		scrivi("</td><td>");
-			formScelta2("dignit�8","nobile","saio","nobile","saio",2);
+			formScelta2("dignità8","nobile","saio","nobile","saio",2);
 		scrivi("</td></tr><tr><td><div align=right>");
 			formtext("nomecarica9","")	;
 		scrivi("</td><td>");
-			formScelta2("dignit�9","nobile","saio","nobile","saio",2);
+			formScelta2("dignità9","nobile","saio","nobile","saio",2);
 		scrivi("</td></tr><tr><td><div align=right>");
 			formtext("nomecarica10","");
 		scrivi("</td><td>");
-			formScelta2("dignit�10","nobile","saio","nobile","saio",2);
+			formScelta2("dignità10","nobile","saio","nobile","saio",2);
 		scrivi("</td></tr>");
 
 			formhidden("hidden_operazione","2")			;
@@ -303,7 +303,7 @@ if ($modificaCarica)
 		 bona();
 		}
 	$ID=QueryString("id");
-	if ($ID == "") // � impossibile... non sarei in questo IFFONE se fosse indefinita
+	if ($ID == "") // è impossibile... non sarei in questo IFFONE se fosse indefinita
 		{scrivi(rossone("TU BI IMPLEMENTED IET :-)"));
 		 img("1.gif");
 		 bona();
@@ -343,7 +343,7 @@ if ($modificaCarica)
 		formEnd();
 		}
 		else 
-			echo rosso("mica ti permetto di cancellarla sta carica finch� � piena dentro, che credi?<br>");
+			echo rosso("mica ti permetto di cancellarla sta carica finché è piena dentro, che credi?<br>");
 
 	scrivi("Numero di nomine associate a questa carica: <b>".$num."</b><br>");	
 	if ($num > 0 && isAdminVip())
