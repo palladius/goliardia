@@ -15,7 +15,7 @@ function formModificaRecord($tabella,$id) // tabella e id_valore
  if ($ISPAL)
 		{scrivib(rossone("ric, l'id si chiama: ".$NOME_ID));
 		 if (substr(strtolower($NOME_ID),0,2) != "id")
-			{scrivib("attenzione, NON Ëun id, ci metto gli apici!");
+			{scrivib("attenzione, NON √®un id, ci metto gli apici!");
 			 $id = "'$id'";
 			}
 		 scrivib(rossone("query: select * from $tabella WHERE `$NOME_ID`=$id"));
@@ -65,12 +65,12 @@ function accertaAdminQualunqueAltrimentiBona()
 {
  global $GETUTENTE,$ISPAL;
  if (Session("admin")==1)
-		{scrivi("<i>Lo sforzo Ë possente in te, ".$GETUTENTE."...<br></i>\n");
+		{scrivi("<i>Lo sforzo √® possente in te, ".$GETUTENTE."...<br></i>\n");
 		 return;
 		}
 if($ISPAL)
 		{
-		 echo "<i>Lo sforzo Ë maledettamente possente in te, <b>Maestro</b>...<br></i>\n";
+		 echo "<i>Lo sforzo √® maledettamente possente in te, <b>Maestro</b>...<br></i>\n";
 		 return;
 		}
 bona();
@@ -127,11 +127,11 @@ if ($Elaborazione)
 		."a fidatevi non lo sono, ora zitti che elaboro!)</h3>");
 	accertaAdministratorAltrimentiBona();
 	visualizzaFormz();
-		// connetto al dibbÏ e faccio query che mi sono inviato tramite post
+		// connetto al dibb√¨ e faccio query che mi sono inviato tramite post
 	$sql=stripslashes(Form("querysql")); // retrievo la query da qua...
 	$res=mq($sql);
 	scriviRecordSetConDelete($res,$sql);
-	scrivi(rossone("sta query Ë una figata, salviamola!!!"));
+	scrivi(rossone("sta query √® una figata, salviamola!!!"));
 	scrivi("un altro giorno metterai un'opzione che automaticamente trasforma, x esempio, tutt"
 			."a la II colonna in text box da editare");
 	scrivi("con un tasto submit x inserire in fretta e in modo automatico, x es, tutte le fot"
@@ -147,7 +147,7 @@ if ($Elaborazione)
 	 formtextarea("query",$sql,10,50);
 	 invio();
 	 formtextarea("note","note",10,50);
-#	 scrivi("<br><input type=hidden name='hidden_1' value='43'>\n"); // 43 Ë la registrazione della query...
+#	 scrivi("<br><input type=hidden name='hidden_1' value='43'>\n"); // 43 √® la registrazione della query...
 	 invio(); 
 	 formhidden("hidden_1",43);
 #	 scrivi("<input type='submit' value='invia query'>\n</form>\n");
@@ -158,7 +158,7 @@ else
 if ( (Form("hidden_1")=="43"))
 {
 	//////////////////////////////////////////////
-	// la pagina mi Ë arrivato via post il dato da salvare come query notevole
+	// la pagina mi √® arrivato via post il dato da salvare come query notevole
 
 	scrivi("<h1>registra query notevole (43)</h1>");
 	accertaAdministratorAltrimentiBona();
@@ -171,7 +171,7 @@ if ( (Form("hidden_1")=="43"))
 
 	$a=Form("titolo");
 	$c=Form("note");
-	$d=escape(Form("query")); // la ancodo con i %20 cosÏ non rompono i coglioni gli apostrofi eccetera...
+	$d=escape(Form("query")); // la ancodo con i %20 cos√¨ non rompono i coglioni gli apostrofi eccetera...
 	$sql = "insert into query_notevoli (`titolo`,`data_creazione`,`note`,`encoded_query`) "
 		."values ('".$a."','".$b."','".$c."','".$d."')";
 
@@ -179,13 +179,13 @@ if ( (Form("hidden_1")=="43"))
 	if ($a == "")
 		scrivib(rosso("Attenzione! stavo x inserire una query notevole IDIOTA :("));
 	else
-		mq($sql); // faccio la query e del recordset me ne sbatto (Ë una insert!!!)
+		mq($sql); // faccio la query e del recordset me ne sbatto (√® una insert!!!)
 }
 else
 if ( (Form("hidden_1")=="44"))	// CANCELLA 
 {
 	//////////////////////////////////////////////
-	// la pagina mi Ë arrivato via post il dato da CANCELLARE
+	// la pagina mi √® arrivato via post il dato da CANCELLARE
 
 	scrivi("<h1>cancella un id da una tabella  (44)</h1>");
 	autoCancellaTabella(Form("tabella"),Form("my_hidden_val")) ;
@@ -195,13 +195,13 @@ if ( (Form("hidden_1")=="44"))	// CANCELLA
 	$b=dammiDataMysql(); // va messa nella query
 	$a=Form("titolo");
 	$c=Form("note");
-	$d=escape(Form("query")); // la ancodo con i %20 cosÏ non rompono i coglioni gli apostrofi eccetera...
+	$d=escape(Form("query")); // la ancodo con i %20 cos√¨ non rompono i coglioni gli apostrofi eccetera...
 	$sql = "insert into query_notevoli (titolo,data_creazione,note,encoded_query) valu"
 			."es ('".$a."','".$b."','".$c."','".$d."')";
 	if ($ISPAL)
 		scrivib(rosso("sql x ora: [$sql]"));
 	if ($a!="" && $d != "")
-		mq($sql); // faccio la query e del recordset me ne sbatto (Ë una insert!!!)
+		mq($sql); // faccio la query e del recordset me ne sbatto (√® una insert!!!)
 	else
 		scrivib(rosso("NON inserisco la query tra le query notevoli: titolo o query son vuote, scemo!!!"));
 	hline(100);
@@ -210,7 +210,7 @@ else
 if ( (Form("hidden_1")=="45")) // MODIFICA
 {
 	//////////////////////////////////////////////
-	// la pagina mi Ë arrivato via post il dato da EDITARE
+	// la pagina mi √® arrivato via post il dato da EDITARE
 	scrivi("<h1>EDITA l'id da una tabella  (45)</h1>");
 	accertaAdminQualunqueAltrimentiBona(); // anche gli altri admin...
 	formModificaRecord(Form("tabella"),Form("my_hidden_val")); // tabella e id_valore
@@ -221,7 +221,7 @@ else
 if ( (Form("hidden_1")=="46"))
 {
 	//////////////////////////////////////////////
-	// la pagina mi Ë arrivato via post il dato gi‡ EDITATO, ora devo solo sqlarlo su server
+	// la pagina mi √® arrivato via post il dato gi√† EDITATO, ora devo solo sqlarlo su server
 	scrivi("<h1>AGGIORNO IL DIBBI' coi dati (46)</h1>");
 	accertaAdminQualunqueAltrimentiBona();
 	autoAggiornaTabella(Form("hidden_tabella"),Form("hidden_id_name")) ;
@@ -232,19 +232,23 @@ if ( (Form("hidden_1")=="46"))
 // sta parentesi graffa che cazzo ci sta a fare?!?
 	{
 	//////////////////////////////////////////////
-	// la pagina deve fare il formino xchË qualcuno scriva la query e la spedisca a se stessa via POST
+	// la pagina deve fare il formino xch√® qualcuno scriva la query e la spedisca a se stessa via POST
 
 accertaAdministratorAltrimentiBona();
 scrivi("<h1>request mode</h1>");
+
+?>
+	<div class="alert alert-primary" role="alert">
+<?
 
 scrivi(rosso("<br>UPDATE: ").("UPDATE goliardi SET campo = 'valore', campo2 = 'valore2' where ID='42'"));
 scrivi(rosso("<br>INSERT: ").("INSERT INTO query_notevoly (titolo,data_creazione,note,query) VALUES ('a','b','c','d')"));
 scrivi(rosso("<br>DELETE: ").("DELETE FROM goliardi where ID_GOL=2"));
 scrivi(rosso("<br>CREATE TABLE!!!: "));
 
-?>
-	CREATE TABLE Canzoni2
-	(
+?><?
+
+?><pre>CREATE TABLE Canzoni2 (
 	 [ID_canzone] integer,
 	 [titolo] text,
 	 [id_login] long ,
@@ -254,11 +258,11 @@ scrivi(rosso("<br>CREATE TABLE!!!: "));
 	 [Corpo] memo,
 	 [Note] memo,
 	 CONSTRAINT [Indice1] PRIMARY KEY ([ID_canzone])
-	);
+	);</pre>
 
 
-<i>(del cotraint non ne son sicurissimo x quel che concerne mysql...)</i>
-
+<i>(del constraint non ne son sicurissimo x quel che concerne mysql...)</i>
+</div>
 <?php 
 
 #scrivi("<form method='post' action='powerquerysql.php'>\n")

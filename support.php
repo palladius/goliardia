@@ -36,16 +36,16 @@ scrivib("</p>\n");
 <?php  fancyInizio("BUGS"); ?>
 
 VERIFICA I BUGZ. Crea, distruggi modifica usando date sballate, nomi assurdi, ... cerca di ingannare il db in ogni modo crea una cosa A riferita a B poi cancella B e guarda se la vedi ancora, e cois' via.
-	Anche solo le parrrrrole scirtte amle: si sa che sono dislessdico e che scrivo in fretta... <b>FAMMI IL SANTO PIACERE DI SEGNALARMELI ATTRAVERSO I GMS AL GRUPPO @BUGS</b> (se no che li ho inventati a fare?); EVITA MSN E COSÏ VIA: non sempre ho tempo al momento, e farmi un copia incolla ruga. ricordate: verba volant, nomina ac avverbia rimanent.
+	Anche solo le parrrrrole scirtte amle: si sa che sono dislessdico e che scrivo in fretta... <b>FAMMI IL SANTO PIACERE DI SEGNALARMELI ATTRAVERSO I GMS AL GRUPPO @BUGS</b> (se no che li ho inventati a fare?); EVITA MSN E COS√¨ VIA: non sempre ho tempo al momento, e farmi un copia incolla ruga. ricordate: verba volant, nomina ac avverbia rimanent.
 
 <?php  
 fancyFine();
-fancyInizio("ERORI-uorningz-nÚtiziz"); 
+fancyInizio("ERORI-uorningz-n√≤tiziz"); 
 ?>
 
-Altra cosa, non banalissima ma neanche difficile, per i pi˘ laboriosi: il sito Ë configurato in modalit‡ DEBUG, quindi in parole povere
+Altra cosa, non banalissima ma neanche difficile, per i pi√π laboriosi: il sito √® configurato in modalit√† DEBUG, quindi in parole povere
 	se ci sono degli errori nel codice che ho scritto compariranno le parole "ERROR","WARNING"  o "NOTICE", in ordine inverso di
-	calamit‡. il 90% di questi msg li vediamo tutti, e mi piacerebbe me li segnalaste. ma, x sfighe varie, alcuni tag html potrebbero avere del codice al loro interno (ad es. quando popolo una casella di scelta, tanto x intenderci) sballato. in tal caso, il vostro html sarebbe 'pulito', ma il sorgente html conterrebbe le parole '<b>warning</b>','<b>error</b>' o '<b>notice</b>'. buffamente i + terribili sono i notice e i warning, poichË un error fa fallire la pagina e ce ne si accorge ben da sË... x chi di voi abbia un po' le mani in pasta, se volete dare ogni tanto un occhio ai sorgenti html che il browser vi sputa e vedere se contiene quelle 3 keyword, mi fate un piacerone. Azzie!
+	calamit√†. il 90% di questi msg li vediamo tutti, e mi piacerebbe me li segnalaste. ma, x sfighe varie, alcuni tag html potrebbero avere del codice al loro interno (ad es. quando popolo una casella di scelta, tanto x intenderci) sballato. in tal caso, il vostro html sarebbe 'pulito', ma il sorgente html conterrebbe le parole '<b>warning</b>','<b>error</b>' o '<b>notice</b>'. buffamente i + terribili sono i notice e i warning, poich√® un error fa fallire la pagina e ce ne si accorge ben da s√®... x chi di voi abbia un po' le mani in pasta, se volete dare ogni tanto un occhio ai sorgenti html che il browser vi sputa e vedere se contiene quelle 3 keyword, mi fate un piacerone. Azzie!
 <?php  
 fancyFine();
 fancyInizio("sql indesiderato"); 
@@ -53,21 +53,21 @@ fancyInizio("sql indesiderato");
 
 
 
-guarda se tra i tanti ciappini che fai vedi righe di codice SQL (le riconosci poichË iniziano con "INSERT/SELECT/DELETE/UPDATE" e suonano tipo: 
-<u>"select * from tabella where key='value' and sticazzi > stialtri ORDER BY lung_pene"</u>. l'obiettivo del sito Ë che tu NON veda le query fatte...
+guarda se tra i tanti ciappini che fai vedi righe di codice SQL (le riconosci poich√® iniziano con "INSERT/SELECT/DELETE/UPDATE" e suonano tipo: 
+<u>"select * from tabella where key='value' and sticazzi > stialtri ORDER BY lung_pene"</u>. l'obiettivo del sito √® che tu NON veda le query fatte...
 
 <?php  
 fancyFine();
 fancyInizio("prestazioni (non sessuali)"); 
 ?>
 
-guarda quanto va veloce, se secondo te si comporta stranamente rispetto al sito vecchio, se la chat Ë + lenta o + veloce, e cosÏ via.
+guarda quanto va veloce, se secondo te si comporta stranamente rispetto al sito vecchio, se la chat √® + lenta o + veloce, e cos√¨ via.
 
 <?php  
 fancyFine();
 fancyInizio("prestazioni (sessuali)"); 
 ?>
-Se i tuoi 2 XXIII cromosomi hanno forma simile e puoi giocare coi giochi MB (ovvero hai dai 7 ai 70 anni), <i>dammela</i>. Il sito ne beneficer‡ per quel che concerne la veste grafica e andr‡ anche molto + veloce. Provare x credere.
+Se i tuoi 2 XXIII cromosomi hanno forma simile e puoi giocare coi giochi MB (ovvero hai dai 7 ai 70 anni), <i>dammela</i>. Il sito ne beneficer√† per quel che concerne la veste grafica e andr√† anche molto + veloce. Provare x credere.
 <?php  
 fancyFine();
 fancyInizio("Per programmatori di PHP (new!)"); 
@@ -78,35 +78,35 @@ fancyFine();
 fancyInizio("il lato buono dell'hacking"); 
 ?>
 
-hackeralo in ogni modo. cerca di fare sql injection (se sai cosa sono), furto di sessione, cambia i form e osserve ciÚ che riesci a fare che - secondo te- il sito non dovrebbe lasciare fare.
+hackeralo in ogni modo. cerca di fare sql injection (se sai cosa sono), furto di sessione, cambia i form e osserve ci√≤ che riesci a fare che - secondo te- il sito non dovrebbe lasciare fare.
 	e qui viene il punto + difficile: <b>DIMMELO</b>.
 <?php  
 fancyFine();
 fancyInizio("donazioni"); 
 ?>
 
-Se vuoi fare una donazione per aiutare il progetto OPENGOLIARDIA (presto sar‡ opensource, ammesso che la cosa sia ritenuta ragionevole dallo staff tecnico, ma Ë solo questione di tempo), questa 
-	Ë ben accetta. Pi˘ che soldi, son gradite bocce di vino e - in caso tu sia di sesso femminile o un ragazzo carino come Spanami - di favori sessuali. In effetti,
+Se vuoi fare una donazione per aiutare il progetto OPENGOLIARDIA (presto sar√† opensource, ammesso che la cosa sia ritenuta ragionevole dallo staff tecnico, ma √® solo questione di tempo), questa 
+	√® ben accetta. Pi√π che soldi, son gradite bocce di vino e - in caso tu sia di sesso femminile o un ragazzo carino come Spanami - di favori sessuali. In effetti,
 	se volete dare un contributo (dato che la pecunia non mi piace, o meglio: non in questo modo) potreste comprarmi una maglietta con la mia
-	brutta faccia sopra: costano 5 Ä e vi assicuro che le ho pagate circa l'80%, e se sapete qualcosa di economia capite cosa vuol dire. Ho una
+	brutta faccia sopra: costano 5 ¬Ä e vi assicuro che le ho pagate circa l'80%, e se sapete qualcosa di economia capite cosa vuol dire. Ho una
 	rimnanenza di magazzino pari al 60% dell'investimento, quindi.. PLIS! prendetemene una. Farete + felice ME e soprattutto tutte le ragazze che 
 	vi vedranno in giro st'estate con questa belizzima maglietta dai toni alla moda (sempre che non la compriate nel 2008!), frutto della cooperazione 
-	tra Farina 00, Pariettus e me. Pensate alla gnocca che passa x strada, vi ferma e vi fa: chi Ë quel coglione lÏ nella maglietta? E voi: "mah, un mio amico matto di FE",... parla che ti parla, da coscia nasce coscia, mal comune mezzo gaudio... magari ve la guzzate pure!
+	tra Farina 00, Pariettus e me. Pensate alla gnocca che passa x strada, vi ferma e vi fa: chi √® quel coglione l√¨ nella maglietta? E voi: "mah, un mio amico matto di FE",... parla che ti parla, da coscia nasce coscia, mal comune mezzo gaudio... magari ve la guzzate pure!
 <?php  
 fancyFine();
 fancyInizio("Grafica pura"); 
 ?>
-Se sai <b>disegnare</b> e vuoi creare icone o disegni x il sito, sono sempre graditi. Ma di brutto brutto brutto, nÈ? Oppure se vedi immagini con sfondo bianco che cozzano con lo sfondo, ti scrichi il jpg, gli togli lo sfondo bianco e lo salvi come GIF e me lo mandi... fatica 0,001. risultato notevole... fa tu!
+Se sai <b>disegnare</b> e vuoi creare icone o disegni x il sito, sono sempre graditi. Ma di brutto brutto brutto, n√©? Oppure se vedi immagini con sfondo bianco che cozzano con lo sfondo, ti scrichi il jpg, gli togli lo sfondo bianco e lo salvi come GIF e me lo mandi... fatica 0,001. risultato notevole... fa tu!
 
 <?php  
 fancyFine();
 fancyInizio("Grafica html"); 
 ?>
 
-sei un grafico HTML e anche se non sei bravo a mano libera sai usare effetti e creare SKIN?!? Presto sar‡ disponibile uno ZIP con l'attuale SKIN che il sito usa. 
+sei un grafico HTML e anche se non sei bravo a mano libera sai usare effetti e creare SKIN?!? Presto sar√† disponibile uno ZIP con l'attuale SKIN che il sito usa. 
 	potrai studiarla, variarla e liberamente di nuove. Se conosci i CSS puoi prendere il foglio di stile attuale e cambiarlo (se proprio non sei capace da solo
 	, te lo faccio scaricare io <b><a href="skin/<?php  echo $NOMESKIN?>/style/style.css">QUA</a></b> :D), e mandarmelo. Se mi piace,
-	in futuro la gente potr‡ usare quello anzichË questo (tutti dicono che le mie scelte di colori fan cagare: anzichË criticare, fate di meglio! 
+	in futuro la gente potr√† usare quello anzich√® questo (tutti dicono che le mie scelte di colori fan cagare: anzich√® criticare, fate di meglio! 
 	Come se io <i>amassi</i> fare pure il grafico, oltre che il genio!).<br/>
 
 <?php  
