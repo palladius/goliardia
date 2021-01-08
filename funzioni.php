@@ -1312,12 +1312,23 @@ fclose ($fp);
 
 
 
+// // sembra non vada un granche :) almeno logghiamo...
+// function setApplicationEnv($key,$val) {
+// 	#global $ISPAL,$DEBUG;
+// 	$chiavi_di_cui_non_mi_frega_na_cippa = "UTENTI_ORA";  // cmq lo loggo 
+// 	if ("$key" !=  = "UTENTI_ORA") {
+// 		log2("[setApplicationEnv] '$key' ==> '$val'");
+// 	}
+// }
 
 
+// sto cercando di muovere il SetApp a livello di DB... se posso e se non costa troppo. 
+// Chissa con InnoDB se va anche la chat!
 function setApplication($key,$val) { 
 	global $pazApplication,$APPSERIALIZZA ;
 
-	setApplicationEnv($key,$val);
+	#setApplicationEnv($key,$val); // non va
+	log2("[setApplication] '$key' ==> '$val'");
 
 	$fp =fopen($pazApplication."$key.txt","w")
 		or die("No c'è il file in writtura relativo all'App -$key-!!!\n");
@@ -1832,14 +1843,6 @@ function issetSession($str){
 	return isset($_SESSION["_SESS_$str"]);
 }
 
-function setApplicationEnv($key,$val) {
-	#global $ISPAL,$DEBUG;
-	// sembra non vada un granche :)
-	log2("[setApplicationEnv] '$key' ==> '$val'");
-#	if ($ISPAL && $DEBUG) 
-#		echo "setApplicationEnv($key): provalo!";
-	//apache_setenv("GOLIARDIA_".$key,$val);
-}
 
 function appendApplicationEnv($key,$val)
 {
