@@ -17,12 +17,12 @@ if ((Form("OPERAZIONE")) == "CANCELLA")
 	$res=mysql_query("select count(*) from messaggi where id_figliodi_msg=".Form("ID_MSG"));
 	$rs=mysql_fetch_row($res);
 	if ($rs[0]==0)
-	{	scrivi("Ok, il messaggio Ë SCAPOLO, lo canziello.");
+	{	scrivi("Ok, il messaggio √® SCAPOLO, lo canziello.");
 		autoCancellaTabella("messaggi","ID_MSG","pag_tutti_messaggi.php");
 	scrivi("Messaggio cancellato, mio caro amministratore...");
 	ridirigi("pag_tutti_messaggi.php");
 	} else
-	{	scrivi("mi spiace, ma il msg ha ".$rs[0]." figli, non lo ucciderÚ!!! A meno che tu non voglia uccidere i suooi figli...");
+	{	scrivi("mi spiace, ma il msg ha ".$rs[0]." figli, non lo uccider√≤!!! A meno che tu non voglia uccidere i suooi figli...");
 
 	formBegin("pag_messaggi.php");
 	formhidden("my_hidden_id",Form("ID_MSG"));
@@ -82,7 +82,7 @@ if ($trigger) {
 	else
 	if ((Form("messaggio"))=="")
 		errore2002(("Messaggio mancante, non inserisco niente (titolo vale '".Form("titolo")."' !)"));
-	else {	  // l'utente POSTANTE Ë spoofabile
+	else {	  // l'utente POSTANTE √® spoofabile
 	      $strIdUtentePostante = strval(Form("id_login"));
 		$strIdUtenteEffettivo= strval(Session("SESS_id_utente"));
 		if ($DEBUG)
@@ -108,9 +108,9 @@ if ($trigger) {
 
 		$n=intval($rs["id_figliodi_msg"]);
 		if (! $n>0) 
-				$n=0; // se Ë un NaN lo metto a 0 !!!
+				$n=0; // se √® un NaN lo metto a 0 !!!
 		$isProgenitore=($n==0); 
-		$dummyvar=$rs["titolo"]; // cosi' d‡ eccezione qua e non alla prox f(x) a met‡...
+		$dummyvar=$rs["titolo"]; // cosi' d√† eccezione qua e non alla prox f(x) a met√†...
 		FANCYBEGIN($rs["titolo"]);
 		$MSGVUOTO=FALSE; // se scrive BEGIN, deve scrivere x forza l'END
 		scriviReport_Messaggio($rs,TRUE,TRUE); 

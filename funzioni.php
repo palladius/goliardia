@@ -1637,15 +1637,20 @@ function getHostnameAndDockerHostname() {
 }
 
 function log3($str) {
-	log2("[log3-nodb] NEVER LOGS ON DB NEVER! $str", NULL, FALSE );
+	return log2("[log3][nodb] $str", null, false );
 }
-function log2($str,$fname=NULL, $log_to_db=True) {
+function log_nodb($str) {
+	return log2("[log_nodb] $str", null, null );
+}
+
+// che CIOFECA PHP e i default values!
+// https://stackoverflow.com/questions/9166914/using-default-arguments-in-a-function
+function log2($str,$fname=null, $log_to_db=null) {
 	## INIZIALIZZAZIONE
 	global $GETUTENTE, $REMOTE_ADDR, $CONFSITO, $CURRENT_USER_ID, $CURRENT_USER;
-	if ($fname == NULL) 
-		$fname = "log_ingressi.php";
-	if ($log_to_db == NULL ) 
-		$log_to_db=True;
+	if (NULL === $fname) 	  { $fname = "log_ingressi.php"; }
+	if (NULL === $log_to_db ) { $log_to_db=True; }
+
 	$paz 		= "var/log/";
 	$pazcompleto 	= $paz.$fname;
 	## CODICE
@@ -1662,13 +1667,16 @@ function log2($str,$fname=NULL, $log_to_db=True) {
 	# senza data
 	$frase_da_loggare = "[$GETUTENTE @".$_SERVER["REMOTE_ADDR"]."] $str";
 	fputs($fp,"$now\t".str_pad($_SERVER["REMOTE_ADDR"],17," ").str_pad($GETUTENTE,30," ")."[$CONFSITO] $str\n"); 
-	if ($log_to_db) {
-		error_log("[log2] $frase_da_loggare" ); //  se no abbiamo un problema di circolarita perche dblog logga qui :P
-	}
+	error_log("[log2][LDB=$log_to_db] $frase_da_loggare" ); 
 	fclose ($fp); 
 
 	## DB Logga
-	dblog("log2", "$str", "debug");
+	if ($log_to_db == true ) {
+		#//  se no abbiamo un problema di circolarita perche dblog logga qui :P
+		dblog("log2", "$str", "debug");
+	} else {
+		#dblog("REMOVEME", "REMOVEME $str", "debug");
+	}
 }
 
 function reportRicorsivoCariche($idord,$result,$hoDiritti) {
@@ -2156,7 +2164,8 @@ function scriviIntestazioneConTimeout($rs,$righemax=10,$tit="warning: manca tito
 			scrivi("<br/><span class='descrizione'>$desc</span>");
 	scrivi("</th>");
 	if ($EOF) {
-		scrivib("<tr><td class='notefinetabella'>La query non ha prodotto risultati (o c'era un errore)</td></tr></table>");
+		scrivib("<tr><td class='notefinetabella'>La query non ha prodotto risultati (o c'era un errore che ho provveduto a loggare)</td></tr></table>");
+		log2("scriviIntestazioneConTimeout($tit) errore: ". mysql_error());
 		return;
 	}
 	$row = mysql_fetch_row($rs);
@@ -2183,148 +2192,152 @@ function scriviIntestazioneConTimeout($rs,$righemax=10,$tit="warning: manca tito
 }
 
 
+// 2021: returns TRUE o FALSE cosi puoi fare una mini catch of the day :)
 function scriviRecordSetConTimeout($rs,$righemax=10,$tit="warning: manca titolo",$desc="") {
-global $IMMAGINI, $AUTOPAGINA ;
-if (contiene($tit,"warning") && $desc=="") { $desc="Attenzione, Pal ha dimenticato di fare l'upgrade di questa tabella alla nuova versione. Se ne vedi 50 con sto difetto, non dirglielo. Quando invece non ce n'e' quasi piu', allora vuol dire che Pal crede di aver finito. In tal caso, se vedi sto msg MANDAGLI UNA MAIALA. Grazie"; }
-$heightFotoPersone = 28;
-$EOF = ! $rs;
-	# titolo e intestazione
-scrivi("<table class='recordset' >\n <th colspan='12'>$tit"); 
-if ($desc != "")  
-	scrivi("<br/><span class='descrizione'>$desc</span>"); 
-scrivi("</th>");
-	# se vuoto, lo dico...
-if ($EOF) {
-	scrivib("<tr><td class='notefinetabella'>La query non ha prodotto risultati (o c'era un errore)</td></tr></table>");
-	return;
-}
-$row = mysql_fetch_row($rs);
-if (! isset ($row)) {
-	scrivib("Errore in scriviRecordSetConTimeout, secondo me la query non è di select");
-	return 0;
-} 
-$ncolonne=mysql_num_fields($rs);
-$encoded= array($ncolonne);
-scrivi(" <tr class='intestazione'>\n");
-		// TITOLI
- for ($i=0; $i<$ncolonne; $i++)
-    	{$nome=String(mysql_field_name($rs,$i));
-	 if (contiene($nome,"encoded"))
-		{$nome.=corsivoBluHtml(" (decodificato)");
-		 $encoded[$i]=TRUE;
-		}
-	 else
-		 $encoded[$i]=FALSE;
-		 #if (isNull($nome)) $nome="<i>nisba</i>";
-		 scrivi("  <td><b><small>".$nome." </small></b></td>\n");
+	global $IMMAGINI, $AUTOPAGINA ;
+	if (contiene($tit,"warning") && $desc=="") { $desc="Attenzione, Pal ha dimenticato di fare l'upgrade di questa tabella alla nuova versione. Se ne vedi 50 con sto difetto, non dirglielo. Quando invece non ce n'e' quasi piu', allora vuol dire che Pal crede di aver finito. In tal caso, se vedi sto msg MANDAGLI UNA MAIALA. Grazie"; }
+	$heightFotoPersone = 28;
+	$EOF = ! $rs;
+		# titolo e intestazione
+	scrivi("<table class='recordset' >\n <th colspan='12'>$tit"); 
+	if ($desc != "")  
+		scrivi("<br/><span class='descrizione'>$desc</span>"); 
+	scrivi("</th>");
+		# se vuoto, lo dico...
+	if ($EOF) {
+		scrivib("<tr><td class='notefinetabella'>La query non ha prodotto risultati (o c'era un errore che MAGARI potrei LOGGARE)</td></tr></table>");
+		#log2("1. scriviRecordSetConTimeout($tit) errore: ". mysql_error());  # FIGATA funge
+		dblog("scriviRecordSetConTimeout($tit) errore: ". mysql_error()); 
+		return false;
 	}
+	$row = mysql_fetch_row($rs);
+	if (! isset ($row)) {
+		scrivib("Errore in scriviRecordSetConTimeout, secondo me la query non è di select");
+		return 0;
+	} 
+	$ncolonne=mysql_num_fields($rs);
+	$encoded= array($ncolonne);
+	scrivi(" <tr class='intestazione'>\n");
+			// TITOLI
+	for ($i=0; $i<$ncolonne; $i++)
+			{$nome=String(mysql_field_name($rs,$i));
+		if (contiene($nome,"encoded"))
+			{$nome.=corsivoBluHtml(" (decodificato)");
+			$encoded[$i]=TRUE;
+			}
+		else
+			$encoded[$i]=FALSE;
+			#if (isNull($nome)) $nome="<i>nisba</i>";
+			scrivi("  <td><b><small>".$nome." </small></b></td>\n");
+		}
 
-		// CORPO
-scrivi(" </tr>\n");
-$j=0;
-while (($row)  && $j != $righemax ) {
- $j++; 
- $EOF = ! $row; 
- scrivi(" <tr class='".($j%2 ? "rigapari" : "rigadispari") ."'>\n");  // da 0 1 a 1 2
- for ($i=0;$i<$ncolonne;$i++)  {
-   	$campo=String($row[$i]);
- 	$fieldname_i = String(mysql_field_name($rs,$i));
-	scrivi("  <td>");
-		// foto
-	 if (contiene($fieldname_i,"_fotoutente"))
-		scrivi("<center><a href='utente.php?nomeutente=".$campo."' border='0'><img src='$IMMAGINI/persone/".$campo.".jpg' height='$heightFotoPersone' border='0'></a></center>");
+			// CORPO
+	scrivi(" </tr>\n");
+	$j=0;
+	while (($row)  && $j != $righemax ) {
+	$j++; 
+	$EOF = ! $row; 
+	scrivi(" <tr class='".($j%2 ? "rigapari" : "rigadispari") ."'>\n");  // da 0 1 a 1 2
+	for ($i=0;$i<$ncolonne;$i++)  {
+		$campo=String($row[$i]);
+		$fieldname_i = String(mysql_field_name($rs,$i));
+		scrivi("  <td>");
+			// foto
+		if (contiene($fieldname_i,"_fotoutente"))
+			scrivi("<center><a href='utente.php?nomeutente=".$campo."' border='0'><img src='$IMMAGINI/persone/".$campo.".jpg' height='$heightFotoPersone' border='0'></a></center>");
 
-	 else
-	 if (contiene($fieldname_i,"_fotogoliarda"))
-		scrivi("<center><img src='$IMMAGINI/persone/".$campo."' height='$heightFotoPersone' border='0'></center>");
+		else
+		if (contiene($fieldname_i,"_fotogoliarda"))
+			scrivi("<center><img src='$IMMAGINI/persone/".$campo."' height='$heightFotoPersone' border='0'></center>");
 
-	 else
-	 if (contiene($fieldname_i,"_email"))
-		scrivi("<a href='mailto:".$campo."' border='0'>".$campo."</a>");
-	 else
-	 if (contiene($fieldname_i,"_fotoordine"))
-		scrivi("<center><img src='$IMMAGINI/ordini/".$campo."' height='$heightFotoPersone' border='0'></center>");
-	 else
-	 if (contiene($fieldname_i,"_guest")) {
-		if ($campo=="1")
-			scrivi("<center><img src='$IMMAGINI/userombrososembraguest.gif' height='$heightFotoPersone'></center>");
+		else
+		if (contiene($fieldname_i,"_email"))
+			scrivi("<a href='mailto:".$campo."' border='0'>".$campo."</a>");
+		else
+		if (contiene($fieldname_i,"_fotoordine"))
+			scrivi("<center><img src='$IMMAGINI/ordini/".$campo."' height='$heightFotoPersone' border='0'></center>");
+		else
+		if (contiene($fieldname_i,"_guest")) {
+			if ($campo=="1")
+				scrivi("<center><img src='$IMMAGINI/userombrososembraguest.gif' height='$heightFotoPersone'></center>");
+			}
+		else
+		if (contiene($fieldname_i,"_data"))
+			scrivi("<span class='data'>".$campo."</span>");
+		else	// SONNO
+		if (contiene($fieldname_i ,"_inSonno"))
+			{if ($campo==1) 
+							scrivi("<center><img src='$IMMAGINI/icone/sonno.gif' height='$heightFotoPersone'></center>");
+			}	
+		else	// SOVRANO
+		if (contiene($fieldname_i ,"_sovrano"))
+			{if ($campo==1) 
+				scrivi("<img src='$IMMAGINI/corona30.png' height='$heightFotoPersone '>");
+			}	
+		else	// SINGLENESS
+		if (contiene($fieldname_i ,"_single"))
+			{if ($campo==1) 
+				scrivi("<img src='$IMMAGINI/semaforoverde.gif' height='$heightFotoPersone '>");
+			else
+				scrivi("<img src='$IMMAGINI/semafororosso.gif' height='$heightFotoPersone '>");
+			}	
+			else   // NOME ORDINE 
+			if (contiene($fieldname_i,"_AAAnomeOrdine")) {
+						scrivi("<a href='modifica_ordine.php?idord=$campo'>$campo</a>: "
+				#.$row["id_ord"]
+				#." - ".$row[0]
+				.".");
+					}
+			else   // LINKORDINE
+			if (contiene($fieldname_i,"_linkOrd")) {
+						scrivi("<a href='modifica_ordine.php?idord=$campo'>link</a>");
+			}
+			else   // UTENTE (lo loinka e lo colora)
+			if (contiene($fieldname_i,"utente")) {
+						scrivi("<a class='utente' href='utente.php?nomeutente=$campo'> $campo</a>");
+					}
+		else	// SERIO FACETO
+		if (contiene($fieldname_i,"_serio")) {
+			if ($campo==1) // e' serio
+				scrivi("<img src='$IMMAGINI/serio.gif' height='$heightFotoPersone '>");
+			else
+				#scrivi("<img src='$IMMAGINI/faceto.gif' height='$heightFotoPersone '>");
+				echo "<!-- niente immagine -->"; #scrivi("-");
+		} else if (contiene($fieldname_i, "_mandafoto_id")) {
+			scrivi("<a href='mandafoto2021.php?image_id=$campo'>Foto #$campo</a>");
+		} else if (contiene($fieldname_i, "_mandafoto_action")) {
+			if (isAdminVip()) {
+			scrivi("<a href='pannello.php?opvip=AV2%29+Accetta%2Frifiuta+foto+mandafoto&image_id=$campo'>Prendi decisioni su sta foto nel Pannello #$campo</a>");
+			} else {
+				echo "non 6 admin"; // non sei admin
+			}
+		} else if (contiene($fieldname_i, "_base64image")) {
+			// https://www.w3schools.com/howto/howto_css_image_center.asp :)
+			scrivi(" <img src='$campo' height='80' style='display: block;margin-left: auto;margin-right: auto' />");
+		} else if (contiene($fieldname_i, "_foto_status")) { // mandafoto2021
+			switch ($campo) {
+				case "00-NEW":      img("waiting.png", 40) ; echo "Fase 1. Nessun amministratore ha ancora gestito la tua foto. Chiedi aiuto in chat!"; break;
+				case '01-ACCEPTED': img("semaforoverde.gif", 40) ; echo "Fase 2. La foto e stata approvata, ora abbi solo un po di pazienza.."; break;
+				case '02-DENIED': img("semafororosso.gif", 40) ; echo "Icona X rossa, e aggiungi CHeck on Description for more" ; break;
+				case '03-ARCHIVED': echo "All good. Picture has been succesffuly uploaded. This shouldnt bother you anymore (and probably we should filter this out"; break;
+			}
 		}
-	 else
-	 if (contiene($fieldname_i,"_data"))
-		scrivi("<span class='data'>".$campo."</span>");
-	 else	// SONNO
-	 if (contiene($fieldname_i ,"_inSonno"))
-		{if ($campo==1) 
-                        scrivi("<center><img src='$IMMAGINI/icone/sonno.gif' height='$heightFotoPersone'></center>");
-		}	
-	 else	// SOVRANO
-	 if (contiene($fieldname_i ,"_sovrano"))
-		{if ($campo==1) 
-			 scrivi("<img src='$IMMAGINI/corona30.png' height='$heightFotoPersone '>");
-		}	
-	 else	// SINGLENESS
-	 if (contiene($fieldname_i ,"_single"))
-		{if ($campo==1) 
-			 scrivi("<img src='$IMMAGINI/semaforoverde.gif' height='$heightFotoPersone '>");
-		 else
-			 scrivi("<img src='$IMMAGINI/semafororosso.gif' height='$heightFotoPersone '>");
-		}	
-         else   // NOME ORDINE 
-         if (contiene($fieldname_i,"_AAAnomeOrdine")) {
-                      scrivi("<a href='modifica_ordine.php?idord=$campo'>$campo</a>: "
-			#.$row["id_ord"]
-			#." - ".$row[0]
-			.".");
-                }
-         else   // LINKORDINE
-         if (contiene($fieldname_i,"_linkOrd")) {
-                    scrivi("<a href='modifica_ordine.php?idord=$campo'>link</a>");
-         }
-         else   // UTENTE (lo loinka e lo colora)
-         if (contiene($fieldname_i,"utente")) {
-                      scrivi("<a class='utente' href='utente.php?nomeutente=$campo'> $campo</a>");
-                }
-	 else	// SERIO FACETO
-	 if (contiene($fieldname_i,"_serio")) {
-		if ($campo==1) // e' serio
-			 scrivi("<img src='$IMMAGINI/serio.gif' height='$heightFotoPersone '>");
-		 else
-			 #scrivi("<img src='$IMMAGINI/faceto.gif' height='$heightFotoPersone '>");
-			 echo "<!-- niente immagine -->"; #scrivi("-");
-	} else if (contiene($fieldname_i, "_mandafoto_id")) {
-		scrivi("<a href='mandafoto2021.php?image_id=$campo'>Foto #$campo</a>");
-	} else if (contiene($fieldname_i, "_mandafoto_action")) {
-		if (isAdminVip()) {
-		scrivi("<a href='pannello.php?opvip=AV2%29+Accetta%2Frifiuta+foto+mandafoto&image_id=$campo'>Prendi decisioni su sta foto nel Pannello #$campo</a>");
-		} else {
-			echo "non 6 admin"; // non sei admin
+		else {	// DEFAULT!!!
+			scrivi(trasformaGenericoCampo($campo));
 		}
-	} else if (contiene($fieldname_i, "_base64image")) {
-		// https://www.w3schools.com/howto/howto_css_image_center.asp :)
-		scrivi(" <img src='$campo' height='80' style='display: block;margin-left: auto;margin-right: auto' />");
-	} else if (contiene($fieldname_i, "_foto_status")) { // mandafoto2021
-		switch ($campo) {
-			case "00-NEW":      img("waiting.png", 40) ; echo "Fase 1. Nessun amministratore ha ancora gestito la tua foto. Chiedi aiuto in chat!"; break;
-			case '01-ACCEPTED': img("semaforoverde.gif", 40) ; echo "Fase 2. La foto e stata approvata, ora abbi solo un po di pazienza.."; break;
-			case '02-DENIED': img("semafororosso.gif", 40) ; echo "Icona X rossa, e aggiungi CHeck on Description for more" ; break;
-			case '03-ARCHIVED': echo "All good. Picture has been succesffuly uploaded. This shouldnt bother you anymore (and probably we should filter this out"; break;
+		if ($encoded[$i]) scrivi("<br>".corsivoBluHtml(unescape(String($campo)))); 
+		scrivi("</td>\n");
 		}
+	scrivi(" </tr>\n");
+	$row=mysql_fetch_row($rs);
 	}
-	else {	// DEFAULT!!!
-		scrivi(trasformaGenericoCampo($campo));
-	}
-	if ($encoded[$i]) scrivi("<br>".corsivoBluHtml(unescape(String($campo)))); 
-	scrivi("</td>\n");
-	}
-scrivi(" </tr>\n");
-$row=mysql_fetch_row($rs);
-}
-$numrigheEffettive = mysql_num_rows($rs);
-echo("<tr class='notefinetabella'><td colspan=99>Totale: <b>".$j."</b> righe su <b>$numrigheEffettive</b> totali</td></tr>");
-echo("</table>\n\n\n");
-if ($i>0 && $i<$numrigheEffettive )
-	scrividevelop("Hint 4 da Futa: <a href='$AUTOPAGINA?next=$j&tabella=TITOLO'>NEXT $j</a>: 'QUERY che passo x argomento ... LIMIT $j,$j'<br/>");
-echo "<br/>\n";
+	$numrigheEffettive = mysql_num_rows($rs);
+	echo("<tr class='notefinetabella'><td colspan=99>Totale: <b>".$j."</b> righe su <b>$numrigheEffettive</b> totali</td></tr>");
+	echo("</table>\n\n\n");
+	if ($i>0 && $i<$numrigheEffettive )
+		scrividevelop("Hint 4 da Futa: <a href='$AUTOPAGINA?next=$j&tabella=TITOLO'>NEXT $j</a>: 'QUERY che passo x argomento ... LIMIT $j,$j'<br/>");
+	echo "<br/>\n";
+	return true;
 }
 
 function trasformaGenericoCampo($s) {

@@ -40,20 +40,20 @@ $rs2=mysql_query("SELECT m_snome as _fotoutente,m_snome as utente,provincia,m_he
 if ($ISANONIMO)
 	{scrivib("x ragioni di sicurezza non te li faccio vedere :-)");}
 else
- 	scriviRecordSetConTimeout($rs2,30,"Amministratori della tua citt‡","Amministratori di $MYPROVINCIA: non esitare a scrier loro! Ti aiuteranno coi tuoi problemi..");
+ 	scriviRecordSetConTimeout($rs2,30,"Amministratori della tua citt√†","Amministratori di $MYPROVINCIA: non esitare a scrier loro! Ti aiuteranno coi tuoi problemi..");
 ?>
 </td>
 <td valign="top">
 Se avete problemi di qualche tipo col sito, volete vi sia dato in gestione un ordine, 
 cercate X FAVORE di non scomodare me: ci son cose (tipo mettere foto eccetera) che posso 
 fare solo io, ma tante che possono fare i miei prodi amministratori. Qua vi faccio vedere 
-uno specchietto degli amministratori del sito x citt‡: se siete USER mandate loro un GMS, 
-se guest Ë cmq molto probabile che conosciate di persona almeno uno di loro... sbaglio?). 
-Se dovete farvi dare in gestione un ordine o una citt‡ o un goliarda, o non sapete come 
+uno specchietto degli amministratori del sito x citt√†: se siete USER mandate loro un GMS, 
+se guest √® cmq molto probabile che conosciate di persona almeno uno di loro... sbaglio?). 
+Se dovete farvi dare in gestione un ordine o una citt√† o un goliarda, o non sapete come 
 fare qc, cercate di scomodare prima il vostro amministratore di fiducia, ok? Grazie. 
-PS Cercasi amministratore (esigenze: che ne sappia abbastanza di informatica pi˘ che 
+PS Cercasi amministratore (esigenze: che ne sappia abbastanza di informatica pi√π che 
 di goliardia: ho + paura che rovini il DB + che faccia una cosa politicamente scorretta, 
-nel qual caso si corregge anche prima!) per ogni citt‡ (mi mancano principalmente PV, FI, MO, MI, ... 
+nel qual caso si corregge anche prima!) per ogni citt√† (mi mancano principalmente PV, FI, MO, MI, ... 
 mentre ne ho troppi per Torino e Parma...) :-)))
 <br/>
 <b>Se dovete mandare foto, mandatele al mio fedele attuale aiutante, <?php  echo $TAG_MIO_AIUTANTE?></b>.

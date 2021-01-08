@@ -287,7 +287,7 @@ if ($ISANONIMO && ! $APERTOATUTTI ) {
 	if ($ISANONIMO) $arrHeader[$i++]=linkaViola("login.php","login");
 	$arrHeader[$i++]=linkaViola("linkz.php","Linkz");
 	if ($ISPAL) $arrHeader[$i++]=linkaViola("logs.php","DBLogs");
-	//$arrHeader[$i++]=linkaViola("mandafoto.php","mandaFoto");
+	//$arrHeader[$i++]=linkaViola("mandafoto.php","mandaFoto"); // obsoleto..
 	$arrHeader[$i++]=linkaViola("mandafoto2021.php","mandaFoto2021");
 	$arrHeader[$i++]=linkaViola("votazioni.php","sondaggi");
 	$arrHeader[$i++]=linkaViola("statistiche.php","stats");

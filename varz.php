@@ -55,5 +55,4 @@ FQDN: <?= getenv("FQDN")."\n"; ?>
 
 ?>
 TIME_TO_WRITE_THIS_PAGE_MILLIS: TODO
-<? log2("REMOVEME Chiamato varz da qualcuno") ?>
 <? log3("Chiamato varz da qualcuno") ?>

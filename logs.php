@@ -11,15 +11,15 @@ else
 
 if ($DEBUG && RailsEnv() != 'production' ) {
     log2("Loggo a cazzo di cane tanto non siamo in prod.. testing logs :)");
-    dblog("logs.php", "Vediamo di chiamare dblog DIRETTAMENTE con l'apostrofo", "info");
+    #dblog("logs.php", "Vediamo di chiamare dblog DIRETTAMENTE con l'apostrofo", "info");
     autolog("Vediamo di chiamare con la FACILITY in automatico", "notice");
-    dblog("prova sdingola");
+    dblog("dblog() prova singola dovrebbe SI con auto-facility");
+    log3("log3() prova log 3 dovrebbe NON andare sul DB");
 }
 ?>
 <h1>Most important logs in <?= RailsEnv() ?></h1>
 
 <? visualizza_tabella_ultimi_logs_by_severities(array("fatal", "error")) ?>
-
 
 <h1>ALL logs in <?= RailsEnv() ?></h1>
 

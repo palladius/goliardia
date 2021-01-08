@@ -34,7 +34,7 @@ function getCurrentMonth()
 
 function getMonthFromDate($dat)
 {
-$tmp = date("n",strtotime($dat)) ; // (n) Ë il mese da 1 a 12
+$tmp = date("n",strtotime($dat)) ; // (n) √® il mese da 1 a 12
 //scrivi(rosso("getmonth($dat), returning [$tmp]<br/>"));
 return $tmp;
 }
@@ -52,7 +52,7 @@ function scriviUltimiAppuntamentiPostati($N) {
         . "(month(data_inizio)-month(CURDATE())) AS DELTAMESI, "
 	. "(YEAR(data_inizio)-YEAR(CURDATE())) AS DELTAANNI,"
         . "(month(data_inizio)-month(CURDATE()))+12*(YEAR(data_inizio)-YEAR(CURDATE())) AS TOT,"
-        . "nome,data_inizio,data_fine,citt‡, CURDATE() as curdate,"
+        . "nome,data_inizio,data_fine,citt√†, CURDATE() as curdate,"
         . "l.id_login,`tipodiappuntamento`,data_invio"
         . " FROM appuntamenti a,loginz l "
         #. "WHERE data_inizio >= curdate() "
@@ -73,7 +73,7 @@ function scriviUltimiAppuntamentiPostati($N) {
 	echo "<a href=utente.php?nomeutente=$nome'><img src='immagini/persone/$nome.jpg' height='50'></a>";
 	tdtd();
 	echo "<a href='modifica_appuntamenti.php?id=".$rs["id_appuntamento"]."' >".$rs["nome"]."</a>";
-	echo "<br/> (a ".$rs["citt‡"].", posted by <b class='utente'>$nome</b>)";
+	echo "<br/> (a ".$rs["citt√†"].", posted by <b class='utente'>$nome</b>)";
 	echo "<br/> <i>(".$rs["tipodiappuntamento"].")</i>";
 	#echo "<br/> dal ".$rs["data_inizio"];
 	#echo "<br/> al ".$rs["data_fine"]; 
@@ -102,9 +102,9 @@ function getMonthName($num)
 
 
 /*
-	se "mini" Ë super stringato
-	se "medio" Ë mini ma con + dati
-	se "maxi" c'Ë tutto...
+	se "mini" √® super stringato
+	se "medio" √® mini ma con + dati
+	se "maxi" c'√® tutto...
 */
 
 function scriviAppuntamentiMese_darimetterepoiinfunzioni_inc_medio($nmesiavanti)
@@ -114,7 +114,7 @@ global $puoCancellare,$ISPAL,$LARGHEVENTO;
 $sql  = "SELECT id_appuntamento,l.m_snome,luogo,"
 	. "(month(data_inizio)-month(CURDATE())) AS DELTAMESI, (YEAR(data_inizio)-YEAR(CURDATE())) AS DELTAANNI,"
 	. "(month(data_inizio)-month(CURDATE()))+12*(YEAR(data_inizio)-YEAR(CURDATE())) AS TOT,"
-	. "nome,data_inizio,data_fine,citt‡, CURDATE() as curdate,"
+	. "nome,data_inizio,data_fine,citt√†, CURDATE() as curdate,"
 	. "l.id_login,`tipodiappuntamento`,data_invio"
 	. " FROM appuntamenti a,loginz l "
 	. "WHERE data_inizio >= curdate() "
@@ -127,7 +127,7 @@ $sql  = "SELECT id_appuntamento,l.m_snome,luogo,"
 /* ex sql ASP che andava e qua ovviamente non va
 $sql  = "SELECT id_appuntamento,l.m_sNome,luogo,month(data_inizio-now)-1 AS DELTAMESI,"
 	"year(data_inizio-now)-1900 AS DELTAANNI,DELTAMESI+12*DELTAANNI AS TOT,"
-	"nome,data_inizio,data_fine,citt‡,l.id_login,tipodiappuntamento,data_invio FROM appuntamenti a,loginz l"
+	"nome,data_inizio,data_fine,citt√†,l.id_login,tipodiappuntamento,data_invio FROM appuntamenti a,loginz l"
     . " WHERE (((data_inizio)>=now() OR (day(data_inizio)=day(now) AND month(data_inizio)=month(now) AND year(data_inizio)=year(now))) "
     . ") AND month(data_inizio-now)-1+12*(year(data_inizio-now)-1900)<".$nmesiavanti.""
     . " AND l.id_login=a.id_login ORDER BY data_inizio";
@@ -153,7 +153,7 @@ $i=0;
 while ($rs=mysql_fetch_array($res))
 {
  $puoCancellareStoEvento= $puoCancellare || $rs["id_login"] == getIdLogin() ||isadminvip();
- $i=1-$i;  // 0 1 0 1 0 1 0 1 Ë involutiva quindi stabile cmq!
+ $i=1-$i;  // 0 1 0 1 0 1 0 1 √® involutiva quindi stabile cmq!
 
  $DATA = ($rs["data_inizio"]);
 // scrivib("1- DATA evento: rs[datainizio]:[".$rs["data_inizio"]."] -- DATA[$DATA]<br/>");
@@ -191,11 +191,11 @@ if ($puoCancellareStoEvento)
 	}
 	$dettagli = "<a href='modifica_appuntamenti.php?id=".$rs["id_appuntamento"]."'>(dettagli)</a>";
 	$titolo = "<br> ".$rs["nome"]."\n";
-	$cit = ", ".($rs["citt‡"]);
+	$cit = ", ".($rs["citt√†"]);
 
 
 
-		// se la data di fine Ë valida, la uso.
+		// se la data di fine √® valida, la uso.
 	$DATAFINENONVALIDA = TRUE;
 	$MOTIVO = "sembra ciuccio ok, data valida! yuppi!"; // innocente fino a prova contraria
 	$DATAFINE = $rs["data_fine"];
@@ -217,10 +217,10 @@ if ($puoCancellareStoEvento)
 	else
 	   {
 		$DATAFINENONVALIDA = FALSE; // i due casi + semplici ed eclatanti
-		scrivid("comincio a ragionare sullaprossimit‡ temporale: devo controllare che"
+		scrivid("comincio a ragionare sullaprossimit√† temporale: devo controllare che"
 			. "la data d'inizio(".$DATA.") preceda ma di poco la fine(".$DATAFINE.")"		
-			. ". Comnincerei calcolando DELTADAYS cosÏ fa fico e dice: dal 29 gennaio, x 3 giorni e cosÏ via...");		
-		$DELTADAYS = ceil((86399+$DELTASECONDI)/86400); // non Ë perfetta ma quasi.
+			. ". Comnincerei calcolando DELTADAYS cos√¨ fa fico e dice: dal 29 gennaio, x 3 giorni e cos√¨ via...");		
+		$DELTADAYS = ceil((86399+$DELTASECONDI)/86400); // non √® perfetta ma quasi.
 //		echo "$DATA-".time($DATA)."-".date($DATA)."-".strtotime($DATA);
 //		echo "<br>$DATAFINE-".time($DATAFINE)."-".date($DATAFINE)."-".strtotime($DATAFINE);
 		}
@@ -281,13 +281,13 @@ scrivi(getCoppiaTabella("Utente segnalante:","<b>".rsOrd("m_snome")."</b>" .
 
 	 {if (cit && ! dat)
 
-		  scrivi("<div align=right><i>(".rs("citt‡").")</i><br>\n")
+		  scrivi("<div align=right><i>(".rs("citt√†").")</i><br>\n")
 	  else
 	  if (!cit && dat)
 
 		  scrivi("<div align=right><i>(".toHumanDate(DATA).")</i><br>\n")
 	  else // ho tutti e due
-	  scrivi("<div align=right><i>(".rs("citt‡").", ".toHumanDate(new Date(rs("data_inizio"))).")</i><br>\n")
+	  scrivi("<div align=right><i>(".rs("citt√†").", ".toHumanDate(new Date(rs("data_inizio"))).")</i><br>\n")
 	 }
 */
 
@@ -316,7 +316,7 @@ scriviUltimiAppuntamentiPostati(10);
 }
 
 
-//deprecata("in fondo a calendario","30 mesi anzichË 7 originali");
+//deprecata("in fondo a calendario","30 mesi anzich√® 7 originali");
 scriviAppuntamentiMese_darimetterepoiinfunzioni_inc_medio(7);
 
 include "footer.php";
