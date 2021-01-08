@@ -13,70 +13,59 @@ $idgoliardico= (QueryString("idgol"));
 $BISSS=(Form("idgol"));
 $AUTOPOST=Form("hidden_operazione");
 
-if (! empty($AUTOPOST))
-	{
-//	scrivi("sto compiendo efferati atti DBsticamente parlando, attendi...");
-	scrivi("<br>l'operazione Ë di tipo ".$AUTOPOST."...");
+if (! empty($AUTOPOST)) 	{
+	scrivi("<br>l'operazione √® di tipo ".$AUTOPOST."...");
 
-	if ($AUTOPOST=="condividi utente")
-		{
-		$rs=mysql_query("select * from ulteriori_gestioni_goliardiche where id_login=".Form("id_login")." AND id_gol=".Form("id_gol"))
+	if ($AUTOPOST=="condividi utente") 	{
+		$rs=mysql_query("SELECT * from ulteriori_gestioni_goliardiche where id_login=".Form("id_login")." AND id_gol=".Form("id_gol"))
 			or sqlerror($sql);
 
-		if (mysql_num_rows($rs)>0)
-			{
-			scrivi("Ok, non sei scemo, l'accostamento non c'Ë gi‡...");
+		if (mysql_num_rows($rs)>0) 			{
+			scrivi("Ok, non sei scemo, l'accostamento non c'√® gi√†...");
 			autoInserisciTabella("ulteriori_gestioni_goliardiche");
 			}
 		else 
-			scrivi(rossone("Ma sei deficiente?!? L'accostamento esiste gi‡!!! Fortuna che "
+			scrivi(rossone("Ma sei deficiente?!? L'accostamento esiste gi√†!!! Fortuna che "
 			."ho fatto il controllo e... in termini prestazionali... E IO PAGO! Un antico "
 			."dilemma informatico DBstico: reattivo o proattivo? Reattivo costa meno, ma f"
-			."inchÈ c'Ë gente come te..."));
+			."inch√© c'√® gente come te..."));
 
 		}
-	else if ($AUTOPOST=="regala utente")
-		{$rs=mysql_query("update goliardi set id_login=".Form("id_login")
+	else if ($AUTOPOST=="regala utente") {
+		$rs=mysql_query("update goliardi set id_login=".Form("id_login")
 			." WHERE id_gol=".Form("id_gol"));
 		 scrivi(big("Fatto, ho cambiato il creatore di questo goliarda nell'utente numero ".Form("id_login")));
-		 tornaindietro("torn bek tu ze peig ov da goliard jast reghÈil'd","pag_goliarda.php?idgol=".Form("id_gol"));
+		 tornaindietro("torn bek tu ze peig ov da goliard jast regh√©il'd","pag_goliarda.php?idgol=".Form("id_gol"));
 		}
-	else if ($AUTOPOST=="togli concessione")
-	{
+	else if ($AUTOPOST=="togli concessione") 	{
 	 autoCancellaTabella("ulteriori_gestioni_goliardiche","id");
 	 scrivi(rosso("ok, <b>concessione tolta</b>."));
 	}
-	else scrivi(rossone("mah, strano, nessuna operazione nota, bensÏ '".$AUTOPOST."'... mah!"));
+	else scrivi(rossone("mah, strano, nessuna operazione nota, bens√¨ '".$AUTOPOST."'... mah!"));
 	bona();
 	}
 
 if (empty($idgoliardico))
-if (empty($BISSS))
-	{
-	 //////////////////////////////////////////////
-	 ////// pag data senza ID...provo a fare una form x chiedere che goliarda cercavi...	
-		formbegin();
-		 popolaComboGoliardi("idgol");
-		 formbottoneinvia("go go go");
-		formend();
-//		scrivi("<input type='submit' value='GO GO GO'>\n</form>\n");
+	if (empty($BISSS)) 		{
+		//////////////////////////////////////////////
+		////// pag data senza ID...provo a fare una form x chiedere che goliarda cercavi...	
+			formbegin();
+			popolaComboGoliardi("idgol");
+			formbottoneinvia("go go go");
+			formend();
+	//		scrivi("<input type='submit' value='GO GO GO'>\n</form>\n");
 
-	 scrivi(rossone("Mi spiace ma devo sapere che goliarda cerchi, brutto scemo!"));
-	 bona();
-	}
- else $idgoliardico=$BISSS;
-
-
-
-
-
+		scrivi(rossone("Mi spiace ma devo sapere che goliarda cerchi, brutto scemo!"));
+		bona();
+		}
+	else $idgoliardico=$BISSS;
 
 $NOMONE = "uninizialaized yett";
- $nickVero = $GETUTENTE;
- scrivid(rosso("Mi devo accertare che tu (".$nickname
+$nickVero = $GETUTENTE;
+scrivid(rosso("Mi devo accertare che tu (".$nickname
 		.") sia effettivamente abilitato a modificare ".$NOMONE."<br>\n"));
 
- $dirittiScrittura = (isAdminVip() || utenteHaDirittoScritturaSuGoliardaById($idgoliardico));
+$dirittiScrittura = (isAdminVip() || utenteHaDirittoScritturaSuGoliardaById($idgoliardico));
 
 
  $sql    = "select * from goliardi WHERE id_gol=$idgoliardico";
@@ -106,7 +95,7 @@ $NOMONE = "uninizialaized yett";
 	$fotoSua=rs_goliardi_getFotoPersona($recSet);
       if (! esisteFile($paz_foto_persone.$fotoSua))
 				{ $strFoto=("<center>la foto '".$fotoSua
-					."'<br>Ë NON DISPONIBILE</center></td>\n</tr>\n<tr>\n  <td>");
+					."'<br>√® NON DISPONIBILE</center></td>\n</tr>\n<tr>\n  <td>");
 				  log("errore di foto non trovata: ".$paz_foto_persone.$fotoSua);
 				}
 	else

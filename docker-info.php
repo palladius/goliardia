@@ -42,7 +42,7 @@ DB_HOST/DB_NAME: vedi sopra <br/>
 
 CHANGELOG:
 <div class="alert alert-secondary" style="width:80%;text-align:left" >
-     <pre><?=  getMemozByChiave("ceingLog") ?>
+     <pre><?=  getMemozByChiave("db_changelog") ?>
 </div>
 
 <h2>Code</h2>

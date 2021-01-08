@@ -271,6 +271,7 @@ if ($ISANONIMO && ! $APERTOATUTTI ) {
 	#$arrHeader[$i++]=linkaViola("download.php","download");
 	if (! $ISSERIO)	
 	$arrHeader[$i++]=linkaViola("giocodellecoppie.php","coppie");
+	if ($ISPAL) $arrHeader[$i++]=linkaViola("docker-info.php","docker");
 	$arrHeader[$i++]=linkaViola("calendario.php","eventi");
 	$arrHeader[$i++]=linkaViola("faq.php","FAQ");
 	$arrHeader[$i++]=linkaViola("pag_tutti_messaggi.php","forum");
