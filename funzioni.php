@@ -958,7 +958,7 @@ scrivi("<div align=right>");
 $i=0;
 $puoCancellare = isAdminVip();		// admin o appuntamento MIO
 while ($rs=mysql_fetch_array($res))
-  if (($MAX_APPUNTAMENTI--)>0) { // cos� prima o poi muore :D
+  if (($MAX_APPUNTAMENTI--)>0) { // così prima o poi muore :D
 	$puoCancellareStoEvento = $puoCancellare || $rs["id_login"] == getIdLogin(); // admin o mio 
 	$i=1-$i;
 	if ($puoCancellareStoEvento) {
@@ -1129,7 +1129,7 @@ if (isarray($arrIntoccabili))
 	echo rossone("SI!!! mi hai passato un array di attributi intoccabili! realizziamolo!!!");
 
 	// calcolo il nome della tabella dato l'sql (banalmente cerco la prima 
-	// parola dopo il FROM sperando sia giusto cos�!
+	// parola dopo il FROM sperando sia giusto così!
 
 $sqlStr=strtolower($sql);
 
@@ -1554,7 +1554,7 @@ function isdevelop($who="") {
 
 function debugTipiutenti()
 {
-scrivib("ora faccio una query su TUTTI gli utenti del sito e ti dico se sono admin, e cos� via! � lunga ma ogni tanto � utile! x chi conosce AI � di tipo generate and test..");
+scrivib("ora faccio una query su TUTTI gli utenti del sito e ti dico se sono admin, e così via! � lunga ma ogni tanto � utile! x chi conosce AI � di tipo generate and test..");
 
 
 
@@ -1799,7 +1799,7 @@ function ancora($str)
 
 function dammiDataByJavaDate($time)
 {
-return date("Y-m-d H:i:s",$time); // cos� piace a mysql
+return date("Y-m-d H:i:s",$time); // così piace a mysql
 
 
 }
@@ -1807,7 +1807,7 @@ return date("Y-m-d H:i:s",$time); // cos� piace a mysql
 function getmysqldata($time=0)
 {
 if ($time==0) $time=time(); // a dflt, metto NOW!!!
-return date("Y-m-d H:i:s",$time); // cos� piace a mysql
+return date("Y-m-d H:i:s",$time); // così piace a mysql
 }
 
 function visualizzaArrayTitolo($arr,$tit)
@@ -2110,7 +2110,7 @@ scrivi("\n<br>".
 			  ).
 	"...");
 if ($disabilitaIlBona)
-	{echo "<h2>E il terzo giorno lo script � resuscitato e va avanti a eseguire. Pi� graceful di cos�!</h2>"; return;}
+	{echo "<h2>E il terzo giorno lo script � resuscitato e va avanti a eseguire. Pi� graceful di così!</h2>"; return;}
 include "footer.php";
 exit();
 }
@@ -2693,16 +2693,16 @@ function formGiocoCoppiePersonale($verboso,$eventualeIdUtente=0,$votorandom=FALS
 	 formhidden("dataVoto",dammiDatamysql());
 	 scrivi("Ci andresti a letto?!?");
 	tdtd();
-	formScelta2("m_bscoperebbe",TRUE,FALSE,"s�","no",1);
+	formScelta2("m_bscoperebbe",TRUE,FALSE,"sì","no",1);
 	tttt();
 	scrivi("Ci pomiceresti?!?");
 	tdtd();
-	formScelta2("m_bbacerebbe",TRUE,FALSE,"s�","no",1);
+	formScelta2("m_bbacerebbe",TRUE,FALSE,"sì","no",1);
 	tttt();
 	scrivi("Vuoi che il voto rimanga privato?");
 
 	tdtd();
-	formScelta2("m_bprivato",TRUE,FALSE,"s�","no",2);
+	formScelta2("m_bprivato",TRUE,FALSE,"sì","no",2);
 	tttt();
 	scrivi("Voto generale");
 
@@ -3063,14 +3063,14 @@ function mandaMail($to,$from,$subject,$body) {
 			"attenzione, devo mandarti una mail all'indirizzo $to ma il server non pu� mandare mail"
 			." quindi facciamo una bella cosa: mandami una mail a <a href='mailto:"
 			."$WEBMASTERMAIL'>$WEBMASTERMAIL</a> e informami"
-			." di esserti iscrito. di solito rispondo in fretta (a volte pi� delle mail automatiche, giuro!). Cos� ti mando "
+			." di esserti iscrito. di solito rispondo in fretta (a volte pi� delle mail automatiche, giuro!). Così ti mando "
 			." la tua password 'a mano'. mi raccomando mandami una mail con MITTENTE UGUALE ALLA MAIL DATA NELLA FORM!!! "
 			." Io mander� solo a quella mail la pwd x ovvi motivi di sicurezza. Mi dovrai dire che ti sei iscritto/a come"
 			." XXX e che vorresti la password, ok? CIao e scusa il disagio."
 			);
 			die("muoio!");
 		} else
-			die(rosso(h2("Attenzione la mail non va (o almeno cos� dice la variabile impostata!), quindi non posso spedire mail "
+			die(rosso(h2("Attenzione la mail non va (o almeno così dice la variabile impostata!), quindi non posso spedire mail "
 				."a '$to'. Mi scuso x l'inconveniente, ma ci stiamo lavorando."
 				." Per favore, se hai proprio bisogno manda una <a href='mailto:$WEBMASTERMAIL'>mail a"
 				."l webmaster</a>, ma <u>solo</u> se � importante."
@@ -4324,7 +4324,7 @@ while ($row42 = mysql_fetch_assoc($result42)) {
 	if (!$ISANONIMO) {
 		 formBegin("nuova_nomina.php");
 		 if (isdevelop()) 
-			echo rosso("ric, cambia sta combo nei SOLI ordini che il tipo gestisce, admin compresi! cos� scremi.");
+			echo rosso("ric, cambia sta combo nei SOLI ordini che il tipo gestisce, admin compresi! così scremi.");
 		 scrivi("<table border='0'><tr><td><center><b>".blu("Aggiungi una nomina nell'Ordine:")."</b><br>");
 		 formhidden("idgol",$idgol);
 		 popolaComboOrdini("idord",$idord_dflt); 
@@ -5013,7 +5013,7 @@ function dammiData()
 
 
 obsoleta(("Attento, la funzione dammiData() � obsoleta e sconsigliata: dillo al webmaster!!! Dovresti usare altro, tipo dammidatamysql()"));
-return date("d/m/Y h.i.s",time()); // cos� piace a mysql
+return date("d/m/Y h.i.s",time()); // così piace a mysql
 }
 
 
@@ -5026,7 +5026,7 @@ function formhiddenApici($label,$val="") {
 
 function dammidatamysql()
 {
-return date("Y-m-d H:i:s",time()); // cos� piace a mysql
+return date("Y-m-d H:i:s",time()); // così piace a mysql
 
 }
 
@@ -5053,7 +5053,7 @@ return $makepass;
 
 function formScelta2($label,$chiave1,$chiave2,$scritta1,$scritta2,$n_selez_iniziale)
 {
-// compatibilit� all'indietro: se dai TRUE/true la trasformo in 1 e cos� via, x i boolean in mysql...
+// compatibilit� all'indietro: se dai TRUE/true la trasformo in 1 e così via, x i boolean in mysql...
  if (strtolower($chiave1)=="true")
 	{obsoleta("erore di otimmizazzione nella funzione formScelta2: chiave1 vale TRUE!"); $chiave1=1;}
  if (strtolower($chiave1)=="false")
@@ -5271,7 +5271,7 @@ function autoInserisciTabella($NOMETABELLA,$AUTOMSG="",$pag_in_cui_andare="") {
 		}
 	else
 	 	{tornaindietro("errore query di inserimento. <br/>Riprova, sarai + fortunato (si dice co"
-			."s�, ma io dubito). Prova senza apostrofi ;)"); 
+			."sì, ma io dubito). Prova senza apostrofi ;)"); 
 		 bona();
 		}
 scrivii(rosso("righe affettate dalla queryy: ".mysql_affected_rows().".<br/>"));
