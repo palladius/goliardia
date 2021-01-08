@@ -49,6 +49,12 @@ I need to mention how the FS is built:
 
 * From version 3 (prototype): you can send a picture to the DB itself!
 
+Docker install
+--------------
+
+    make docker-compose-up # starts site, MySQL, and PHPMyAdmin but the DB is empty
+    make docker-compose-restoredb # from another shell, this restores it. Wait for MySQL to be up.
+
 Bugs
 ----
 

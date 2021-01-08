@@ -42,10 +42,10 @@ un ordine che t'interessa; molto probabilmente non avrai il potere di alterare q
 		//// query che stampa ordini singoli
 
 scrivi("<h2>Ordini gestiti</h2>");
-$sqlCitta  = "SELECT DISTINCT o.id_ord as _linkOrd,o.nome_veloce,o.m_fileImmagineTn as _fotoordine,o.sovrano as _sovrano,o.citt‡ "
+$sqlCitta  = "SELECT DISTINCT o.id_ord as _linkOrd,o.nome_veloce,o.m_fileImmagineTn as _fotoordine,o.sovrano as _sovrano,o.citt√† "
 		." FROM ordini o, gestione_ordini g, loginz l "
     		." WHERE g.id_login=l.id_login AND l.m_snome='$GETUTENTE'"
-		." AND o.id_ord=g.id_ordine order by citt‡,sovrano,nome_veloce asc";
+		." AND o.id_ord=g.id_ordine order by citt√†,sovrano,nome_veloce asc";
 
 $res  = mysql_query($sqlCitta)
 	or ("erore query cita ".mysql_error());
@@ -59,22 +59,22 @@ scriviRecordSetConTimeout($res,50,"Gli ordini singoli","Quelli che seguono sono 
 hline(80);
 
 		/////////////////////////////////////////////
-		//// query che stampa citt‡ con a lato i suoi ordini
+		//// query che stampa citt√† con a lato i suoi ordini
 
-$sql0  = "select g.citt‡ from gestione_citta g, loginz l WHERE g.id_login=l.id_login "
-    	. "AND l.m_sNome LIKE '$GETUTENTE' order by g.citt‡";
+$sql0  = "select g.citt√† from gestione_citta g, loginz l WHERE g.id_login=l.id_login "
+    	. "AND l.m_sNome LIKE '$GETUTENTE' order by g.citt√†";
 
 $res0 = mysql_query($sql0)
 	or sqlerror($sql0);
 		/* la gestione delle citta' e' ora obsoleta...
-scrivi("<h3>Intere citt‡:</h3>");
+scrivi("<h3>Intere citt√†:</h3>");
 tabled(); 
 while ($row=mysql_fetch_array($res0)) {
-	$citta=$row["citt‡"];
+	$citta=$row["citt√†"];
 	scrivi("<tr><td valign='top'><strong>".big($citta).":</strong></td><td>");
-	$sqlCitta = "select id_ord,nome_veloce,m_fileImmagineTn,sovrano from ordini where citt‡ LIKE '".$citta."' $SERIOSTRING order by sovrano,nome_veloce asc";
+	$sqlCitta = "select id_ord,nome_veloce,m_fileImmagineTn,sovrano from ordini where citt√† LIKE '".$citta."' $SERIOSTRING order by sovrano,nome_veloce asc";
 	$resCitta = mysql_query($sqlCitta); 
-	while ($rsCitta=mysql_fetch_array($resCitta)) {// x ogni ordine della citt‡ i-ma... stampa un bel link e magari un bel thumbnail!!!!!
+	while ($rsCitta=mysql_fetch_array($resCitta)) {// x ogni ordine della citt√† i-ma... stampa un bel link e magari un bel thumbnail!!!!!
 		 scrivi(getOrdineConFotoStringByNameThumbConNome($rsCitta));
 		 invio();
  	}
@@ -105,7 +105,7 @@ scrivi("</TR></table>");
 		scrivi("<center>");
 		formbegin("pag_goliarda.php");
 		popolaComboGoliardi("idgol");
-		formbottoneinvia("fammi vedÈ");
+		formbottoneinvia("fammi ved√©");
 		formend();
 
  $sql    = "select count(*) as quanti from goliardi g,loginz l"
@@ -123,7 +123,7 @@ scrivi("<h3><center>goliardi tuoi (tot: ".$rs["quanti"].")</center></h3>");
 ?>
 <i>Questi sono i goliardi registrati da te o regalati a te, afferiscono direttamente a te; 
 in un mondo ideale dovresti averne solo uno (te stesso)
- ma se ci pensi puÚ anche aver senso che tu registri x esempio l'intero tuo ordine e tu 
+ ma se ci pensi pu√≤ anche aver senso che tu registri x esempio l'intero tuo ordine e tu 
 abbia in <em>possesso</em> N goliardi. In futuro potrai comunque
  regalarli ad altri utenti.</i>
 <?php 
@@ -180,7 +180,7 @@ scrivi("<h3><center>Goliardi in ulteriore gestione</center></h3><center>");
  per qualche arcano motivo si ritiene che anche tu possa metterci mano
  su (per usare un late binding alla inglese); se ritieni che x qualche
  motivo alcuni di questi goliardi debbano essere <em>tuoi</em>, segnalalo
- o al webmaster o (meglio, dato che Ë una variazione di minore entit‡) a 
+ o al webmaster o (meglio, dato che √® una variazione di minore entit√†) a 
 un amministratore o direttamente al possessore del goliarda incriminato. 
 Grattzie. :-)
 

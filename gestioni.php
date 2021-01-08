@@ -31,8 +31,8 @@ un ordine che t'interessa; molto probabilmente non avrai il potere di alterare q
 
 		scrivi("<center>");
 		formbegin("modifica_ordine.php");
-		 popolaComboOrdini("idord");
-		 formbottoneinvia("fam vedar");
+			popolaComboOrdini("idord");
+			formbottoneinvia("fam vedar");
 		formend();
 //		scrivi("<input type='submit' value='fam vedar'>\n</form></center>\n");
 		scrivi("</center>");
@@ -47,11 +47,11 @@ scrivi("<i>Quelli che seguono sono inevece gli ordini che il Palladio ha voluto 
 	."iardi con queste cariche...</i>");
 scrivi("<h3>Ordini singoli</h3>");
 
-// qua devo mettere un'altra query x gli ordini delle città...
-$sqlCitta  = "SELECT DISTINCT o.id_ord,o.nome_veloce,o.m_fileImmagineTn,o.sovrano,o.città "
+// qua devo mettere un'altra query x gli ordini delle cittï¿½...
+$sqlCitta  = "SELECT DISTINCT o.id_ord,o.nome_veloce,o.m_fileImmagineTn,o.sovrano,o.cittï¿½ "
 		." FROM ordini o, gestione_ordini g, loginz l "
-    		." WHERE g.id_login=l.id_login AND l.m_snome='$GETUTENTE'"
-		." AND o.id_ord=g.id_ordine order by città,sovrano,nome_veloce asc";
+    	." WHERE g.id_login=l.id_login AND l.m_snome='$GETUTENTE'"
+		." AND o.id_ord=g.id_ordine order by cittï¿½,sovrano,nome_veloce asc";
 
 
 $res  = mysql_query($sqlCitta)
@@ -66,32 +66,32 @@ $nessuno=FALSE;
 //if (! nessuno)
 tabled();
 
-while ($rsCitta=mysql_fetch_array($res))
-	{$i++;
-	 scrivi("<tr><td>".getOrdineConFotoStringByNameThumbConNome($rsCitta)."</td></tr>\n");
-	}
+while ($rsCitta=mysql_fetch_array($res)) {
+	$i++;
+	scrivi("<tr><td>".getOrdineConFotoStringByNameThumbConNome($rsCitta)."</td></tr>\n");
+}
 tableend();
 hline(80);
 
-		/////////////////////////////////////////////
-		//// query che stampa città con a lato i suoi ordini
-		/////////////////////////////////////////////
+	/////////////////////////////////////////////
+	//// query che stampa cittï¿½ con a lato i suoi ordini
+	/////////////////////////////////////////////
 /* 
-$sql0  = "select g.città from gestione_citta g, loginz l WHERE g.id_login=l.id_login "
-    	. "AND l.m_sNome LIKE '$GETUTENTE' order by g.città";
+$sql0  = "select g.cittï¿½ from gestione_citta g, loginz l WHERE g.id_login=l.id_login "
+    	. "AND l.m_sNome LIKE '$GETUTENTE' order by g.cittï¿½";
 $res0 = mysql_query($sql0)
 	or sqlerror($sql0);
-scrivi("<h3>Intere città:</h3>");
+scrivi("<h3>Intere cittï¿½:</h3>");
 scrivi("<table  cellpadding=3><tr>");
 tabled();
 while ($row=mysql_fetch_array($res0)) 	{
-	$citta=$row["città"];
+	$citta=$row["cittï¿½"];
 	scrivi("<tr><td valign='top'><strong>".big($citta).":</strong></td><td>");
-	// qua devo mettere un'altra query x gli ordini delle città...
-	$sqlCitta = "select id_ord,nome_veloce,m_fileImmagineTn,sovrano from ordini where città LIKE '".$citta."' $SERIOSTRING order by sovrano,nome_veloce asc";
+	// qua devo mettere un'altra query x gli ordini delle cittï¿½...
+	$sqlCitta = "select id_ord,nome_veloce,m_fileImmagineTn,sovrano from ordini where cittï¿½ LIKE '".$citta."' $SERIOSTRING order by sovrano,nome_veloce asc";
 	$resCitta = mysql_query($sqlCitta);
 	while ($rsCitta=mysql_fetch_array($resCitta))
-		{// x ogni ordine della città i-ma... stampa un bel link e magari un bel thumbnail!!!!!
+		{// x ogni ordine della cittï¿½ i-ma... stampa un bel link e magari un bel thumbnail!!!!!
 		 scrivi(getOrdineConFotoStringByNameThumbConNome($rsCitta));
 		 invio();
   		}
@@ -121,7 +121,7 @@ scrivi("</TR></table>");
 		scrivi("<center>");
 		formbegin("pag_goliarda.php");
 		popolaComboGoliardi("idgol");
-		formbottoneinvia("fammi vedé");
+		formbottoneinvia("fammi vedï¿½");
 		formend();
 
  $sql    = "select count(*) as quanti from goliardi g,loginz l"
@@ -139,7 +139,7 @@ scrivi("<h3><center>goliardi tuoi (tot: ".$rs["quanti"].")</center></h3>");
 ?>
 <i>Questi sono i goliardi registrati da te o regalati a te, afferiscono direttamente a te; 
 in un mondo ideale dovresti averne solo uno (te stesso)
- ma se ci pensi può anche aver senso che tu registri x esempio l'intero tuo ordine e tu 
+ ma se ci pensi puï¿½ anche aver senso che tu registri x esempio l'intero tuo ordine e tu 
 abbia in <em>possesso</em> N goliardi. In futuro potrai comunque
  regalarli ad altri utenti.</i>
 <?php 
@@ -202,7 +202,7 @@ scrivi("<h3><center>Goliardi in ulteriore gestione</center></h3><center>");
  per qualche arcano motivo si ritiene che anche tu possa metterci mano
  su (per usare un late binding alla inglese); se ritieni che x qualche
  motivo alcuni di questi goliardi debbano essere <em>tuoi</em>, segnalalo
- o al webmaster o (meglio, dato che è una variazione di minore entità) a 
+ o al webmaster o (meglio, dato che ï¿½ una variazione di minore entitï¿½) a 
 un amministratore o direttamente al possessore del goliarda incriminato. 
 Grattzie. :-)
 

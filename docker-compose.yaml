@@ -66,7 +66,7 @@ services:
     # novolume: per prod, statico come su GKE. E quel che provo QUI.
     goliardia-novolume:
         # fucked up:  '[/etc/apache2/sites-enabled,/var/www,/var/log/apache2]'
-        image: gcr.io/goliardia-prod/goliardia-it-matrioska:2.5
+        image: gcr.io/goliardia-prod/goliardia-it-matrioska:latest
         container_name: goliardia-it-matrioska-novolume 
         command: ["/var/www/www.goliardia.it/entrypoint-8080.sh"]
         ports:
@@ -94,6 +94,8 @@ services:
                 Devi solo ricordarti di far partire il cluster e poi eseguire questo:
 
                     bin/dockercompose-restoredb
+                
+                siamo su matrioska:latest non 2.5 come era un attimo fa..
             
             SMTP_USER: you-user-gmail@gmail.com
             WEBMASTER_EMAIL: you-user-gmail@gmail.com

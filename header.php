@@ -274,8 +274,10 @@ if ($ISANONIMO && ! $APERTOATUTTI ) {
 	$arrHeader[$i++]=linkaViola("calendario.php","eventi");
 	$arrHeader[$i++]=linkaViola("faq.php","FAQ");
 	$arrHeader[$i++]=linkaViola("pag_tutti_messaggi.php","forum");
-	if ($ISGOLIARD)
-			$arrHeader[$i++]=linkaViola("pag_utente.php","gestioni");
+	if ($ISGOLIARD) {
+		$arrHeader[$i++]=linkaViola("pag_utente.php","gestioni");
+		$arrHeader[$i++]=linkaViola("gestioni.php","gestioni2");
+	}
 	$arrHeader[$i++]=linkaViola("gms.php","GMS");
 	if ((Session("PX"))<10)
 		$arrHeader[$i++]=linkaViolaTarget("help.php","aiuto","_new");
