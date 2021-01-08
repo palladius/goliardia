@@ -15,7 +15,8 @@ include "header.php";
 */
 
 $PAZ_UPLOAD=get_paz_upload (); # "uploads"; // va post slashato, sussunto in classes/manda_foto
-
+// or ;
+dblog( "mandafoto-vecchio", "Grande Fratello, abbiamo un nostalgico del vecchio mandafoto! In ". $_SERVER['REQUEST_URI'] . " detto anche " . $_SERVER['PHP_SELF']  );
 ?>
 
 <h2>Mandafoto Classico (🙆 nel senso che suka)</h2>

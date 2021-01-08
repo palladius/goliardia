@@ -1,5 +1,6 @@
 <?php 
 	include "constants.php";
+	include "classes/dblog.php"; // purtroppo serve a TUTTI
 
 		# $Id: funzioni.php 60 2009-09-27 09:45:55Z riccardo $
 	# versione 2.0a...
@@ -1640,6 +1641,12 @@ function now() {
 	return dammiDataByJavaDate(time());
 }
 
+# DOCKER_HOST::HOSTNAME (father::child)
+function getHostnameAndDockerHostname() {
+	#return php_uname('n') . "(".getenv("DOCKER_HOST_HOSTNAME").")";	  
+	return getenv("DOCKER_HOST_HOSTNAME") . "::" . php_uname('n') ;	  
+}
+
 function log2($str,$fname="log_ingressi.php") {
 	global $GETUTENTE, $REMOTE_ADDR, $CONFSITO, $CURRENT_USER_ID, $CURRENT_USER;
 	$paz 		= "var/log/";
@@ -1661,26 +1668,36 @@ function log2($str,$fname="log_ingressi.php") {
 	$frase_da_loggare = "[$GETUTENTE @".$_SERVER["REMOTE_ADDR"]."] $str";
 	fputs($fp,"$now\t".str_pad($_SERVER["REMOTE_ADDR"],17," ").str_pad($GETUTENTE,30," ")."[$CONFSITO] $str\n"); 
 	error_log("[log2] $frase_da_loggare" );
-	$frase_da_loggare_mysql_safe = mysql_real_escape_string($frase_da_loggare);
-	$ip_address = $_SERVER["REMOTE_ADDR"] ;
 
-	try {
-		$SQL = "INSERT INTO `dblogs` 
-		(`id`, `severity`, `facility`, `log`, `user_id`, `user_name`, `docker_context`, `ip_address`) 
-		VALUES 
-		(NULL, 'warning', 'log2', '$frase_da_loggare_mysql_safe', $current_user_id, '$current_user', 'TODO docker $CONFSITO', '$ip_address');
-		";
-		$rs = mysql_query($SQL);
-		if (! $rs) {
-			#fputs($fp,"TODO1 ricc add via SQL error: " . mysql_error() );
-			die('Invalid query TODO toglimi quando va: ' . mysql_error() . "<br/> La query era $SQL");
-		} else {
-			fputs($fp,"TODO2 ricc add via SQL error: " . mysql_error() );
+	## DB Logga
+	dblog("log2", "$str", "debug");
+	# dblog()
+	// $frase_da_loggare_mysql_safe = mysql_real_escape_string($frase_da_loggare);
+	// $ip_address = $_SERVER["REMOTE_ADDR"] ;
+	// $docker_context_escaped = mysql_real_escape_string("Context_VER=1.1\n"  
+	// . "DOVE_SONO: ". $_SERVER["GOLIARDIA_DOVESONO"] ."\n" 
+	// . "CONFSITO: ". $CONFSITO ."\n" 
+	// . "@ HOSTNAME: " .  getHostnameAndDockerHostname() ."\n" 
+	// );
+	// $docker_context_concise_escaped = mysql_real_escape_string(  $_SERVER["GOLIARDIA_DOVESONO"] . " @ " . getHostnameAndDockerHostname());
 
-		}
-	} catch (Exception $e) {
-		echo '[log2] Caught exception nel mio delirio di loggare su DB: ',  $e->getMessage(), "\n";
-	}
+	// try {
+	// 	$SQL = "INSERT INTO `dblogs` 
+	// 	(`id`, `severity`, `facility`, `log`, `user_id`, `user_name`, `docker_context`, `ip_address`) 
+	// 	VALUES 
+	// 	(NULL, 'warning', 'log2', '$frase_da_loggare_mysql_safe', $current_user_id, '$current_user', '$docker_context_concise_escaped', '$ip_address');
+	// 	";
+	// 	$rs = mysql_query($SQL);
+	// 	if (! $rs) {
+	// 		#fputs($fp,"TODO1 ricc add via SQL error: " . mysql_error() );
+	// 		die('Invalid query TODO toglimi quando va: ' . mysql_error() . "<br/> La query era $SQL");
+	// 	} else {
+	// 		fputs($fp,"TODO2 ricc add via SQL error: " . mysql_error() );
+
+	// 	}
+	// } catch (Exception $e) {
+	// 	echo '[log2] Caught exception nel mio delirio di loggare su DB: ',  $e->getMessage(), "\n";
+	// }
 	fclose ($fp); 
 }
 
@@ -6202,6 +6219,10 @@ function get_rails_env() {
 function get_rails_env2() {
 	return getenv("RAILS_ENV");
 }
+function RailsEnv() {
+	return getenv("RAILS_ENV");
+}
+
 
 function db_importantlog_slow($appname, $log_string) {
 	// vogloi mettere nero su bianco che questa operazione e LENTA e costosa quindi non 
