@@ -131,12 +131,12 @@ scrivi("<br><center><b class='utente'>".$rs["m_sNome"]."</b></center>");
 	if ($stessaprovincia)
 	{
 	formBegin("pag_messaggi.php");
-	formhidden("id_login",$rs["ID_LOGIN"]); //so che �porco, ma x minimizzare � modifiche
+	formhidden("id_login",$rs["ID_LOGIN"]); //so che èporco, ma x minimizzare è modifiche
 		// qui son maiuscolo di la' invece minuscolo!!!
 	formhidden("OPERAZIONE","RENDIUSER");
 	$ospitechar= $stessaprovincia ?
 			"RENDIUSER (idl=".$rs["ID_LOGIN"]."; tuo compaesano di ".$rs["provincia"].") \n ma SOLO se vedi una foto qui a fianco"
-			: "RENDIUSER (anche se � di '".$rs["provincia"]."')";
+			: "RENDIUSER (anche se è di '".$rs["provincia"]."')";
 
 	formbottoneinvia($ospitechar);
 	formEnd();
@@ -167,7 +167,7 @@ if (isAdminVip())
 scriviCoppia("Nome Cognome",$rs["m_thumbnail"]);
 scriviCoppia("GP�",$rs["m_nPX"]);
 scriviCoppia("finger",(datasburaw2k($rs["m_dataLastCollegato"])));    //     +" (<i>Ariete</i>)");
-scriviCoppia("Citt�",$rs["provincia"]);
+scriviCoppia("Città",$rs["provincia"]);
 
  scrivi("</td></tr>");
 
@@ -227,7 +227,7 @@ function formScelta3($label,$chiave1,$chiave2,$c3,$scritta1,$scritta2,$s3,$n_sel
 
 
 
-// se rs � TRUE scirvo TRU, se no scrivo FOLS
+// se rs è TRUE scirvo TRU, se no scrivo FOLS
 function scriviTRUEFALSE($rs,$tru,$fols)
 {
 if ($rs=="TRUE" || $rs==1)
@@ -286,13 +286,13 @@ function datasbura($rs)
 function toDataSbura($d)
 {
 global $weekkina,$mesini;
-// venerd� puoi (1) capire xch� va ottimizzata; (2) ottimizzarla. il passo 1 � + difficile ;-) scherzo.
+// venerdì puoi (1) capire xchè va ottimizzata; (2) ottimizzarla. il passo 1 è + difficile ;-) scherzo.
 //echo rosso("data[$d]");
 if ($d == -1)
-	return "01-01-70 <small><i>(cercate di cambiare sta data, se possibile. se no segnalate il BUG mandando un gms a @BUGS x favore dicendo a cosa � riferita)</i></small>";
+	return "01-01-70 <small><i>(cercate di cambiare sta data, se possibile. se no segnalate il BUG mandando un gms a @BUGS x favore dicendo a cosa è riferita)</i></small>";
 $mese=$mesini[date("n",$d)-1]; // mese senza zeri
 $giorno = $weekkina[date("w",$d)];
-$format = date("\%\s\ j \%\s y",$d); // j � come d ma 1..31 non 01..31
+$format = date("\%\s\ j \%\s y",$d); // j è come d ma 1..31 non 01..31
 //echo "[sprintf($format,$giorno,$mese);]";
 //printf($format,$giorno,$mese);
 return sprintf($format,$giorno,$mese);
@@ -479,7 +479,7 @@ formhidden("hidden_tornaindietroapagina",$pagIndria);
 $isuomo = ($rs["nome1"]==$GETUTENTE);
 $votante = $isuomo  ? $rs["idutentevotante"] : $rs["idutentevotato"];
 $votato =  $isuomo  ? $rs["idutentevotato"] : $rs["idutentevotante"];
-	// se � donna devo invertire perch� il voto su cui checka ha i parametri invertiti (credo)..
+	// se è donna devo invertire perchè il voto su cui checka ha i parametri invertiti (credo)..
 formhidden("idutentevotante",$votante);
 formhidden("idutentevotato",$votato);
 formhidden("nome1",$rs["nome1"]); // inutili!
@@ -513,7 +513,7 @@ return $row[0];
 }
 function popolaComboOrdini($ID,$ID_DFLT="Montecristo") // montecristo ovviamente
 {
-$sql = "select id_ord,nome_veloce,citt� from ordini ORDER BY nome_veloce";
+$sql = "select id_ord,nome_veloce,città from ordini ORDER BY nome_veloce";
 popolaComboBySqlDoppia_Key_Valore($ID,$sql,$ID_DFLT);
 }
 
@@ -557,7 +557,7 @@ function accertaAdministratorAltrimentiBona()
 		{scrivi("<i>ciuccio ok sei tu, <b>GOD</b>...<br></i>\n");}
 	else
 
-		{scrivi(rossone("Mi spiace ma lo sforzo non � abbastanza possente in te per andare"
+		{scrivi(rossone("Mi spiace ma lo sforzo non è abbastanza possente in te per andare"
 			." oltre...<br> da questo momento in poi abbasser� l'altezza dei font da 12 pixel<br>"
 			."a 12 Angstrom. Perdoneraimi, spero, <u>".$chisei."</u>..."));
 		 bona();
@@ -719,7 +719,7 @@ scrivi("\n</select>\n");
 
 function popolaComboDignita($ID,$dflt="nobile")
 {
- $arr = Array("capocitt�","capoordine","nobile","saio");
+ $arr = Array("capocittà","capoordine","nobile","saio");
  popolaComboArrayConDefault($ID,$arr,$arr,$dflt);
 }
 
@@ -824,7 +824,7 @@ function getIconcina($alt,$img,$height=25) {
 function popolaComboCittaId($ID,$dflt="") {
 	$sql = "select id_pseudoid, nomecitta from regioni ORDER BY nomecitta";
 	if ($dflt=="")
-		popolaComboBySqlDoppia_Key_Valore($ID,$sql,"Argenta"); // 27 � argenta... :-)
+		popolaComboBySqlDoppia_Key_Valore($ID,$sql,"Argenta"); // 27 è argenta... :-)
 	else
 		popolaComboBySqlDoppia_Key_Valore($ID,$sql,$dflt);
 }
@@ -858,7 +858,7 @@ function popolaComboTipo($tipo,$nomeid)
 
 
 function ridirigerai($pagina="") {
-tornaindietro("quando saro' sicuro della mossa, ridirigero' il tutto con RIDIRIGI. X ora ti dico questo cosi ric pu� vedere tutti i cambiamenti x benino. Abbi pazienza",$pagina);
+tornaindietro("quando saro' sicuro della mossa, ridirigero' il tutto con RIDIRIGI. X ora ti dico questo cosi ric può vedere tutti i cambiamenti x benino. Abbi pazienza",$pagina);
 }
 
 function popolaComboTipoAppuntamento($ID) {
@@ -914,7 +914,7 @@ return $str;
 }
 
 function ciocheprecede($frase,$sep)
-{//cerca ci� che in frase precede il separatore
+{//cerca ciò che in frase precede il separatore
 if (empty($frase)) return array();
 
 
@@ -926,7 +926,7 @@ if (sizeof($tmparr)>0)
 return $ret; // inefficiente ma pulitissimo
 }
 
-	// di dflt � mandata da PAL-BOT :-DDD
+	// di dflt è mandata da PAL-BOT :-DDD
 function sendGms($to,$text,$from=1,$silent=TRUE) {
 $datainvio=dammiDatamySqL();
 $from=intval($from);
@@ -975,18 +975,18 @@ while ($rs=mysql_fetch_array($res))
 	} 
 	if ($versione=="mini") {
 	  scrivi(htmlSinistra("<a href='modifica_appuntamenti.php?id=".$rs["ID_appuntamento"]."'>".$rs["Nome"]."</a><br>\n"));
-	  $cit=($rs["citt�"]);
+	  $cit=($rs["città"]);
   	  $cit=! empty($cit);
 	  $dat=String($rs["data_inizio"]);
   	  $dat=! empty($dat); 
 	  if ($cit || $dat) {
 		if ($cit && ! $dat)
-		  scrivi(" <div align=right><i>(".$rs["citt�"].")</i><br>\n");
+		  scrivi(" <div align=right><i>(".$rs["città"].")</i><br>\n");
 	  	else
 	  	    if (!$cit && $dat)
 			scrivi(" <div align=right><i>(".toHumanDate(phpdata($rs["data_inizio"])).")</i><br>\n");
 	  	    else // ho tutti e due
-	  		scrivi(" <div align=right><i>(".$rs["citt�"].", ".toHumanDateGGMM(phpdata($rs["data_inizio"])).")</i><br>\n");
+	  		scrivi(" <div align=right><i>(".$rs["città"].", ".toHumanDateGGMM(phpdata($rs["data_inizio"])).")</i><br>\n");
 	  }
 	  echo " </div>\n";
 	}
@@ -1081,7 +1081,7 @@ return "ERRORE";
 
 function sqlCercaLoginNameById($id)
 {
-	obsoleta("sqlCercaLoginNameById � una funzioen TRPPO IDIOTA...");
+	obsoleta("sqlCercaLoginNameById è una funzioen TRPPO IDIOTA...");
 	return "select m_snome  from loginz where id_login=".$id;
 }
 
@@ -1134,7 +1134,7 @@ if (isarray($arrIntoccabili))
 $sqlStr=strtolower($sql);
 
 if (empty($sqlStr))
-	{echo ("ATTENZIONE: la stringa SQL � nulla: Mi attendo che <i>scriviRecord"
+	{echo ("ATTENZIONE: la stringa SQL è nulla: Mi attendo che <i>scriviRecord"
 		."SetConDelete</i> non funzioni bene coi modifica e cancella<br>");
 	}
 if ($ISPAL)
@@ -1169,13 +1169,13 @@ scrivid(rosso("<br>stato: <b>"+rs.State+"</b>"));
 }catch (e){scrivi(rosso("probl con STATE: esco"));return;}
 if (rs.State==0)
 {
-scrivi(rosso("[lo stato � <i>closed</i>,tabella vuota, magari era una insert/update?!? Speriamo!!!]"));
+scrivi(rosso("[lo stato è <i>closed</i>,tabella vuota, magari era una insert/update?!? Speriamo!!!]"));
 return;
 }
 */
 if (isdevelop())
-	echo rosso("metti qualcosa x dedurre se lo stato della query � closed (tipo insert o update o delete) "
-		."o di select: in prima appreossimazione � mysql_num_rows, ma non � esatto, poich� una select po"
+	echo rosso("metti qualcosa x dedurre se lo stato della query è closed (tipo insert o update o delete) "
+		."o di select: in prima appreossimazione è mysql_num_rows, ma non è esatto, poichè una select po"
 		."trebbe dare come risultato una cosa vuota...");
 tabled();
 scrivi("<tr class='tabhomeintestazione'><td><b>Canc/Edit</b></td>\n");
@@ -1297,7 +1297,7 @@ function appendApplication($key,$valApp)
 global $pazApplication,$APPSERIALIZZA ;
 
 $fp =fopen($pazApplication."$key.txt","a")
-	 or die("No c'� il file in appenditura relativo all'App($key)!!!\n");
+	 or die("No c'è il file in appenditura relativo all'App($key)!!!\n");
 
 
 
@@ -1307,7 +1307,7 @@ $fp =fopen($pazApplication."$key.txt","a")
 
 
 if ($APPSERIALIZZA)
- 	die(rosso("non posso appendere se c'� serializzazione (a meno che non leggo, deserializzo, sommo e serializzo. alla faccia dell'efficienza! Non che me ne freghi, ma quando si parla di leggere FILE cio penso pure (z)io"));
+ 	die(rosso("non posso appendere se c'è serializzazione (a meno che non leggo, deserializzo, sommo e serializzo. alla faccia dell'efficienza! Non che me ne freghi, ma quando si parla di leggere FILE cio penso pure (z)io"));
 
  fputs( $fp, $valApp);
 
@@ -1324,7 +1324,7 @@ function setApplication($key,$val) {
 	setApplicationEnv($key,$val);
 
 	$fp =fopen($pazApplication."$key.txt","w")
-		or die("No c'� il file in writtura relativo all'App -$key-!!!\n");
+		or die("No c'è il file in writtura relativo all'App -$key-!!!\n");
 
 	if ($APPSERIALIZZA)
 		$val=serialize($val);
@@ -1359,7 +1359,7 @@ function getApplication($key="eroreKeyNulla") {
 global $pazApplication,$APPSERIALIZZA ;
 $erore=FALSE;
 if ($key=="utentiattivi")
-	obsoleta("getApplication","la funzione � obsoleta sul campo 'utentiattivi': non "
+	obsoleta("getApplication","la funzione è obsoleta sul campo 'utentiattivi': non "
 		."funziona come in asp, anzi diciamo che non funziona proprio!");
 	// dice in INET che in winzoz ci vuole la B x leggere file binary, bah!
 $fp =fopen($pazApplication."$key.txt","rb") 
@@ -1374,7 +1374,7 @@ if ( $erore) {
 $b = fgets( $fp, 100000 )
 	or $b="";
 if (!feof ($fp)) 
-	scrivi(rosso("Attenzione, admin! nel file ce n'� ancora di roba!!!"));
+	scrivi(rosso("Attenzione, admin! nel file ce n'è ancora di roba!!!"));
 fclose ($fp); 
 if ($APPSERIALIZZA)
 	 $b=unserialize($b);
@@ -1485,17 +1485,17 @@ function visualizzaArray($arr) {
 		while(list($k,$v)=each($arr))
 			{echo "<b>$k</b>: $v<br/>";}
 	} 	else {
-		echo "<b>$arr</b>: non � un array.<br/>";
+		echo "<b>$arr</b>: non è un array.<br/>";
 	}
 }
 
 function visualizzaArrayMini($arr)	{
-	obsoleta("chiama la visualizzaArray e basta, � + veloce da digitare!!!");
+	obsoleta("chiama la visualizzaArray e basta, è + veloce da digitare!!!");
 	if (is_array($arr))	{
 		while(list($k,$v)=each($arr))
 			{echo "<b>$k</b>: $v<br/>";}
 	} 	else	{
-		echo "<b>$arr</b>: non � un array.<br/>";
+		echo "<b>$arr</b>: non è un array.<br/>";
 	}
 }
 
@@ -1554,7 +1554,7 @@ function isdevelop($who="") {
 
 function debugTipiutenti()
 {
-scrivib("ora faccio una query su TUTTI gli utenti del sito e ti dico se sono admin, e così via! � lunga ma ogni tanto � utile! x chi conosce AI � di tipo generate and test..");
+scrivib("ora faccio una query su TUTTI gli utenti del sito e ti dico se sono admin, e così via! è lunga ma ogni tanto è utile! x chi conosce AI è di tipo generate and test..");
 
 
 
@@ -1755,7 +1755,7 @@ function getFotoReport_Carica($rs,$linkato)
 
 	$simbolo="BOH (".$dign.")";
 
-	if ($dign=="capocitt�")
+	if ($dign=="capocittà")
 		$simbolo=$icona_capoordine;
 	else
 	if ($dign=="capoordine")
@@ -1872,7 +1872,7 @@ function contiene($str,$substr)
 $tmp= ereg($substr,$str);
 //$tmp= (eregi(strval($str),strval($substr)));
 //$tmp= (strpos($str,$substr)>=0) ? 1 : 0;
-//if ($tmp)	scrivi("returno la {contiene($str,$substr)}; il risultato � '$tmp'.<br>");
+//if ($tmp)	scrivi("returno la {contiene($str,$substr)}; il risultato è '$tmp'.<br>");
 return $tmp;
 }
 function Session($str)
@@ -2110,7 +2110,7 @@ scrivi("\n<br>".
 			  ).
 	"...");
 if ($disabilitaIlBona)
-	{echo "<h2>E il terzo giorno lo script � resuscitato e va avanti a eseguire. Pi� graceful di così!</h2>"; return;}
+	{echo "<h2>E il terzo giorno lo script è resuscitato e va avanti a eseguire. Pi� graceful di così!</h2>"; return;}
 include "footer.php";
 exit();
 }
@@ -2147,7 +2147,7 @@ for ($i=0; $i<$n;$i++)
 } 
 
 function scrivirecordset($sql) {
-	obsoleta("scrivirecordset � OBSOLETA, usa <b>scrivirecordsetcontimeout</b> con 2 righe in piu' invece...");
+	obsoleta("scrivirecordset è OBSOLETA, usa <b>scrivirecordsetcontimeout</b> con 2 righe in piu' invece...");
 	$res=mysql_query($sql);
 	if (mysql_num_rows($res)==0) {
 		echo "Tabella vuota, non la visualizzo";
@@ -2156,7 +2156,7 @@ function scrivirecordset($sql) {
 }
 
 function scrivirecordset2($sql) {
-	obsoleta("scrivirecordset2 � OBSOLETA, vedi codice di <b>scrivirecordset()</b> invece...");
+	obsoleta("scrivirecordset2 è OBSOLETA, vedi codice di <b>scrivirecordset()</b> invece...");
 	scrivirecordset($sql);
 }
 
@@ -2175,7 +2175,7 @@ function scriviIntestazioneConTimeout($rs,$righemax=10,$tit="warning: manca tito
 	}
 	$row = mysql_fetch_row($rs);
 	if (! isset ($row)) {
-		scrivib("Errore in scriviRecordSetConTimeout, secondo me la query non � di select");
+		scrivib("Errore in scriviRecordSetConTimeout, secondo me la query non è di select");
 		return 0;
 	}
 	$ncolonne=mysql_num_fields($rs);
@@ -2214,7 +2214,7 @@ if ($EOF) {
 }
 $row = mysql_fetch_row($rs);
 if (! isset ($row)) {
-	scrivib("Errore in scriviRecordSetConTimeout, secondo me la query non � di select");
+	scrivib("Errore in scriviRecordSetConTimeout, secondo me la query non è di select");
 	return 0;
 } 
 $ncolonne=mysql_num_fields($rs);
@@ -2376,7 +2376,7 @@ o si fa cosi' bufferizzando l'output  e rimangiandosi tuttol'output prima di hea
 o altrimenti esistera' pure un altro modo... AIUTATEMI!
 <?php 
 
-	// come cacchio si fa a ridirigere la gente?!? in asp � banale... fare un GOTO a un'altra pagina...
+	// come cacchio si fa a ridirigere la gente?!? in asp è banale... fare un GOTO a un'altra pagina...
 	bona(); // mi sembra d'uopo! dopo posson esserci cagate.
 }
 
@@ -2399,7 +2399,7 @@ else
 if ($USO== "setta")
 	$SCRIVENDO=$NUM;
 else 
-	{echo rosso("uso $USO non riconocsciuto..ATTENZIONE � UN BUG, segnalamelo!!!"); return; }// non faccion nulla..
+	{echo rosso("uso $USO non riconocsciuto..ATTENZIONE è UN BUG, segnalamelo!!!"); return; }// non faccion nulla..
 
 
 // scrivid("valeva $attuali; ora varr�: $SCRIVENDO");
@@ -2504,8 +2504,8 @@ function unescape($x) {return urldecode($x);}
 
 
 
-// $idutentegiaselezionato se non vale zero ha gi� deciso chi scelgiere, quindi non deve tirare un dado...
-// non � indispensabile che ci sia...
+// $idutentegiaselezionato se non vale zero ha già deciso chi scelgiere, quindi non deve tirare un dado...
+// non è indispensabile che ci sia...
 function formGiocoCoppie($verboso,$eventualeIdUtente=0,$eventualeSesso="F",$votorandom=FALSE)
 	{return formGiocoCoppiePersonale($verboso,$eventualeIdUtente,$eventualeSesso,$votorandom);}
 
@@ -2520,7 +2520,7 @@ $res=mysql_query($sql)
 scrivi("<center><table>");
 $i=0;
 while ($rs=mysql_fetch_array($res))
-  if ($i < $MAXCOPPIEVISUALIZZATE) // non ottimizzato se guardi: cicla � pi� del dovuto ;)
+  if ($i < $MAXCOPPIEVISUALIZZATE) // non ottimizzato se guardi: cicla è pi� del dovuto ;)
 	{
 	scrivireportcoppia($rs);
 	$i++;  //postincremento
@@ -2555,7 +2555,7 @@ function randomizzaGiocoCoppie()
 {
 global $ISPAL;
 echo rosso("VOTO A CASO BIS<br/>");
-$ismaschio= intval(Session("SEX") != "M"); // � il contrario, ma devi pur votare persone di sesso OPPOSTO!!! ;)
+$ismaschio= intval(Session("SEX") != "M"); // è il contrario, ma devi pur votare persone di sesso OPPOSTO!!! ;)
 $res=mq("select id_login from loginz where m_bismaschio=$ismaschio AND m_bguest=0");
 $n=mysql_num_rows($res);
 $rnd=random($n);
@@ -2610,7 +2610,7 @@ function formGiocoCoppiePersonale($verboso,$eventualeIdUtente=0,$votorandom=FALS
 		 scrivi("FINE FILEEEEEEEE!<br>");
 		 $lasciaPerdere=TRUE;
 		} 
-	// guardo se sta persona va bene o � nuova...
+	// guardo se sta persona va bene o è nuova...
 	if (! $lasciaPerdere)
 	{
 	$resEsisteGia=mq("select count(*) from giococoppie where idUtenteVotante=".session("SESS_id_utente")
@@ -2618,7 +2618,7 @@ function formGiocoCoppiePersonale($verboso,$eventualeIdUtente=0,$votorandom=FALS
 	$rsEsisteGia=mysql_fetch_array($resEsisteGia);
 
 	if ($rsEsisteGia[0]>0)
-		{//echo "lascio xdere xch� esistegia[0] vale ".$rsEsisteGia[0];
+		{//echo "lascio xdere xchè esistegia[0] vale ".$rsEsisteGia[0];
 	//	 echo "coppia esiste gia?!?<br>";
 		 $VOTOMINIMOXDIECI=10;
 		 $VOTOMINIMO=1;
@@ -2654,9 +2654,9 @@ function formGiocoCoppiePersonale($verboso,$eventualeIdUtente=0,$votorandom=FALS
 
 	if (!isset($fotosua))
 		{$lasciaPerdere=TRUE;
-		 scrivi("WARNING!!! <b>".$rs["m_sNome"]."</B> non � foto-dotat$desinenza! Non te l$desinenza faccio votare. "
-			."TI PREGO, QUESTO � un GROSSO ERRORE, manda una mail al Webmaster (<a href='mailto:$WEBMASTERMAIL'>cli"
-			."cca qui</a>) che picchier� chi si � permesso di rendere utente questo foto-non-dotato. Grazie.");
+		 scrivi("WARNING!!! <b>".$rs["m_sNome"]."</B> non è foto-dotat$desinenza! Non te l$desinenza faccio votare. "
+			."TI PREGO, QUESTO è un GROSSO ERRORE, manda una mail al Webmaster (<a href='mailto:$WEBMASTERMAIL'>cli"
+			."cca qui</a>) che picchier� chi si è permesso di rendere utente questo foto-non-dotato. Grazie.");
 		}
 	}
 
@@ -2844,29 +2844,29 @@ scrivi("<hr width='".$percent."%' size='2' align='center'/>");
 
 function deprecata($nome="?!?!?",$motivo)
 {
-return obsoleta($nome," [ma guarda che pur sta funzione (deprecata(,)) � deprecata!{$motivo}]");
+return obsoleta($nome," [ma guarda che pur sta funzione (deprecata(,)) è deprecata!{$motivo}]");
 
 }
 function obsoleta($nome="?!?!?",$motivo="")
 {
 if (isdevelop())
 {
-	scrivi(rosso("La funzione <b>$nome</b> � obsoleta, non usarla pi�"));
+	scrivi(rosso("La funzione <b>$nome</b> è obsoleta, non usarla pi�"));
 if (! empty($motivo))
 	echo rosso(" <i>($motivo)</i>.<br>");
 scrivib("x favore segnalalo al webmaster anche solo con un GMS. muciasgrasias<br/>");
 }
 }
 
-function query($q) {obsoleta("query","chiedilo a sua mamma il xch�"); return getrecordsetbyquery($q);}
+function query($q) {obsoleta("query","chiedilo a sua mamma il xchè"); return getrecordsetbyquery($q);}
 
 
 function getrecordsetbyquery($sql) {
-	obsoleta("getrecordsetbyquery","usa 'query1' x query a riga singola (resituisce gi� la riga) o 'mysql_query' per pi� righe");
+	obsoleta("getrecordsetbyquery","usa 'query1' x query a riga singola (resituisce già la riga) o 'mysql_query' per pi� righe");
 	if (contiene($sql,"\["))
-		scrivi(rosso(h1("ATTENZIONE, la query '$sql' � asp-old-fashioned! (s)correggila!")));
+		scrivi(rosso(h1("ATTENZIONE, la query '$sql' è asp-old-fashioned! (s)correggila!")));
 	if ($sql == -1)
-		{echo "<h1>La query che mi hai dato � '$sql': scommetto che nasce da somma di stringhe alla ASP (+ anzich� .). Guardaci, Ric</h1>"; }
+		{echo "<h1>La query che mi hai dato è '$sql': scommetto che nasce da somma di stringhe alla ASP (+ anzichè .). Guardaci, Ric</h1>"; }
 	$result = mysql_query($sql)
 		or scrivi("Errore mysql_error: <i>".mysql_error()."</i> nella query '$sql'. Ricorda, ho ucciso (<b>die()</b>) x molto meno.<br/>");
 	if (! $result)	
@@ -2962,7 +2962,7 @@ function tableEnd(){
 
 
 
-// la stringa � un array del tipo: 
+// la stringa è un array del tipo: 
 // palladius@1073678420@M@1
 // ophelia@1073654917@F@1
 
@@ -3032,7 +3032,7 @@ for ($i=0;$i<sizeof($stringa_utente);$i++)
 	scrivi("</i></td></tr>");
   	}
 */
-//if ($erore) 	scrivi(rosso("\n<table><tr><td><center><small>Non c'� nessuno in chat al momento (ma guardaci: non mi fido di me stesso in PHP). Ma puoi sempre entrare e fare un ditone...</Small></td></tr></table>"))
+//if ($erore) 	scrivi(rosso("\n<table><tr><td><center><small>Non c'è nessuno in chat al momento (ma guardaci: non mi fido di me stesso in PHP). Ma puoi sempre entrare e fare un ditone...</Small></td></tr></table>"))
 tableEnd();
 }
 
@@ -3060,7 +3060,7 @@ function mandaMail($to,$from,$subject,$body) {
 	if ($MAILNONVA) {
 		if (contiene($AUTOPAGINA,"nuovo_utente")) {
 			echo h2(
-			"attenzione, devo mandarti una mail all'indirizzo $to ma il server non pu� mandare mail"
+			"attenzione, devo mandarti una mail all'indirizzo $to ma il server non può mandare mail"
 			." quindi facciamo una bella cosa: mandami una mail a <a href='mailto:"
 			."$WEBMASTERMAIL'>$WEBMASTERMAIL</a> e informami"
 			." di esserti iscrito. di solito rispondo in fretta (a volte pi� delle mail automatiche, giuro!). Così ti mando "
@@ -3073,7 +3073,7 @@ function mandaMail($to,$from,$subject,$body) {
 			die(rosso(h2("Attenzione la mail non va (o almeno così dice la variabile impostata!), quindi non posso spedire mail "
 				."a '$to'. Mi scuso x l'inconveniente, ma ci stiamo lavorando."
 				." Per favore, se hai proprio bisogno manda una <a href='mailto:$WEBMASTERMAIL'>mail a"
-				."l webmaster</a>, ma <u>solo</u> se � importante."
+				."l webmaster</a>, ma <u>solo</u> se è importante."
 			)));
 	}
 
@@ -3086,17 +3086,17 @@ function mandaMail($to,$from,$subject,$body) {
 	#		."<br><br><br><br><hr width='80%' size='2' align='center'/><br>"
 			."<table><tr><td> "
 			#."<img src='http://www.goliardia.it/immagini/persone/palladius2.jpg' height='120'>"
-			."</td><td valign='top'>Questa mail � inviata automaticamente dal sito www.goliardia.it<br>Se non la volevi "
-			."ricevere, vuol dire che qualcuno si � iscritto dando la <i>TUA</i> mail anzich� la propria."
-			." Non dovrebbe comunque capitare pi�, NON � spam. Grazie. Se puoi per� scrivimi ($WEBMASTERMAIL)"
+			."</td><td valign='top'>Questa mail è inviata automaticamente dal sito www.goliardia.it<br>Se non la volevi "
+			."ricevere, vuol dire che qualcuno si è iscritto dando la <i>TUA</i> mail anzichè la propria."
+			." Non dovrebbe comunque capitare pi�, NON è spam. Grazie. Se puoi per� scrivimi ($WEBMASTERMAIL)"
 			." per avvertirmi. Questo a me fa molto comodo. Grazie<br><i> $QGFDP</i>"
 			."(da $DOVESONO)"
 			."</td></tr></table>"
 			."</td></tr></table>";
 	$MAILHEADER='';	#"(Questa email e' inviata automaticamente dal sito $SITENAME)\n\n";
-	$MAILFOOTER = "\n\n  ---\nQuesta mail � inviata automaticamente dal sito www.goliardia.it\nSe non la volevi "
-                  ."ricevere, vuol dire che qualcuno si � iscritto dando la <i>TUA</i> mail anzich� la propria."
-                  ." Non dovrebbe comunque capitare pi�, NON � spam, fidati di uno che di spam se ne intende. Grazie. Se puoi per� scrivimi a: $WEBMASTERMAIL"
+	$MAILFOOTER = "\n\n  ---\nQuesta mail è inviata automaticamente dal sito www.goliardia.it\nSe non la volevi "
+                  ."ricevere, vuol dire che qualcuno si è iscritto dando la <i>TUA</i> mail anzichè la propria."
+                  ." Non dovrebbe comunque capitare pi�, NON è spam, fidati di uno che di spam se ne intende. Grazie. Se puoi per� scrivimi a: $WEBMASTERMAIL"
                   ." per avvertirmi. Questo a me fa molto comodo.\n\nGrazie,\n<br><i>    $QGFDP</i>";
 
 	$corpo = strip_tags($MAILHEADER.$body.$MAILFOOTER) ;
@@ -3220,7 +3220,7 @@ function popolaComboBySqlDoppia_Key_Valore($LABEL,$sql3,$DFLT_SELECTED)
 
 	scrivi(" value=\"$recSet3[0]\">".$recSet3[1]);
 
-	if ($numcampi==3) //=!isset($recset[2]))// se va, bene, se no amen! il III arg � fuckoltativo
+	if ($numcampi==3) //=!isset($recset[2]))// se va, bene, se no amen! il III arg è fuckoltativo
 		scrivi(" ($recSet3[2])");
 
 	echo("</option>\n");
@@ -3258,7 +3258,7 @@ function popolaComboCitta($ID,$dflt="Bologna")
 function getAutoDataByForm($label)
 {
 
-obsoleta("la funzione <i>getAutoDataByForm</i> � deprecata. Usa una x il php che ho chiamato strafurbescamente  'getautodatabyformmysql'..");
+obsoleta("la funzione <i>getAutoDataByForm</i> è deprecata. Usa una x il php che ho chiamato strafurbescamente  'getautodatabyformmysql'..");
 bona();
 
 $gg=String(Form($label."_GG"));
@@ -3272,7 +3272,7 @@ return "$gg-$mm-$aaaa";
 function getautodatabyformmysql($label)
 
 {
-//scrivi(rossone("la funzione � deprecata. Usa una x il php che ho chiamato strafurbescamente  'getautodatabyformmysql'.."));
+//scrivi(rossone("la funzione è deprecata. Usa una x il php che ho chiamato strafurbescamente  'getautodatabyformmysql'.."));
 
 $gg=String(Form($label."_GG")); 	// 7 - - > 07
 
@@ -3422,7 +3422,7 @@ while ($rsNumerilli=mysql_fetch_array($resNumerilli))
 //echo rosso("Setto numeriarr[".$rsNumerilli["id_domanda"]." := ".$rsNumerilli["quanti"]);
 $numeriArr[$rsNumerilli["id_domanda"]]=intval($rsNumerilli["quanti"]);
 
-	//associa un numero a ogni domanda, ma se � zero il valore non c'�!!!! il join � vuoto...
+	//associa un numero a ogni domanda, ma se è zero il valore non c'è!!!! il join è vuoto...
 	//scrivid("assegno a numeriarr di ".rsNumerilli("id_domanda")." il valore ". rsNumerilli("quanti") ." e quindi vien fuori un valore: ".numeriArr[rsNumerilli("id_domanda")]."<br>");
 $tot += intval($rsNumerilli["quanti"]);
 
@@ -3477,7 +3477,7 @@ while ($rs1 = mysql_fetch_array($res1))
 			 $rs1["tipoFoto"]."/".$rs1["Foto"],
 			 ($veloce ? 30 : 40)
 			);
- if ((($rs1["tipoFoto"])!="niente")) // in tal caso non c'� alcuna foto...
+ if ((($rs1["tipoFoto"])!="niente")) // in tal caso non c'è alcuna foto...
 	if (! $veloce)
 
 		 scrivi(
@@ -3569,9 +3569,9 @@ function scriviReportGoliardaDefault($nomeutente,$MYLOGIN)
 global $AUTOPAGINA;
 scrivi("<center>");
 
-scrivi("<h1>Il goliarda associato a $nomeutente �...</h1>");
+scrivi("<h1>Il goliarda associato a $nomeutente è...</h1>");
 
-scrivid("<i>(sembra banale, ma non lo �: $nomeutente puoi avere in gestione uno o pi� goliardi, ma con molta probabilit� TU utente cossirpondi a UNO dei goliardi da te registrati. Io ho bisogno di sapere chi � di questi...)</i>");
+scrivid("<i>(sembra banale, ma non lo è: $nomeutente puoi avere in gestione uno o pi� goliardi, ma con molta probabilit� TU utente cossirpondi a UNO dei goliardi da te registrati. Io ho bisogno di sapere chi è di questi...)</i>");
 
 $rs=query1("select * from loginz where m_snome='$nomeutente'");
 
@@ -3603,14 +3603,14 @@ if (empty($id_gol_dflt))
  $rs =query1($sql);
  $n=intval($rs[0]);
  if ($n==0)
-	{scrivib("<p class='rosso'>Attenzione! Non so associarti come utente a un goliarda... e perdipi� non hai goliardi tuoi... Se non ti � chiara la differenza tra utenti e goliardi (ti posso capire! lo diceva il mio prof di DB di non fare mai tabelle in corrispondenza 1:1! Ma io gliel'ho motivato e mi ha dato ragione (oltre che 30L). Anni dopo gli do ragione io! Se sei sicuro che un goliarda rappresentativo di te non esista gia', crealo (vai sotto gestioni e clicchi su AGGIUNGI)!!!! COsi' facendo, potrai far sapere al mondo in che ordine sei nato, di che colore hai la feluca eccetera</p>");
+	{scrivib("<p class='rosso'>Attenzione! Non so associarti come utente a un goliarda... e perdipi� non hai goliardi tuoi... Se non ti è chiara la differenza tra utenti e goliardi (ti posso capire! lo diceva il mio prof di DB di non fare mai tabelle in corrispondenza 1:1! Ma io gliel'ho motivato e mi ha dato ragione (oltre che 30L). Anni dopo gli do ragione io! Se sei sicuro che un goliarda rappresentativo di te non esista gia', crealo (vai sotto gestioni e clicchi su AGGIUNGI)!!!! COsi' facendo, potrai far sapere al mondo in che ordine sei nato, di che colore hai la feluca eccetera</p>");
 	}
 else
 { $my_id_login = $MYLOGIN;
 
 	scrivib("Ullall� (x citare Manolus)! Non so associare te come utente a un goliarda... i casi sono (n>0) 3:<br>");
 	scrivib("<div align='left'><br>1) ");
-	 scrivi("La tua persona � tra i goliardi da te gestiti; te ne accorgi perch� a fianco al bottone <b><i>SONO IO CASO 1</B></I> nel menu a tendina ci sei tu...");
+	 scrivi("La tua persona è tra i goliardi da te gestiti; te ne accorgi perchè a fianco al bottone <b><i>SONO IO CASO 1</B></I> nel menu a tendina ci sei tu...");
 	formBegin("modifica_utente.php");
 
 
@@ -3624,7 +3624,7 @@ else
 
 
 
-	 scrivi("La tua persona NON � tra i goliardi da te gestiti, ma � tra quelli gestiti da altri; te ne accorgi perch� a fianco al bottone <b><i>SONO IO CASO 2</B></I> nel menu a tendina ci sei tu...");
+	 scrivi("La tua persona NON è tra i goliardi da te gestiti, ma è tra quelli gestiti da altri; te ne accorgi perchè a fianco al bottone <b><i>SONO IO CASO 2</B></I> nel menu a tendina ci sei tu...");
 	formBegin("modifica_utente.php");
  	scrivi("<center>caso 2: ");
 		popolaComboGoliardi("id_goliarda_default");
@@ -3635,7 +3635,7 @@ else
 	hline(30);
 
 	scrivib("<div align='left'>3) ");
-	 scrivi("La tua persona NON � in nessuno dei due gruppi; in tal caso, se tu <i>sei</i> effettivamente un goliarda, devi prima aggiungere un nuovo goliarda (trovi l'opzione sotto '<b>goliardi tuoi</b>'), che ovviamente sei tu; fatto ci�, la prox volta che caricherai questa pagina, nel menu a tendina ci sarai tu...");
+	 scrivi("La tua persona NON è in nessuno dei due gruppi; in tal caso, se tu <i>sei</i> effettivamente un goliarda, devi prima aggiungere un nuovo goliarda (trovi l'opzione sotto '<b>goliardi tuoi</b>'), che ovviamente sei tu; fatto ciò, la prox volta che caricherai questa pagina, nel menu a tendina ci sarai tu...");
 	scrivib("<br>PS. ");
 	 scrivi("Attento che se sei nel caso uno, sei x forza anche nel caso due... ma in tal caso usa il bottone uno, ok? Grazie.");
 	}
@@ -3679,7 +3679,7 @@ function getOrdineConFotoStringByNameThumbConNome($rsCitta,$h="puoessereindefini
 if ($h == "puoessereindefinita")
 	$tmp .= getTagFotoOrdineTnGestisceNull($thumb);
 else
-	$tmp .= getTagFotoOrdineTnGestisceNull($thumb,$h); // palleggio l'indeterminazione, � la mia prima volta, buffo!
+	$tmp .= getTagFotoOrdineTnGestisceNull($thumb,$h); // palleggio l'indeterminazione, è la mia prima volta, buffo!
 
 	 if ($rsCitta["sovrano"]=="TRUE")
 		$tmp .=  bigg($nome);
@@ -3702,7 +3702,7 @@ function getTagFotoPersonaGestisceNullFast($foto,$n)
 {global $paz_foto_persone,$FOTO_NONDISPONIBILE;
 
 
-// scrivi(rosso("questa funzione � deprecata x la lentezza. ditelo al webmaster"));
+// scrivi(rosso("questa funzione è deprecata x la lentezza. ditelo al webmaster"));
 
  
  	 if (empty($foto))
@@ -3745,10 +3745,10 @@ function rs_goliardi_getNomeGoliardicoCompleto($rs)
 //	{return ("[".$rs["Nomegoliardico"])." ".($rs["Nomenobiliare"])."]";}
 
 
-// n � l'altezza della foto (0 vuol dire lascia l'originale)
+// n è l'altezza della foto (0 vuol dire lascia l'originale)
 function getTagFotoPersonaGestisceNull($foto,$n)
 {global $paz_foto_persone,$FOTO_NONDISPONIBILE,$paz_foto_persone_bis;
- obsoleta(("questa funzione (getTagFotoPersonaGestisceNull) � deprecata x la lentezza. usa getTagFotoPersonaGestisceNullFast instead"));
+ obsoleta(("questa funzione (getTagFotoPersonaGestisceNull) è deprecata x la lentezza. usa getTagFotoPersonaGestisceNullFast instead"));
  $thumb=$foto;
  	 if (empty($thumb))
 		$thumb=$FOTO_NONDISPONIBILE;
@@ -4077,12 +4077,12 @@ $id_login = $rs["id_login"];
 	}
 
  $res = mysql_query("SELECT count(*) FROM gestione_citta g,ordini o WHERE o.id_ord="
-		.$idord." AND g.citt�=o.citt� AND g.id_login=".$id_login);
+		.$idord." AND g.città=o.città AND g.id_login=".$id_login);
 
  $n=$rs[0];
 
  if ($n==1)
-	{//scrivid("non direttamente, ma dato che hai la sua citt� puoi! <i>ule</i>... SI")
+	{//scrivid("non direttamente, ma dato che hai la sua città puoi! <i>ule</i>... SI")
 	 //rs.close();
 	 return TRUE;
 	}
@@ -4116,7 +4116,7 @@ scrivi("<h1><a name='diritti'>Diritti sul goliarda</a></h1><br>");
 openTable();
 scrivi("<center>");
 
-	// devo decidere x poter regalare se � mio....
+	// devo decidere x poter regalare se è mio....
 $resMio=mq("select l.m_snome from goliardi g,loginz l where g.id_gol=$idgol AND g.id_login=l.id_login"); // unico
 $rsMio=mysql_fetch_array($resMio);
 $emmio= ($rsMio["m_snome"]==$GETUTENTE  || isAdminVip());
@@ -4124,7 +4124,7 @@ $emmio= ($rsMio["m_snome"]==$GETUTENTE  || isAdminVip());
 if ($emmio)
 	{
 	if (isAdminVip())
-		{scrivi("Anche se non � tuo, � come se lo fosse, caro Admin Vip...");}
+		{scrivi("Anche se non è tuo, è come se lo fosse, caro Admin Vip...");}
 
 	tabled();
 	scrivi("<tr><td>");
@@ -4144,7 +4144,7 @@ if ($emmio)
 }
 else
 
-	scrivi(rosso("non � mica mio... nihil factu"));
+	scrivi(rosso("non è mica mio... nihil factu"));
 hline(80);
 
 tabled();
@@ -4156,13 +4156,13 @@ scrivi("<tr><td><center>");
  formhidden("hidden_operazione","condividi utente");
  formhidden("id_gol",$idgol);
  formhidden("hidden_tornaindietroapagina",$AUTOPAGINA."?idgol=".$idgol);
- formtext("note","perch� bisogna condividere la propria felicit� con altri ogni tanto");
+ formtext("note","perchè bisogna condividere la propria felicit� con altri ogni tanto");
  popolaComboUtentiRegistrati("id_login");
  formbottoneinvia("CONDIVIDILO!");
 formEnd();
 scrivi("</td></tr>");
 scrivi("<tr><td>");
-scrivi("<h2>Togli una ulteriore concessione gi� esistente di <u>$NOMONE</u> a :</h2>");
+scrivi("<h2>Togli una ulteriore concessione già esistente di <u>$NOMONE</u> a :</h2>");
 scrivi("</td></tr>");
 scrivi("<tr><td><center>");
 formBegin();
@@ -4188,7 +4188,7 @@ $sql="SELECT o.m_fileImmagineTn as _fotoordine,o.nome_veloce,nomecarica, data_no
 $result42=mysql_query($sql)
         or sqlerror($sql);
 
-scriviRecordSetConTimeout($result42,80,"Nomine del goliarda numero $idgol (tabella Ciapas�-compliant)");
+scriviRecordSetConTimeout($result42,80,"Nomine del goliarda numero $idgol (tabella Ciapasò-compliant)");
 
 echo "<div class=debug>";
 scriviReportCursusHonorumByIdOld($idgol,$diritti);
@@ -4317,7 +4317,7 @@ while ($row42 = mysql_fetch_assoc($result42)) {
 	}
 	if (!$vuoto)
 		scrivi("</ul></td></table>");
-	if ($hoDirittiSullOrdineImo) { // ultimo caso, se l'ultimo � TRUE devo chiuderlo QUI
+	if ($hoDirittiSullOrdineImo) { // ultimo caso, se l'ultimo è TRUE devo chiuderlo QUI
 		  scrivid("]]]"); 
 		  tableEnd();
 	}
@@ -4369,7 +4369,7 @@ function popolaComboConEccezionePrescelta($LABEL,$sql3,$DFLT_SELECTED,$key0,$val
 	if (	$DFLT_SELECTED == $recSet3[0]
 	    				|| 
 		$DFLT_SELECTED == $recSet3[1]
-		) // se � il mio ordine lo seleziono nella combobox con la parola SELECTED!
+		) // se è il mio ordine lo seleziono nella combobox con la parola SELECTED!
 		scrivi("selected");
 
 
@@ -4418,7 +4418,7 @@ return "X".getRomano($n-10);
 
 
 function table(){
-obsoleta("la funz table() border3 � inutile x me");
+obsoleta("la funz table() border3 è inutile x me");
 	scrivi("<table border=3>\n");
 
 }	
@@ -4484,7 +4484,7 @@ while ($rsu = mysql_fetch_row($result)) {
 
 
 //function visualizzaReport_PollCorpo($idpoll,$veloce)
-//	{ scrivib("visualizzaReport_PollCorpo($idpoll,$veloce): se l'hai gi� fatto TU (venerdi') bene, se no lo faccio io domani 5-1. ciao!"); }
+//	{ scrivib("visualizzaReport_PollCorpo($idpoll,$veloce): se l'hai già fatto TU (venerdi') bene, se no lo faccio io domani 5-1. ciao!"); }
 
 
 
@@ -4571,7 +4571,7 @@ for ($i=0;$i<sizeof($stringa_utente);$i++)
   //visualizzaarray($aux);
   if ($aux[0]==$nickname) 
      	$cisono = TRUE;
-  // else  // � goiustpo che visualizzi pure me!!!
+  // else  // è goiustpo che visualizzi pure me!!!
   if (isset($aux[1]))
 	{		// aggiorno data
 //	echo rosso("trovato me stesso, aggiorno data che vale ".$aux[1]."...<br>");
@@ -4850,7 +4850,7 @@ function popolaComboGGMMYY($label)
 {
 popolaComboNumerilli($label."_GG",1,31,7,1);
 popolaComboNumerilli($label."_MM",1,12,2,1);
-popolaComboNumerilli($label."_AA",1902,1999,1962,1); // � a 4 cifre per�...
+popolaComboNumerilli($label."_AA",1902,1999,1962,1); // è a 4 cifre per�...
 }
 
 
@@ -4891,10 +4891,10 @@ nick.indexOf("@") != -1 ||
 	nick[0] == " " || 			// se inizia o finisce x spazio l'errore non lo becchi manco morto
 	nick.indexOf("&") != -1 ||
 	nick.indexOf("\"") != -1 ||
-	nick.indexOf("�") != -1 ||
-	nick.indexOf("�") != -1 ||
-	nick.indexOf("�") != -1 ||
-	nick.indexOf("�") != -1 ||
+	nick.indexOf("è") != -1 ||
+	nick.indexOf("è") != -1 ||
+	nick.indexOf("è") != -1 ||
+	nick.indexOf("è") != -1 ||
 	nick.indexOf("_") != -1 ||
 	nick.indexOf("'") != -1 ||
 	nick.indexOf("-") != -1 ||
@@ -4939,7 +4939,7 @@ function toHumanDate($d="")
 
 function toHumanDate($d)
 {
-//echo rosso("l'arg di humandate � ($d), di tipo(".gettype($d).").");
+//echo rosso("l'arg di humandate è ($d), di tipo(".gettype($d).").");
 if (gettype($d) != "integer") return rosso("[tohumandate: non mi hai dato un TIMESTAMP]");
 return date("d-m-Y",$d); 
 }
@@ -5012,7 +5012,7 @@ function dammiData()
 {
 
 
-obsoleta(("Attento, la funzione dammiData() � obsoleta e sconsigliata: dillo al webmaster!!! Dovresti usare altro, tipo dammidatamysql()"));
+obsoleta(("Attento, la funzione dammiData() è obsoleta e sconsigliata: dillo al webmaster!!! Dovresti usare altro, tipo dammidatamysql()"));
 return date("d/m/Y h.i.s",time()); // così piace a mysql
 }
 
@@ -5224,7 +5224,7 @@ function autoInserisciTabella($NOMETABELLA,$AUTOMSG="",$pag_in_cui_andare="") {
 		scrivid($TIPO."</td><td>");
 			// tipi veri e propri
 		if ($TIPO=="data")
-		 	if ($valore == "") { //QWERTY se la data � nulla inserisci un valore nullo secondo me...
+		 	if ($valore == "") { //QWERTY se la data è nulla inserisci un valore nullo secondo me...
 				scrivid("[NON MOVONEXT n� brekko!!!]</td></tr>");
 				$skippa=TRUE;
 			}
@@ -5243,7 +5243,7 @@ function autoInserisciTabella($NOMETABELLA,$AUTOMSG="",$pag_in_cui_andare="") {
 
 
 	$sqlForm .= $CAMPI . ") values $VALORI)";
-	if ($ISPAL) echo("<br><br>La form SQL �: $sqlForm.<br/>");
+	if ($ISPAL) echo("<br><br>La form SQL è: $sqlForm.<br/>");
 
 	log2("[AUTOINSERT] $sqlForm");
 		////////////// adesso ho la query sql giusta!!!
@@ -5325,7 +5325,7 @@ if ((Form("hidden_tornaindietroapagina")) != "")
     if ((Form("hidden_tornaindietroAUTOMATICOFORM")) != "")
 	ridirigi(Form("hidden_tornaindietroAUTOMATICOFORM"));
   else 
-    scrivib("<br>errore in RIDIRIGIBACK: non so come farti tornare indietro... � un problema conc"
+    scrivib("<br>errore in RIDIRIGIBACK: non so come farti tornare indietro... è un problema conc"
 		."ettuale?<br>Se si', scrivimi dove ti compare sto problema... che cerco di correggerlo.<br>");
 }
 
@@ -5360,7 +5360,7 @@ tableEnd();
 function iniziaPer($str,$iniz)
 {
 $pos= strstr($str,$iniz);
-//echo "Mi chiedo se $str inizi per <b>$iniz</b>, il responso � <b>".$pos."=?=0</b>.. ".($pos == $str)."<br/>";
+//echo "Mi chiedo se $str inizi per <b>$iniz</b>, il responso è <b>".$pos."=?=0</b>.. ".($pos == $str)."<br/>";
 //if (($pos == $str)) 	echo "SI<br>";
 return ($pos == $str);
 }
@@ -5395,7 +5395,7 @@ function getNuovoValoreByTipo($valore,$TIPO) {
 	if ($TIPO=="numero" && $valore=="")
 		$valore=-1;
 
-	if ($TIPO=="bool" && $valore=="") // novit� del PHP: se dai TRUE via POST � 1, se dai 0 il POST � vuoto e testa false!!!
+	if ($TIPO=="bool" && $valore=="") // novità del PHP: se dai TRUE via POST è 1, se dai 0 il POST è vuoto e testa false!!!
 		$valore="0";
 
 	if ($TIPO=="testo"  || $TIPO=="memo" || $TIPO=="numero")
@@ -5406,17 +5406,17 @@ function getNuovoValoreByTipo($valore,$TIPO) {
 
 
 
-		{// se il valore � del tipo
+		{// se il valore è del tipo
 
 		 scrivid(rosso("DATA VALEVA: ".$valore));
 
 
 		 if (contiene($valore,"UTC"))
 
-			{scrivi(rossone("errore poich� la data � incompatibile. questo NON dovrebbe succedere. quindi di' a Riccardo"
+			{scrivi(rossone("errore poichè la data è incompatibile. questo NON dovrebbe succedere. quindi di' a Riccardo"
 
 
-				." magari via mail che � successo. Grazie."));
+				." magari via mail che è successo. Grazie."));
 			}
 		 else{
 			 //valore=scambiaGiornoMese(valore); NON VOGLIO USARLO!
@@ -5677,7 +5677,7 @@ $myhiddenid=Form("my_hidden_id");
 
 if (empty($myhiddenid)) //=="undefined" || myhiddenid=="null")
 		$myhiddenid="'".Form("my_hidden_id_testuale")."'"; 	
-				// valuto se � testuale o numeri co l'id... a seconda
+				// valuto se è testuale o numeri co l'id... a seconda
 return $myhiddenid;	
 									// della stringa che mi hai dato in form..
 }
@@ -5734,7 +5734,7 @@ function getPreamboloMsg($str="ERRORE: MANCA LA STRINGA!!!",$id=99999) {
 
 
 /**
-	ancheBody: dice se c'� anche il corpo del messaggio o solo il titolo. Se solo titolo, metto anche i primi N caratteri per incuriosire il lettore...
+	ancheBody: dice se c'è anche il corpo del messaggio o solo il titolo. Se solo titolo, metto anche i primi N caratteri per incuriosire il lettore...
 
 */
 
@@ -5747,7 +5747,7 @@ function pulsanteXmsg($rs) {
 }
 
 
-	// � solo un TR
+	// è solo un TR
 function scriviReport_MessaggioConBody($rs,$ii=0) {
 	global $ISSERIO,$DEBUG;
 	$ut=$rs["m_sNome"];
@@ -5893,7 +5893,7 @@ function ripulisciMessaggio($msggio,$trasformaInvio=TRUE,$mantieniiSeguentiTag="
 	#if ($TOGLIFASTIDIOSIAPOSTROFIDOPPI)  $tmp=stripslashes($tmp); 
 	if ($mantieniiSeguentiTag != "")
 		$tmp=strip_tags($tmp,$mantieniiSeguentiTag);
-	else {	// "" ha semantica diversa: � il dflt e intende trasforma i '<','>' in tag html equivalenti...
+	else {	// "" ha semantica diversa: è il dflt e intende trasforma i '<','>' in tag html equivalenti...
 				// e sticazzi no? Ric del passato, che cazzo volev dire? Ho capito solo semantica.
 	 	$tmp= replace($tmp,"<","&lt;");
 	 	$tmp= replace($tmp,">","&gt;");
@@ -5961,7 +5961,7 @@ fopen("");
 							// FOTO, FUNZIONI SULE FOTO SMANGIUCCHIATE AI VARI PAGINOZZI SUOI
 
 
-	// dice quante foto ci stanno in una directory e se � fotosa o meno
+	// dice quante foto ci stanno in una directory e se è fotosa o meno
 function quantefoto($dir,$NONFOTO=FALSE)
 { $num=0;
   if (! is_dir($dir))

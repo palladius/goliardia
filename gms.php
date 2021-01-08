@@ -20,13 +20,13 @@ if ( $perchi  != "")
 $myProv=$_SESSION["_SESS_provincia"];
 
 /*
-	Figata! un array dinamico!!! e l'id sar� una funzione univoca (mica oneway, la sicurezza non c'entra!) 
+	Figata! un array dinamico!!! e l'id sarà una funzione univoca (mica oneway, la sicurezza non c'entra!) 
 	in funzione del nome del gruppo in modo che io vedo @admin,@buhgs,@prov_BO e un altro vede @admin,@buhgs,@prov_FE.
 	e dato che vanno come idutente devo pregare che non capitino nei numeri dei VERI login!!!
 
 	socmel che progetto ambizioso! potrei anche aggiungerci un MAXNUMMSG dipendente dal gruppo.
-	PS la scadenza sar� di tipo UNIFORME; ovviamente. dipende dal tempo min. o giorni o secondi,
-	forse � meglio secondi.
+	PS la scadenza sarà di tipo UNIFORME; ovviamente. dipende dal tempo min. o giorni o secondi,
+	forse è meglio secondi.
 
 	x la cancellazione o la faccio automatica, o NON FACCIO VEDERE i vecchi (se non a... me!)
 	o faccio un demone CRON, questo lo vedremo insomma.
@@ -142,7 +142,7 @@ $arrUtenti = array (
 				"accesso" => isadminvip()
 				 ),
 	"@bugs" => array ( 
-				"descr" => "Segnalazioni su bug, anche l'ultima fetente matricola pu� contribuire",
+				"descr" => "Segnalazioni su bug, anche l'ultima fetente matricola può contribuire",
 				"scadenza" => 30*86400,
 				"accesso" => isdevelop()
 				 ),
@@ -172,9 +172,9 @@ $arrUtenti = array (
 				"accesso" => TRUE
 				 ),
 	"@citta_".$myProv => array ( 
-				"descr" => "Tutti gli utenti della mia citt� ($myProv), in realt� sono N gruppi...",
+				"descr" => "Tutti gli utenti della mia città ($myProv), in realtà sono N gruppi...",
 				"scadenza" => 3*86400,
-				"accesso" => TRUE // il chk sulla citt� lo fai gi� TU che ne determini il nome ;-)))
+				"accesso" => TRUE // il chk sulla città lo fai già TU che ne determini il nome ;-)))
 				 )
 	);
 
@@ -241,7 +241,7 @@ if ($confoto)
 	scrivi(getFotoUtenteDimensionata($nome,40));
 tdtd();
 	$nuovo= ($rs["m_bNuovo"]==1);
-	$msg= stripslashes($rs["messaggio"]); // trasforma c\'� in c'�
+	$msg= stripslashes($rs["messaggio"]); // trasforma c\'è in c'è
 	if ($nuovo)
 		scrivi("<b>$msg</b>");
 	else
@@ -267,7 +267,7 @@ $iddacancellareeventualmente = (QueryString("cancellaid"));
 if  (! empty($iddacancellareeventualmente))
 {
 if (! isAdminVip()) 
-	scrivi("cazzo fai? hai violato le prime difese del dibb�... complimenti...");
+	scrivi("cazzo fai? hai violato le prime difese del dibbì... complimenti...");
 else
 	{
 	 mysql_query("delete * from gms where id_gms=".$iddacancellareeventualmente)
@@ -325,9 +325,9 @@ if (Form("hidden_operazione")=="inseriscigms_preliminare") // chiede inserimento
 	
 	
 	if (!($rsutente2=mysql_fetch_array($res2)))
-		{		  // gestisciEventualitaGruppo($nome); se inizia x chiocciola � mio!!!
+		{		  // gestisciEventualitaGruppo($nome); se inizia x chiocciola è mio!!!
 		 if ($nome[0] == '@')
-			{//echo "� x un gruppo! nome vale [$nome].<br>";
+			{//echo "è x un gruppo! nome vale [$nome].<br>";
 			 $depuro=substr($nome,1); // depurato!!!
 			 //echo "avanza '$depuro'.";
 			 // non mi interessa il $nome !!!
@@ -335,7 +335,7 @@ if (Form("hidden_operazione")=="inseriscigms_preliminare") // chiede inserimento
 			$resquantigia=mysql_query("select count(*) as QUANTI from gms where idutentericevente=".$idutentericevente);
 			$quantigia=mysql_fetch_row($resquantigia);
 			scrivi("Egli ha ricevuto finora <b>".rosso($quantigia[0])."</b> messaggi (su <b>?!?</b>)... ");
-			if (intval($quantigia[0]) >= 30 ) // x ora, poi far� un controllo precipuo...
+			if (intval($quantigia[0]) >= 30 ) // x ora, poi farò un controllo precipuo...
 				{scrivib(rosso("troppi!!!")); bona();
 				 scrivi("<big><a href='".$AUTOPAGINA."'>torna indietro</a></big>");
 				}
@@ -350,7 +350,7 @@ if (Form("hidden_operazione")=="inseriscigms_preliminare") // chiede inserimento
 					scrivi(rosso("Attenzione, l'ho tagliato a $LUNG_MSG da ".strlen($msgTagliato)." qual era lungo"));
 					$msgTagliato = substr($msgTagliato,0,$LUNG_MSG); 
 					}
-				 scrivi("Il messaggio che stai x inviare (lungo $lung) �: '");
+				 scrivi("Il messaggio che stai x inviare (lungo $lung) è: '");
 				 scrivib($msgTagliato."'");
 				 invio();
 				 formBegin($AUTOPAGINA);
@@ -371,7 +371,7 @@ if (Form("hidden_operazione")=="inseriscigms_preliminare") // chiede inserimento
 				 formbottoneinvia("erore, tornaindietro (x zia Margi)");
 				formend();
 
-				scrivi(h3("Clicca mo'! Cos� mandi il msg al gruppo che hai scelto!"));
+				scrivi(h3("Clicca mo'! Così mandi il msg al gruppo che hai scelto!"));
 				bona();
 				}
 		
@@ -384,7 +384,7 @@ if (Form("hidden_operazione")=="inseriscigms_preliminare") // chiede inserimento
 	$nome = $rsutente2["m_snome"]; // non necessariamente nome E' intero...
 	$idutentericevente=$rsutente2["id_login"];
 
-		// controllo non abbia gi� ricevuto OTTO messaggi
+		// controllo non abbia già ricevuto OTTO messaggi
 	$resquantigia=mysql_query("select count(*) as QUANTI from gms where idutentericevente=".$idutentericevente);
 	$quantigia=mysql_fetch_row($resquantigia);
 	
@@ -401,7 +401,7 @@ if (Form("hidden_operazione")=="inseriscigms_preliminare") // chiede inserimento
 	{
 	 scrivib(" OK.");
 	 invio();
-	 scrivi("il messaggio (troncato a ".$LUNG_MSG." caratteri) che invierai  �: '");
+	 scrivi("il messaggio (troncato a ".$LUNG_MSG." caratteri) che invierai  è: '");
 	 $msgTagliato=(Form("messaggio"));
 	 if (strlen($msgTagliato)> $LUNG_MSG )	
 		$msgTagliato = substr($msgTagliato,0,$LUNG_MSG); 
@@ -449,7 +449,7 @@ if ($ISPAL)
 {
 	$res=mysql_query("select count(*) from gms");
 	$rs=mysql_fetch_array($res);
-	scrivi(h3("Pal: ".$rs[0]." gms nel dibb�"));
+	scrivi(h3("Pal: ".$rs[0]." gms nel dibbì"));
 }
 
 ?>
@@ -479,7 +479,7 @@ for ($j=0;$j< $quantiNeVisualizzoINTERAMENTE  ; $j++)
 tableEnd();
 
 } // fine caso SENZA querystring (pagina caricata vergine, senza "?ID=..."
-	// MA DE CHE? togliamo il comm spora? � obsoleto mi sa
+	// MA DE CHE? togliamo il comm spora? è obsoleto mi sa
 
 tdtdtop();
 echo "<h2>Spedisci un GMS a 1 persona</h2><center>";
@@ -492,7 +492,7 @@ else
 	{
 formBegin($AUTOPAGINA);
 formtextarea("messaggio",Form("messaggio"),3,15);  
-	// se � appena tornato indietro vale il valore del msg passato in avanti....
+	// se è appena tornato indietro vale il valore del msg passato in avanti....
 $IDRANDOM=rand(1,2000000000); // long...
 formhidden("id_gms",$IDRANDOM);
 formhidden("idutentescrivente",Session("SESS_id_utente"));
@@ -572,9 +572,9 @@ echo "</center></td></tr>";
 
 
 
-Grosse novit�, verranno implementati dei gruppi (@admin, @newbie, @bugs, @admin, @develop, @adminvip e cos� via. 
+Grosse novità, verranno implementati dei gruppi (@admin, @newbie, @bugs, @admin, @develop, @adminvip e così via. 
 Queste supporteranno nativamente (non vuol dire un cazzo, ma suonava bene!) i GMS. Inoltre gli ospiti potranno 
-mandare GMS a certi gruppi (@admin, @bugs, ...) e cos� potranno ricevere msg da pochi (da @admin in su). Keep in touch.
+mandare GMS a certi gruppi (@admin, @bugs, ...) e così potranno ricevere msg da pochi (da @admin in su). Keep in touch.
 </center> 
 
 <?php 

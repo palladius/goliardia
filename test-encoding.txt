@@ -1,24 +1,12 @@
-v
-$sql="SELECT dignit�,nomecarica, data_nomina,data_fine_nomina,id_goliarda_nominante,"
+A dignit_�_ sar_�_  citt_�_ in realt�  gi�  far�   novit� 
+E forse � meglio c\'� in c'_�_
+I dibb_�_  Cos_�_ 
+O pu_�_ contribuire",
+U pi_�_  pi�  per pi_�_ 
 
-V
-  PS la scadenza sar� di tipo UNIFORME; ovviamente. dipende dal tempo min. o giorni o secondi,
-gms.php:        forse � meglio secondi.
-gms.php:                                "descr" => "Segnalazioni su bug, anche l'ultima fetente matricola pu� contribuire",
-gms.php:                                "descr" => "Tutti gli utenti della mia citt� ($myProv), in realt� sono N gruppi...",
-gms.php:                                "accesso" => TRUE // il chk sulla citt� lo fai gi� TU che ne determini il nome ;-)))
-gms.php:        $msg= stripslashes($rs["messaggio"]); // trasforma c\'� in c'�
-gms.php:        scrivi("cazzo fai? hai violato le prime difese del dibb�... complimenti...");
-gms.php:                {                 // gestisciEventualitaGruppo($nome); se inizia x chiocciola � mio!!!
-gms.php:                        {//echo "� x un gruppo! nome vale [$nome].<br>";
-gms.php:                        if (intval($quantigia[0]) >= 30 ) // x ora, poi far� un controllo precipuo...
-gms.php:                                 scrivi("Il messaggio che stai x inviare (lungo $lung) �: '");
-gms.php:                                scrivi(h3("Clicca mo'! Cos� mandi il msg al gruppo che hai scelto!"));
-gms.php:                // controllo non abbia gi� ricevuto OTTO messaggi
-gms.php:         scrivi("il messaggio (troncato a ".$LUNG_MSG." caratteri) che invierai  �: '");
-gms.php:        scrivi(h3("Pal: ".$rs[0]." gms nel dibb�"));
-gms.php:        // MA DE CHE? togliamo il comm spora? � obsoleto mi sa
-gms.php:        // se � appena tornato indietro vale il valore del msg passato in avanti....
-gms.php:Grosse novit�, verranno implementati dei gruppi (@admin, @newbie, @bugs, @admin, @develop, @adminvip e cos� via.
+HO messo il 5f (_) come padding
+A: 5f ef bf bd 5f
+E: 5f ef bf bd 5f
+U: 5f ef bf bd 5f
 
-PICCOLO: dignit�, novit� nel dibb�") trasforma c\'� in c'�  Cos� mandi 
+Mannaggia e sempre lo stesso TRI-char 
