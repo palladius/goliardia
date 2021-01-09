@@ -283,7 +283,7 @@ if ($ISANONIMO && ! $APERTOATUTTI ) {
 	if ((Session("PX"))<10)
 		$arrHeader[$i++]=linkaViolaTarget("help.php","aiuto","_new");
 	if($ISANONIMO)
-		 $arrHeader[$i++]=linkaViola("help.html","help");
+		$arrHeader[$i++]=linkaViola("help.html","help");
 	$arrHeader[$i++]=linkaViola("index.php","home");
 	if ($ISANONIMO) $arrHeader[$i++]=linkaViola("login.php","login");
 	$arrHeader[$i++]=linkaViola("linkz.php","Linkz");
@@ -313,93 +313,56 @@ scrivi("<table width=\"".$CONSTLARGEZZA600."\" border=\"0\" cellspacing=\"0\" ce
 
 ?>
 
-
-
-
-
-
 <tbody><tr>
-
-<td width=366 align=center>
-<center>
-<?php 
-
-
-pubblicaBanner();
-
-
-
-?>
-
-
-
-
-
-
-
-</center>
-</td>
-
-
-
-
-
-
-
-
-
-
-<td  align=center>
-<table border=0>
-
-<tr>
-	<td>	<font class='piccolino'>
-		<img src="<?php  echo $IMMAGINI?>/clock.jpg" align="center">
-			<?php  echo getHHMM()?><br/>
-		</font></td>
-
-
-<td>
+	<td width=366 align=center>
 	<center>
+		<?php  pubblicaBanner(); ?>
+	</center>
+	</td>
+	<td  align=center>
+	<table border=0>
+		<tr>
+			<td>	<font class='piccolino'>
+				<img src="<?php  echo $IMMAGINI?>/clock.jpg" align="center">
+					<?php  echo getHHMM()?><br/>
+				</font></td>
 
-	<font class='piccolino'>
-<?php  
-	if (! $ISANONIMO)
-		echo "collegato da <b>".intval((time()-Session("collegato_alle"))/60) ."</b>'";
-	else 
-		echo "fa' mo' il login, da bravo..";
 
+		<td>
+			<center>
 
-
-#$qweN=getUtentiRecenti();		  // getApplication("utentiattivi"); 
-#if ($qweN==1) scrivi("<b><i>$qweN</b></i> utente recente?!?");
-#	else scrivi("<b><i>$qweN</b></i> utenti recenti?!?");
-?>
-</font>
- </td>
-</tr>
-<tr>
- <td><font class='piccolino'>
-	<img src="<?php  echo $IMMAGINI?>/utentemsnfeluca.gif" align="center">
-	<b class="InizialeMaiuscola"><?php  echo definizioni(ucwords(getUtente()),"e ti chiami '".Session("nomecognome")."'")?></b>
-    </font>
- </td><td>
-	<font class='piccolino'>
-<?php  if ($GETUTENTE != "anonimo" )
-	{
-			//		if ($ISPAL) echo "[PX:".Session("PX")."]";
-?>
-<b class="InizialeMaiuscola">
-<?php  echo Session("livello")?>
-		<?php  if (isGod()) scrivi(" Godly");?>
-		<?php  if (isAdmin()) scrivi(" Admin");?>
-</b>
-</font>
-</td></tr><tr><td>
- <?php 
-	}
-	else // ANONIMO
-		formlogin();
+			<font class='piccolino'>
+		<?php  
+			if (! $ISANONIMO)
+				echo "collegato da <b>".intval((time()-Session("collegato_alle"))/60) ."</b>'";
+			else 
+				echo "fa' mo' il login, da bravo..";
+		?>
+		</font>
+		</td>
+		</tr>
+		<tr>
+		<td><font class='piccolino'>
+			<img src="<?php  echo $IMMAGINI?>/utentemsnfeluca.gif" align="center">
+			<b class="InizialeMaiuscola"><?php  echo definizioni(ucwords(getUtente()),"e ti chiami '".Session("nomecognome")."'")?></b>
+			</font>
+		</td><td>
+			<font class='piccolino'>
+		<?php  if ($GETUTENTE != "anonimo" )
+			{
+					//		if ($ISPAL) echo "[PX:".Session("PX")."]";
+		?>
+		<b class="InizialeMaiuscola">
+		<?php  echo Session("livello")?>
+				<?php  if (isGod()) scrivi(" Godly");?>
+				<?php  if (isAdmin()) scrivi(" Admin");?>
+		</b>
+		</font>
+		</td></tr><tr><td>
+		<?php 
+			}
+			else // ANONIMO
+				formlogin();
 
 if (! $ISANONIMO)
 	{
@@ -417,22 +380,14 @@ if (! $ISANONIMO)
 	<?php  formBegin("cerca.php","cerca")?>
 	<input height='5' size='8' type='text' name='goliardiDaCercare' >
 	<script language=javascript>
-         document.cerca.goliardiDaCercare.focus();
-      </script>
-
-
-
+        document.cerca.goliardiDaCercare.focus();
+    </script>
 	<?php  formbottoneinvia("cerca") ?>	
 </font>
 </td></tr></table>
 </td><td><center>
 <a href="logout.php"><b>LOGOUT</b></a>
-
-
- 
-<?php  
-	} 
-?>
+<?php  	} ?>
 </td></tr></table>
 		</center>
 </td>
@@ -444,7 +399,6 @@ scrivi(getFotoUtenteDimensionata($GETUTENTE,90));
 
 scrivi("</td></tr></table>");
 
-
 $msg=getMessaggioPrecedente();
 
 if ($msg)
@@ -452,7 +406,6 @@ if ($msg)
 
 lineaViola($CONSTLARGEZZA600)
 	or scrivi(rosso("eccezione nella linea viola (roba da matti...)")) and bona();
-
 
 scrivi("<table width='$CONSTLARGEZZA600'><tr><td><center>");
 
@@ -485,51 +438,35 @@ deltat("getmemo di header");
 scrivi("<center><table cellspacing=\"0\" cellpadding=\"0\" width=\"$CONSTLARGEZZA600$\" height=\"20\" border=\"0\"><tbody><tr><td><center>");
 
 
-if ($VISUALIZZA_MSG_OCCASIONALE_NELLHEADER && strlen($msgHeader) > 24) 
-{
-scriviTabellaInscatolataBellaBeginVariante("Messaggio occasionale","messaggimiei");
-scrivi($msgHeader);
-scriviTabellaInscatolataBellaEnd();
+if ($VISUALIZZA_MSG_OCCASIONALE_NELLHEADER && strlen($msgHeader) > 24) {
+	scriviTabellaInscatolataBellaBeginVariante("Messaggio occasionale","messaggimiei");
+	scrivi($msgHeader);
+	scriviTabellaInscatolataBellaEnd();
 }
-
-
 formEnd(); // è una maialata: lo faccio finire fuori dalla tabella, ma funge!!!!! se vuoi saperlo è la form dio ricerca dell'header
 
-
-
 // qua c'era l'help
-
-
 deltat();
 
-
-function paginaAmmessaAdAnonimi()
-{
-global $AUTOPAGINA;
-if (ereg("support.php\$",$AUTOPAGINA)) return TRUE;
-if (ereg("login",$AUTOPAGINA)) return TRUE;
-if (ereg("help.php\$",$AUTOPAGINA)) return TRUE;
-if (ereg("nuovo_utente.php\$",$AUTOPAGINA)) return TRUE;
-if (ereg("segnalazioni.php\$",$AUTOPAGINA)) return TRUE;
-return FALSE; 
+function paginaAmmessaAdAnonimi() {
+	global $AUTOPAGINA;
+	if (ereg("support.php\$",$AUTOPAGINA)) return TRUE;
+	if (ereg("login",$AUTOPAGINA)) return TRUE;
+	if (ereg("help.php\$",$AUTOPAGINA)) return TRUE;
+	if (ereg("nuovo_utente.php\$",$AUTOPAGINA)) return TRUE;
+	if (ereg("segnalazioni.php\$",$AUTOPAGINA)) return TRUE;
+	return FALSE; 
 }
 
 
 
 
 
-if (! $APERTOATUTTI)
-{//echo "non aperto a tutti - ";
-if (! contiene($AUTOPAGINA,"index") ) // eccezione!!!!!!
-{	// venerdi' in originale era un ISSET
-//	if (!(issetSession("nickname")) 	&& ! contiene($AUTOPAGINA,"login")  && ! contiene($AUTOPAGINA,"nuovo_utente") ) 
-//	if (!(issetSession("nickname"))) // anonimo
+if (! $APERTOATUTTI) {// "non aperto a tutti - ";
+if (! contiene($AUTOPAGINA,"index") ) { // eccezione!!!!!!
 	if ($ISANONIMO)
-	   if (! paginaAmmessaAdAnonimi())
-		{
-		//echo (rosso("deb: autopag, contieneindex: $AUTOPAGINA - '".contiene($AUTOPAGINA,"index") ."'.<br/>"));
-
-		richiediRegistrazione(); // fa la spapla dicendo che ti devi registrare!!
+		if (! paginaAmmessaAdAnonimi()) 		{
+			richiediRegistrazione(); // fa la spapla dicendo che ti devi registrare!!
 		}
 	
 }
@@ -564,30 +501,9 @@ if ($indexAndAnonomo && 0) {
 deltat("fine heder");
 
 if ($ISPAL)
-	{
-			// esempio di grafico
-	/*
-	$output = '<TABLE CELLPADDING="1" CELLSPACING="0" BORDER="0"><TR>';
-	for ($i=0; $i<20; $i+=0.1) 
-		{
-    		output += '<TD VALIGN="BOTTOM">' + dataGrafico(Math.sin(i*i)) + '<\/TD>';
-		}
-	output += '<\/TR><\/TABLE>';
-	scrivi(output);
-	*/
-	}
-
-#if (isAdminVip())
-if ($ISPAL)
 	listaAuguri();
 
-
-
-
-
 // diamo x scontato che NON sono anonimo?
-
-
 
 	$res=mysql_query("select count(*) as quanti from gms where idutentericevente=".getIdLogin()." AND m_bnuovo=1");
 	$gmsnuovi=mysql_fetch_array($res);
@@ -629,10 +545,9 @@ if (!isValidNick($GETUTENTE)) {
 #	echo flash_notice("info", "[MESSAG#GIO_OCCASIONALE][ENV] INFO" . getenv("MESSAGGIO_OCCASIONALE"));
 #}
 if (development()) {
-	echo h1("getMemozByChiave ENV: ".get_rails_env());
-	echo h1("RAILS_ENV: ".get_rails_env2());
-	#echo h2("[Attenzione Siamo in dev!]");
-	echo flash_notice("success", "Attenzione Siamo in dev");
+	#echo h1("getMemozByChiave ENV: ".get_rails_env());
+	#echo h1("RAILS_ENV: ".get_rails_env2());
+	echo flash_notice("success", "development(): Attenzione Siamo in DEV (o come direbbe Matteo: vai sereno e smarmella tanto sei in DEV)");
 }
 
 ?>
