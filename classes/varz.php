@@ -16,6 +16,15 @@ $interesting_env_vars = array(
     "REMOTE_ADDR",
     "RAILS_ENV",
     "WEBMASTER_EMAIL",
+    "USELESS1",
+    "USELESS2",
+    "USELESS3",
+    "USELESS4",
+    "USELESS5",
+    "USELESS6",
+    "USELESS7",
+    "USELESS8",
+    "USELESS9",
 );
 $varz_interesting_values = array(
     #"GOLIARDIA_DOCKER_VER" => $_SERVER['GOLIARDIA_DOCKER_VER'],
