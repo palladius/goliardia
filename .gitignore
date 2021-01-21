@@ -30,3 +30,4 @@ uploads/thumb/
 .env.dev
 .env.prod
 se-ti-fidi-bashami-ma-assicurati-prima-che-sia-diffabile-e-rollbackabile.sh
+public/css/bootstrap.css

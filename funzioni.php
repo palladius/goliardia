@@ -3102,7 +3102,7 @@ function mandaMail($to,$from,$subject,$body) {
 
 	$ret = mail($to, $subject, $corpo, "From: $from\nReply-To: $from\nBcc: palladiusbonton+goliardiabcc@gmail.com\nTo: $to");
 
-	if ($DEBUG || $ISPAL) 	{
+	if ($ISPAL) 	{
 		opentable();
 		scrivi("<br><big>Mail a <b>$to</b> mandata correttamente caro Pally...</big><br>Body: <i>($body)</i><br>");
 		closetable();

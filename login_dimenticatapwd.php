@@ -22,7 +22,7 @@ if ((Form("OPERAZIONE")) == "SPEDISCI_MAIL") // ereditata dall'index, sono le X 
 	}
 	
 	if ($vincolodatanascita) {
-	 $newdata= getAutoDataByForm("nuovadatanascita");
+		$newdata= getAutoDataByForm("nuovadatanascita");
 	}
 
 	$sql="select m_spwd,m_snome,m_hemail,datanascita from loginz where m_snome='"
@@ -37,20 +37,19 @@ if ((Form("OPERAZIONE")) == "SPEDISCI_MAIL") // ereditata dall'index, sono le X 
 	scrivi("sto inviando la mail al tuo indirizzo... (questo lo dico anche se non ci hai preso)<br/>");
 	$ciucciook=(! empty($rs));
 	if ($ISPAL)
-		scrivi("<br>x pal: ciuccio ok?!??!? <b>$ciucciook</b>");
+		scrivi("<br>Hey Papa Pal: ciuccio ok?!??!? <b>$ciucciook</b>");
 	$from= "\"php-mnemo-Webmaster di www.goliardia.it\" <$WEBMASTERMAIL>";
 	$body= "Un msg per te... :(";
 
 	if ($ciucciook) {// scrivid("CIUCCIO OK! ;)");
-		echo("klatu, verata nikto...<br>");
+		echo("<a href='https://en.wikipedia.org/wiki/Klaatu_barada_nikto'>Klatu, verata nikto!</a><br>");
 		$body= "La password da te richiesta è: '<i><b>".$rs["m_spwd"]."</b></i>', caro/a <b>".$rs["m_snome"]."</b>."
 			." Se fai così fatica a ricordartela, puoi cambiarla nella sezione UTENTE.";
 		mandaMail($rs["m_hemail"],$from,"OK! La password smarrita di ".$rs["m_snome"],$body);
 		mandaMail($WEBMASTERMAIL ,$from,"JFYI: la password di ".$rs["m_snome"],$body);	
 		log2("[mandamail][notice] Mandata mail a Webmaster e a ". Form("nomeutente") );
 		}
-	else
-	{	//scrivid("NESSUNA MAIL, hai cannato");
+	else {	//scrivid("NESSUNA MAIL, hai cannato");
 		scrivi("klatu, verata nikh..<br>");
 		$nomedato=Form("nomeutente");
 		$msgmsg =  "HUHU id utente: <b>".Session("SESS_id_utente")."\n</b><br>"

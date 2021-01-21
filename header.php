@@ -336,7 +336,7 @@ scrivi("<table width=\"".$CONSTLARGEZZA600."\" border=\"0\" cellspacing=\"0\" ce
 			if (! $ISANONIMO)
 				echo "collegato da <b>".intval((time()-Session("collegato_alle"))/60) ."</b>'";
 			else 
-				echo "fa' mo' il login, da bravo..";
+				echo "Fai mo' il login, da bravo..";
 		?>
 		</font>
 		</td>
