@@ -99,7 +99,7 @@ formtextConCheckbox("Indirizzo",$recSet["Indirizzo"],"privacy_address",$recSet["
 formtextConCheckbox("NumCellulare",$recSet["numcellulare"],"privacy_cell",$recSet["privacy_cell"],"privato");
 formtextConCheckbox("Email",$recSet["email"],"privacy_mail",$recSet["privacy_mail"],"privato");
 scrivi("</table>");
-scrivi("<i>(se selezioni <u>sÏ</u> non saranno resi pubblici questi dati)</i><br>");
+scrivi("<i>(se selezioni <u>s√¨</u> non saranno resi pubblici questi dati)</i><br>");
 hline(70);
 scrivib("<h2>Estremi goliardici</h2>");
 formtext("titolo",$recSet["titolo"]);
@@ -134,11 +134,11 @@ formtext("Dataprocesso",($dataProcesso));
  $mioIdFacolta = $recSet2["id_facolta"];
  scrivi ("Ordine: ");
  popolaComboBySqlDoppia_Key_Valore("ID_Ordine",
-	"select id_ord,nome_veloce,citt‡ from ordini order by nome_veloce",($mioIdOrdine));
-scrivi (rosso("<br>Fuck")."olt‡: ");
+	"select id_ord,nome_veloce,citt√† from ordini order by nome_veloce",($mioIdOrdine));
+scrivi (rosso("<br>Fuck")."olt√†: ");
 popolaComboBySqlDoppia_Key_Valore("ID_FACOLTA","select * from facolta order by facolta",$mioIdFacolta);
 invio();
-scrivi("<i>P.S. Se non c'Ë il tuo ordine nella scelta devi crearlo ex novo; non puoi creare un goliarda senza un ordine di nascita...");
+scrivi("<i>P.S. Se non c'√® il tuo ordine nella scelta devi crearlo ex novo; non puoi creare un goliarda senza un ordine di nascita...");
 scrivi("Quindi o fai prima l'ordine o - se hai fatto fatica finora - registri il tutto con un ordine pacco (leggasi fittizio), crei l'ordine e infine ");
 scrivi("cambi solo questo!.. ok?</i>");
 hline(70);

@@ -3377,7 +3377,7 @@ function autoAggiornaTabella($NOMETABELLA,$NOME_ID_da_modificare,$pag_in_cui_and
 		}
 	else
 		 bona();
-scrivii(rosso("righe affettate dalla queryy: ".mysql_affected_rows().".<br/>"));
+scrivii(rosso("righe affette dalla query: ".mysql_affected_rows().".<br/>"));
 }
 
 
@@ -5239,10 +5239,12 @@ function autoInserisciTabella($NOMETABELLA,$AUTOMSG="",$pag_in_cui_andare="") {
 		$skippa=FALSE;
 		scrivid("</td></tr>");
 		}
-
-
 	$sqlForm .= $CAMPI . ") values $VALORI)";
-	if ($ISPAL) echo("<br><br>La form SQL è: $sqlForm.<br/>");
+	
+	#if ($ISPAL) {
+		#echo("<br><br>[ricc] La form SQL è: <tt>$sqlForm</tt>.<br/>");
+	#}
+	echo flash_ricc_only("La form SQL è: <tt>$sqlForm</tt>.");
 
 	log2("[AUTOINSERT] $sqlForm");
 		////////////// adesso ho la query sql giusta!!!
@@ -5254,7 +5256,8 @@ function autoInserisciTabella($NOMETABELLA,$AUTOMSG="",$pag_in_cui_andare="") {
 		$e=mysql_error();
 		log2("[autoInserisciTabella] SQL:[$sqlForm] => MYSQL_ERROR: [$e]");
 		if ($ISPAL)
-			scrivi(rossone("PAL ONLY) errore a mandare la queri3 ($sqlForm): '$e'."));
+#			scrivi(rossone("PAL ONLY) errore a mandare la queri3 ($sqlForm): '$e'."));
+			echo flash_ricc_only("Errore a mandare la query3 ($sqlForm): '$e'.");
 		else
 			scrivi(rossone("errore DBstico: $e."));
 		$erore=TRUE;
@@ -6276,6 +6279,13 @@ function flash_notice($action, $msg) {
 		$msg
 	</div>";
 }
-
+function flash_ricc_only($s) {
+	global $ISPAL;
+	if ($ISPAL) {
+		return flash_notice("danger", "[RICC-ONLY BY-DESIGN] $s");
+	} else {
+		return "";
+	} 
+}
 
 ?>

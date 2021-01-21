@@ -79,7 +79,7 @@ if ($hoDiritti)
 	 invio();
 	if (isAdminVip())
 		{
-		// 	scrivi("- <a href='fotografia_ordine.php?idord=".$idord."'>FOTOGRAFA L'ORDINE</a> (fa vedere chi c'Ë"
+		// 	scrivi("- <a href='fotografia_ordine.php?idord=".$idord."'>FOTOGRAFA L'ORDINE</a> (fa vedere chi c'√®"
 		//	." nell'ordine attualmente, e in futuro anche parametrico in DATA...figata!)<br/>");
 	 	scrivi("- <a href='".$AUTOPAGINA."?cancord=".$idord."'>CANCELLA L'ORDINE</a> (funziona solo "
 		."se non vi sono cariche/nomine associate O ALMENO SPERO CON MYSQL!)<br/>");
@@ -163,7 +163,7 @@ echo "<center><table border=0 width='100%'><tr><td width='50%'>";
  scriviCoppia("Storia dell'Ordine",stripslashes($rs["storia"]));
 echo("</td><td width='50%'>");
  scriviCoppia("Motto",stripslashes($rs["Motto"]));
- scriviCoppia("Citt‡",$rs["Citt‡"]);
+ scriviCoppia("Citt√†",$rs["Citt√†"]);
  scriviCoppia("ultime modifiche",dammidatamysql(time($rs["data_creazione"])));
  scriviCoppia("data di nascita",dammidatamysql(($rs["datadinascita"])));
  scriviCoppia("Altro sull'Ordine",stripslashes($rs["note"]));
@@ -272,12 +272,12 @@ switch ($i)
 scrivi($mezzo);
 
 $sql="SELECT * from cariche WHERE id_ordine=".$idord." AND id_car_STASOTTOA=-1 " ; 
-		// tutto ciÚ cher mi serve tranne la sottpopostanza
+		// tutto ci√≤ cher mi serve tranne la sottpopostanza
 if ($i<3)
 	$res=mq($sql.$clausola_i); // nome ordine
 else 
 	{// cero gli spuri quelli figli di B con B inesistente, cariche orfane
-	 if (isdevelop()) echo rosso("aggiungi la query che ora Ë innestata!");
+	 if (isdevelop()) echo rosso("aggiungi la query che ora √® innestata!");
 	#	 $sql = "SELECT * FROM cariche WHERE id_ordine=".$idord." AND id_car_stasottoa<>-1 ";
 		#. "AND  id_car_stasottoa not in (select id_carica from cariche)";
 	#	 $res=mq($sql); // nome ordine
@@ -292,12 +292,12 @@ if (mysql_num_rows($res) == 0)
 #	if ($i==3) // caso ORFANE
 #		{scrivi("<h3>".corsivoBluHtml("Orfane")."</h3>");
 #		scrivib(corsivoBluHtml("Attenzione, questo si verifica quando in una gerarchia A>B>C>D>E"
-#			." x esempio uccidi la B e la C (solo lei) rimane orfana del pap‡."
-#			." CiÚ Ë possibile xchË io non controllo l'integrit‡ referenziale del puntatore (x "
+#			." x esempio uccidi la B e la C (solo lei) rimane orfana del pap√†."
+#			." Ci√≤ √® possibile xch√® io non controllo l'integrit√† referenziale del puntatore (x "
 #			."ottimi motivi) quindi a differenza di altre cose "
-#	 		. "qua Ë possibile quest'incoerenza. Sta a te che hai fatto la cazzata di spezzare la"
+#	 		. "qua √® possibile quest'incoerenza. Sta a te che hai fatto la cazzata di spezzare la"
 #			. " gerarchia fere le giuste modifiche x togliere questo"
-#	 		. " messaggio. Se ti becco io, at fag un cul acsÏ, che vuol dire che ti aumento di uno l'escazzo. :-)"));
+#	 		. " messaggio. Se ti becco io, at fag un cul acs√¨, che vuol dire che ti aumento di uno l'escazzo. :-)"));
 #		}
 							/////////////////////////////////
 							// discesa ricorsiva dell'albero
@@ -311,7 +311,7 @@ hline(80);
 if (isAdminVip())
 {
 scrivi("<h1>solo x AdminVip:</h1>Guardate se ci sono cariche in quest'elenco che non corrispondono UNO a"
-		." UNO con le cariche tutte belle impaginate: nel caso Ë un grosso problema: riferitemelo.");
+		." UNO con le cariche tutte belle impaginate: nel caso √® un grosso problema: riferitemelo.");
 $sql=mq("SELECT * from cariche WHERE id_ordine=".$idord);
 scriviRecordSetcontimeout($sql,10);
 $seql=mq("SELECT id_carica,c.*,o.nome_completo from cariche c,ordini o WHERE o.id_ord=c.id_ordine "
@@ -320,7 +320,7 @@ $sql=mysql_fetch_array($seql);
 if ($sql)
 	{
 	hline(80);
-	scrivi("<h2>Peggio ancora - e so che non Ë vuoto ;)</h2>Ordini con cariche che stan sotto a se stesse "
+	scrivi("<h2>Peggio ancora - e so che non √® vuoto ;)</h2>Ordini con cariche che stan sotto a se stesse "
 		."(chi sa un po' di informatuica, sa che la ricerca ricorsica in tale albero lo 'visualizza' come"
 		." infinito, quindi vanno EVITATE!");
 	scriviRecordSetConDelete($sql);
@@ -337,7 +337,7 @@ $sql    = "select * from goliardi g, ordini o,nomine n,cariche c"
 	  . " AND n.id_carica=c.id_carica "
 	  . " AND c.hc=0"
 	  . " AND c.attiva=1 "
-	  . " AND (c.dignit‡='capoordine' OR c.dignit‡='capocitt‡')"
+	  . " AND (c.dignit√†='capoordine' OR c.dignit√†='capocitt√†')"
 	  . " ORDER BY n.eventuale_numero_progressivo,n.data_nomina";
 
 $resrecSet=mq($sql);

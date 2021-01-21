@@ -59,7 +59,7 @@ global $GETUTENTE,$DEBUG;
 //	$sql = "select g.id_gol,g.Nomegoliardico,o.nome_veloce from goliardi g,ordini o WHERE o.id_ord=g.id_ordine "
 //	     . " AND g.id_gol in (select id_goliarda_default FROM loginz) ORDER BY g.Nomegoliardico";
 
-	// poichË mysql 3.2.3 non supporta le nested query, la riscrivo non innestata, secondo i consigli scemi del
+	// poich√® mysql 3.2.3 non supporta le nested query, la riscrivo non innestata, secondo i consigli scemi del
 	// sito di mysql : http://www.mysql.com/doc/en/Rewriting_subqueries.html
 
  $sql = "select g.id_gol,g.Nomegoliardico,o.nome_veloce from goliardi g,ordini o,loginz l "
@@ -69,7 +69,7 @@ $idGolDflt= ($iddflt=="" ? 0 : $iddflt );
 
 if (isdevelop())
 	echo rosso("ric, errore: qua davanti passo un utente di dflt ma mi sa che dovrei passare un "
-		."goliarda (o il suo id?) di dflt: c'Ë u'incoerenza, guardaci meglio fuori dal treno....");
+		."goliarda (o il suo id?) di dflt: c'√® u'incoerenza, guardaci meglio fuori dal treno....");
 
 if ($stringaOpzioni != "gestiscenull") // no opzioni
   popolaComboBySqlDoppia_Key_Valore($ID,$sql,$idGolDflt);
@@ -129,7 +129,7 @@ function visualizzaPresenze($res)
 	   <tr bgcolor="#EEFFEE">
 	   <td>
 	 <?php 
-	 //echo rosso("L'0utente segnalante Ë: $UTENTESEGNALANTE,mtente io sono $GETUTENTE..");
+	 //echo rosso("L'0utente segnalante √®: $UTENTESEGNALANTE,mtente io sono $GETUTENTE..");
 	 if ($rs["m_snome"] == $GETUTENTE || $ISPAL || $UTENTESEGNALANTE==$GETUTENTE)
 	 {
 
@@ -137,7 +137,7 @@ function visualizzaPresenze($res)
 
 	 formBegin($AUTOPAGINA."?id=".$rs["id_appuntamento"]); 
 	// no! deve solo cancellare, va a pagina FARLOCCA; POI e dico POI ririge di nuovo qua a id=XXX
-	// e invece si', cosÏ con il GET(ID) sa come tornare indietro...
+	// e invece si', cos√¨ con il GET(ID) sa come tornare indietro...
  	// formBegin();
 	 formhidden("hidden_operazione","cancella_presenza");
 	 formhidden("id_presenza",$rs["id_presenza"]);
@@ -171,8 +171,8 @@ function visualizzaPresenze($res)
 	scrivi("Presenze: (min/avg/max): ");
 	scrivib("(".$MIN."/".($AVG/100)."/".$MAX.")");
 	invio();
-	scrivi("<b>Legenda</b><br/><u>Min</u>: numero di persone al 100%;<br><u>Avg</u> (average): media pesata con la probabilit‡; <br><u>Max</u>: persone almeno al 5%");
-	scrivi("\n<br/>La legge empirica carlessiana (ispirata alla Bistromatica della guida galattica) dice che il numero di persone che verr‡ sar‡ esattamente l'80% della media FRATTO il fattore d'informazione (se tutti quelli che possono venire alla cena vengono sul sito, dividete x uno, se il 10% dividete per 0.1, e cosÏ via. Prendete il numero senza virgola (chiamiamolo A), prendete la prima e la seconda cifra decimale (chiamiamolo B), la terza e la quarta (chiamiamolo C) e giocate al lotto. La probabilit‡ di vittoria sar‡ ben maggiore di quella che io ci abbia preso.");
+	scrivi("<b>Legenda</b><br/><u>Min</u>: numero di persone al 100%;<br><u>Avg</u> (average): media pesata con la probabilit√†; <br><u>Max</u>: persone almeno al 5%");
+	scrivi("\n<br/>La legge empirica carlessiana (ispirata alla Bistromatica della guida galattica) dice che il numero di persone che verr√† sar√† esattamente l'80% della media FRATTO il fattore d'informazione (se tutti quelli che possono venire alla cena vengono sul sito, dividete x uno, se il 10% dividete per 0.1, e cos√¨ via. Prendete il numero senza virgola (chiamiamolo A), prendete la prima e la seconda cifra decimale (chiamiamolo B), la terza e la quarta (chiamiamolo C) e giocate al lotto. La probabilit√† di vittoria sar√† ben maggiore di quella che io ci abbia preso.");
 }
 
 
@@ -181,7 +181,7 @@ function visualizzaPresenze($res)
 if ((Form("hidden_operazione")) == "DaiAdesione")
 	{
 		// devo solo cancellare un msg...
-	$ok=autoInserisciTabella("eventipresenze","Ciuccio ok. PerchË tornare indietro quando puio vedere da te i cambiamenti scorrendo gi˘?!?");
+	$ok=autoInserisciTabella("eventipresenze","Ciuccio ok. Perch√® tornare indietro quando puio vedere da te i cambiamenti scorrendo gi√π?!?");
 	if ($ok)
 		scrivi("Sei stato aggiunto, caro amico...");
 	else
@@ -197,8 +197,8 @@ if ((Form("hidden_operazione")) == "cancella_presenza")
 	{
 		// devo solo cancellare un msg...
 	$ok=mysql_query("delete from eventipresenze where id_presenza=".Form("id_presenza"))
-		or die("non son riuscito a cancellare la presenza. Mah, strano!!! Magari hai cliccato due volte, sobenmË!");
-	scrivib(rosso("La tua presenza Ë stata tolta correttamente, direi! Ma chi sono!?!?"));
+		or die("non son riuscito a cancellare la presenza. Mah, strano!!! Magari hai cliccato due volte, sobenm√®!");
+	scrivib(rosso("La tua presenza √® stata tolta correttamente, direi! Ma chi sono!?!?"));
 	invio();
 //	scrivib("osserva i <a href='".$AUTOPAGINA."?id=".QueryString("id")."'>cambiamenti</a>.");	
 //	ridirigerai($AUTOPAGINA."?id=".QueryString("id"));
@@ -215,7 +215,7 @@ function scriviReport_AppuntamentoFancy($rs)
 //	echo "qwerty ric rs[\"id_login\"] vale ".$rs["id_login"];
 
  	$RSRVD=rosso("<i>riservato</i>");
- 	FANCYBEGIN($rs["Nome"]); // d‡ eccezione se il RS Ë vuoto (i.e. l'id 1285 Ë fasullo)
+ 	FANCYBEGIN($rs["Nome"]); // d√† eccezione se il RS √® vuoto (i.e. l'id 1285 √® fasullo)
 	scrivi("<table  border='0' width='300'><center>\n");
 	$rsPresenze=mysql_query("select sum(m_nquantitotale) AS TOTALE from eventipresenze where id_appuntamento=".$ID);
 	scrivi(getCoppiaTabella("Presenze:","<b>".$rsPresenze["TOTALE"]."</b>"));
@@ -227,7 +227,7 @@ function scriviReport_AppuntamentoFancy($rs)
 			.toHumanDate(phpdata($rs["data_fine"])).")</i>"));
 
 
-	scrivi(getCoppiaTabella("Cittadina:",$rs["citt‡"]));
+	scrivi(getCoppiaTabella("Cittadina:",$rs["citt√†"]));
 	scrivi(getCoppiaTabella("Loco:",stripslashes($rs["luogo"])));
 
 	$abdic=String($rs["Abdicabilita"]);
@@ -235,7 +235,7 @@ function scriviReport_AppuntamentoFancy($rs)
 		$abdic="<i>boh</i>";
 	else
 		$abdic .= " %";
-	scrivi(getCoppiaTabella("Probabilit‡ di abdicazione:",$abdic));
+	scrivi(getCoppiaTabella("Probabilit√† di abdicazione:",$abdic));
 
 		// login  NUM->NOME
 	$sqlOrdine="select m_snome  from loginz where id_login=".$rs["id_login"];
@@ -246,7 +246,7 @@ function scriviReport_AppuntamentoFancy($rs)
 		."(in data ".toHumanDate(phpdata($rs["data_invio"])).")";
 
 	if ($rsOrd["m_snome"]==$GETUTENTE || isadminvip())
-		 $frasedx .= "<BR>solo xchË sei tu....<br><a href='$AUTOPAGINA?modificaid="
+		 $frasedx .= "<BR>solo xch√® sei tu....<br><a href='$AUTOPAGINA?modificaid="
 				.$rs["ID_appuntamento"]."'><b>modifica evento</b></a>";
 
 //	$frasedx .= getFotoUtenteDimensionataRight($rsOrd["m_snome"],60);	
@@ -327,7 +327,7 @@ function scriviReport_AppuntamentoFancy($rs)
 	// controllo se IO sono presente...
 //	rs=query("select * from eventipresenze where id_appuntamento=".$ID." AND id_utente=".$getIdLogin());
 //	if (! rs.EOF)
-//	{scrivi("Vedo che tu sei iscritto qui. Vuoi disiscriverti? Se sÏ, clicca gi˘");
+//	{scrivi("Vedo che tu sei iscritto qui. Vuoi disiscriverti? Se s√¨, clicca gi√π");
 //	}
 
 
@@ -355,7 +355,7 @@ formhidden("id_appuntamento",$ID);
 formhidden("datacreazione",dammiDatamysql());
 formtext("commento","I love Pal");
 invio();
-scrivi("probabilit‡: ");
+scrivi("probabilit√†: ");
  popolaComboNumerilliPercentuale("probabilita"); //,0,100,95) 
 invio();
 scrivi("Quanti siete in totale: ");
@@ -428,7 +428,7 @@ if (!empty($operazione ))
 if (empty($ID))
 	{
 $MODIF_ID= intval(querystring("modificaid"));
-//echo "il valore di intval Ë:  $MODIF_ID...";
+//echo "il valore di intval √®:  $MODIF_ID...";
 $azione = $MODIF_ID==0 ? "inserisci" : "modifica";
 scrivi("<h1>$azione appuntamento</h1>");
 if (isguest())
@@ -454,7 +454,7 @@ if ($azione=="modifica")
 	$rs=mysql_fetch_array($res);
 
 	$nome=stripslashes($rs["Nome"]);
-	$citta=$rs["citt‡"];
+	$citta=$rs["citt√†"];
 	$abdicabilita=$rs["Abdicabilita"];
 	$recapitogoliarda1 = $rs["recapitogoliarda1"];
 	 //echo "rs['recapitogoliarda1']:".$rs["recapitogoliarda1"];
@@ -473,25 +473,25 @@ if ($azione=="modifica")
 	 if (isdevelop())
 		echo rosso("attento, nell'inserisci non c'era un formhidden (op=inserisci): devi farlo ora dato che il modifica va gestito in maniera diversa!!! metti hiden op= $operazione...");
 	 formhidden("data_invio",dammiDatamysql(time()));	// cambio data modifica anche in modifica
-	 scrivi("<br><b>NB</b>. '<i>nome</i>' sta x nome dell'evento, non per TUO nome!<br><b>NB2</b> Ricorda: quando avrai salvato st'evento, se non ti piacer‡, potrai sempre cancellarlo: nella home gli eventi registrati da te hanno una X. Cliccaci e l'evento sar‡ rimosso. CiÚ non funziona se vi sono iscritti, ma in tal caso hai ppotere di rimuoverli a tuo piacimento.<br>");
+	 scrivi("<br><b>NB</b>. '<i>nome</i>' sta x nome dell'evento, non per TUO nome!<br><b>NB2</b> Ricorda: quando avrai salvato st'evento, se non ti piacer√†, potrai sempre cancellarlo: nella home gli eventi registrati da te hanno una X. Cliccaci e l'evento sar√† rimosso. Ci√≤ non funziona se vi sono iscritti, ma in tal caso hai ppotere di rimuoverli a tuo piacimento.<br>");
 	 formtext("nome",$nome);
 	scrivi(" tipo: ");
 	popolaComboTipoAppuntamento("tipodiappuntamento");
 	invio();
-	scrivib("Attenzione! La data va scritta nel formato che vedete gia scritto, ovvero AAAA-MM-GG all'americana e non all'italiana. Se lo postate al contrario rischiate di postare un evento assurdo (tipo 10-5-05 non Ë il 10 maggio 05 ma il 5 maggio 2010!!!). Tranquilli, ore/minuti/secondi potete ometterli.<br/>");
+	scrivib("Attenzione! La data va scritta nel formato che vedete gia scritto, ovvero AAAA-MM-GG all'americana e non all'italiana. Se lo postate al contrario rischiate di postare un evento assurdo (tipo 10-5-05 non √® il 10 maggio 05 ma il 5 maggio 2010!!!). Tranquilli, ore/minuti/secondi potete ometterli.<br/>");
 	 formtext("data_inizio",dammiDatamysql(time()));
 	 formtext("data_fine" ,dammiDatamysql(time()));
 	 #formtext("data_inizio",($datainiz));
 	 #formtext("data_fine" ,($datafin));
 	hline(80);
-	 scrivib("citt‡: ");
-	 popolaComboCitta("citt‡",$citta);
-	 scrivib("probabilit‡ di abdicazzone: ");
+	 scrivib("citt√†: ");
+	 popolaComboCitta("citt√†",$citta);
+	 scrivib("probabilit√† di abdicazzone: ");
 	 popolaComboNumerilliPercentuale("abdicabilita",$abdicabilita);
 	 scrivi(" (%uale)\n");
 	invio();
 	hline(80);
-	 scrivii("goliardi da contattare per saperne di pi˘:<br>Il primo Ë uno qualunque, <br> nel 2o vengon presi da utenti "
+	 scrivii("goliardi da contattare per saperne di pi√π:<br>Il primo √® uno qualunque, <br> nel 2o vengon presi da utenti "
 		."registrati e <br> nel 3o invece tra goliardi TUOI.<br> Sapendo che 3 volte tutti incasina la pagina, ditemi voi cosa preferite...<br>");
 	 popolaComboGoliardi("recapitogoliarda1","gestiscenull",$recapitogoliarda1);
 	 invio();
@@ -499,7 +499,7 @@ if ($azione=="modifica")
 	 invio();
 	 popolaComboGoliardiMieiConNull("recapitogoliarda3","gestiscenull",$recapitogoliarda3);
 	 hline(80);
-	 scrivib(big("Segue ora il luogo in cui si terr‡ l'evento."));
+	 scrivib(big("Segue ora il luogo in cui si terr√† l'evento."));
 	 invio();
 	 formtextarea("luogo",$luogo,10,30);
 	 invio();

@@ -16,14 +16,14 @@ if (! Session("ADMIN"))
 }
 
 if ($id_msgDaVedere != "")
-	tornaindietro("se vuoi puoi sempre guardare il sondaggio come vien fuori di l‡..."
+	tornaindietro("se vuoi puoi sempre guardare il sondaggio come vien fuori di l√†..."
 			,"votazioni.php?guardaid=$id_msgDaVedere");
 
 			// controllo l'eventuale POST...
 $operazione= Form("hidden_operazione");
 if ($operazione=="aggiungi domanda")
 	{
-	 scrivi("aggiungo la domanda al dibbÏ...<br>");
+	 scrivi("aggiungo la domanda al dibb√¨...<br>");
 	 if ($ISPAL) visualizzaformz();
 	 autoInserisciTabella("polls_domande","Domanda inserita correttamente");
 	 tornaindietro(
@@ -47,8 +47,8 @@ else if ($operazione=="AZZERA TUTTI VOTI")
 	{
 	 $id=Form("hidden_id_sondaggio");
 	 if ($ISPAL) visualizzaformz();
-	 scrivi("Azzero TUTTI i voti relativi del sondaggio ($id): Ë un prototipo di "
-		."query quindi probabilmente NON andr‡ ;-) <br>");
+	 scrivi("Azzero TUTTI i voti relativi del sondaggio ($id): √® un prototipo di "
+		."query quindi probabilmente NON andr√† ;-) <br>");
 	 mq("DELETE polls_voti.* FROM polls_domande domande INNER JOIN polls_voti "
 		. " ON domande.id_domanda = polls_voti.id_domanda "
 		. "WHERE (domande.id_poll = $id)"); 
@@ -70,7 +70,7 @@ else if ($operazione=="AZZERA DOMANDE")
 		 mq("delete  from polls_domande where id_poll=".Form("hidden_id_poll"));
 		}
 	   else 
-		echo rossone("mi spiace, ci sono gi‡ $quantiVoti gi‡ esistenti"
+		echo rossone("mi spiace, ci sono gi√† $quantiVoti gi√† esistenti"
 			." nel sondaggio: devi rimuovere prima quelli");
 	 tornaindietro("torna al tuo sondaggio","$AUTOPAGINA?id=".form("hidden_id_poll"));
 	 bona();
@@ -129,7 +129,7 @@ if (! $autorizzato)
 	 scrivi("<h3>Aggiungi opzione</h3>");
 	 formBegin();
 	  formhidden("hidden_operazione","aggiungi domanda");
-	  formtext("testodomanda","Ë un mona");
+	  formtext("testodomanda","√® un mona");
 	  invio();
 	  formtext("foto","$GETUTENTE.jpg");
 	  invio();
@@ -142,11 +142,11 @@ if (! $autorizzato)
 ?>
 <big>Attenzione!</big> <br>
 Attualmente ci sono solo 3 modi di usare la combinazione FOTO e TIPOFOTO:<br>
-1) Se l'opzione ha a che fare con un goliarda di nome XXX la cui foto Ë presente nel dibbÏ, metti come foto "<i>XXX</i>.jpg", e la parola chiave "persone" come <i>tipofoto</i>.
+1) Se l'opzione ha a che fare con un goliarda di nome XXX la cui foto √® presente nel dibb√¨, metti come foto "<i>XXX</i>.jpg", e la parola chiave "persone" come <i>tipofoto</i>.
 <br/>
-2) Se l'opzione ha a che fare con un ordine la cui foto Ë presente nel dibbÏ, metti come foto "<i>XYZ</i>.jpg" o "<i>XYZ</i>.jpg", dove il nome lo devi trovare tu a mano (arranzat!), e la parola chiave "ordini" come <i>tipofoto</i>.
+2) Se l'opzione ha a che fare con un ordine la cui foto √® presente nel dibb√¨, metti come foto "<i>XYZ</i>.jpg" o "<i>XYZ</i>.jpg", dove il nome lo devi trovare tu a mano (arranzat!), e la parola chiave "ordini" come <i>tipofoto</i>.
 <br/>
-3) Se l'opzione NON NECESSITA di FOTO (o non Ë applicabile o lo Ë ma la foto non c'Ë) mette ciÚ che volete alla voce 'foto', ma tassativamente la parola <i>niente</i> alla voce 'tipofoto'.
+3) Se l'opzione NON NECESSITA di FOTO (o non √® applicabile o lo √® ma la foto non c'√®) mette ci√≤ che volete alla voce 'foto', ma tassativamente la parola <i>niente</i> alla voce 'tipofoto'.
 <br/>
 <i>(tutti questi inutili discorsi solo x far comparire successfulmente la foticina a fianco dell'opzione, nel dubbio mettete NIENTE sotto ogni tipo foto e non vi sbagliate!!!)</i>
 <?php 
@@ -160,10 +160,10 @@ Attualmente ci sono solo 3 modi di usare la combinazione FOTO e TIPOFOTO:<br>
 	if (isadminvip())
 		{
 		 echo rossone("attento, amministratore: se clicchi su modifica NON CAMBIARE ASSOLTAMENTE l'ID_PO"
-			."LL! ma solo tutto ciÚ che vuoi del resto, ok? e non fare come adamo!");
+			."LL! ma solo tutto ci√≤ che vuoi del resto, ok? e non fare come adamo!");
 		 opentable();
-		  scrivi("<h3>Modifica/Cancella il Sondaggio in sË (padre delle domande titolo,descrizione,date...)</h3>");
-		  echo "(esso Ë padre di tutte le domande, ha un titolo, una descrizione, una data di attivazione, ..."
+		  scrivi("<h3>Modifica/Cancella il Sondaggio in s√® (padre delle domande titolo,descrizione,date...)</h3>");
+		  echo "(esso √® padre di tutte le domande, ha un titolo, una descrizione, una data di attivazione, ..."
 				." e ad esso sono associati $ntot voti)";
 		  $sql="select * from polls_titoli where id_poll=".$id_msgDaVedere;
 		  $res=mq($sql);
@@ -215,7 +215,7 @@ Attualmente ci sono solo 3 modi di usare la combinazione FOTO e TIPOFOTO:<br>
 	closetable();
 
 	scrivi("<h3>Cancella TUTTE le domande (rimane un moncherino di sondaggio con solo titolo).</h3>");
-	scrivi("attenzione, x rimuovere le domande, x motivi di integrit‡ referenziale, bisogna "
+	scrivi("attenzione, x rimuovere le domande, x motivi di integrit√† referenziale, bisogna "
 			."prima rimuovere ogni voto relativo a QUELLA domanda...");
 #	echo rossone("i voti relativi al sondaggio $id_msgDaVedere sono: [$ntot]...<br>");
 	if ($ntot > 0)
@@ -234,7 +234,7 @@ Attualmente ci sono solo 3 modi di usare la combinazione FOTO e TIPOFOTO:<br>
 	if ($ndomande==0)
 		{opentable();
 		 scrivi("<h3>Rimuovi il sondaggio.</h3>");
-		 echo rossone("Te lo faccio fare (si vis) solo perchÈ hai cancellato ormai tutto il resto!");
+		 echo rossone("Te lo faccio fare (si vis) solo perch√© hai cancellato ormai tutto il resto!");
 		 formBegin();
 		  formhidden("hidden_operazione","RIMUOVI SONDAGGIO");
 		  formhidden("hidden_id_poll",$id_msgDaVedere);
