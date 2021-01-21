@@ -26,7 +26,7 @@ function isFotoExt($ext)
 
 function BuildPath($perc,$nom)
 {
-//if (isdevelop()) echo rosso("dacci un occhio ric se buildpath fa ciò che vorresti... ($perc,$nom = $perc/$nom)");
+//if (isdevelop()) echo rosso("dacci un occhio ric se buildpath fa ciÃ² che vorresti... ($perc,$nom = $perc/$nom)");
 return "$perc/$nom";
 }
 
@@ -81,7 +81,7 @@ function scriviReportFile($files,$directoryiniziale)
 	 $grand=intval(filesize($files) / 1000);
 //	 $dataCR=toHumanDate(Date(filectime($files))); 
 	 $dataCR=todatasbura((filemtime($files))); 
-			// time di cambiamento dell'inode, era ciò che assomigliava + alla creazione...
+			// time di cambiamento dell'inode, era ciÃ² che assomigliava + alla creazione...
 	trtd();
 	 scrivi("<a href=\"".$directoryiniziale."/".$nome."\">");
 	 img("scarica.jpg");
@@ -146,7 +146,7 @@ while(FALSE !== ($files=readdir($handle)))
   {
 #   echo "file1: $files"; 
    if (is_file("$cartella/$files"))
-	{#echo " è un file: $files<br>"; 
+	{#echo " Ã¨ un file: $files<br>"; 
 	 if ($percorsobreve == "")
 		 scriviReportFile("$files",$directoryiniziale);
 	 else
@@ -204,7 +204,7 @@ scrivi("<big><big>");
 scrivi($sepIn."<a href='".$script."'?path='".ParentFolder($cartella)."'><b>Home</b></a>");
 scrivi($sepPostHome);
 
-scrivi("anzichè cercare nei file interni devo cercare nel DB le foto indicizzate che contengano quella frase...");
+scrivi("anzichÃ¨ cercare nei file interni devo cercare nel DB le foto indicizzate che contengano quella frase...");
 
 while($sottocartelle=readdir($cartella))
 	{$nome=$sottocartelle;
@@ -299,7 +299,7 @@ while ($file = readdir($rep))
 	if($file != '..' && $file !='.' && $file !='')
 		if (is_dir($file))
 
-anche scandir è fico:
+anche scandir Ã¨ fico:
 
 $dir    = '/tmp';
 $files1 = scandir($dir);

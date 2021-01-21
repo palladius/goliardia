@@ -8,7 +8,7 @@ include "header.php";
 
 echo "<center>";
 
-echo h1("solo x adminvip, Ë prototipale ;) tbds...");
+echo h1("solo x adminvip, √® prototipale ;) tbds...");
 
 	/////////////////////////////// INTRO
 if (anonimo())
@@ -30,7 +30,7 @@ img("goliardon2.jpg",150);
 
 
 
-//scrivi("<h2><font color=red>attento</font>. Non ci sono + foto nel sito. questo Ë <i>TEMPORANEO</i>. mi scuso del disagio causato a voi marpioni. sto cercando una soluzione. Ciao!!! Evita di fare upload di foto dato che verranno probabilmente perse. Attendi una stabilizzazione (v. lyapunov) del sito e riprova. Ciao!</h2>");
+//scrivi("<h2><font color=red>attento</font>. Non ci sono + foto nel sito. questo √® <i>TEMPORANEO</i>. mi scuso del disagio causato a voi marpioni. sto cercando una soluzione. Ciao!!! Evita di fare upload di foto dato che verranno probabilmente perse. Attendi una stabilizzazione (v. lyapunov) del sito e riprova. Ciao!</h2>");
 
 
 
@@ -50,7 +50,7 @@ scrivi(bigg("<a href='fotoguarda_tn.php?pathbreve=FOTO%5C2002'><big>GUARDA LE FO
 
 scrivi("<h3>Spediscimi una foto</h3><br>");
 
-scrivi("Mi raccomando, non spedirmi un tuo thumbnail tramite il sito: nel caso spediscimelo via mail!!! Qui butta su foto secondarie, che hai scattato e che vorresti comparissero prima o poi (senza fretta) sul sito: le devo infatti spostare a mano perchË voi le possiate vedere...");
+scrivi("Mi raccomando, non spedirmi un tuo thumbnail tramite il sito: nel caso spediscimelo via mail!!! Qui butta su foto secondarie, che hai scattato e che vorresti comparissero prima o poi (senza fretta) sul sito: le devo infatti spostare a mano perch√® voi le possiate vedere...");
 
  tabled();
  scrivi("<tr><td><center>");
@@ -95,8 +95,8 @@ if ($UPLOADVA)
 //				 formbottoneinvia("Butta su");
 
 scrivib("<br>Avrete notato che ho tolto l'upload dei vostri thumbnail: se avete fotografie vostre da mandarmi, fate MOLTO prima a spedirmele via mail! Grazie!!!");
-scrivib(rosso("<br>\nMi raccomando! Se vuoi associare l'icona a un goliarda, Ë facile: basta buttar su una foto chiamata <u>ESEMPIO.JPG</u> e poi cambiare nei dati di quella persona i dati riguardanti la foto e mettere sotto foto il valore <u>ESEMPIO.JPG</u>. Se invece vuoi associare la foto al tuo utente (essendoti scocciato di quel punto interrogativo in alto a destra), devi assolutamente rinominare quella foto col tuo nome utente!!! esempio, se ti chiami <u>Pippo</u> devi rinominare la foto in <u>pippo.jpg</u>. Lo so, sono i misteri degl'ingegneri...<br/>Ultimo ma non ultimo"
-	.": facendo cosÏ non succeder‡ UN BEL NIENTE! perÚ poi io potrÚ mettere la foto nella cartella apposita e POI attivarti!!!"));
+scrivib(rosso("<br>\nMi raccomando! Se vuoi associare l'icona a un goliarda, √® facile: basta buttar su una foto chiamata <u>ESEMPIO.JPG</u> e poi cambiare nei dati di quella persona i dati riguardanti la foto e mettere sotto foto il valore <u>ESEMPIO.JPG</u>. Se invece vuoi associare la foto al tuo utente (essendoti scocciato di quel punto interrogativo in alto a destra), devi assolutamente rinominare quella foto col tuo nome utente!!! esempio, se ti chiami <u>Pippo</u> devi rinominare la foto in <u>pippo.jpg</u>. Lo so, sono i misteri degl'ingegneri...<br/>Ultimo ma non ultimo"
+	.": facendo cos√¨ non succeder√† UN BEL NIENTE! per√≤ poi io potr√≤ mettere la foto nella cartella apposita e POI attivarti!!!"));
 
 				 scrivi("</form>");
 

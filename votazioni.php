@@ -32,7 +32,7 @@ trtd();
 tdtd();
  $res=mq("select id_poll,titolo,m_sNome from polls_titoli p,loginz l WHERE l.id_login=p.id_utente_creatore "
 		."AND datafine<now() order by datacreazione desc");
- scriviVotazioniSuDueColonne("Votazioni gi‡ terminate",$res);
+ scriviVotazioniSuDueColonne("Votazioni gi√† terminate",$res);
 trtdEnd();
 tableEnd();
 }
@@ -62,10 +62,10 @@ $autooperazione= Form("hidden_operazione");
 
 if ($autooperazione == "voto")
 	{
-	 scrivi(rosso("Sto cercando di aggiornare il dibbÏ col tuo cacchio di voto..."));
+	 scrivi(rosso("Sto cercando di aggiornare il dibb√¨ col tuo cacchio di voto..."));
 	 $OK_INSERISCI_PURE = TRUE;
 	 invio();
-	 scrivi("Guardiamo se il voto esiste gi‡...<br/>"); 
+	 scrivi("Guardiamo se il voto esiste gi√†...<br/>"); 
 	 $iddom=Form("id_domanda");
 	 $idutente=Form("id_utente");
 	 if ($idutente != getIdLogin()) // ctrl lo spoofing dell'utente...
@@ -83,7 +83,7 @@ if ($autooperazione == "voto")
 	 if ($ISPAL) echo rossone("num voti: [$QUANTI]");
 	 if (($QUANTI) != 0)
 		{
-		 scrivib(rosso("Mi, spiace, barone, hai votato gi‡ troppe volte questo poll! Il voto non vale, stvonzo.<br/>"));
+		 scrivib(rosso("Mi, spiace, barone, hai votato gi√† troppe volte questo poll! Il voto non vale, stvonzo.<br/>"));
 		 $OK_INSERISCI_PURE = FALSE;
 		}
 	 #scriviRecordSetConTimeout($res,50);
@@ -99,18 +99,18 @@ if ($autooperazione == "voto")
 		if ($ok)
 			scrivi(rosso("<br>Ok, inserito!"));
 		   else 
-			scrivi("<br>Qualcosa Ë andato storto, probabilmente hai cliccato senza prima selezi"
+			scrivi("<br>Qualcosa √® andato storto, probabilmente hai cliccato senza prima selezi"
 				."onare alcun elemento da votare, brutto pirla!!!");
 		}
 	   else
-		scrivib(("Il voto NON Ë stato inserito.<br/>"));		
+		scrivib(("Il voto NON √® stato inserito.<br/>"));		
 	}
 
 
 if ($autooperazione == "inseriscinuovosondaggio")
 	{
 	 autoInserisciTabella("polls_titoli");
-	 scrivi(bigg("<br><br>se Ë andato tutto bene, torna <a href='votazioni.php'><b>indietr"
+	 scrivi(bigg("<br><br>se √® andato tutto bene, torna <a href='votazioni.php'><b>indietr"
 		."o</b></a> e edita le domande del nuovo sondaggio..."));
 	 bona();
 	}

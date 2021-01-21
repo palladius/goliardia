@@ -12,7 +12,7 @@ $quantiNeVisualizzoINTERAMENTE=10;
 
 ?>
 <h1> Linkz </h1>
-<h4>Il pi˘ importante (altro) sito goliardico italiano Ë 
+<h4>Il pi√π importante (altro) sito goliardico italiano √® 
 <a href="http://www.goliardia.org">www.goliardia.or<i>g</i></a>. Dacci un'occhiata!</h4>
 <?php 
 
@@ -30,7 +30,7 @@ $iddacancellareeventualmente = QueryString("cancellaid");
 if  (! empty($iddacancellareeventualmente ))
 	{
 	if (! isAdminVip()) 
-		scrivi("cazzo fai? hai violato le prime difese del dibbÏ... complimenti...");
+		scrivi("cazzo fai? hai violato le prime difese del dibb√¨... complimenti...");
 	else
 		{
 		 $rs=mq("delete * from linkz where id_link='$iddacancellareeventualmente'");
@@ -201,11 +201,11 @@ formhidden("id_login",Session("SESS_id_utente"));
 formhidden("data_creazione",dammiDatamysql());
 scrivi("TIPO:");
 popolaComboTipoLink("tipo");
-scrivi("<br>Questo menu a tendina Ë importantissimo: il tipo scelto verr‡ "
-	. "in future release messo automaticamente a fianco del 'contenuto' cui Ë stato"
-	. " associato; se x esempio scegli 'goliardi', poi ti verr‡ dato un menu a t"
+scrivi("<br>Questo menu a tendina √® importantissimo: il tipo scelto verr√† "
+	. "in future release messo automaticamente a fianco del 'contenuto' cui √® stato"
+	. " associato; se x esempio scegli 'goliardi', poi ti verr√† dato un menu a t"
 	. "endina di scelta tra i vari goliardi in cui, x esempio sceglierai 'Ribot'."
-	. " Quando qualcuno visualizzer‡ il goliarda Ribot (almeno in futuro) trover‡"
+	. " Quando qualcuno visualizzer√† il goliarda Ribot (almeno in futuro) trover√†"
 	. " automaticamente quel link vicino a lui; lo stesso vale se "
 	. " scegli ORDINI e poi DRUIDI, tanto x fare un esempio a caso... Ok?!? Se mi"
 	. " ritieni un figo, sei libero di mandarmi una amil e dirmelo.<bR>");

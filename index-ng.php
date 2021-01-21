@@ -32,7 +32,7 @@ $FOTOPRIMAPAGINA=$rs[0];
 
 
 echo h1("Index NEW (solo PAL)");
-echo h2("A tendere, questo diventer‡ sia GRAFIUCAMENTE alla karaoke sia LOGICAMENTE alla jjumla (option=COMANDO). Per ora la seconda parte la sta facendo '<a href='index2.php'>index2</a>'");
+echo h2("A tendere, questo diventer√† sia GRAFIUCAMENTE alla karaoke sia LOGICAMENTE alla jjumla (option=COMANDO). Per ora la seconda parte la sta facendo '<a href='index2.php'>index2</a>'");
 
 
 

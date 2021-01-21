@@ -48,7 +48,7 @@ function scriviReport_Ordine($recSet)
 echo("<h6>");
 echo(getOrdineGraficoById($recSet["id_ord"],30));
 echo("<a href='modifica_ordine.php?idord=".$recSet["id_ord"]."'>".$recSet["nome_veloce"]."</a> ("
-	.$recSet["citt‡"].")</h6>");
+	.$recSet["citt√†"].")</h6>");
 }
 
 
@@ -81,10 +81,10 @@ $MAXNUMERORECORDZ=8; // sarebbe 25, ma li devo contare
 
 if (FALSE)
 {
-	FANCYBEGIN("Il motorone di ricerca di qgfdÆ Palladius");
+	FANCYBEGIN("Il motorone di ricerca di qgfd¬Æ Palladius");
 ?>	<big>In questa pagina troverete dei <i>match</i> tra la parola da voi digitata (<?php  echo $parole?>) 
 	e varie informazioni del database (inserite soprattuto da VOI). Attenzione che ci sono
-	novit‡. Scrollando la pagina, troverete informazioni su <b>goliardi</b>, <b>utenti</b>, 
+	novit√†. Scrollando la pagina, troverete informazioni su <b>goliardi</b>, <b>utenti</b>, 
 	<b>messaggi</b>, <b>FAQ</b>, <b>ordini</b>.</big>
 <?php  	  FANCYMIDDLE() ;	
 	  linkamenu("goliardi");

@@ -17,11 +17,11 @@ if ((Form("operazione"))=="muori")
 <center>
 <?php 
 	echo ("<table width=$CONSTLARGEZZA600><tr><td>Grazie. Ho notificato agli altri che tu sei uscito e SO che non sei + in chat. ".
-			"Un giorno questo pagherà: quando scade una sessione e uno è considerato in chat diminuirò drasticamente i suoi".
-			" Goliard Pointz® x punizione. :) </td></tr></table>");
+			"Un giorno questo pagherÃ : quando scade una sessione e uno Ã¨ considerato in chat diminuirÃ² drasticamente i suoi".
+			" Goliard PointzÂ® x punizione. :) </td></tr></table>");
 	setSession("chatVergine","diNuovoVergine");
 	if ($PUBBL_MSG_ENTRA_ESCI)
-		addMessaggio(getMessaggio(Session("nickname"),"__SPECIALE__"," è appena uscito dalla Chat"));
+		addMessaggio(getMessaggio(Session("nickname"),"__SPECIALE__"," Ã¨ appena uscito dalla Chat"));
 ?>
 <form name="f1" method="post" action="chatscrivi.php">
   <input type="button" value="MUORI DAVVERO, ORA." onClick="parent.close()">
@@ -37,7 +37,7 @@ if ((Form("operazione"))=="muori")
 if (Session("chatVergine") != "sverginato")
 	{
 	if ($PUBBL_MSG_ENTRA_ESCI)
-		addMessaggio(getMessaggio(Session("nickname"),"__SPECIALE__"," è appena entrato in Chat"));
+		addMessaggio(getMessaggio(Session("nickname"),"__SPECIALE__"," Ã¨ appena entrato in Chat"));
 	setSession("chatVergine","sverginato");
 	}
 
@@ -77,17 +77,17 @@ global $icone,$colori,$col;
 
 
 
-  $testo = replace($testo,"scusa","vaffanculo (ma solo xchè scusa non si chiede)");
-  $testo = replace($testo,"grazie","ti darò il culo x questo");
+  $testo = replace($testo,"scusa","vaffanculo (ma solo xchÃ¨ scusa non si chiede)");
+  $testo = replace($testo,"grazie","ti darÃ² il culo x questo");
 //   $testo = replace($testo,"grazie","denghiu");
-    $testo = replace($testo,"prego","<i>of nothing, for you this and other®</i>");
+    $testo = replace($testo,"prego","<i>of nothing, for you this and otherÂ®</i>");
   $testo = replace($testo,"cazzo","<b>turbominchia</b>");
   $testo = replace($testo,"merda","<b>Oca</b>");
 //  $testo = replace($testo,"goliardia","<b>In questo sito non parleremo che di <i>goGliardia</i>: quella vera - invece - la faremo al bar!!!</b>");
   $testo = replace($testo,"buongiorno","<i>mittttticccccoooooo!!!! ... mabbbaaaaaffanculo!</i>");
   $testo = replace($testo,"palladius","<i>quel maricon de Palladius</i>");
   $testo = replace($testo,"ciao", "Evviva l'Italia evviva la Bulgaria");
-  $testo = replace($testo,"a dopo","<i>Palladius è proprio un gran Figo, devo ammettere. Un saluto</i>");
+  $testo = replace($testo,"a dopo","<i>Palladius Ã¨ proprio un gran Figo, devo ammettere. Un saluto</i>");
 //  $testo = replace($testo,"vado","<i>mi accingo ad andare</i>");
 
 $balbuziente = Session("conf_balbuziente"); // true; //(String(Session("nickname")) == "lapalisse");
@@ -226,7 +226,7 @@ if ($specialfrase == "svuotachat")
 // GESTIONE DELLE BRAGHE
 
 
-// palladius$numpx$M @ <utente$px$sex> @ e così via
+// palladius$numpx$M @ <utente$px$sex> @ e cosÃ¬ via
 
 
 bragheInit();
@@ -235,7 +235,7 @@ $bragheqs = (querystring("braghe"));
 
 if (! empty($bragheqs))
 	 	{bragheAdd($bragheqs);
-		 echo ("<center><i>mandato in braghe quel turbominchione® di <b>$bragheqs</b></i></center>");
+		 echo ("<center><i>mandato in braghe quel turbominchioneÂ® di <b>$bragheqs</b></i></center>");
 		}
 $bragheqs = (querystring("surge"));
 if (! empty($bragheqs))
@@ -294,7 +294,7 @@ if (! empty($bragheqs))
 <table width=<?php  echo $CONSTLARGEZZA600 ?>><tr><td>
 <font size="-1">
 <b>N.B.</b> Attenzione a quel che scrivete. Siete osservati.
-<?php   definizioni("[<b><u>MORE INFO</u></b>]","Questa è la chat di $QGFDP. Ora c'è anche l'autofocus, se notate.\n" 
+<?php   definizioni("[<b><u>MORE INFO</u></b>]","Questa Ã¨ la chat di $QGFDP. Ora c'Ã¨ anche l'autofocus, se notate.\n" 
 	."Attenzione, se siete nuovi: molte parole vengono trasformate in altre per il vostro "
 	."ma soprattutto MIO divertimento. A voi scoprire quali cambiamenti...");
 ?>

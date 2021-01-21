@@ -26,7 +26,7 @@ $sepOut="</td></tr></table>";
 scrivi($sepIn."<a href='$AUTOPAGINA'?path='".($cartella.ParentFolder)."'><b>Home</b></a>");
 scrivi($sepPostHome);
 	// sottocartelle
-scrivi("anzichè cercare nei file interni devo cercare nel DB le foto indicizzate che contengano quella frase...");
+scrivi("anzichÃ¨ cercare nei file interni devo cercare nel DB le foto indicizzate che contengano quella frase...");
 $sottocartelle=Enumerator($cartella.SubFolders);
 while(!$sottocartelle.atEnd())
 	{$nome=sottocartelle.item().Name;
@@ -37,7 +37,7 @@ while(!$sottocartelle.atEnd())
 		 $querystring = "?pathbreve=".escape($nome); // trasforma l'ultima cosa e basta
 	
 	$N=quantefoto($cartella."/".($sottocartelle.item().Name));
-	$prova123=querystring.substring(querystring.indexOf("immagini/")+9);	 // 9 è la strlen di 'immagini '
+	$prova123=querystring.substring(querystring.indexOf("immagini/")+9);	 // 9 Ã¨ la strlen di 'immagini '
 	$link="<font size=-1><a href='".$script.$querystring."'>".($sottocartelle.item().Name)
 		.$sepQuanteFoto." <i>(".($N/2)." foto)</i></a></font>";
 	echo($separatore.$link);

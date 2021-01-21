@@ -22,9 +22,9 @@ if ($op=="aggiunta")
 	{
 	 if (Form("ID_CARICA")=="-1")
 		{
-		 scrivib(rosso("Se la carica che devi inserire non Ë presente nell'ordine, "
+		 scrivib(rosso("Se la carica che devi inserire non √® presente nell'ordine, "
 			."prima devi aggiungerla come carica dell'Ordine! "));
-		 scrivib(rosso("Questo vale anche se Ë una nomina che vale solo x questa persona."
+		 scrivib(rosso("Questo vale anche se √® una nomina che vale solo x questa persona."
 			." Insomma, non sta certo a me giustificare le mie scelte "));
 		 scrivib(rosso("progettuali con te, ok?!?!? :-)"));
 		 bona();
@@ -55,7 +55,7 @@ $res=mq($sql3);
 $rs=mysql_fetch_array($res);
 
 ?>
-	<h3>d‡ un'occhiata all'<a href=modifica_ordine.php?idord=<?php  echo $idordine?>>ordine</a> in questione</h3>
+	<h3>d√† un'occhiata all'<a href=modifica_ordine.php?idord=<?php  echo $idordine?>>ordine</a> in questione</h3>
 <?php 
 if (isdevelop()) echo rosso("guarda ric che qua viene fatta una querona (beh dai, diciamo 10 record) quando"
 	." poi non viene usata se non x fre un controllo di esistenza: cerca di tradurla in una query di count"
@@ -76,9 +76,9 @@ formBegin();
 	formhidden("id_goliarda",$idgol);
 	invio();
 	formtext("eventuale_numero_progressivo","0");
-	scrivi("<br><i>(Il numero progressivo ha senso se Ë un capoordine o capocitt‡, tipo: "
+	scrivi("<br><i>(Il numero progressivo ha senso se √® un capoordine o capocitt√†, tipo: "
 		. "il <b>45mo</b> Gran Maestro di StiCazzi... Se non ha senso lascia stare "
-		. "a 0, il computer capir‡...)</i>");
+		. "a 0, il computer capir√†...)</i>");
 	invio();
 	formtext("data_nomina",dammiDatamysql());
 	$res42=mq("select id_login from loginz where m_snome='$GETUTENTE'");

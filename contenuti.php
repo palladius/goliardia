@@ -9,7 +9,7 @@ include "header.php";
 $myLivello=getMyLivello();
 ?>
 		<h1> Contenuti </h1>
-	(il tuo livello è: <?php  echo $myLivello?>)
+	(il tuo livello Ã¨: <?php  echo $myLivello?>)
 
 
 <?php 
@@ -24,7 +24,7 @@ $seqlLast10MessaggiDaAttivare = mq("select * from contenuti c,loginz l where m_b
 $tipoquerystring = QueryString("tipo");
 
 $seqlLast10MessaggiAttivi=mq(
-	(!empty($tipoquerystring)) ? // tipo è definito
+	(!empty($tipoquerystring)) ? // tipo Ã¨ definito
 			"select * from contenuti c,loginz l where m_nLivelloSegretezza>=".$myLivello
 			." AND m_binattesa=0 AND c.m_bAttivo=1 AND tipo='".$tipoquerystring
 			."' AND c.idlogin = l.id_login order by tipo, datacreazione DESC"
@@ -50,7 +50,7 @@ $arrTipi = Array(
 	"sito",
 	"attualita",
 	"goliardia",
-	"scienza"  // lui è il dodicesimo, arr[11]
+	"scienza"  // lui Ã¨ il dodicesimo, arr[11]
 	); 
 if ($ISPAL)
 	$arrTipi[12]="PALNEWS";
@@ -76,7 +76,7 @@ return 3; // dflt: user
 
 
 /* a II del mio livello e di quello del recordset.target, decide seposso amministrare quel contenuto...
-	è necessario che CANADMIN >= CANSEE, x ora la tabella è:
+	Ã¨ necessario che CANADMIN >= CANSEE, x ora la tabella Ã¨:
 	NUM	VEDERE	ADMIN
 	0	PAL		PAL
 	1	VIP		VIP
@@ -89,7 +89,7 @@ function puoAmministrare($rs)
 {
 global $ISPAL;
 	//scrivi(rosso("(mio livello: ".$myLivello."; liv.msg: ".$rs["m_nLivelloSegretezza").")"));
-	//if (myLivello >= 2) return isAdmin(); // x amministrare da admin in giù + nec.suff. essere admin
+	//if (myLivello >= 2) return isAdmin(); // x amministrare da admin in giÃ¹ + nec.suff. essere admin
 	//return String(rs("m_nLivelloSegretezza")) == String(myLivello);
 
 if (! isAdmin()) return FALSE;
@@ -112,7 +112,7 @@ function scriviReport_contenuto($rs,$visualizz)
 
  $CANADMIN = puoAmministrare($rs);
 
-// x ora modifico 10 e 20 insieme... in futuro rimetterò il "if (... < 10) do {GESTISCI10}"
+// x ora modifico 10 e 20 insieme... in futuro rimetterÃ² il "if (... < 10) do {GESTISCI10}"
 
 if ($visualizz<=20)
 	{if ($CANADMIN)
@@ -124,7 +124,7 @@ if ($visualizz<=20)
 	 return;
 	}
 openTable();
-	$nomeadmin="UNDEFD ERORE"; // se è 0, metti CSM se no calcola nome e mettilo...
+	$nomeadmin="UNDEFD ERORE"; // se Ã¨ 0, metti CSM se no calcola nome e mettilo...
 	if ($rs["idloginpubblicante"] == 0)
 		$nomeadmin = "nessuno";
 	else {$resAdmin=mq("select m_sNome from loginz where id_login=".$rs["idloginpubblicante"]);
@@ -208,15 +208,15 @@ $iddagestire = QueryString("gestisci_id");
 if  (!empty($iddagestire ))
 {
 if (! isAdmin()) 
-	scrivi("cazzo fai? hai violato altre difese del dibbì... complimenti... scrivimi x "
-		."favore su quanto è successo... sempre che tu appartenga al lato buono...");
+	scrivi("cazzo fai? hai violato altre difese del dibbÃ¬... complimenti... scrivimi x "
+		."favore su quanto Ã¨ successo... sempre che tu appartenga al lato buono...");
 	else
 	{echo(h1("Pagina di gestione del contenuto numero ".$iddagestire.".."));
  	 $res= mq("select * from contenuti c,loginz l where c.idcontenuto="
 			.$iddagestire." AND c.idlogin = l.id_login");
 	 $rs=mysql_fetch_array($res);
  	 scriviReport_contenuto($rs,30);
-	 scrivi("<b>ATTENZIONE</b> Se non voglio nè censurare l'articolo nè pubblicarlo, basta "
+	 scrivi("<b>ATTENZIONE</b> Se non voglio nÃ¨ censurare l'articolo nÃ¨ pubblicarlo, basta "
 		."non far nulla. Saranno altri a farsi carico della scelta...");
 	formBegin();
 	 formhidden("my_hidden_id",$iddagestire);	
@@ -265,7 +265,7 @@ $iddacancellareeventualmente = QueryString("cancellaid");
 if  (!empty($iddacancellareeventualmente ))
 	{
 	if (! isAdminVip()) 
-		scrivi("cazzo fai? hai violato le prime difese del dibbì... complimenti...");
+		scrivi("cazzo fai? hai violato le prime difese del dibbÃ¬... complimenti...");
 	  else
 		{
 		 $res=mq("delete * from contenuti where id=".$iddacancellareeventualmente);
@@ -327,7 +327,7 @@ while ($rs=mysql_fetch_array($res))
 	 $CARDPERTIPO ++;
 	 $oldTipo = $rs["tipo"];
 	 if ($CARDPERTIPO < $MAXPERTIPO+1) 
-		{ // se più di N di un tipo non li stampo +... 
+		{ // se piÃ¹ di N di un tipo non li stampo +... 
 		 if ($m_bNuovoTipo)
 			{
 			 trtdEnd();
@@ -344,7 +344,7 @@ while ($rs=mysql_fetch_array($res))
 		 scrivi("</a>, ")	;
 		}
 	   else  
-		if ($CARDPERTIPO == $MAXPERTIPO+1) // cioè, solo la prima volta...
+		if ($CARDPERTIPO == $MAXPERTIPO+1) // cioÃ¨, solo la prima volta...
 			 {scrivi("... ");}
 	}
 trtdEnd();

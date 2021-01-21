@@ -59,7 +59,7 @@ function aggiungiJavaScript() {
 				 er += "ATTENZIONE, devi dare il consenso per il trattamento dei dati personali\n"; 
 			}
 					// valida radioButton
-					// radio NON NULLI (a default li rendo nulli x maggior probabilit‡ di dato buono)
+					// radio NON NULLI (a default li rendo nulli x maggior probabilit√† di dato buono)
 					// valida textbox
 			var arrNonVuoti=new Array("nick","nomecognome","email","note","interessi","gustisessuali");
 			for (k=0; k<arrNonVuoti.length;k++) { 
@@ -119,7 +119,7 @@ $nick=String(Form("nick"));
 $note=(String(Form("note")));
 #if (note == "undefined") note="";
 $note=encodeApostrofi($note); // raddoppia gli apostrofi...
-if ($nick!="") // ragionevolmente FORM(nick) esiste se e solo se esiste FORM(data), cosÏ non d‡ warning...
+if ($nick!="") // ragionevolmente FORM(nick) esiste se e solo se esiste FORM(data), cos√¨ non d√† warning...
 	$datanascita = getAutoDataByFormmysql("datanascita"); 
 $mbisgoliard = String(Form("m_bIsGoliard"));
 $email = strtolower(Form("email"));
@@ -132,7 +132,7 @@ $msn = String(Form("msn"));
 	if ($msn == "") $msn="-";
 	$msn = encodeApostrofi($msn);
 $nomecognome = String(Form("nomecognome")); 
-			// andr‡ nella variabile m_thumbnail lo so che Ë sporco ma...
+			// andr√† nella variabile m_thumbnail lo so che √® sporco ma...
 	if ($nomecognome == "") $nomecognome="-";
 	$nomecognome = encodeApostrofi($nomecognome);
 $icq = String(Form("icq"));
@@ -159,7 +159,7 @@ if ($DEBUG || $ISPAL) {
 }
 
 if ($postatoQualcosa) {
-	# verifichiamo la bont‡ del POST
+	# verifichiamo la bont√† del POST
 	if ($gustisessuali=="" ) { 
 		$msgErrore = (htmlMessaggione("campo gustisessuali vuoto")); }
 	else if ($icq=="" )
@@ -198,13 +198,13 @@ if ($postatoQualcosa) {
 		 if ($ISPAL)
 			 scrivi(rosso($sql));
 		 mysql_query($sql)
-		 	or die("<br><b>ahi ahi ahi!!!</b> la query non Ë andata a buon fine: ".mysql_error());
+		 	or die("<br><b>ahi ahi ahi!!!</b> la query non √® andata a buon fine: ".mysql_error());
 
 		$bodi = "<center><h1>Benvenuto nel sito www.goliardia.it!</h1></center>\n<br>La password da te richiesta per il login '<b>$nick</b>' '<b>$randompwd</b>'. Prova a fare il login <a href='http://www.goliardia.it/'>qui</a>. Se non ti piace, puoi sempre cambiarla nella sezione <b>UTENTE</b> (in alto in ogni pagina).<br><br>Ti ricordo che mi hai detto che:<br>"
 		."E-mail: <b>$email</b><br>Nome e cognome: <b>$nomecognome</b><br>Data di nascita: <b>$datanascita</b><br>"
 		."Sei goliarda o meno: <b>".($mbisgoliard ? "goliarda" : "filisteo")."</b><br>Sesso: <b>".($sex ? "maschio" : "femmina")."</b><br>Note: <b>$note</b><br>Citta': <b>$provincia</b><br>"
 		."IP: <b>".$utenteIp."</b><br/>"
-		."<br>P.S. Se non vuoi essere guest, devi <i>banalmente</i> mandarmi una foto con la tua faccia. I motivi e soprattutto il formato (jpg, - di 10 KB, ...) li trovi nelle <a href='faq.php'>F.A.Q.</a>  del sito che rispondono alla maggior parte delle domande che ti  possono ora come ora venire in mente. Vacci a dare un occhio!!! <i>Mi raccomando quando ti degnerai di mandarmi la foto mandala (1) dallo stesso indirizzo con cui ti sei iscritto e (2) col nome della foto pari al tuo nome  goliardico, x esempio se tu sei icsus mi devi mandare la foto 'icsus.jpg', ok?!? In caso contrario verra'  cestinata</i>. Se me la spedisci e non compare entro 1 giorno e' probabile che l'abbia cestinata. Sai ne ricevo TANTE al giorno, il minimo e' che me le spediate secodo il formato che vi CHIEDO. quindi perdete 5 minuti a guardare le FAQ. Grazie.<br>\nTroverai in questo sito parole volgari talvolta poiche'  c'e'  assoluta libert‡ di espressione; se la cosa ti disturba, non entrarci. Entrando NON renderai disponibile la tua emailagli iscritti. Grazie.<br>\n<br>e ora sei pronto x il <a href='login.php'>login</a>!!!<br> PS. X domande triviali, anziche' scrivermi, chiedi in chat  a qualche amministratore " ."x favore: ricevo una trentina di mail al giorno sempre uguali :( ...";
+		."<br>P.S. Se non vuoi essere guest, devi <i>banalmente</i> mandarmi una foto con la tua faccia. I motivi e soprattutto il formato (jpg, - di 10 KB, ...) li trovi nelle <a href='faq.php'>F.A.Q.</a>  del sito che rispondono alla maggior parte delle domande che ti  possono ora come ora venire in mente. Vacci a dare un occhio!!! <i>Mi raccomando quando ti degnerai di mandarmi la foto mandala (1) dallo stesso indirizzo con cui ti sei iscritto e (2) col nome della foto pari al tuo nome  goliardico, x esempio se tu sei icsus mi devi mandare la foto 'icsus.jpg', ok?!? In caso contrario verra'  cestinata</i>. Se me la spedisci e non compare entro 1 giorno e' probabile che l'abbia cestinata. Sai ne ricevo TANTE al giorno, il minimo e' che me le spediate secodo il formato che vi CHIEDO. quindi perdete 5 minuti a guardare le FAQ. Grazie.<br>\nTroverai in questo sito parole volgari talvolta poiche'  c'e'  assoluta libert√† di espressione; se la cosa ti disturba, non entrarci. Entrando NON renderai disponibile la tua emailagli iscritti. Grazie.<br>\n<br>e ora sei pronto x il <a href='login.php'>login</a>!!!<br> PS. X domande triviali, anziche' scrivermi, chiedi in chat  a qualche amministratore " ."x favore: ricevo una trentina di mail al giorno sempre uguali :( ...";
 				// operazione ok, spedisco i dati via mail...
 		scrivi("Invio mail...<br>");
 		log2("qualcuno iscritto col nome di '".$nick."' e pwd '$randompwd'");
@@ -214,7 +214,7 @@ if ($postatoQualcosa) {
 		$rs=mysql_fetch_row($res) or die("non ti ho mica inserito nel sito, cacchio! sob! dillo a pal.");
 
 		sendGms($rs[0],"Benentrato nel sito! prima di disturbare via mail, guarda le FAQ x favore o chiedi in chat! "
-			."(Il webmaster ha tante cose da fare e odia chi manda mail piene di ovviet‡: grazie! Se no le faq"
+			."(Il webmaster ha tante cose da fare e odia chi manda mail piene di ovviet√†: grazie! Se no le faq"
 			." che le compila a fare?)");
 		if (! $sex) {
 			#sendGms(3,"GNOCCA Si e' iscrittA al sito <a href='utente.php?nomeutente=$nick'>$nick</a>,sex='".($sex ? "maschio" : "femmina")."' ,<a href='mailto:$email'>$email</a>'.");
@@ -222,7 +222,7 @@ if ($postatoQualcosa) {
 			#sendGms(3,"Si e' iscrittO al sito <a href='utente.php?nomeutente=$nick'>$nick</a>,pwd='$randompwd',sex='".($sex ? "maschio" : "femmina")."' ,<a href='mailto:$email'>$email</a>'.");
 		}
 		scrivi("<center>");
-		scrivi(rossone("Il nome '".$nick."' Ë stato succesfulmente spedito a '".$email."'!!! <br>Vai a leggere la posta e poi"));
+		scrivi(rossone("Il nome '".$nick."' √® stato succesfulmente spedito a '".$email."'!!! <br>Vai a leggere la posta e poi"));
 		scrivi(big("<a href='login.php'>Va al login</a>.<br> Se invece hai scritto male la email fai un piacere al Webmaster e <a href='mailto:".$WEBMASTERMAIL."'>digli di aver inserito un utente x sbaglio</a>, X FAVOREEEEEEEEEEE. Grazie. <br/> <h2 class=debug>Ricordati che se la mail scritta e' sbagliata oppure punta a uno di quegli indirizzi hotmail che non accettano mail la password NON TI ARRIVERA' MAI. Il 90% della gente che mi stressa sull'iscrizione mette delle mail del cavolo, quindi prima di stressarmi siate certi che il vostro account RICEVA mail; se siete convinti, ditemi qualcosa tipo 'ciao Palladius, sono XXX e mi sono scritto come YYY dando mail ZZZ ma non va: puoi aiutarmi? Questi 3 dati spesso non me li date credendo che io sia un indovino...' Comunque sia, vi chiedo cortesemente di <u>aspettare una decina di minuti</u> (il server di posta e' abbastanza carico quanto a mail, quindi facciamo anche dieci minuti), se la email non arriva provate a usare la form di password dimenticata (LOGIN-&gt;Ho dimenticato la password) e inserire il vostro nome... quello strumento vi spedisce la password all'indirizzo email associato all'utente che digitate. Se dopo un altro minuto non va, scrivetemi pure. Due minuti persi per voi, due ore guadagnate per me...</h2>"));
 		exit;
 		} // fine else (riga di query NON vuota
@@ -262,7 +262,7 @@ function visualizzaArrIniziaPer($arr,$inizio) { # serve per technedonne, posta i
 }
 if (! empty($msgErrore)) {
 	scriviErroreSpapla( $msgErrore."<br><b>PS</b> Se clicchi qui ti si resetta la form. Vai "
-		."in basso e molto te l'ho riportato pari pari. Una futura feature, ti colorerÚ di rosso "
+		."in basso e molto te l'ho riportato pari pari. Una futura feature, ti colorer√≤ di rosso "
 		."cio' che hai sbagliato. Nel frattempo cerca di dormire lo stesso..." ,$AUTOPAGINA);
 	$body=	"<table border=1><tr><td>Errore nell'iscrizione: </td><td>$msgErrore</td></tr>"
 		."<tr><td>IP:</td><td>$utenteIp</td></tr> "
@@ -274,13 +274,13 @@ if (! empty($msgErrore)) {
 }
 
 if ($fatto)
-		echo(htmlMessaggione("NICK <i>registrato</i>!!! la password ti Ë appena stata spedita via mail. Controllala e poi vai al login"));
+		echo(htmlMessaggione("NICK <i>registrato</i>!!! la password ti √® appena stata spedita via mail. Controllala e poi vai al login"));
 if ($errore==1)
 	echo('<p><font color="red"><b>Hai utilizzato caratteri non validi</b></font></p>');
 if ($errore==2)
-	echo('<p><font color="red"><b>Il nick Ë gi‡ in uso</b></font></p>');
+	echo('<p><font color="red"><b>Il nick √® gi√† in uso</b></font></p>');
 if ($errore==3)
-	echo('<p><font color="red"><b>La mail Ë gi‡ in uso</b></font></p>');
+	echo('<p><font color="red"><b>La mail √® gi√† in uso</b></font></p>');
 if ($errore==4)
 	echo('<p><font color="red"><b>Qualche campo (MSN,ICQ,...) vuoto</b></font></p>');
 ?>
@@ -291,12 +291,12 @@ if ($errore==4)
 
 <font class='errorone'>ATTENZIONE!!!</font> <br>
 <b>Ti conviene mettere una <i>e-mail</i> giusta</b> piuttosto che farlocca, 
-<b>poichÈ lÏ ti viene spedita la PASSWORD</b> (senza la quale nel sito non ci entri). 
-Sappi che non ti verranno spedite schifezze pubblicitarie nÈ altro se non per errore, 
-magari ti scriverÚ io dicendo "ehi tu chi sei?!?" e poco altro. Se non vuoi registrarti
+<b>poich√© l√¨ ti viene spedita la PASSWORD</b> (senza la quale nel sito non ci entri). 
+Sappi che non ti verranno spedite schifezze pubblicitarie n√© altro se non per errore, 
+magari ti scriver√≤ io dicendo "ehi tu chi sei?!?" e poco altro. Se non vuoi registrarti
  devi accontentarti della pagina di facciata (la <a href='index.php'>home</a>), ma attento
  che i link sono disabilitati (o meglio, sono attivi ma ti spediranno sempre al LOGIN). 
-Altra cosa: la maggior parte dei campi Ë obbligatoria, se no d‡ errore :-(
+Altra cosa: la maggior parte dei campi √® obbligatoria, se no d√† errore :-(
 
 
 <br><br>
@@ -304,7 +304,7 @@ Altra cosa: la maggior parte dei campi Ë obbligatoria, se no d‡ errore :-(
 
 <b>NB</b> <u>Per i non goliardi</u> Sappiate che questo nasce come sito goliardico, quindi 
 leggerete facilmente parole volgari sia nei forum che in chat. Inoltre i goliardi hanno un 
-modo tutto loro di giocare che puÚ essere mal interpretato da un non-goliarda come un'offesa
+modo tutto loro di giocare che pu√≤ essere mal interpretato da un non-goliarda come un'offesa
  gratuita. Di solito NON E' COSI', comunque siete avvisati: alcuni contenuti possono essere 
 ritenuti offensivi.
 
@@ -322,7 +322,7 @@ ritenuti offensivi.
 </tr>
 
 <tr>
- <td width="50%">inserisci il <b>nome e cognome</b> (che compariranno pubblicamente, per privacy puoi anche mettere solo il nome, giusto qualcosa perchË ti si riconosca: ci sono tanti casi di omonimia goliardica, sapessi!!!)</td>
+ <td width="50%">inserisci il <b>nome e cognome</b> (che compariranno pubblicamente, per privacy puoi anche mettere solo il nome, giusto qualcosa perch√® ti si riconosca: ci sono tanti casi di omonimia goliardica, sapessi!!!)</td>
  <td width="50%"><input type="text" name="nomecognome" size="20" value="<?php  echo Form("nomecognome")?>"></td>
 </tr>
 
@@ -340,7 +340,7 @@ ritenuti offensivi.
 	<td><input type="text" name="icq" size="25" value="<?php  echo Form("icq")?>"></td>
 </tr>
 <tr>
-	<td>inserisci la <b>provincia</b> in cui vivi (vi sono anche stati al'estero), nel dubbio la citt‡ che ospita il tuo ordine. Mi raccomando, se la TUA citt‡ non Ë applicabile, metti un valore a caso e segnalamelo via mail che la aggiungerÚ prontamente, ok? Potrai sempre cambiarla nella sezione utente man mano che ti sposti per il mondo o nel caso io aggiunga la tua amata provincia.</td>
+	<td>inserisci la <b>provincia</b> in cui vivi (vi sono anche stati al'estero), nel dubbio la citt√† che ospita il tuo ordine. Mi raccomando, se la TUA citt√† non √® applicabile, metti un valore a caso e segnalamelo via mail che la aggiunger√≤ prontamente, ok? Potrai sempre cambiarla nella sezione utente man mano che ti sposti per il mondo o nel caso io aggiunga la tua amata provincia.</td>
 	<td> 
 		<!--- input type="text" name="provincia" size="25" --->
 		<?php  popolaComboCitta("provincia",Form("provincia")); ?>
@@ -352,7 +352,7 @@ ritenuti offensivi.
 	<td><?php   formtextarea("interessi",Form("interessi"),5,30); ?></td>
 </tr>
 <tr>
-	<td>inserisci i tuoi <b>gusti sessuali</b> in breve (posizioni, targets, .., qualunque cosa possa far ridere pi˘ di una barzelletta per ingegneri raccontata dallo zio Pal)</td>
+	<td>inserisci i tuoi <b>gusti sessuali</b> in breve (posizioni, targets, .., qualunque cosa possa far ridere pi√π di una barzelletta per ingegneri raccontata dallo zio Pal)</td>
 	<td><?php   formtextarea("gustisessuali",Form("gustisessuali"),5,30); ?></td>
 </tr>
 
@@ -362,27 +362,27 @@ ritenuti offensivi.
 </tr>
 </tr>
 	<td >Sei un goliarda?!?</td>
-	<td><?php  formScelta2("m_bIsGoliard",1,0,"sÏ","no",1)?></td>
+	<td><?php  formScelta2("m_bIsGoliard",1,0,"s√¨","no",1)?></td>
 </tr>
 
 
 <tr>
-	<td>inserisci la tua <i>data di nascita</i> (ti servir‡ se oblii la pwd)</td>
+	<td>inserisci la tua <i>data di nascita</i> (ti servir√† se oblii la pwd)</td>
 	<td><?php  popolaComboGGMMYY("datanascita")?></td>
 </tr>
 <tr>
 
 	<td>Hai la erre moscia?</td>
-	<td><?php  formScelta2("m_berremoscia",1,0,"sÏ","no",2)?></td>
+	<td><?php  formScelta2("m_berremoscia",1,0,"s√¨","no",2)?></td>
 </tr>
 <tr>
-	<td>inserisci note su di te... (max 150 caratteri). <b>Ti prego</b>, scrivi qualcosa che mi aiuti a identificarti. Account con note nulle verrano spesso cancellati a <I>insindacabile tiramento di culo</i> (ITCÆ) del Webmaster</td>
+	<td>inserisci note su di te... (max 150 caratteri). <b>Ti prego</b>, scrivi qualcosa che mi aiuti a identificarti. Account con note nulle verrano spesso cancellati a <I>insindacabile tiramento di culo</i> (ITC¬Æ) del Webmaster</td>
 	<td><?php   formtextarea("note",Form("note"),5,30); ?></td>
 </tr>
 <tr>
 
 	<td>Sei single?</td>
-	<td><?php  formScelta2("m_bsingle",1,0,"sÏ","no",1)?></td>
+	<td><?php  formScelta2("m_bsingle",1,0,"s√¨","no",1)?></td>
 </tr>
 </tr>
 
@@ -390,7 +390,7 @@ ritenuti offensivi.
 <tr>
 
 	<td>Sei serio? (se scegli SI, verranno nascoste a te certe cose tipicamente buffe x cui certi anziani potrebbero storcere il naso, come un ordine sovrano su Tokio o Gotham City)</td>
-	<td><?php  formScelta2("m_bSerio",1,0,"sÏ","no",2)?></td>
+	<td><?php  formScelta2("m_bSerio",1,0,"s√¨","no",2)?></td>
 	<?php  formhidden("hidden_operazione","iscrizione_sito06");
 
 
@@ -401,25 +401,25 @@ ritenuti offensivi.
 Sapete che ci sono leggi sulla privacy che proibiscono di pubblicare dati personali non 
 autorizzati. Iscrivendoti a questo sito accetti implicitamente due cose: 1) di rendere
  visibile agli utenti del sito informazioni su di te che tu stesso ci dai (ovvero TUTTO
- tranne la tua e-mail, che conoscerÚ solo io); 2) ti impegni a NON pubblicare dati su 
-altre persone sapendo che questa potrebbe non volere che essi vengano pubblicati. Perlopi˘
- Ë di solito facile risalire a chi sia stato a fare una certa cosa... Questo Ë MOLTO importante
+ tranne la tua e-mail, che conoscer√≤ solo io); 2) ti impegni a NON pubblicare dati su 
+altre persone sapendo che questa potrebbe non volere che essi vengano pubblicati. Perlopi√π
+ √® di solito facile risalire a chi sia stato a fare una certa cosa... Questo √® MOLTO importante
  da capire. Se una persona si collega al sito e vede il proprio nome, i propri dati personali
  e/o la propria foto pubblicata ha tutti i diritti di sporgere denuncia. Io tengo traccia di 
 CHI mi manda le foto e di chi mi butta su i dati (ho creato un sistema di LOG niente male) e 
-quindi Ë facile risalire al responsabile: NON PUBBLICATI DATI DI PERSONE CHE NON SIATE VOI A 
+quindi √® facile risalire al responsabile: NON PUBBLICATI DATI DI PERSONE CHE NON SIATE VOI A 
 MENO CHE NON VI ABBIANO DATO IL CONSENSO!<br/>
-<b>Vi ricordo che <i>iscrivervi a nome di un'altra persona</i> (Ë successo) pubblicandone dati
- o anche associando il nome a una sua foto costituisce reato di violazione della privacy. PoichÈ
- i vostri IP sono loggati, Ë molto facile per la polizia postale individuare da dove vien fatta
- la chiamata. Evitate di farlo, nel vostro interesse, poichÈ il diretto interessato potrebbe 
-denunciarvi e io non mi assumo alcuna responsabilit‡ per attivit‡ maliziose nel mio sito.</b>
+<b>Vi ricordo che <i>iscrivervi a nome di un'altra persona</i> (√® successo) pubblicandone dati
+ o anche associando il nome a una sua foto costituisce reato di violazione della privacy. Poich√©
+ i vostri IP sono loggati, √® molto facile per la polizia postale individuare da dove vien fatta
+ la chiamata. Evitate di farlo, nel vostro interesse, poich√© il diretto interessato potrebbe 
+denunciarvi e io non mi assumo alcuna responsabilit√† per attivit√† maliziose nel mio sito.</b>
 
 <div align="right">Riccardo Carlesso</div>
 </td></tr>
 <tr> 
         <td>Hai letto e accetti il quanto scritto sopra?</td>
-        <td><?php  formScelta2("disclaimer",1,0,"sÏ","no",2)?></td>
+        <td><?php  formScelta2("disclaimer",1,0,"s√¨","no",2)?></td>
 </tr>
 </table>
 <br>
@@ -430,7 +430,7 @@ denunciarvi e io non mi assumo alcuna responsabilit‡ per attivit‡ maliziose nel 
 </form>
 
 
-<p><b>N.B.</b> non utilizzare caratteri strani (minori, maggiori, chiocciole, dollari...) nel nome nÈ, se possibile caratteri accentati e simili. Se poi qualcosa non funzia, son cacchi tuoi! </p>
+<p><b>N.B.</b> non utilizzare caratteri strani (minori, maggiori, chiocciole, dollari...) nel nome n√©, se possibile caratteri accentati e simili. Se poi qualcosa non funzia, son cacchi tuoi! </p>
 <p><b>[ <a href="login.php">pagina di login</a> ]</b></p>
 </center>
 

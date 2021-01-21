@@ -23,7 +23,7 @@ function randomizzaGiocoCoppieUltimaEntrata()
 {
 global $ISPAL;
 echo rosso("VOTO A CASO<br/>");
-$ismaschio= intval(Session("SEX") != "M"); // è il contrario, ma devi pur votare persone di sesso OPPOSTO!!! ;)
+$ismaschio= intval(Session("SEX") != "M"); // Ã¨ il contrario, ma devi pur votare persone di sesso OPPOSTO!!! ;)
 $res=mq("select id_login from loginz where m_bismaschio=$ismaschio AND m_bguest=0 order by m_datalastcollegato desc");
 
 if (isdevelop()) 
@@ -78,16 +78,16 @@ trtd();
 scrivi(h2("Le coppie del giorno"));
 ?>
 E dato che mi rompete su come vengono calcolate, vi dico la formula: sono le ultime <b><?php  echo $MAXCOPPIEVISUALIZZATE?>
-</b> coppie la cui data di voto media (data1+data2) è massima tra le coppie che si son date voto non segreto
+</b> coppie la cui data di voto media (data1+data2) Ã¨ massima tra le coppie che si son date voto non segreto
  entrambe con voto minimo (medio? minimo tra i 2? non ricordo) di almeno <b><?php  echo $VOTOMINIMO?></b>. Infine, 
-l'icona del bacio è attiva se <i>entrambi</i> si bacerebbero, e quella dei gameti se entrambi scoperebbero 
-(non mi rompete i coglioni sul condizionale: <i>è</i> corretto, fidatevi). :-) PS ditemi se vi piacciono le 
-iconcine di Farina Prodaxions®.
+l'icona del bacio Ã¨ attiva se <i>entrambi</i> si bacerebbero, e quella dei gameti se entrambi scoperebbero 
+(non mi rompete i coglioni sul condizionale: <i>Ã¨</i> corretto, fidatevi). :-) PS ditemi se vi piacciono le 
+iconcine di Farina ProdaxionsÂ®.
 <?php 
 tdtd();
 scrivi(h2("Le coppie ..."));
 ?>
-Qua banalmente il vincolo ulteriore è che la singlehood di entrambi è richiesta. Forse anche vincoli di voto SIMILE, mo' vedremo
+Qua banalmente il vincolo ulteriore Ã¨ che la singlehood di entrambi Ã¨ richiesta. Forse anche vincoli di voto SIMILE, mo' vedremo
 <?php 
 tttt();
 
@@ -126,7 +126,7 @@ $sql2= "select l2.m_snome as nome2,l1.m_snome as nome1,g1.m_nvoto as voto1,"
 /*
 echo rosso("chiuso x ottimizzazione query. chi ne sa a tronchi di SQL mi contatti, grazie: in sostanza la query manda "
 	."in palla mysql (e non amndava un db access): devo dedurre sia un problema di join non ottimizzato sugli "
-	."indici... in effetti è un join tra 4 tabelle di cui 2 han 10K elementi. con gli indici però si riduce a "
+	."indici... in effetti Ã¨ un join tra 4 tabelle di cui 2 han 10K elementi. con gli indici perÃ² si riduce a "
 	."un join IDIOTA... qualcuno che mi spieghi i selfjoin grazier. astenersi perditempo.");
 */
 #IMPALLA TUTTO! 
@@ -158,7 +158,7 @@ $res = mysql_query($sqlz)
 	or sqlerror($sqlz);
 
 while($rs=mysql_fetch_array($res))
-{ $sx= ($cont==0); // dice se è a sx, la prima volta dev'esser vero..
+{ $sx= ($cont==0); // dice se Ã¨ a sx, la prima volta dev'esser vero..
   $cont++;
   if ($cont==$MAXXRIGA) $cont=0;
   $dx= ($cont==0); // post incrementato...
@@ -357,77 +357,77 @@ $numVisualizzati = 7;
 scrivi(h1("Statistiche!"));
 tabled();
 echo("<tr valign=top><td>");
-scrivi("<h2>I ".$numVisualizzati." più votati:</h2>");
+scrivi("<h2>I ".$numVisualizzati." piÃ¹ votati:</h2>");
 
 $resMedia = mq("select m_snome as _fotoutente,m_snome as Nome,max(m_nvoto)/10 as Voto_Max,min(m_nvoto)/10 AS "
 		. "Voto_Min, avg(m_nvoto)/10 as media_Voto ,count(*) AS NumVoti from giococoppie , loginz "
 		. "where id_login=idutentevotato AND sexvotante='F' group by idutentevotato,m_snome order by numvoti desc ");
 
 
-intabellaIntestazioneERecordsingoli($resMedia, "I ".$numVisualizzati." più votati");
+intabellaIntestazioneERecordsingoli($resMedia, "I ".$numVisualizzati." piÃ¹ votati");
 
 tdtd();
 
-scrivi("<h2>Le ".$numVisualizzati." più votate:</h2>");
+scrivi("<h2>Le ".$numVisualizzati." piÃ¹ votate:</h2>");
 
 $resMedia = mq("select m_snome as _fotoutente,m_snome as Nome,max(m_nvoto)/10 as Voto_Max,min(m_nvoto)/10 AS "
 		. "Voto_Min, avg(m_nvoto)/10 as media_Voto ,count(*) AS NumVoti from giococoppie , loginz "
 		. "where id_login=idutentevotato AND sexvotante='M' group by idutentevotato,m_snome order by numvoti desc ");
 
-intabellaIntestazioneERecordsingoli($resMedia, "Le ".$numVisualizzati." più votate");
+intabellaIntestazioneERecordsingoli($resMedia, "Le ".$numVisualizzati." piÃ¹ votate");
 
 tttt();
 
-scrivi("<h2>I ".$numVisualizzati." più amati (con almeno ".$almenovoti." voti):</h2>");
+scrivi("<h2>I ".$numVisualizzati." piÃ¹ amati (con almeno ".$almenovoti." voti):</h2>");
 
 $resMedia = mq("select m_snome as _fotoutente,m_snome as Nome,avg(m_nvoto)/10 as media_Voto,count(*) as NumVoti"
 		. " from giococoppie,loginz where id_login=idutentevotato AND sexvotante='F' group by idutentevo"
 		. "tato,m_snome having numvoti>".$almenovoti." order by media_voto desc");
 
-intabellaIntestazioneERecordsingoli($resMedia, "I ".$numVisualizzati." più amati");
+intabellaIntestazioneERecordsingoli($resMedia, "I ".$numVisualizzati." piÃ¹ amati");
 
 tdtd();
- scrivi("<h2>Le ".$numVisualizzati." più amate (con almeno ".$almenovoti." voti):</h2>");
+ scrivi("<h2>Le ".$numVisualizzati." piÃ¹ amate (con almeno ".$almenovoti." voti):</h2>");
  $resMedia=mq("select m_snome as _fotoutente,m_snome as Nome,avg(m_nvoto)/10 as media_Voto,count(*) as NumVoti "
 		."from giococoppie,loginz where id_login=idutentevotato AND sexvotante='M' group by idutentev"
 		."otato,m_snome having numvoti>".$almenovoti." order by media_voto desc");
- intabellaIntestazioneERecordsingoli($resMedia, "Le ".$numVisualizzati." più amate");
+ intabellaIntestazioneERecordsingoli($resMedia, "Le ".$numVisualizzati." piÃ¹ amate");
 tttt();
- scrivi("<h2>I ".$numVisualizzati." più leccaculo (con almeno ".$almenovoti." voti):</h2>");
+ scrivi("<h2>I ".$numVisualizzati." piÃ¹ leccaculo (con almeno ".$almenovoti." voti):</h2>");
  $resMedia=mq("select m_snome as _fotoutente,m_snome as Nome,avg(m_nvoto)/10 as media_Voto_DATO,count(*) as NumVoti"
 		." from giococoppie,loginz where id_login=idutentevotante AND sexvotante='M' group by idutentevot"
 		."ante,m_snome having numvoti>".$almenovoti." order by media_voto_dato desc");
- intabellaIntestazioneERecordsingoli($resMedia, "I ".$numVisualizzati." più leccaculo");
+ intabellaIntestazioneERecordsingoli($resMedia, "I ".$numVisualizzati." piÃ¹ leccaculo");
 tdtd();
- scrivi("<h2>Le ".$numVisualizzati." più leccaculo (con almeno ".$almenovoti." voti):</h2>");
+ scrivi("<h2>Le ".$numVisualizzati." piÃ¹ leccaculo (con almeno ".$almenovoti." voti):</h2>");
  $resMedia=mq("select m_snome as _fotoutente,m_snome as Nome,avg(m_nvoto)/10 as media_Voto_DATO,count(*) as NumVoti"
 		." from giococoppie,loginz where id_login=idutentevotante AND sexvotante='F' group by idutentevot"
 		."ante,m_snome having numvoti>".$almenovoti." order by media_voto_dato desc");
- intabellaIntestazioneERecordsingoli($resMedia, "Le ".$numVisualizzati." più leccaculo");
+ intabellaIntestazioneERecordsingoli($resMedia, "Le ".$numVisualizzati." piÃ¹ leccaculo");
 tttt();
- scrivi("<h2>I ".$numVisualizzati." più scopabili:</h2>");
+ scrivi("<h2>I ".$numVisualizzati." piÃ¹ scopabili:</h2>");
  $resMedia=mq("select m_snome as _fotoutente,m_snome as Nome,100*avg(m_bscoperebbe) as media_scop,sum(m_bscoperebbe"
 	.") as quante,count(*) as NumVoti from giococoppie,loginz where id_login=idutentevotato AND sexvotante='F'"
 	." group by idutentevotato,m_snome having numvoti>".$almenovoti." ORDER BY media_scop  desc");
- intabellaIntestazioneERecordsingoli($resMedia, "I ".$numVisualizzati." più scopabili");
+ intabellaIntestazioneERecordsingoli($resMedia, "I ".$numVisualizzati." piÃ¹ scopabili");
 tdtd();
- scrivi("<h2>Le  ".$numVisualizzati." più scopabili:</h2>");
+ scrivi("<h2>Le  ".$numVisualizzati." piÃ¹ scopabili:</h2>");
  $resMedia=mq("select m_snome as _fotoutente,m_snome as Nome,100*avg(m_bscoperebbe) as media_scop,sum(m_bscoperebbe)"
 		." as quanti,count(*) as NumVoti from giococoppie,loginz where id_login=idutentevotato AND sexvotante"
 		."='M' group by idutentevotato,m_snome having numvoti>".$almenovoti." ORDER BY media_scop  desc");
- intabellaIntestazioneERecordsingoli($resMedia,"Le  ".$numVisualizzati." più scopabili");
+ intabellaIntestazioneERecordsingoli($resMedia,"Le  ".$numVisualizzati." piÃ¹ scopabili");
 tttt();
- scrivi("<h2>I ".$numVisualizzati." più scarsi di voto (con almeno ".$almenovoti." voti):</h2>");
+ scrivi("<h2>I ".$numVisualizzati." piÃ¹ scarsi di voto (con almeno ".$almenovoti." voti):</h2>");
  $resMedia=mq("select m_snome as _fotoutente,m_snome as Nome,avg(m_nvoto)/10 as media_Voto_DATO,count(*) as NumVoti"
 		." from giococoppie,loginz where id_login=idutentevotante AND sexvotante='M' group by idutentevotante"
 		.",m_snome having numvoti>".$almenovoti." order by media_Voto_dato asc");
- intabellaIntestazioneERecordsingoli($resMedia, "I ".$numVisualizzati." più scarsi di voto");
+ intabellaIntestazioneERecordsingoli($resMedia, "I ".$numVisualizzati." piÃ¹ scarsi di voto");
 tdtd();
- scrivi("<h2>Le ".$numVisualizzati." più scarse di voto (con almeno ".$almenovoti." voti):</h2>");
+ scrivi("<h2>Le ".$numVisualizzati." piÃ¹ scarse di voto (con almeno ".$almenovoti." voti):</h2>");
  $resMedia=mq("select m_snome as _fotoutente,m_snome as Nome,avg(m_nvoto)/10 as media_Voto_DATO,count(*) as NumVoti "
 		."from giococoppie,loginz where id_login=idutentevotante AND sexvotante='F' group by idutentevotante"
 		.",m_snome having numvoti>".$almenovoti." order by media_Voto_dato asc");
- intabellaIntestazioneERecordsingoli($resMedia,"Le ".$numVisualizzati." più scarse di voto");
+ intabellaIntestazioneERecordsingoli($resMedia,"Le ".$numVisualizzati." piÃ¹ scarse di voto");
 trtd();
 tableEnd();
 
@@ -509,7 +509,7 @@ scrivi("<a href='".$AUTOPAGINA."?arg=".$link."'>- ".$frase."</a><br/>");
 randomizzaGiocoCoppie();
 
  scrivib(h3("Opzioni"));
- scrivi("- Vai alla <a href='votacoppieesagerato.php'><i>Bolgia della Lussuria</i>®</a><br/>");
+ scrivi("- Vai alla <a href='votacoppieesagerato.php'><i>Bolgia della Lussuria</i>Â®</a><br/>");
  menugdc("Le mie coppie (le persone che tu hai votato e che ti hanno votato)",  "miecoppie");
  menugdc("Dicono di me (voti dati a te da persone dell'altro sesso)",   "diconodime");
  menugdc("Coppie del giorno (NEW!)",   "coppiegiorno");

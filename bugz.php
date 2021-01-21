@@ -7,20 +7,20 @@ include "header.php";
 
 if (! isadmin()) 
 	{
-	echo rosso("lo sforzo non Ë abbastanza possente in te..");
+	echo rosso("lo sforzo non √® abbastanza possente in te..");
 	bona();
 	}
 
 echo h1("Bugs per amministratori..");
 
-			// x ora tutto inutile, lo lascio x scopi futuri (in futuo, scoperÚ?) ;-)
+			// x ora tutto inutile, lo lascio x scopi futuri (in futuo, scoper√≤?) ;-)
 $arrAzioni = array (
 	"sburuser senza foto"  => array ( 
 					"descr" => "Utenti sboroni senza foto",
 					"valDflt" => 0
 						),
 	"guest ingiusti"	 => array ( 
-					"descr" => "Guest che purtuttavia hanno foto,daqta di nascita umana e citt‡ corretta",
+					"descr" => "Guest che purtuttavia hanno foto,daqta di nascita umana e citt√† corretta",
 					"valDflt" => 0
 						)
 			  );
@@ -56,7 +56,7 @@ case "sburuser senza foto":
 	tableend();
 	return $tot;
 case "guest ingiusti":
-	if ($verboso) echo h2("guest con foto e citt‡ e data di nascita non nulla");
+	if ($verboso) echo h2("guest con foto e citt√† e data di nascita non nulla");
 	$res=mq("select * from loginz l,regioni r where m_bguest=1 and l.provincia=r.nomecitta  "
 		. " and not (datanascita = '1970-01-01') "
 		. " and not (datanascita = '1982-02-07') "

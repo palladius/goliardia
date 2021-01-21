@@ -57,22 +57,22 @@ $nickname = $GETUTENTE;
 
 
 		//////////////////////////////////////////
-		// qua devo verificare che il nome passatomi via POST non sia gi‡ presente... Ë solo un consiglio...
+		// qua devo verificare che il nome passatomi via POST non sia gi√† presente... √® solo un consiglio...
 		// cerco la form "di nome goliardico"
 
 	$NOME_SUGGERITO = Form("dinomegoliardico");
 
 
 	//visualizzaformz();
-	if ($ISPAL) echo rosso("aggiungi la possibilit‡ di aggiungere u goliarda pure qui...");
+	if ($ISPAL) echo rosso("aggiungi la possibilit√† di aggiungere u goliarda pure qui...");
 
 //	scrivi(rossone("di nome goliardico vale... ".$NOME_SUGGERITO));
 
 	if ($NOME_SUGGERITO == "NOME (obbligatorio)" || $NOME_SUGGERITO == "NOME BIS")
-		{tornaindietro("Ma no, mona, devi mettere al posto del nome il nome del goliarda! Non lasciare il campo cosÏ com'Ë (cioË '<i>$NOME_SUGGERITO</i>')!!!","pag_utente.php"); bona();}
+		{tornaindietro("Ma no, mona, devi mettere al posto del nome il nome del goliarda! Non lasciare il campo cos√¨ com'√® (cio√® '<i>$NOME_SUGGERITO</i>')!!!","pag_utente.php"); bona();}
 
 	if (strlen($NOME_SUGGERITO)<3 && ($NOME_SUGGERITO != "") )
-		{tornaindietro("nome troppo corto (cioË '<i>$NOME_SUGGERITO</i>')!!!","pag_utente.php"); bona();}
+		{tornaindietro("nome troppo corto (cio√® '<i>$NOME_SUGGERITO</i>')!!!","pag_utente.php"); bona();}
 
 
 	if (!empty($NOME_SUGGERITO))
@@ -93,7 +93,7 @@ $nickname = $GETUTENTE;
 	formtext("dinomegoliardico","NOME BIS");
 	formbottoneinvia("riprova!");
 	formend(); 
-			 scrivib("In pratica fa come vuoi perÚ Ë stupido mettere 2 istanze di un"
+			 scrivib("In pratica fa come vuoi per√≤ √® stupido mettere 2 istanze di un"
 				. "o stesso goliarda! Piuttosto modificalo! Se"
 			 	. " il caro vecchio Palladius trova dei doppioni li cancella e "
 				. "aumenta di uno l'e-scazzo all'ultimo che ne ha creato uno...  :-)<br>");
@@ -113,8 +113,8 @@ formbegin();
 scrivib("\n<center>\n<h2>Estremi anagrafici</h2>");
 formhidden("my_hidden_id","nome");
 formhidden("hidden_mivoglioregistrare","davvero");
-formhidden("hidden_mia_query_string","klÚklÚ"); //QueryString());
-formhidden("id_login",$IDLOGIN); // non metto hidden anche se Ë nascosta cosÏ la ciuccio in automatico di sopra!!!
+formhidden("hidden_mia_query_string","kl√≤kl√≤"); //QueryString());
+formhidden("id_login",$IDLOGIN); // non metto hidden anche se √® nascosta cos√¨ la ciuccio in automatico di sopra!!!
 
 formtext("Nome","");
 //spazio(2);
@@ -128,7 +128,7 @@ formtextConCheckbox("Email",(""),"privacy_mail",("false"),"privato");
 
 scrivi("</table>");
 
-echo ("(se selezioni <i>sÏ</i> non saranno resi pubblici questi dati)<br>");
+echo ("(se selezioni <i>s√¨</i> non saranno resi pubblici questi dati)<br>");
 invio();
 hline(70);
 scrivib("<h2>Estremi goliardici</h2>");
@@ -151,7 +151,7 @@ echo "<tr><td align=right>";
 	formtext("Dataprocesso",($dataProcesso));
 tdtd();
 	scrivi ("Ordine: ");
-	popolaComboBySqlDoppia_Key_Valore("ID_ORDINE","select id_ord,nome_veloce,citt‡ from "
+	popolaComboBySqlDoppia_Key_Valore("ID_ORDINE","select id_ord,nome_veloce,citt√† from "
 		."ordini order by nome_veloce","61");
 trtdend();
 
@@ -160,15 +160,15 @@ formtext("foto","$GETUTENTE.jpg");
 
 tdtd();
 
-scrivi (rosso("Fuck")."olt‡: ");
+scrivi (rosso("Fuck")."olt√†: ");
 popolaComboBySqlDoppia_Key_Valore("ID_FACOLTA","select * from facolta","giurisprudenza");
 
 
 trtdend();
 tableend();
 
-scrivi("<i>P.S. Se non c'Ë il tuo ordine Ë un problema MIO; dato che non puoi creare un goliarda senza un ordine di nascita, intanto metti un ordine fittizio.<br>");
-scrivi("Poi mi mandi una ".miamail("mail")." con la mia lacuna e pi˘ avanti ");
+scrivi("<i>P.S. Se non c'√® il tuo ordine √® un problema MIO; dato che non puoi creare un goliarda senza un ordine di nascita, intanto metti un ordine fittizio.<br>");
+scrivi("Poi mi mandi una ".miamail("mail")." con la mia lacuna e pi√π avanti ");
 scrivi("cambierai solo questo!.. ok?</i>");
 hline(70);
 

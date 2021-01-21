@@ -41,7 +41,7 @@ for ($i=0;$i<sizeof($stringa_utente);$i++) {
 	    $delta = $t - intval($aux[1]);
 	    if ($delta>600) $stringa_utente[$i] = ""; 
 		// 600= 10 minuti, 1200=... boh spetta che prendo la calcolatrice
-		// son secondi, è tornato a 10 minuti... anzi facciamo 20
+		// son secondi, Ã¨ tornato a 10 minuti... anzi facciamo 20
 		// aumentato delta t da 60000 a 600'000 (un minuto a 10 minuti...)
 		//php VENERDI speriamo sian millisecondi, se son secondi diventa ENORME!
 	  }
@@ -67,7 +67,7 @@ setApplication("online",$online);
 ?>
 <html>
 <head>
-  <title>Carlessoèunfigo® Chat</title>
+  <title>CarlessoÃ¨unfigoÂ® Chat</title>
   <meta http-equiv="refresh" content="8">
   <meta http-equiv="Pragma" content="no-cache">
 <style>

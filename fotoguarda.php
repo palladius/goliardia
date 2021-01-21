@@ -82,13 +82,13 @@ function mostraFoto($directoryiniziale) {
 
 mostraFoto("../../goliardia/immagini/"); 
 
-if (strlen(String($_SERVER["QUERYSTRING"]))==0) // se l'array delle query string Ë vuoto... boh!
+if (strlen(String($_SERVER["QUERYSTRING"]))==0) // se l'array delle query string √® vuoto... boh!
 {
 ?>
-Qui sopra trovi un link a tutte le directory di foto che ho creato. X ora ce ne sono solo due: FOTONE e THUMBNAIL. Nelle prime, ci sono tutte le foto che voi potete buttar su di dimensione massima 100k. Nella seconda trovate tutti i thumbnail buttati su da voi in automatico!!! Se tutto va bene, un giorno li metterÚ tutti.  <br>
-Nella lista di cose da fare, ho anche di legare le foto a un contesto, in modo che possiate fare la ricerca x goliarda o x citt‡ o x ordine e che magari cliccandoci via dia un link a tutti i goliardi con quella foto lÏ (non Ë garantita a priori l'unicit‡, non trovate?).  <br>
+Qui sopra trovi un link a tutte le directory di foto che ho creato. X ora ce ne sono solo due: FOTONE e THUMBNAIL. Nelle prime, ci sono tutte le foto che voi potete buttar su di dimensione massima 100k. Nella seconda trovate tutti i thumbnail buttati su da voi in automatico!!! Se tutto va bene, un giorno li metter√≤ tutti.  <br>
+Nella lista di cose da fare, ho anche di legare le foto a un contesto, in modo che possiate fare la ricerca x goliarda o x citt√† o x ordine e che magari cliccandoci via dia un link a tutti i goliardi con quella foto l√¨ (non √® garantita a priori l'unicit√†, non trovate?).  <br>
 
-Ah, gi‡, le foto pi˘ grandi di tot KB (non avendo un creatore di thumbnail all'istante) sono sostituite da una simpatica immagine pacco. Ci ho messo mezz'ora a farla quindi spero che la gradiate; Ë quella scritta verde e viola, x intenderci.
+Ah, gi√†, le foto pi√π grandi di tot KB (non avendo un creatore di thumbnail all'istante) sono sostituite da una simpatica immagine pacco. Ci ho messo mezz'ora a farla quindi spero che la gradiate; √® quella scritta verde e viola, x intenderci.
 <br>
 Altro dirvi non vo', che la mia festa ch'anco tardi a venir non mi sia grave.
 <br>
