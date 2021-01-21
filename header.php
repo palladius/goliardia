@@ -32,12 +32,12 @@ $current_user_id = fetch($_SESSION["_SESS_id_login"], NULL);
 #$current_user = fetch($_SESSION["_SESS_nickname"], NULL); # NON FUNZIONA! Non capisco perche ma viene vuoto..
 #$current_user_id = fetch($_SESSION["_SESS_id_login"], NULL);
 
-#	$DEBUG_ON = 0;
+# fanculo, siccome per sbaglio mi va debug in staging e prod lo disattivo PUNTO.
+# Tanto non serve a una cippa. Se faccio debug pesso lo togglo qui e basta..
+#$DEBUG = $DEBUG_ON || Session("conf_debug") || getenv("DEBUG_ON");
 
-$DEBUG = $DEBUG_ON || 
-	Session("conf_debug") || 
-		getenv("DEBUG_ON");
-//		$_ENV['DEBUG_ON'];
+$DEBUG_ON = 0;
+
 $VERBOSE=TRUE;
 $nomecognome="nomecognome";
 #$CONSTLARGEZZA600=730;
