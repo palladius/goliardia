@@ -1,0 +1,17 @@
+# Se lo metto solo nel virtualhost non serve a una cippa temo.
+SetEnv GOLIARDIA_MYSQL_HOST ${GOLIARDIA_MYSQL_HOST}
+SetEnv GOLIARDIA_MYSQL_USER ${GOLIARDIA_MYSQL_USER}
+SetEnv GOLIARDIA_MYSQL_PASS ${GOLIARDIA_MYSQL_PASS}
+SetEnv GOLIARDIA_MYSQL_DB   ${GOLIARDIA_MYSQL_DB}
+SetEnv GOLIARDIA_SITENAME   ${GOLIARDIA_SITENAME}
+SetEnv GOLIARDIA_SITEPATH   ${GOLIARDIA_SITEPATH}
+SetEnv GOLIARDIA_DOVESONO   ${GOLIARDIA_DOVESONO}
+SetEnv GOLIARDIA_GMAIL_USER ${GOLIARDIA_GMAIL_USER}
+# la pwd non la metto per sicurezza che senso ha esporla ad apache a meno che non serva da DENTRO php ma.. perigroso!
+SetEnv GOLIARDIA_DOCKER_VER ${GOLIARDIA_DOCKER_VER}
+
+# Errori che succedono talvolta:
+# da errore a linea 5 spesso ... 
+# "AH00526: Syntax error on line 5 of /etc/apache2/conf-enabled/environment.conf:
+# SetEnv takes 1-2 arguments, an environment variable name and optional value to pass to CGI.
+

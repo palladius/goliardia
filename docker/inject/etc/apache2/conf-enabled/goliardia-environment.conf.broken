@@ -1,0 +1,40 @@
+# Se lo metto solo nel virtualhost non serve a una cippa temo.
+# Nota: non supporta spazi.
+# TODO(ricc): FIXME spaces issue. Prova con singoli o doppi apici.
+SetEnv GOLIARDIA_MYSQL_HOST "${GOLIARDIA_MYSQL_HOST}"
+SetEnv GOLIARDIA_MYSQL_USER "${GOLIARDIA_MYSQL_USER}"
+SetEnv GOLIARDIA_MYSQL_PASS "${GOLIARDIA_MYSQL_PASS}"
+SetEnv GOLIARDIA_MYSQL_DB   "${GOLIARDIA_MYSQL_DB}"
+SetEnv GOLIARDIA_SITENAME   "${GOLIARDIA_SITENAME}"
+SetEnv GOLIARDIA_SITEPATH   "${GOLIARDIA_SITEPATH}"
+SetEnv GOLIARDIA_DOVESONO   "${GOLIARDIA_DOVESONO}"
+SetEnv GOLIARDIA_GMAIL_USER "${GOLIARDIA_GMAIL_USER}"
+# la pwd non la metto per sicurezza che senso ha esporla ad apache a meno che non serva da DENTRO php ma.. perigroso!
+SetEnv GOLIARDIA_DOCKER_VER "${GOLIARDIA_DOCKER_VER}"
+
+# Errori che succedono talvolta:
+# da errore a linea 5 spesso ... 
+# "AH00526: Syntax error on line 5 of /etc/apache2/conf-enabled/environment.conf:
+# SetEnv takes 1-2 arguments, an environment variable name and optional value to pass to CGI.
+# 2020-01-07 proviamo a mettere quotes..
+
+# Se le QUOTO mi da errore:
+#AH00526: Syntax error on line 6 of /etc/apache2/conf-enabled/goliardia-environment.conf:
+#SetEnv takes 1-2 arguments, an environment variable name and optional value to pass to CGI.
+# FAcendo printenv sembrano siano GIA quotate da ENV... che strano. Guarda: tutto cio che e mio e doublequotato. Credo lerrore sia li.
+# come tolgo le cacchio di quotes? Proviamo a rimuyoverle nel .env
+#GOLIARDIA_DOCKER_VER="2.4a"
+#PHP_EXTRA_BUILD_DEPS=apache2-dev
+#GOLIARDIA_MYSQL_USER="goluser-staging"
+#GOLIARDIA_MYSQL_DB="goliardia_staging5jan20_utf8"
+#PHP_VERSION=5.6.34
+
+# Trovata la soluzione:
+# 1. Qui metto double quotes.
+# 2. in ENV tolgo le double quotes. Con NIENTE funge anche con spazi. Ho provato con SDINGLE quotes e sembra andare: 
+#GOLIARDIA_SITEPATH	SitePaz-DEV-docker senza quotes ma con spazi
+#GOLIARDIA_DOVESONO	'docker-locale con single quotes'
+
+# removes warning:
+# https://stackoverflow.com/questions/5856205/could-not-reliably-determine-the-servers-fully-qualified-domain-name
+ServerName docker.goliardia.it
