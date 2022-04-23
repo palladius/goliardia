@@ -4187,7 +4187,7 @@ $sql="SELECT o.m_fileImmagineTn as _fotoordine,o.nome_veloce,nomecarica, data_no
 $result42=mysql_query($sql)
         or sqlerror($sql);
 
-scriviRecordSetConTimeout($result42,80,"Nomine del goliarda numero $idgol (tabella Ciapasò-compliant)");
+scriviRecordSetConTimeout($result42,80,"Nomine del goliarda numero $idgol");
 
 echo "<div class=debug>";
 scriviReportCursusHonorumByIdOld($idgol,$diritti);
